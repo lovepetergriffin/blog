@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://radar.zsyvoid.com/vps/sitemap.xml

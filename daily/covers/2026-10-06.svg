@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#26221d"/>
+  <polygon points="900,0 1200,0 1200,630 760,630" fill="#c2571b"/>
+  <text x="90" y="150" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans SC, sans-serif" font-size="52" letter-spacing="14" fill="#e8e0d4">AI 码力日报</text>
+  <text x="80" y="430" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans SC, sans-serif" font-size="190" font-weight="700" fill="#c2571b">10月6日</text>
+  <rect x="90" y="500" width="150" height="56" rx="28" fill="none" stroke="#c2571b" stroke-width="3"/>
+  <text x="165" y="539" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans SC, sans-serif" font-size="32" fill="#c2571b" text-anchor="middle">发刊词</text>
+</svg>
