@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年10月8日 - AI 码力日报</title>
+<meta name="description" content="Anthropic 发 Claude Haiku 5.5 打响小模型价格战，OpenAI GPT-6 全量进 ChatGPT 带交互界面，Google 开源 EmbeddingGemma 2；羊毛：Claude for Startups 送 $1,000 credits + 1 年免费 Team。">
+<meta property="og:image" content="https://seannews.cc.cd/covers/2026-10-08.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年10月8日","description":"Anthropic 发 Claude Haiku 5.5 打响小模型价格战，OpenAI GPT-6 全量进 ChatGPT 带交互界面，Google 开源 EmbeddingGemma 2；羊毛：Claude for Startups 送 $1,000 credits + 1 年免费 Team。","datePublished":"2026-10-08","dateModified":"2026-10-08","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://seannews.cc.cd"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://seannews.cc.cd/posts/2026-10-08-daily.html"},"inLanguage":"zh-CN","image":["https://seannews.cc.cd/covers/2026-10-08.svg"]}</script>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/feed.xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">AI 码力日报</a>
+    <nav>
+      <a href="/">首页</a>
+      <a href="/archive.html">归档</a>
+      <a href="/about.html">关于</a>
+      <a href="/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <h1>AI 码力日报 · 2026年10月8日</h1>
+    <div class="meta"><time>2026-10-08</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-10-08.svg" alt="AI 码力日报 · 2026年10月8日">
+  <div class="post-body">
+<h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li><strong>Anthropic 发 Claude Haiku 5.5</strong>：$0.10/$0.50 对标 GPT-6 Luna，比前代便宜约 75%，1M 上下文加可调 effort；Max/Team 同步送月度 API 额度。</li>
+<li><strong>OpenAI GPT-6 全量进 ChatGPT</strong>：回答自带交互图表/表单/小工具的 Intelligent UI，免费档今日（10-08）开始推送；Codex + ChatGPT Work 合计 4000 万活跃用户。</li>
+<li><strong>Google DeepMind 开源 EmbeddingGemma 2</strong>：740M 多模态 embedding，MTEB Code 78.68，Pixel 11 上能量化跑全模态。</li>
+<li><strong>Stack Overflow 2026</strong>：AI 编程助手 Claude Code（65.5%）首次超过 GitHub Copilot（58.7%），VS Code 以 70.9% 续任编辑器霸主。</li>
+</ul>
+<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="anthropic-claude-haiku-55maxteam-api">Anthropic 发 Claude Haiku 5.5：小模型价格战开打，Max/Team 送月度 API 额度</h3>
+<p>10 月 7 日，Claude 5.5 家族第三款落地。定位高频低成本任务与大模型的"subagent"：10 万 token 内 $0.10/M 输入、$0.50/M 输出，官方称平均比 Haiku 4.5 便宜约 75%，直接对标 GPT-6 Luna。基准：Terminal-Bench 4.0 39.2%（前代为 0）、FrontierCode 1.1 46.4%；1M 上下文，Haiku 首个可调 effort 档。model ID <code>claude-haiku-5-5</code>，已在 Claude Platform / AWS / GCP / Azure 上线。同日还加了料：Sonnet 5.5 缓存读价格腰斩到 $0.10/M；Max 5x 送 $100/月、Max 20x 送 $200/月 API 额度，Team 最高 $500 共享池；SDK 新增 computer-use 与 browser-use beta 工具。<a href="https://www.reuters.com/business/anthropic-launches-third-claude-55-model-expanding-ai-lineup-before-planned-ipo-2026-10-07/">Reuters</a> / <a href="https://www.testingcatalog.com/anthropic-launches-claude-haiku-5-5-at-lower-api-prices/">定价与额度细节</a>（链接截至撰写时可访问）</p>
+<p>我的看法：Haiku 一直是"便宜干脏活"的定位，这次配上可调 effort 和还不错的 agent 基准，明显冲着 subagent 场景去的。小模型价格战对开发者是实打实的好事——日常任务、CI 里跑的小活成本直接砍一刀。国内直连用不了，等中转渠道跟进降价。</p>
+<h3 id="openai-gpt-6-chatgptintelligent-ui">OpenAI GPT-6 全量登陆 ChatGPT："Intelligent UI"让回答自带交互界面，免费档今日推送</h3>
+<p>10 月 7 日起，GPT-6 在 ChatGPT 的 Chat tab 全量推送，新能力 "Intelligent UI"让回答可内嵌可交互的图表、表单、按钮、计算器和小工具（比如账单分摊器）。10-07 先上付费档（Plus/Pro/Business/Enterprise，GPT-6 Sol 驱动），<strong>Free 和 Go 档从今天 10-08 开始推送</strong>（GPT-6 Luna 驱动）。顺带：产品负责人在 X 公布 Codex + ChatGPT Work 合计 4000 万活跃用户，付费账号将获得"banked usage reset"额度储备。<a href="https://www.unite.ai/openai-brings-gpt-6-with-intelligent-ui-to-all-chatgpt-tiers/">unite.ai</a> / <a href="https://runtimewire.com/article/openai-gpt-6-intelligent-ui-chatgpt">runtimewire</a>（链接截至撰写时可访问）</p>
+<p>我的看法：聊天界面正在往"可操作界面"进化——以后回答不只是文本，"点两下就把事办了"会成为默认体验。对做 ChatGPT 插件和小工具的人是个信号：官方亲自下场做交互组件了，第三方得往更深的地方做。</p>
+<h3 id="google-deepmind-embeddinggemma-2740m-embedding">Google DeepMind 开源 EmbeddingGemma 2：740M 多模态 embedding，端侧也能跑</h3>
+<p>10 月 6 日发布，基于 Gemma 4、Apache 2.0 开源。文本、代码、图像、音频、视频统一映射到同一 768 维向量空间（可截断到 512/256/128，存储降到 1/6）；8K 上下文（v1 的 4 倍）；MTEB Code 78.68（v1 68.76）；模块化按需加载（文本 270M / 视觉 170M / 音频 300M）；Pixel 11 Pro 上量化后文本模型 191MB、全模态 567MB；权重已上 Hugging Face 和 Kaggle，ML Kit（Android）数周后支持。<a href="https://www.marktechpost.com/2026/10/06/google-deepmind-releases-embeddinggemma-2-a-740m-open-multimodal-embedding-model-built-on-gemma-4/">marktechpost</a>（链接截至撰写时可访问）</p>
+<p>我的看法：embedding 模型的端侧化挺有意义——检索增强不用每次都调云端 API。做 RAG 的可以关注下，代码检索涨了快 10 个点，值得一试。</p>
+<h3 id="stack-overflow-2026-claude-code655-github-copilot587">Stack Overflow 2026 调查：Claude Code（65.5%）首次超过 GitHub Copilot（58.7%）</h3>
+<p>30,903 有效回复、169 国。AI coding agents 过去一年使用率：Claude Code 第一，GitHub Copilot 第二，OpenAI Codex 29.5%，Cursor 25.5%。IDE 侧：VS Code 70.9% 遥遥领先，Cursor 第六 14.9%、Zed 11.4%、Windsurf 3.2%。73% 受访者每天用 AI 编程助手，但只有 9.6% 会直接采用 AI 答案不加验证。<a href="https://visualstudiomagazine.com/articles/2026/10/06/stack-overflow-2026-survey-vs-code-leads-visual-studio-takes-third.aspx">visualstudiomagazine</a>（链接截至撰写时可访问）</p>
+<p>我的看法：agent-first 的工作流彻底赢了，Copilot 这种补全形态被 agent 形态超车，是今年最大的格局变化。Cursor IDE 市占 14.9% 也很有意思——agent 火，但人还是待在 VS Code 里。</p>
+<p>顺带一个官方认账的插曲：GitHub 承认多款 IDE 把 agent 会话迁到 Copilot SDK 后未标识来源 IDE，导致使用指标里 agent 活跃度被系统性低估（历史缺失数据无法回填，计费不受影响），VS Code 1.139.0+ 已修复——看团队 AI 采用率报表的注意口径。<a href="https://github.blog/changelog/2026-10-06-update-your-ide-to-restore-agent-activity-in-copilot-usage-metrics/">changelog</a></p>
+<h2 id="_2">🐑 今日羊毛</h2>
+<h3 id="anthropic-claude-for-startups1000-api-credits-1-claude-team">Anthropic 扩展 Claude for Startups：$1,000 API credits + 1 年免费 Claude Team</h3>
+<p>一句话：10 月 6 日官方宣布（SF Tech Week），合格创业公司一次性拿 <strong>$1,000 Claude API credits</strong>（发放后 6 个月过期）+ <strong>1 年免费 Claude Team</strong>（最多 5 个 Premium 席位，每席含 Claude Code，按年付价约值 $6,000），官方口径最高省 $7,000。</p>
+<ul>
+<li><strong>怎么薅</strong>：准备 Claude Console 账号 + 与公司官网同域名的公司邮箱 + 一段项目简介，在<a href="https://www.anthropic.com/startups">官方 Claude for Startups 页面</a>申请；审核快的几分钟，人工的 2–3 个工作日</li>
+<li><strong>有效期</strong>：credits 发放后 6 个月过期；免费 Team 仅限新用户。注意 startupfortune 读条款提醒：申请即接受 Anthropic 可能开发类似产品；$45K 合作伙伴优惠是各家上限总和不是现金包</li>
+<li><strong>适合谁</strong>：有公司的开发者/创业团队；个人散户领不到。<a href="https://techcrunch.com/2026/10/06/anthropic-gives-startups-a-free-year-of-enterprise-service-and-1000-in-token-credits/">TechCrunch 报道</a> / <a href="http://dev.to/programmatic_dib/claude-for-startups-2026-1000-in-api-credits-a-free-year-of-claude-team-with-claude-code-3006">DEV 申请攻略</a>（截至撰写时活动有效）</li>
+</ul>
+<h3 id="openai-28-day-2auto-review-api">OpenAI "28 天更新计划" Day 2：Auto-review 全面免费，API 最高档门槛砍半</h3>
+<p>一句话：Codex/Work 连续 28 天每天一更的第二天（10 月 7 日）：<strong>Auto-review（Approve for me）对所有 ChatGPT 账号免费开放，不再消耗套餐额度</strong>——主 agent 干活、第二个 agent 专职审查高风险操作，长任务不用频繁点批准了；API usage tier 五档并三档（Build 累计 $5 / Launch $100 / Grow $500），最高档门槛从累计 $1000 降到 $500，自动升级；Meetings 插件进 ChatGPT（macOS 版 Pro/Business beta）。</p>
+<ul>
+<li><strong>怎么薅</strong>：Auto-review 是账号默认能力，无需操作；API 档位自动升级</li>
+<li><strong>有效期</strong>：长期；Day 1 是 GPT-6 Astra/6.1 Sol 订阅用户速度 +50%</li>
+<li><strong>适合谁</strong>：Codex/ChatGPT agent 重度用户、OpenAI API 开发者。<a href="https://k.sina.cn/article_5952915705_162d248f906703q0ua.html?from=tech">机器之心经新浪</a>（截至撰写时活动有效）</li>
+</ul>
+<h3 id="hacktoberfest-2026-dev-credits">Hacktoberfest 2026 DEV 挑战赛：参赛领合作伙伴免费 credits</h3>
+<p>一句话：DEV 社区的 Hacktoberfest 2026 挑战赛，5 个挑战、每周新主题，合作伙伴（Tinker、Render、Backboard、ElevenLabs 等）在 hacktoberfest.com/my 给参赛者发 credits/promo codes，有效提交者拿徽章、优胜者有奖金。</p>
+<ul>
+<li><strong>怎么薅</strong>：去 <a href="https://dev.to/devteam/hacktoberfest-2026-dev-challenges-five-challenges-one-prompt-a-new-theme-every-week-1e54">DEV 挑战赛说明</a> 按主题提交作品，到 hacktoberfest.com/my 领各合作伙伴的额度码</li>
+<li><strong>有效期</strong>：10 月内各周挑战；额度码按各合作伙伴条款</li>
+<li><strong>适合谁</strong>：愿意动手参赛的开发者——要交作品，不是纯白嫖；具体每家额度数额以领取页为准</li>
+</ul>
+<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="addyosmaniagent-skills">addyosmani/agent-skills</h3>
+<p>生产级 agent skills 全家桶：25 个 skill 覆盖开发全生命周期（spec → plan → build → test → review → ship），<code>npx skills add</code> 一条命令装进 70+ agent。解决什么问题：agent 会写代码但不懂工程纪律——需求先对齐、测试先写、合并前过质量门，全靠 skill 强制执行。⭐ 约 102,785（截至撰写时）。适合：用 Claude Code/Cursor/Codex 做正经项目、被 agent 屎山坑过的人。注：和昨天推的 mattpocock/skills 同赛道、不同作者（Addy Osmani）。<a href="https://github.com/addyosmani/agent-skills">项目地址</a></p>
+<h3 id="manaflow-aicmux">manaflow-ai/cmux</h3>
+<p>为 AI coding agent 而生的开源 macOS 终端（基于 Ghostty）：竖排标签 + 通知系统，哪个 agent 在等你输入一眼看到。解决什么问题：同时开十几个 Claude Code/Codex 会话，标签栏挤爆、通知全是"Claude is waiting for your input"没上下文——cmux 给每个 pane 蓝圈提醒，侧栏显示 git 分支/PR 状态/监听端口，还带可编程浏览器和 SSH。⭐ 约 27,827（截至撰写时）。适合：Mac 上并行跑多个 agent 会话的重度用户。<a href="https://github.com/manaflow-ai/cmux">项目地址</a></p>
+<h3 id="trycuacua">trycua/cua</h3>
+<p>computer-use 2.0 开源套件：跨 OS 桌面操作驱动（Cua Driver）、本地 VM（Lume）、给 agent 的完整桌面（Cua Spaces）+ 评测基准（Cua Bench），MIT 协议。解决什么问题：想让 agent 像人一样操作桌面应用（点按钮、填表单），需要驱动层、沙箱和评估工具——cua 一把给齐。⭐ 约 28,729（截至撰写时）。适合：想做桌面自动化 agent、评测 computer-use 模型的人。<a href="https://github.com/trycua/cua">项目地址</a></p>
+<h3 id="cloudflaresecurity-audit-skill">cloudflare/security-audit-skill</h3>
+<p>Cloudflare 官方出品的安全审计 skill：六阶段流程（侦察 → 覆盖式猎杀 → 候选独立验证 → 结构化输出 → 独立复核 → 报告），结论分 confirmed / needs_validation / rejected 三档，带 JSON schema 机读校验。解决什么问题：让 agent 做安全审计时满嘴跑火车——这个 skill 用"发现者 ≠ 验证者"的对抗式流程，只认有完整证据链的 confirmed。⭐ 约 26,025（截至撰写时）。适合：想给自己仓库做一次 agent 安全审计的人（今天的教程就用它）。<a href="https://github.com/cloudflare/security-audit-skill">项目地址</a></p>
+<h2 id="raddebugger">🛠️ 值得一试的工具：raddebugger</h2>
+<p>是什么：Epic Games 官方开源的原生图形调试器（MIT），用户态、多进程；顺带自研了 RAD Linker——巨型可执行文件链接快约 50%（官方测试数据）。</p>
+<p>解决什么痛点：Windows 原生调试工具选择少，大型 C++ 项目（游戏引擎这类）链接慢、调试体验差。</p>
+<p>免费额度：完全免费开源，有预编译 release 二进制。</p>
+<p><strong>verdict：观望</strong> —— 还在 alpha，目前仅支持本机 Windows x64 + PDB（Linux/DWARF 在路线图上）；C++ 游戏/引擎开发者可以尝鲜，不建议现在当主力调试器。⭐ 约 7,851（截至撰写时）。<a href="https://github.com/EpicGames/raddebugger">项目地址</a></p>
+<h2 id="3-cloudflare-security-audit-skill-agent">🎓 3 分钟小教程：用 Cloudflare 的 security-audit skill，让 agent 给你的仓库做一次带证据链的安全审计</h2>
+<p>Trending 上 Cloudflare 官方那个安全审计 skill，我觉得比大多数"帮我找漏洞"的 prompt 强在：它强制对抗验证，只认有证据链的结论。下面是 3 分钟跑起来。</p>
+<p><strong>前置条件</strong>：一个支持并行 sub-agent 的 coding agent（Claude Code 等）、装好 Node.js（跑零依赖的校验脚本）、一个你想审计的仓库</p>
+<ol>
+<li>装 skill（一条命令）：
+   <code>npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit</code>
+   用户级安装加 <code>--global</code>。</li>
+<li>把 agent 启动在（或指向）要审计的仓库目录。默认审计产物写到 <code>~/security-audit-skill/&lt;仓库名&gt;/run-&lt;N&gt;</code>，只在你明确指定版本控制忽略的目录时才写进目标仓库。</li>
+<li>在 agent 里说：<code>security audit this codebase</code>（或 <code>find security vulnerabilities in ./src</code>），skill 自动激活，走完六阶段：侦察建架构图谱 → 覆盖式猎杀 → 换一批 fresh agent 独立验证每个候选 → 写 findings.json 并过 schema 校验 → 独立复核 → 输出 REPORT.md / FINDINGS-DETAIL.md / NEEDS-VALIDATION.md。</li>
+<li>只看 <code>confirmed</code> 档结论——有完整源码证据链和可观察的影响；<code>needs_validation</code> 是有未解事实的存疑项，别当漏洞报。</li>
+</ol>
+<p><strong>预期效果</strong>：得到一份带证据链、可机读、可复跑（多次跑覆盖率叠加）的安全审计报告。</p>
+<p>注意：让审计 agent 实际执行目标代码需要 OS 级沙箱（禁外网、环境白名单、资源限制、只写指定目录）；没这个条件时流程会自动降级为静态推导，结论停在 needs_validation。审计/逆向仅用于自己或已授权的代码。<a href="https://github.com/cloudflare/security-audit-skill">项目地址</a></p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-10-07-daily.html">AI 码力日报 · 2026年10月7日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-10-07-daily.html">AI 码力日报 · 2026年10月7日</a></li>
+<li><a href="../posts/2026-10-06-daily.html">AI 码力日报 · 2026年10月6日</a></li>
+<li><a href="../posts/2026-10-06-welcome.html">发刊词：为什么做一份 AI 程序员日报</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean</p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
