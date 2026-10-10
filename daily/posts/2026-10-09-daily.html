@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年10月9日 - AI 码力日报</title>
+<meta name="description" content="OpenAI 上线 GPT-6.1 Sol Ultrafast 快档，Anthropic 发 Claude Dashboards 与 Motion，Google 推通用工作 agent；羊毛：OpenAI 给 Pro 降级用户发 62,500 credits。">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-10-09.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年10月9日","description":"OpenAI 上线 GPT-6.1 Sol Ultrafast 快档，Anthropic 发 Claude Dashboards 与 Motion，Google 推通用工作 agent；羊毛：OpenAI 给 Pro 降级用户发 62,500 credits。","datePublished":"2026-10-09","dateModified":"2026-10-09","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-10-09-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-10-09.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <h1>AI 码力日报 · 2026年10月9日</h1>
+    <div class="meta"><time>2026-10-09</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-10-09.svg" alt="AI 码力日报 · 2026年10月9日">
+  <div class="post-body">
+<h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li><strong>OpenAI 上线 GPT-6.1 Sol Ultrafast</strong>：最快 API 档，API 最高 6 倍生成速度、Codex 中 8 倍，定价 $12/$60 是标准档的 6 倍，已在 API、Codex 和 ChatGPT Work 灰度铺开。</li>
+<li><strong>Anthropic 发 Claude Dashboards + Claude Motion</strong>：自然语言连数据平台生成实时仪表盘（beta，付费档），可编辑动画导出视频（beta，Team/Enterprise），Docs/Slides/Design 全量开放。</li>
+<li><strong>Google 推"通用工作 agent"</strong>：横跨 Gmail/Drive/Docs/Sheets/Chat/Calendar，一个目标丢进去能跑数小时甚至数天的任务，自动选模型、内置成本控制。</li>
+<li><strong>Docker 官方开源 docker-agent</strong>：YAML 声明式定义 agent 团队，<code>docker agent run</code> 即跑，HN 上 290 points / 133 评论，Docker 生态的 agent 框架有了官方答案。</li>
+</ul>
+<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="anthropic-claude-dashboards-claude-motiondashboards-motion">Anthropic 发 Claude Dashboards + Claude Motion：Dashboards 连数据做实时仪表盘，Motion 做动画</h3>
+<p>10 月 8 日，Anthropic 连续两弹。<strong>Claude Dashboards</strong>（beta，付费档）：连商业数据平台，用自然语言生成实时仪表盘；<strong>Claude Motion</strong>（beta，Team/Enterprise）：可做可编辑的动画并导出视频；同时 <strong>Docs、Slides、Design</strong> 三个创作工具结束 beta 全量开放。Reuters 独家报道，影响所有付费 Claude 用户的工作流——从"问答助手"往"产出成品件"又走了一步。<a href="https://www.reuters.com/technology/anthropic-launches-dashboard-animation-tools-claude-2026-10-08/">Reuters</a>（链接截至撰写时可访问）</p>
+<p>我的看法：Dashboards 的野心不小——直接插数据仓库、输出可交互仪表盘，这是要吃 BI 工具的饭。Motion 做动画导出视频对做产品演示、课程内容的人是福音。不过都还在 beta，实际效果等 GA 再看。</p>
+<p>顺带一条有意思的：Anthropic 更新使用政策，<strong>禁止"无故虐待"Claude</strong>——仅针对极端反复虐待行为（不含普通抱怨、创意写作、测试），Claude 可主动终止该对话，主要执法手段仍是结束对话而非封号。<a href="https://www.macrumors.com/2026/10/08/anthropic-user-guideline-update/">MacRumors</a>（链接截至撰写时可访问）</p>
+<h3 id="openai-gpt-61-sol-ultrafast-6">OpenAI 上线 GPT-6.1 Sol Ultrafast：最快档，价格是标准档 6 倍</h3>
+<p>约 10 月 8 日，OpenAI 首发给 @OpenAIDevs。<strong>API 定价 $12/百万输入、$60/百万输出</strong>（标准档 $2/$10 的 6 倍），宣称 API 侧最高 6 倍 token 生成速度、在 Codex 中达 8 倍。已在 API、Codex 和 ChatGPT Work 灰度铺开，目标场景是代理式和交互式工作负载。<a href="https://runtimewire.com/article/openai-gpt-6-1-sol-ultrafast-api-pricing">runtimewire</a>（链接截至撰写时可访问）</p>
+<p>我的看法：这就是"花钱买速度"档——latency 敏感的 agent 循环、实时交互场景愿意付溢价；普通批量任务用标准档就行。做成本核算的人注意：模型选型表要加一列"速度档"了。</p>
+<h3 id="google-agent-gmaildrivedocssheetschatcalendar">Google 推"通用工作 agent"：跨 Gmail/Drive/Docs/Sheets/Chat/Calendar，给目标不给指令</h3>
+<p>10 月 8 日，Google Cloud "Gemini at Work 2026" 活动上官宣。定位是 <strong>"single, universal agent for work"</strong>：给它一个目标而不是一串指令，它能跨 Gmail、Docs、Sheets、Calendar 等多个应用跑数小时甚至数天的任务（写代码、做模型、协调会议），自动选模型、内置成本控制。<a href="https://www.unite.ai/google-cloud-unveils-gemini-its-universal-agent-for-work/">unite.ai</a> / <a href="https://www.analyticsinsight.net/news/meet-googles-new-gemini-coworker-built-to-handle-workplace-tasks">analyticsinsight</a>（链接截至撰写时可访问）</p>
+<p>我的看法：Google 的护城河就是自家全家桶数据——agent 能原生跨 Workspace 应用，这是第三方 agent 框架很难复制的。企业开发者可以关注下权限和审计怎么设计，"跑好几天的任务"最先卡的就是权限边界。</p>
+<h3 id="cursor-ios-app-agents">Cursor iOS app：出门也能盯着本地 agents 跑</h3>
+<p>10 月 6 日 changelog。Cursor iOS app 现在能<strong>显示本机跑的 local agents 并发消息</strong>——agent 仍在本机跑（电脑要保持在线、开"Keep this computer awake"），手机只是远程看板 + 对讲机。默认对所有非 Enterprise 组织开启。<a href="https://www.gradually.ai/en/changelogs/cursor/">changelog</a>（链接截至撰写时可访问）</p>
+<p>我的看法：长任务最怕的就是"不知道它跑哪了"——手机上瞥一眼进度、有问题回一条消息，这个场景是真实痛点。不过出门前别忘了保持电脑在线，不然回来看到 agent 早停了。</p>
+<p>另外提一句：Claude Code 10 月 7–8 日三连发（2.1.293/294/295）——2.1.293 起默认模型切到 Claude Haiku 5.5（1M 上下文、更快更便宜），2.1.294 修复指令型 hook 解析、2.1.295 让 hook 失败可阻断动作。更新工具链顺手升一下。<a href="https://www.havoptic.com/tools/claude-code">changelog</a>（链接截至撰写时可访问）</p>
+<h2 id="_2">🐑 今日羊毛</h2>
+<h3 id="openai-pro-62500-credits-2500">OpenAI 给 Pro 降级用户自动到账 62,500 credits（约 $2,500）</h3>
+<p>一句话：10 月初 OpenAI 改版 Pro 方案（Pro $200/月月费不变、额度减半）后，给<strong>受降级影响的现有 Pro 用户</strong>账户里自动打了 <strong>62,500 usage credits</strong>，官方口径价值约 $2,500。</p>
+<ul>
+<li><strong>怎么薅</strong>：无手动领取入口——符合条件的自动到账。登录 ChatGPT → 检查账户 credits 余额确认</li>
+<li><strong>有效期</strong>：2026 年底前用完</li>
+<li><strong>适合谁</strong>：仅限受降级影响的现有 Pro 用户；新用户没有；大陆用户基本用不上 ChatGPT 付费，这条看看就行。<a href="https://www.makeuseof.com/openai-is-giving-away-62500-free-credits-to-pro/">makeuseof 报道</a>（截至撰写时活动有效）</li>
+</ul>
+<h3 id="google-ai-pro-ai-plus-1-12-31">Google AI Pro / AI Plus：在校大学生 1 年免费（12 月 31 日前领）</h3>
+<p>一句话：Google 官方学生计划——18 岁以上在校大学生，Google AI Pro（美国）或 Google AI Plus（美国以外 140+ 市场）<strong>免费用 12 个月</strong>。</p>
+<ul>
+<li><strong>怎么薅</strong>：访问 <a href="https://gemini.google/students/">gemini.google/students/</a> → Claim Free Student Plan → 学校邮箱验证（美国需 SheerID）+ 绑定付款方式 → 开通。⚠️ 付款方式到期会自动转付费，用完记得取消</li>
+<li><strong>有效期</strong>：2026 年 12 月 31 日前领取</li>
+<li><strong>适合谁</strong>：在校大学生；<strong>中国大陆是否在支持市场内不确定，务必自己去官网验证</strong>。价值约 $239.88（AI Pro）/ $59.88（AI Plus）。<a href="https://blog.google/innovation-and-ai/products/gemini-app/student-offer-google-ai/">Google 官方公告</a>（截至撰写时活动有效）</li>
+</ul>
+<h3 id="vercel-ai-gateway-30-5-credits">Vercel AI Gateway：每 30 天 $5 免费 credits（常驻）</h3>
+<p>一句话：Vercel AI Gateway 给每个账号<strong>每 30 天刷新 $5 免费额度</strong>，无需信用卡，OpenAI 兼容接口可调 100+ 模型。</p>
+<ul>
+<li><strong>怎么薅</strong>：注册 Vercel 账号 → 进入 dashboard 的 AI Gateway → 生成 API Key → 按 OpenAI 兼容接口调用。另有一批明确标 $0 的免费模型</li>
+<li><strong>有效期</strong>：常驻，按 30 天周期刷新</li>
+<li><strong>适合谁</strong>：想薅 API 做实验的开发者。<a href="https://github.com/vava-nessa/free-coding-models/blob/HEAD/docs/resources.md">资源清单</a> / <a href="https://vercel.com/ai-gateway">Vercel AI Gateway</a>（截至撰写时有效）</li>
+</ul>
+<h3 id="openrouter-25-50">OpenRouter 免费档：25+ 免费模型每天 50 次（常驻）</h3>
+<p>一句话：OpenRouter 的 <code>:free</code> 模型免费档<strong>每天 50 次请求</strong>，注册即用；一次性充值 $10 后涨到 1000 次/天。</p>
+<ul>
+<li><strong>怎么薅</strong>：OpenRouter 官网注册 → 直接调 <code>:free</code> 模型（如 minimax-m3:free 等）</li>
+<li><strong>有效期</strong>：常驻（目录偶尔变动）</li>
+<li><strong>适合谁</strong>：想零成本白嫖模型做测试的开发者。<a href="https://github.com/lumexapower/awesome-freellm-apis">免费 API 清单</a>（截至撰写时有效）</li>
+</ul>
+<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="anthropicsknowledge-work-plugins">anthropics/knowledge-work-plugins</h3>
+<p>Anthropic 官方开源的 Claude Cowork（兼容 Claude Code）插件库：11 个按岗位打包的插件（销售/财务/法务/营销/数据等），每个都带 skill + slash 命令 + MCP 连接器。解决什么问题：agent 的通用能力强，但各岗位的固定工作流（法务审合同、销售跟进）缺现成插件——官方直接给了一套"岗位装机包"。⭐ 约 27,514（截至撰写时）。适合：用 Claude Code 做知识型工作的团队。<a href="https://github.com/anthropics/knowledge-work-plugins">项目地址</a></p>
+<h3 id="nvidiaopenshell">NVIDIA/OpenShell</h3>
+<p>NVIDIA 开源的 AI agent 安全运行时：内核级沙箱隔离跑不受信 agent，<strong>改策略前先做形式化验证</strong>——算一算这个策略变更会不会放行危险访问。解决什么问题：agent 要跑 shell、碰文件、调 API，最怕它一个幻觉删库或把 secrets 发出去——OpenShell 把"能不能做"的决定权从 agent 手里拿走，交给可验证的策略层。⭐ 约 15,478（截至撰写时）。适合：跑不受信 agent、怕 agent 碰 secrets 的人。<a href="https://github.com/NVIDIA/OpenShell">项目地址</a></p>
+<h3 id="cursorplugins">cursor/plugins</h3>
+<p>Cursor 官方插件仓库上线：插件规范 + 一批官方插件（PR review canvas、orchestrate、continual-learning、Gmail/Drive/Salesforce 集成等）。解决什么问题：之前 Cursor 插件生态是野生的，现在官方给了规范和示例，第三方插件有章可循。⭐ 约 10,393（截至撰写时）。适合：Cursor 重度用户、想写 Cursor 插件的开发者。<a href="https://github.com/cursor/plugins">项目地址</a></p>
+<h3 id="mvschwarzopenrig">mvschwarz/openrig</h3>
+<p>把 Claude Code / Codex / Pi 组装成常驻"agent 网络"：YAML 定义团队角色、持久上下文、任务队列，多个 agent 长期协作开发。解决什么问题：单 agent 会话关了就失忆、多 agent 全靠人肉协调——openrig 给了个常驻的"agent 公司"骨架。⭐ 约 6,143（截至撰写时）。适合：想搞多 agent 协作开发的人。<a href="https://github.com/mvschwarz/openrig">项目地址</a></p>
+<h2 id="synthid-detectorgoogle-deepmind">🛠️ 值得一试的工具：SynthID Detector（Google DeepMind）</h2>
+<p>是什么：DeepMind 的 AI 生成内容检测工具，10 月 7 日<strong>全球开放</strong>（之前仅限研究者）。在 <a href="https://www.synthid.com">synthid.com</a> 上传图片/视频/音频，查验其中的不可见 AI 水印——据报道已覆盖 1800 亿张图片、24 万年音频。</p>
+<p>解决什么痛点：AI 生成的图片/视频满天飞，媒体、法务、内容审核需要一个官方的"验货"渠道。</p>
+<p>免费额度：直接免费使用。</p>
+<p><strong>verdict：值得试</strong> —— 检测的是 SynthID 水印（Google 系模型生成内容自带），不是通用 AI 检测器，对非 SynthID 内容查不出来；但作为 Google 官方的验真入口，媒体核验和打假流程里值得放一个。<a href="https://www.cryptopolitan.com/google-synthid-ai-detector-180-billion/">报道</a>（链接截至撰写时可访问）</p>
+<h2 id="3-5-docker-docker-agent-agent">🎓 3 分钟小教程：5 分钟跑起 Docker 官方 docker-agent，搭一个双 agent 调试团队</h2>
+<p>昨天 HN 上 290 points 的 docker-agent，Docker 官方的 YAML 声明式 agent 框架。今天不讲概念，直接跑起来——建一个"调查员 + 修理工"双人调试团队。</p>
+<p><strong>前置条件</strong>：Docker Desktop 4.63+（自带 docker-agent；4.49–4.62 时它叫 cagent）或 Docker Engine + 单独装（macOS <code>brew install docker-agent</code>，二进制放进 <code>~/.docker/cli-plugins</code> 后用 <code>docker agent</code> 命令）；一个模型提供商的 API key（OpenAI/Anthropic/Gemini/Bedrock/Mistral/xAI 都支持）</p>
+<ol>
+<li>按<a href="https://docs.docker.com/ai/docker-agent/">官方文档</a>设置好模型提供商的 API key。</li>
+<li>写一个 <code>debugger.yaml</code>：定义 root agent（investigator，负责调查问题、解释原因）+ 子 agent（fixer，负责动手修）。每个 agent 有自己的模型、指令和上下文，root 通过 <code>sub_agents</code> 把任务委派下去；需要外部工具（搜代码、跑测试）就挂 MCP server。</li>
+<li>跑起来：<code>docker agent run debugger.yaml</code>——你和 root agent 对话描述 bug 或粘错误信息，investigator 分析完自动转交给 fixer 实现。</li>
+<li>想分享/复用：配置是 OCI artifact，像推镜像一样 <code>docker agent push</code> 到 Docker Hub 或任意 OCI registry，别人 pull 下来就能跑。</li>
+</ol>
+<p><strong>预期效果</strong>：一个能分工协作的 agent 调试团队在本机跑起来，复杂问题不用一个 agent 上下文来回切换。仓库里有<a href="https://github.com/docker/docker-agent">官方示例配置</a>可抄。<a href="https://github.com/docker/docker-agent">项目地址</a></p>
+<h2 id="top-5">🏆 本周 Top 5</h2>
+<blockquote>
+<p>周五加更：从本周日报里挑 5 条最好的。</p>
+</blockquote>
+<ol>
+<li><strong>Google 发布 Gemini 4 Argon：首款 Gemini 4，DeepSWE 77.9% 刷新纪录</strong>——本周最重磅的模型发布，安全编码方向的新标杆。<a href="https://www.datacamp.com/blog/gemini-4-argon">原文</a></li>
+<li><strong>OpenAI GPT-6 全量进 ChatGPT：Intelligent UI 让回答自带交互组件</strong>——聊天界面正在变成"可操作界面"，第三方插件开发者要重新找位置。<a href="https://www.unite.ai/openai-brings-gpt-6-with-intelligent-ui-to-all-chatgpt-tiers/">原文</a></li>
+<li><strong>Stack Overflow 2026：Claude Code（65.5%）首次超过 GitHub Copilot（58.7%）</strong>——agent-first 工作流彻底赢了补全形态，今年最大的格局变化。<a href="https://visualstudiomagazine.com/articles/2026/10/06/stack-overflow-2026-survey-vs-code-leads-visual-studio-takes-third.aspx">原文</a></li>
+<li><strong>Anthropic Claude Haiku 5.5：小模型价格战开打</strong>——$0.10/$0.50 对标 GPT-6 Luna，subagent 场景成本直接砍一刀。<a href="https://www.reuters.com/business/anthropic-launches-third-claude-55-model-expanding-ai-lineup-before-planned-ipo-2026-10-07/">原文</a></li>
+<li><strong>Anthropic Claude for Startups：$1,000 credits + 1 年免费 Team</strong>——本周最实在的羊毛，有公司的团队别错过。<a href="https://techcrunch.com/2026/10/06/anthropic-gives-startups-a-free-year-of-enterprise-service-and-1000-in-token-credits/">原文</a></li>
+</ol>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+</article>
+<nav class="post-nav">
+  <a class="prev" href="../posts/2026-10-10-daily.html">← AI 码力日报 · 2026年10月10日</a><a class="next" href="../posts/2026-10-08-daily.html">AI 码力日报 · 2026年10月8日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-10-10-daily.html">AI 码力日报 · 2026年10月10日</a></li>
+<li><a href="../posts/2026-10-08-daily.html">AI 码力日报 · 2026年10月8日</a></li>
+<li><a href="../posts/2026-10-07-daily.html">AI 码力日报 · 2026年10月7日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean</p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
