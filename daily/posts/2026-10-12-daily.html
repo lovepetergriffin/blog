@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年10月12日 - AI 码力日报</title>
+<meta name="description" content="OpenAI 的 GPT-5.5 后天从 ChatGPT 和 Codex 退役，钉版的人今天就得改；Anthropic 给 Max/Team 送每月 API credits；Gemini CLI 0.63 修了 diff 报错；PPT Master 把文档直接变成原生 PPT。">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-10-12.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年10月12日","description":"OpenAI 的 GPT-5.5 后天从 ChatGPT 和 Codex 退役，钉版的人今天就得改；Anthropic 给 Max/Team 送每月 API credits；Gemini CLI 0.63 修了 diff 报错；PPT Master 把文档直接变成原生 PPT。","datePublished":"2026-10-12","dateModified":"2026-10-12","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-10-12-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-10-12.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <h1>AI 码力日报 · 2026年10月12日</h1>
+    <div class="meta"><time>2026-10-12</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-10-12.svg" alt="AI 码力日报 · 2026年10月12日">
+  <div class="post-body">
+<h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li>OpenAI 定在 10 月 14 日把 GPT-5.5 从 ChatGPT、ChatGPT Work 和 Codex 里退役，API key 调用不受影响；凡是把模型名写死在配置、脚本和定时任务里的，今天就该动手改。<a href="https://www.gizmochina.com/2026/09/16/openai-retiring-gpt-5-5-on-october-14-you-may-need-to-update-your-workflow/">原文</a></li>
+<li>Anthropic 这周给 Claude Max 和 Team 计划加了每月 API credits：Max 5x 每月 $100、Max 20x 每月 $200，Team 拼池最高 $500，不领就作废，未用完月底清零。<a href="https://madrobot.blog/2026/10/08/claude-max-team-free-api-credits-how-to-claim/">原文</a></li>
+<li>Google 的 Gemini CLI 更新到 v0.63.0，一口气 15 个修复，最实用的一个是修掉了看 diff 时报 <code>cannot spawn : No such file or directory</code> 的老毛病。<a href="https://geminicli.com/docs/changelogs/latest/">原文</a></li>
+<li>GitHub 上 hugohe3/ppt-master 还在涨：丢一篇文档进去，出来的是能改的原生 PowerPoint，不是截图拼的假 PPT。<a href="https://github.com/hugohe3/ppt-master">原文</a></li>
+</ul>
+<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="openaigpt-55-codex">OpenAI：GPT-5.5 后天退役，Codex 默认模型已经换人</h3>
+<p>先说退役。GPT-5.5 10 月 14 日起从 ChatGPT、ChatGPT Work、Codex 三个入口下线，全计划生效；普通聊天会自动切到新默认，真正要操心的是把模型名写进工作区默认、自定义 agent、定时任务和脚本的人，官方指引是切到 GPT-5.6 Sol。用 API key 的调用不在这次退役范围内，不用慌。再说 Codex 本体：CLI 0.161 把 GPT-6.1 Sol 设为内置目录和 Bedrock 目录的默认模型，0.162 加了受管 Git worktree 工具、Command Center 任务置顶，顺手修了 Linux 沙箱和 <code>apply_patch</code> 的换行符保留。我自己的习惯是升级前先把 config 里的钉版清一遍，省得新旧默认打架。<a href="https://www.gizmochina.com/2026/09/16/openai-retiring-gpt-5-5-on-october-14-you-may-need-to-update-your-workflow/">退役原文</a>｜<a href="https://dev.to/aicoding-guide/codex-cli-v0161-and-v0162-changes-and-gpt-61-sol-becoming-the-default-model-502m">Codex 版本解析</a></p>
+<h3 id="anthropicclaude-code-21296">Anthropic：Claude Code 2.1.296 先把权限的洞补上</h3>
+<p>Claude Code 这周连发 2.1.295 / 2.1.296，重点不在新功能，在安全边界：hooks 从 2.1.295 起可以加 <code>onFailure: "block"</code>，守卫脚本自己挂了就直接拦下动作，不再默认放行；2.1.296 又让 Read 工具能一次性读大文件，并修了日志脱敏的细节。同一周 Anthropic 还发了小模型 Claude Haiku 5.5（1M 上下文、128k 最大输出），并把 Sonnet 5.5 的 prompt cache 读取价从 $0.20 砍到 $0.10/百万 tokens。我建议在用 hooks 当门禁的人今天就升级，顺手把教程里那类配置补上。<a href="https://tech-insider.org/codex-cli-0-162-vs-claude-code-2-1-296-2026/">版本对比原文</a>｜<a href="https://releasebot.io/updates/anthropic/claude-developer-platform">平台更新原文</a></p>
+<h3 id="googlegemini-cli-v063015">Google：Gemini CLI v0.63.0，15 个修复没新功能，但个个踩在痛点上</h3>
+<p>v0.63.0 是 10 月 6 日发的稳定版，这几天讨论才跟上。除了上面说的 diff 报错，它还修了：负数截断阈值本该关截断却把输出翻倍的问题、无头环境下认证无限循环、长跑 agent loop 的内存膨胀；同时非交互模式下也能跑自主 plan 执行了。对我这种把 CLI 挂在脚本里跑的人，这版的价值全在“别半夜挂掉”。升级就一行：<code>npm install -g @google/gemini-cli</code>。<a href="https://geminicli.com/docs/changelogs/latest/">原文</a></p>
+<h2 id="_2">🐑 今日羊毛</h2>
+<h3 id="anthropic-api-creditsmax-100">Anthropic 月度 API credits：Max 每月 $100 起，不领作废</h3>
+<p>一句话：10 月 7 日起随 Haiku 5.5 一起上线的福利——Max 5x 每月 $100、Max 20x 每月 $200 的 Claude API credits，Team 按席位拼池（Standard $20/席、Premium $100/席）最高 $500，约省 ¥700 起。</p>
+<ul>
+<li><strong>怎么薅</strong>：打开 claude.ai 的 Settings → Billing，在 API credits 区块点 Link organization，关联或新建一个 Claude Console 组织，额度随账期到账；账号需已在 Max/Team 满 7 天，不用绑卡。<a href="https://madrobot.blog/2026/10/08/claude-max-team-free-api-credits-how-to-claim/">直达链接</a></li>
+<li><strong>有效期</strong>：每月随账期发放，未用完月底清零、不结转（截至撰写时），过期不候</li>
+<li><strong>适合谁</strong>：已经在付 Max/Team、又想拿 API 跑自己小项目的人。注意：这笔额度不能抵 Claude Code 的交互会话，只覆盖 API、Playground、Managed Agents 和 Agent SDK</li>
+</ul>
+<h3 id="google-ai-pro-12-31">Google 学生羊毛：AI Pro 免费一年，12 月 31 日前领</h3>
+<p>一句话：符合条件的美国高校学生可领 12 个月 Google AI Pro 免费（原价 $19.99/月，约省 $240）；美国以外 140 多个市场的学生领的是 AI Plus 免费一年。</p>
+<ul>
+<li><strong>怎么薅</strong>：到 Google 学生优惠页，用学校邮箱走 SheerID 在校验证，18 岁以上、需预留支付方式；2025 年那批试用过期的学生这次也能重新领。<a href="https://felloai.com/how-to-claim-your-free-google-ai-pro-for-students/">直达链接</a></li>
+<li><strong>有效期</strong>：领到 2026 年 12 月 31 日截止（截至撰写时），免费期结束自动按原价续费，不用记得提前取消</li>
+<li><strong>适合谁</strong>：有海外在读身份的读者；国内在读的同学这条暂时够不着，别去买号，风险大于收益</li>
+</ul>
+<h3 id="llm-api-groq-openrouter">免费 LLM API 组合拳：Groq + OpenRouter 先把原型跑起来</h3>
+<p>一句话：不想付费先跑原型，可以把几家的免费层叠着用——Groq 上一批开源模型有每日免费额度，OpenRouter 的免费模型每天 50 次请求，往账户里充过 $10 credits 后免费额度提到每天 1000 次。</p>
+<ul>
+<li><strong>怎么薅</strong>：分别注册 Groq 和 OpenRouter 拿 key，两家都是 OpenAI SDK 兼容接口，换个 base_url 就能切；原型期用免费层轮换，跑通了再决定给哪家付钱。<a href="https://dev.to/tariqnasser/free-llm-api-tiers-in-october-2026-whats-left-and-how-i-chain-them-227l">直达链接</a></li>
+<li><strong>有效期</strong>：免费层长期存在但限额随时会调（截至撰写时），过期不候</li>
+<li><strong>适合谁</strong>：做 side project、练 agent 原型的开发者；提醒一句，免费层的 prompt 可能被服务方留存，别往里塞敏感数据</li>
+</ul>
+<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="hugohe3ppt-master-ppt">hugohe3/ppt-master：文档进去，原生 PPT 出来</h3>
+<p>一句话介绍：把文档或一个主题变成真正能改的 PowerPoint——原生形状、转场和动画、按数据生成的图表表格，还能用旁白备注生成配音，支持套自己的 .pptx 模板。解决什么问题：以前 AI 做 PPT 给的是一张张图，这个给的是能在 PowerPoint 里继续改的文件。⭐ 约 5.9 万（截至撰写时，据 gittrend 10 月 10 日数据）。适合：天天做汇报、方案和课件的人。<a href="https://github.com/hugohe3/ppt-master">项目地址</a></p>
+<h3 id="microsoftaescode-html">microsoft/AesCode：一句话生成能改的 HTML 页面</h3>
+<p>一句话介绍：微软这两天放出的开源模型 AesCode-32B / 8B（Apache 2.0，基于 Qwen3-VL 微调），给它一段需求加一张参考图，吐出一整份可编辑的 HTML——幻灯片、海报、仪表盘都行，图表走 ECharts，生成完还能直接改代码。解决什么问题：一次性图生页面大多只能看，这个的产物是能交付、能二次编辑的代码。⭐ 新仓库刚放出，星标还在起步（截至撰写时）。适合：做落地页、内部仪表盘、快速原型的前端同学。<a href="https://github.com/microsoft/AesCode">项目地址</a></p>
+<h3 id="yetonemagpie-agent">yetone/magpie：在菜单栏里给每个 agent 换模型</h3>
+<p>一句话介绍：一个模型启动器——让 Codex 跑在 DeepSeek 上、Claude Code 跑在 Kimi 上，从菜单栏一处切换，不用每个工具单独改配置。解决什么问题：多 agent 并行用的人，模型和账单散在各处，这个把入口收拢了。⭐ 约 9000（截至撰写时，据 gittrend 10 月 10 日数据）。适合：同时用两三个 coding agent、想压 API 成本的人。<a href="https://github.com/yetone/magpie">项目地址</a></p>
+<h3 id="cloudflaresecurity-audit-skill-agent">cloudflare/security-audit-skill：给 agent 装一套多阶段安全审计</h3>
+<p>一句话介绍：Cloudflare 出的 coding agent skill，把安全审计拆成多个阶段跑，每条发现都要求独立验证并输出机器可读的结果。解决什么问题：让 agent“顺手查下安全”通常只会给一堆吓人但没法落地的清单，这个至少把发现做成了能进流水线的格式。⭐ 约 2.8 万（截至撰写时，据 gittrend 10 月 10 日数据）。适合：上线前想让 agent 先过一遍代码的团队。<a href="https://github.com/cloudflare/security-audit-skill">项目地址</a></p>
+<h2 id="tabstack">🛠️ 值得一试的工具：Tabstack</h2>
+<p>是什么：Mozilla 做的 Web 执行与数据抽取 API——给它一个 URL 和你想要的结构，它返回结构化数据、带引用的答案，或者替你把浏览器任务跑完，省掉自建爬虫和浏览器农场。解决什么痛点：agent 要读网页时，正文抽取、JS 渲染这些脏活不用自己扛。免费额度：新账号送 10,000 credits，不用绑卡。</p>
+<p><strong>verdict：值得试</strong>——额度够把 Extract / Research 几条链路完整验一遍再决定付不付费；唯一提醒，它抽出来的正文是 JSON 包着的 Markdown，自己看不舒服，是给程序和 agent 用的，不是给人读的。<a href="https://www.optizeno.com/tools/tabstack-review-2026-free-trial-tested/">原文</a></p>
+<h2 id="3-10-14-codex-gpt-55">🎓 3 分钟小教程：赶在 10 月 14 日前，把 Codex 里的 GPT-5.5 钉版清掉</h2>
+<p><strong>前置条件</strong>：本机装了 Codex（CLI 或桌面端），且你曾经在配置、脚本或定时任务里写过模型名。</p>
+<ol>
+<li>先全盘搜一遍钉版在哪：</li>
+</ol>
+<p><code>bash
+   grep -rni "gpt-5.5" ~/.codex/ .codex/ ~/scripts/ 2&gt;/dev/null</code></p>
+<ol>
+<li>把搜到的模型钉版配置改掉：要么直接删掉这一行吃新默认，要么换成你账号里可用的新模型（官方退役指引指向 GPT-5.6 Sol；CLI 0.161 起内置默认是 GPT-6.1 Sol，以你账号实际可选为准）。顺手确认 CLI 版本在 0.162 或更新：</li>
+</ol>
+<p><code>bash
+   codex --version</code></p>
+<ol>
+<li>随便开一个小仓库跑一轮冒烟：让它读一个文件、改一行、跑一次测试，三步都通就说明切换干净了。</li>
+</ol>
+<p><strong>预期效果</strong>：14 号退役当天不会出现“任务跑一半模型没了”；自定义 agent 和定时任务也一起过关，不用半夜爬起来救火。</p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-10-11-daily.html">AI 码力日报 · 2026年10月11日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-10-11-daily.html">AI 码力日报 · 2026年10月11日</a></li>
+<li><a href="../posts/2026-10-10-daily.html">AI 码力日报 · 2026年10月10日</a></li>
+<li><a href="../posts/2026-10-09-daily.html">AI 码力日报 · 2026年10月9日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean</p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
