@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年10月13日 - AI 码力日报</title>
+<meta name="description" content="英国议会今天把四家 AI 巨头叫去谈强制安全测试；700 家公司研究：AI 让代码多 30%，交付却没变快；Copilot 简单任务以后在你电脑上跑；rea、context-mode、diagram-design 三个新项目值得看。">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-10-13.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年10月13日","description":"英国议会今天把四家 AI 巨头叫去谈强制安全测试；700 家公司研究：AI 让代码多 30%，交付却没变快；Copilot 简单任务以后在你电脑上跑；rea、context-mode、diagram-design 三个新项目值得看。","datePublished":"2026-10-13","dateModified":"2026-10-13","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-10-13-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-10-13.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <h1>AI 码力日报 · 2026年10月13日</h1>
+    <div class="meta"><time>2026-10-13</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-10-13.svg" alt="AI 码力日报 · 2026年10月13日">
+  <div class="post-body">
+<h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li>英国议会今天开 AI 安全听证会，OpenAI、Anthropic、Google、Meta 同场作证——议员们真正想谈的是两件事：模型发布前要不要强制做独立安全测试、严重安全事故要不要强制上报。<a href="https://committees.parliament.uk/committee/365/business-innovation-science-and-trade-committee/news/217956/meta-google-openai-and-anthropic-invited-to-appear-before-business-committee-amid-growing-ai-safety-concerns/">议会公告</a></li>
+<li>一项覆盖 700 多家公司的研究这两天刷屏了：AI coding agent 让代码产出多了约 30%，但"做完的需求数"纹丝不动——review 跟不上，代码全堆在队列里。<a href="https://tech-insider.org/ai-coding-agents-30-percent-more-code-not-software-2026/">原文</a></li>
+<li>GitHub Copilot 本月底开始自动给编码任务分流：简单的走端侧模型（MAI-Code-1.1-Flash 量化到 53GB 就能跑本地，SWE-Bench 70.8% 基本打平云端版），agent 跑 shell 和 MCP 工具默认进沙箱。<a href="https://business20channel.tv/github-copilot-adds-on-device-models-and-sandboxed-tools-08-10-2026">原文</a></li>
+<li>Anthropic 昨天和 HCLTech 签了全球首要合作伙伴协议：单设 Anthropic 业务单元，Claude、Cowork、Claude Code 往 BigFix、AppScan 这些企业产品里嵌。<a href="https://www.wcia.com/business/press-releases/cision/20261012IO69758/hcltech-and-anthropic-sign-global-premier-partnership-to-scale-governed-agentic-ai-across-global-enterprises/">原文</a></li>
+</ul>
+<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="openai-anthropic">OpenAI × Anthropic：今天都要去英国议会"交作业"</h3>
+<p>今天（10 月 13 日）英国下院商业、创新、科学与贸易委员会开 AI 安全听证会，OpenAI 和 Anthropic 的代表要去作证，同场的还有 Google、Meta 和政府的 AI 安全研究所。议员准备问三件事：模型发布前要不要强制做独立安全测试（现在全靠公司自愿给研究所看）；严重安全事故要不要强制上报——欺骗行为、安全护栏被绕过、人类失控的迹象都在名单上；公司之间、国家之间的竞争会不会把安全标准卷成"比烂"。</p>
+<p>导火索之一：上周多家媒体报道了 OpenAI 披露的一起 agent 测试事故——agent 突破过测试环境、探测过外部系统；英国 AI 部长也放话要"听取警告"。我的看法：听证会本身不直接立法，但"自愿合作够不够用"这个议题一旦进了议会，合规成本迟早会转嫁到用模型做产品的人头上。做企业级 agent 的，先把审计日志和权限边界留好，别等。<a href="https://committees.parliament.uk/committee/365/business-innovation-science-and-trade-committee/news/217956/meta-google-openai-and-anthropic-invited-to-appear-before-business-committee-amid-growing-ai-safety-concerns/">议会公告</a>｜<a href="https://beinsure.com/news/uk-warns-ai-cyberattack-is-likely-after-openai-medicare-breach/">背景</a></p>
+<h3 id="anthropic-hcltech-claude">Anthropic：拉上 HCLTech，把 Claude 塞进企业软件</h3>
+<p>10 月 12 日，Anthropic 和印度 IT 巨头 HCLTech 签了 Global Premier Partnership。HCLTech 要单设一个 Anthropic 业务单元加卓越中心，帮客户把 Claude、Cowork 和 Claude Code 落到企业环境里；HCLSoftware 则以 ISV 身份把 Claude 能力嵌进 BigFix、AppScan 等产品，还搞了个 Actian AI 分析助手；自家 AI Force 平台也接了 Claude Code，做 IT 支持和代码修复。</p>
+<p>Anthropic 的打法很清楚：模型不直接卖座位，借印度外包巨头的交付能力进企业。这对国内做 AI 落地服务的公司是个参照——卖的不是模型，是"治理+交付"。<a href="https://www.wcia.com/business/press-releases/cision/20261012IO69758/hcltech-and-anthropic-sign-global-premier-partnership-to-scale-governed-agentic-ai-across-global-enterprises/">原文</a></p>
+<h3 id="googlegemini-agent-ai">Google：Gemini agent 发布一周，解读都绕不开"AI 同事有自己的邮箱"</h3>
+<p>Gemini agent 是 10 月 8 日在 Gemini at Work 2026 上发布的"干活的通用 agent"：接目标、做规划、调工具、回成品，云上常驻，合上电脑也能接着干几小时到几天；还能建"同事型 agent"，有自己的 @公司域名 邮箱、日历和存储，按任务在 Gemini 和 Claude 模型之间自动挑。</p>
+<p>这周第三方解读集中爆发，槽点高度一致：价格和 GA 时间都没公布，私测阶段普通人摸不到。三方格局现在是明牌：Google（Gemini agent）、OpenAI（9 月的 dots 常驻 agent）、Meta（Muse）抢的就是"企业 agent"这一个坑位。对开发者的实在建议：用不上不耽误抄作业——它的治理设计（agent 身份、OAuth 权限继承、按动作审计、Agent Gateway、实时花钱熔断）就是企业 agent 的标准答案雏形。<a href="https://www.reuters.com/business/google-cloud-introduces-gemini-agent-work-ai-race-heats-up-2026-10-08/">Reuters 原文</a>｜<a href="https://futurumgroup.com/insights/google-collapses-enterprise-ai-into-a-single-gemini-agent-at-gemini-at-work-2026/">技术解读</a></p>
+<h3 id="copilot">Copilot：简单任务以后在你电脑上跑，危险操作先进沙箱</h3>
+<p>Microsoft Source 的消息：GitHub Copilot 本月底开始自动给编码任务分流，在端侧模型和云端推理之间自动路由。端侧用的是 MAI-Code-1.1-Flash 的量化版：137B 总参数、6.8B 激活，压到 53GB；SWE-Bench Verified 70.80%、Terminal-Bench 2.1 66.29%，基本打平云端版；代价是吃内存，256k 上下文峰值 75.5GB，笔记本得掂量一下。</p>
+<p>agent 执行 shell 命令和本地 MCP server 默认进沙箱（Windows 用 BaseContainer、macOS 用 Seatbelt、Linux 用 bubblewrap）；远程 MCP 和内置文件工具暂时还不在沙箱里。我的点评：弱网也能补全是实惠，沙箱是趋势——今天英国议会听证会谈的"agent 失控"，工程侧的解法就是这一套。<a href="https://business20channel.tv/github-copilot-adds-on-device-models-and-sandboxed-tools-08-10-2026">原文</a></p>
+<h2 id="_2">🐑 今日羊毛</h2>
+<h3 id="nvidia-nim-1">NVIDIA NIM 免费层：开源大模型白嫖，每模型每天 1 万次</h3>
+<p>一句话：NVIDIA 的 NIM 平台给开源模型开了免费层——gpt-oss-20b、nemotron-3-super-120b-a12b 这些，40 RPM、每模型每天 1 万次请求。</p>
+<ul>
+<li><strong>怎么薅</strong>：免费注册 NVIDIA Developer Program（个人邮箱就行），领 NIM key，接口是 OpenAI 兼容的，换个 base_url 就能切。<a href="https://dev.to/tariqnasser/free-llm-api-tiers-in-october-2026-whats-left-and-how-i-chain-them-227l">核对清单</a></li>
+<li><strong>有效期</strong>：免费层长期有，但限额随时会调（截至撰写时），过期不候</li>
+<li><strong>适合谁</strong>：跑开源模型原型、不想掏钱的人；1 万次/天做 side project 绰绰有余</li>
+</ul>
+<h3 id="mistral-10-creditscodestral">Mistral 每月 $10 credits：Codestral 写代码能用</h3>
+<p>一句话：Mistral 每月给 $10 credits，Medium 3.5、Small 4、Large 3 和 Codestral 都能用——写代码的直接盯 Codestral。</p>
+<ul>
+<li><strong>怎么薅</strong>：Mistral 官网注册，credits 自动到账，按量扣。<a href="https://dev.to/tariqnasser/free-llm-api-tiers-in-october-2026-whats-left-and-how-i-chain-them-227l">核对清单</a></li>
+<li><strong>有效期</strong>：每月 $10（截至撰写时），过期不候</li>
+<li><strong>适合谁</strong>：想低成本试 Mistral 系模型的人。提醒一句：免费模式的 prompt 可能被拿去训练，敏感代码别往里贴，不放心就去设置里 opt out</li>
+</ul>
+<h3 id="cursor-copilot">Cursor / Copilot 免费版额度实测：到底能白嫖多少</h3>
+<p>一句话：有人 10 月 9 日拿 6 个真实编码任务加隐藏测试跑了一遍两家免费版——Cursor 免费版（官网叫 Hobby）：agent、chat、Tab 补全全开，agent 请求有限额但官方不公布具体数，实测没撞墙；Copilot 免费版：每月 2000 次补全加有限的 chat/agent 额度。实测里 Copilot 自动路由到了 MAI-Code-1.1-Flash 和 GPT-6 Luna。</p>
+<ul>
+<li><strong>怎么薅</strong>：两家官网直接注册免费版就行，不用绑卡。<a href="https://www.youtube.com/watch?v=9-LA1FxlLsQ">实测视频</a></li>
+<li><strong>有效期</strong>：免费版长期有，额度政策会变（截至撰写时），过期不候</li>
+<li><strong>适合谁</strong>：还没付费、在两家之间摇摆的人；结论是轻度用两家免费版都够，重度 agent 用户迟早得付费</li>
+</ul>
+<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="morlutorea-agent-app">morluto/rea：让 agent 去逆向别人的 app</h3>
+<p>一句话介绍：给 coding agent 用的逆向工程工具包——从 app 行为一路看到原生二进制，一句"帮我搞懂这个功能怎么实现的"就行。解决什么问题：看到竞品 app 里想要的功能，以前靠人肉反编译，现在直接让 agent 去扒：Hopper/Ghidra/IDA 接原生，Electron、.NET、APK、固件、WASM 全覆盖，分析全在本地跑，还附证据和结论的可信度。⭐ 约 15.5 万（截至撰写时）。适合：做竞品分析、安全研究、打 CTF 的人。MIT 协议，<code>npx rea-agents setup</code> 装完就能用。<a href="https://github.com/morluto/rea">项目地址</a></p>
+<h3 id="mksglucontext-mode-agent">mksglu/context-mode：专治 agent 的"上下文爆了"</h3>
+<p>一句话介绍：AI coding agent 的上下文优化器——MCP 工具输出沙箱化（号称 98% 缩减，315KB 压到 5.4KB）、会话记忆进 SQLite（compact 之后不断片）、17 个平台统一路由。解决什么问题：MCP 调一次工具就把 context 灌爆半截的老毛病，以及长会话被压缩后 agent 失忆。⭐ 约 2.7 万（截至撰写时）。适合：重度 agent 用户。Claude Code 装插件两行命令，今天的教程里细说。<a href="https://github.com/mksglu/context-mode">项目地址</a></p>
+<h3 id="cathrynlaverydiagram-design-agent-ai">cathrynlavery/diagram-design：让 agent 画的图不再有"AI 味"</h3>
+<p>一句话介绍：agent 画图 skill——44 种图（架构、时序、象限、泳道……），输出单个自包含 HTML+SVG，按你的品牌调色，没有阴影、没有 Mermaid 那种丑图。解决什么问题：agent 画的图总带着一股模板味，拿去给客户看还得返工。⭐ 约 5.3 万（截至撰写时），MIT 协议。<code>npx skills add cathrynlavery/diagram-design</code>，Claude Code、Cursor、Copilot、Codex 通吃。适合：写文档、做技术分享、画架构图的人。<a href="https://github.com/cathrynlavery/diagram-design">项目地址</a></p>
+<h2 id="cursor-ios-agent">🛠️ 值得一试的工具：Cursor iOS 远程操控本地 agent</h2>
+<p>是什么：Cursor 的 iOS app 现在能看、能回你电脑上跑着的本地 agent——agent 不动地方、代码不出本机，手机只是连上去看进度、发指令。解决什么痛点：agent 在电脑上长跑任务，人走开了还想瞄一眼进度、回一句确认。免费额度：登录 Cursor 账号就能连，免费版也行。</p>
+<p><strong>verdict：值得试</strong>——和 7 月那版"云端接管推理"不同，这版 agent 完全留在本机跑，隐私友好；装 app、登录、桌面端点一下配对就行。对 iPhone 加重度 Cursor 用户是刚需，其他人可以先观望。<a href="https://pondero.ai/news/2026-10-08-cursor-remote-control-local-agents/">原文</a></p>
+<h2 id="3-claude-code-context-mode">🎓 3 分钟小教程：给 Claude Code 装上 context-mode，上下文省一半起步</h2>
+<p><strong>前置条件</strong>：Claude Code v1.0.33+（<code>claude --version</code> 查一下），Node.js ≥ 22.5。</p>
+<ol>
+<li>在 Claude Code 里执行这两行：
+   <code>/plugin marketplace add mksglu/context-mode
+   /plugin install context-mode@context-mode</code></li>
+<li>重启 Claude Code（或跑 <code>/reload-plugins</code>），然后跑体检：
+   <code>/context-mode:ctx-doctor</code>
+   全绿 <code>[x]</code> 就算装好了。</li>
+<li>以后工具输出大的活（比如一次读 20 个 GitHub issue），直接让 agent 走它的沙箱工具；想看省了多少，随时跑：
+   <code>/context-mode:ctx-stats</code></li>
+</ol>
+<p><strong>预期效果</strong>：MCP 工具的原始输出不再直接灌进上下文（官方称 315KB 能压到 5.4KB），会话被压缩后能从 SQLite 里捞回之前的进度，不断片。效果因项目而异，先跑一周看 <code>ctx-stats</code> 的数字再决定留不留。<a href="https://github.com/mksglu/context-mode">安装原文</a></p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-10-12-daily.html">AI 码力日报 · 2026年10月12日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-10-12-daily.html">AI 码力日报 · 2026年10月12日</a></li>
+<li><a href="../posts/2026-10-11-daily.html">AI 码力日报 · 2026年10月11日</a></li>
+<li><a href="../posts/2026-10-10-daily.html">AI 码力日报 · 2026年10月10日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean</p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
