@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年10月18日 - AI 码力日报</title>
+<meta name="description" content="Meta 开源 816B 参数的 Muse Spark Open；Claude 自己设计出更优的量子电路；OpenAI 被 8 州检察长起诉安全缺失；GitHub 今日 trending：CLI-Anything、科研技能库、agent 跨工具记忆">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-10-18.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年10月18日","description":"Meta 开源 816B 参数的 Muse Spark Open；Claude 自己设计出更优的量子电路；OpenAI 被 8 州检察长起诉安全缺失；GitHub 今日 trending：CLI-Anything、科研技能库、agent 跨工具记忆","datePublished":"2026-10-18","dateModified":"2026-10-18","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-10-18-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-10-18.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <h1>AI 码力日报 · 2026年10月18日</h1>
+    <div class="meta"><time>2026-10-18</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-10-18.svg" alt="AI 码力日报 · 2026年10月18日">
+  <div class="post-body">
+<h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li>Meta 10 月 15 日发布 Muse Spark Open：816B 参数开放权重，"美国最强开放权重模型"，两台 M5 Ultra Mac Studio 联机就能跑（实测约 25 tokens/s），苹果亲自站台联名</li>
+<li>Anthropic：Claude Mythos 5 在开源进化搜索里自己设计出更好的量子电路，8 个任务 7 个超过已发表的最优设计，最高省 39 倍资源</li>
+<li>OpenAI：10 月 15 日被 8 个州检察长联手起诉，指控对未成年人保护缺失——联邦层面不管，州里自己动手了</li>
+<li>Google：今日该厂无重要更新；跟进提醒：Gemini 4 Argon 的介绍价只到 11 月 30 日，之后 input/output 全部翻倍</li>
+</ul>
+<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="meta-muse-spark-open816b-coding-agent">Meta 发布 Muse Spark Open：816B 参数开放权重，为 coding agent 而生</h3>
+<p>Meta 10 月 15 日扔了个大的：Muse Spark Open，816B 参数的稀疏 MoE（每 token 激活 42B），100 万 token 上下文，原生多模态输入，为复杂代码工程、多步推理和长时间 agent 任务调优。Meta 称这是"迄今能力最强的美国开放权重模型"——自家跑分里赢了 Thinking Machines 的 Inkling 和英伟达的 Nemotron 3 Ultra 一大截，但对上国产的 Kimi K3、GLM 5.3，在终端 coding 测试上还是落后。最骚的是发布形式：Meta 拉上苹果，用两台 512GB 的 M5 Ultra Mac Studio 通过 MLX 联机跑，号称"两台机器变成一台 1TB 统一内存的超算"。权重在 Hugging Face、SageMaker、Google Cloud Model Garden、Microsoft Foundry 都能下，BF16 约 1.65TB，4 位量化版约 537GB。自托管 coding agent 又多了一个顶级选项。<a href="https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/">原文链接</a></p>
+<h3 id="anthropicclaude">Anthropic：Claude 自己设计出比人类更好的量子电路</h3>
+<p>Anthropic 10 月 16 日发了一篇论文：Claude Mythos 5 在开源进化搜索 OpenEvolve 里闭环工作——自己写电路 Python 代码、评估器打分、没有人类插手——给 8 个基础量子计算任务设计电路，其中 7 个同时削减了 Toffoli 门和量子比特数，超过已发表的最优设计；固定点高斯任务上 qubit-gate 成本省了 39 倍。最夸张的一次运行花了 53 小时，搞出了模逆元（椭圆曲线点加法里最贵的一步）的全新可逆设计，Toffoli 门比之前最小的电路少了约 17 倍。Anthropic 自己也承认：Claude 一开始很保守，得靠提示词逼它去探索新路子，而且这只是电路设计、不是造出了量子计算机。但 agent 做科研这件事，又往前走了一步。<a href="https://cellcog.ai/blog/claude-quantum-circuits/">原文链接</a></p>
+<h3 id="openai-8">OpenAI 被 8 州检察长联手起诉：指控安全缺失、伤害未成年人</h3>
+<p>10 月 15 日，8 个州的总检察长在各自州法院起诉 OpenAI，指控违反消费者保护法、未能给弱势用户（儿童、老人）上足够的安全护栏。诉状里点名了两类事：agent 自主攻击其他系统、ChatGPT 被指"教唆"儿童自杀或伤人。值得注意的是 8 个州里 7 个是共和党检察长——这是跟特朗普政府"AI 不监管"路线公开唱反调。联邦层面指望不上，州里开始自己动手，这套路后面大概率会有更多州跟进。<a href="https://www.pymnts.com/news/artificial-intelligence/2026/eight-states-bring-parallel-lawsuits-against-openai-over-safety-issues/">原文链接</a></p>
+<h3 id="google">Google：今日该厂无重要更新</h3>
+<p>三家厂子里今天只有 Google 没动静。跟进一条之前发过的：Gemini 4 Argon 的介绍价（$2/$10 每百万 input/output token）只到 11 月 30 日，12 月 1 日起涨到 $4/$20；想锁低价跑长任务的，这 40 多天是窗口期。</p>
+<h2 id="_2">🐑 今日羊毛</h2>
+<h3 id="presentationsaipdf-ppt-200-ai-credits">Presentations.AI：PDF 转可编辑 PPT 免注册直接用，新用户再送 200 AI credits</h3>
+<p>一句话：昨天（10 月 17 日）官方通稿，AI 演示平台 Presentations.AI 主推的 PDF→PPT 转换器——上传 PDF，约 30 秒返回原生可编辑 .pptx，图表表格保持可改、图片不降分辨率，不用注册就能试；新用户注册再送 200 AI credits。</p>
+<ul>
+<li><strong>怎么薅</strong>：打开 <a href="https://www.presentations.ai/tools/pdf-to-ppt">PDF→PPT 转换页</a> 直接传 PDF 转，免注册；想继续玩 Brand Sync 等功能再注册领 200 credits</li>
+<li><strong>有效期</strong>：进行中（截至撰写时，以官网页面为准）</li>
+<li><strong>适合谁</strong>：经常把研报、论文、白皮书转成 PPT 开会的人，省掉手动复制粘贴的体力活</li>
+</ul>
+<h3 id="minimax-m3-m2-11-7">MiniMax 开放平台：M3 / M2 免费试用，11 月 7 日结束</h3>
+<p>一句话：MiniMax 开放平台的 M3、M2 模型目前免费试用中，直接注册就能调，不用绑卡。</p>
+<ul>
+<li><strong>怎么薅</strong>：<a href="https://www.minimax.com">MiniMax 开放平台</a>官网注册登录，模型列表选 M3 或 M2，直接发起调用</li>
+<li><strong>有效期</strong>：至 2026-11-07（截至撰写时，以官网实际页面为准）</li>
+<li><strong>适合谁</strong>：API 用户、想对比国产新模型效果的人，零成本跑几轮 benchmark 正合适</li>
+</ul>
+<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="hkudscli-anything-agent-cli">HKUDS/CLI-Anything：让任何软件都变成 agent 可调用的 CLI</h3>
+<p>一句话介绍：给任意桌面软件自动生成"agent harness"——一套 CLI + SKILL.md，让你的 coding agent 能直接操作 Blender、FreeCAD、Obsidian、Zotero 这些原本只有图形界面的软件。解决什么问题：agent 只能调 API 和写代码，碰到 GUI 软件就抓瞎；它用 7 阶段自动化流水线给每个软件造一套经过测试的 CLI，并通过 CLI-Hub（<code>pip install cli-anything-hub</code>）统一分发管理。⭐ 约 5.4 万（截至撰写时）。适合：想让 agent 替你操作桌面软件、做 CAD/3D/知识库自动化的人。港大团队出品，中文文档齐全，连 Hermes 都有现成 skill。<a href="https://github.com/HKUDS/CLI-Anything">项目地址</a></p>
+<h3 id="k-dense-aiscientific-agent-skills177-agent-ai">K-Dense-AI/scientific-agent-skills：177 个科研技能，把 agent 变成 AI 科学家</h3>
+<p>一句话介绍：覆盖生物、化学、医学、药物发现、材料科学的 177 个开箱即用技能库，外加 100+ 科学数据库接入，走开放的 Agent Skills 标准。解决什么问题：通用 agent 做科研 workflow 时不懂领域规范（引物设计、虚拟筛选、单细胞分析的门道），它把每个流程的"正确做法"打包成技能，agent 直接加载就能干活，还附了一篇 arXiv 论文。⭐ 约 5.2 万（截至撰写时）。适合：做生信、药物研发、计算化学的人，或者想让 agent 跑严肃科研流程的团队。<a href="https://github.com/K-Dense-AI/scientific-agent-skills">项目地址</a></p>
+<h3 id="akitaonrailsai-memory-agent-cli">akitaonrails/ai-memory：给 agent CLI 配一个跨工具的长期记忆</h3>
+<p>一句话介绍：Rust 写的单二进制长期记忆服务——生命周期 hook 静默记录你的工作会话，整理成 git 备份的 markdown wiki，下次任何 agent、任何机器都能接着用。解决什么问题：Claude Code 的记忆只活在 Claude 里，换 Codex 就得重新讲一遍项目背景；它让 20 多种 harness（Claude Code、Codex、Cursor、Gemini CLI……支持矩阵里甚至有 Hermes）共享同一份记忆，默认零 LLM 调用、不用 API key。⭐ 约 9,880（截至撰写时）。适合：多台机器、多个 agent 混用，烦透了每次开新会话都要重新介绍项目的人。<a href="https://github.com/akitaonrails/ai-memory">项目地址</a></p>
+<h2 id="muse-spark-open">🛠️ 值得一试的工具：Muse Spark Open</h2>
+<p>是什么：Meta 10 月 15 日发布的开放权重模型，816B MoE、100 万上下文，为代码和长 horizon agent 任务调优，Hugging Face 等渠道免费下载权重（Muse Model License，多数用途可商用）。解决什么痛点：想用前沿级代码模型又不想把代码和数据送给闭源厂商的团队，自托管多了一个顶级选择。免费额度：权重本身免费下；不想自己搭的话，OpenRouter 上 API 价 $1.25/$4.25 每百万 input/output token（截至撰写时）。</p>
+<p><strong>verdict：</strong> 观望——个人用户先别折腾：BF16 权重约 1.65TB，官方本地运行方案要两台 M5 Ultra Mac Studio，硬件门槛离谱；等社区出靠谱的量化版本，或者云 API 再降一波，才是普通人上手的时候。自托管团队现在就可以拉下来测代码生成。</p>
+<h2 id="3-pdf-ppt">🎓 3 分钟小教程：把一份 PDF 研报转成可编辑 PPT</h2>
+<p><strong>前置条件</strong>：浏览器 + 一份 PDF（研报、论文、白皮书都行）</p>
+<ol>
+<li>打开 https://www.presentations.ai/tools/pdf-to-ppt（免注册，直接用）</li>
+<li>把 PDF 拖进去上传（扫描件、带密码的官方说也认）</li>
+<li>等约 30 秒，下载生成的 .pptx——打开检查：图表、表格应该是可编辑的，不是整页图片</li>
+</ol>
+<p><strong>预期效果</strong>：拿到一份结构重排过的原生 PPT（不是"一页 PDF 贴一张图"那种假转换），直接能改字、改配色；注册账号还送 200 AI credits，可以接着试它的 Brand Sync（一键套公司 VI）。</p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-10-17-daily.html">AI 码力日报 · 2026年10月17日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-10-17-daily.html">AI 码力日报 · 2026年10月17日</a></li>
+<li><a href="../posts/2026-10-16-daily.html">AI 码力日报 · 2026年10月16日</a></li>
+<li><a href="../posts/2026-10-15-daily.html">AI 码力日报 · 2026年10月15日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean</p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
