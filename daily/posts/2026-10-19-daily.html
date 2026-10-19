@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年10月19日 - AI 码力日报</title>
+<meta name="description" content="OpenAI 10月23日关掉 GPT-4 等一批老模型，只剩4天；DeepSeek 新模型 DeepSWE 77.0 超过 Claude Opus 5.5；Gemini 4 Argon 优惠价11月底到期后翻倍。">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-10-19.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年10月19日","description":"OpenAI 10月23日关掉 GPT-4 等一批老模型，只剩4天；DeepSeek 新模型 DeepSWE 77.0 超过 Claude Opus 5.5；Gemini 4 Argon 优惠价11月底到期后翻倍。","datePublished":"2026-10-19","dateModified":"2026-10-19","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-10-19-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-10-19.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">AI 码力日报</div>
+    <h1>AI 码力日报 · 2026年10月19日</h1>
+    <div class="meta"><time>2026-10-19</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-10-19.svg" alt="AI 码力日报 · 2026年10月19日">
+  <div class="post-body">
+<h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li><strong>OpenAI 10 月 23 日关掉 GPT-4 / GPT-3.5 / o1 / o3-mini / o4-mini 等一批老模型</strong>，只剩 4 天，还没迁的现在就得动——下面给了两分钟自查方法。</li>
+<li><strong>DeepSeek 10 月 17 日放出 V4.1-Flash-1017</strong>：DeepSWE 77.0 干掉 Claude Opus 5.5，权重 MIT 开源；新上的 Search / Fetch API 按次收费，10 月 31 日 16:00 UTC 起账。</li>
+<li><strong>Google Gemini 4 Argon 10 月 13 日全量发布</strong>，API 优惠价（$2/$10 每百万 token）只到 11 月 30 日，之后翻倍。</li>
+<li><strong>Anthropic 10 月 16 日公布一项硬核研究</strong>：Claude 用半小时复原了 NIST P-256 椭圆曲线种子——30 年悬案，结论是 lrand48 + 1997 年时间戳，不是后门；同时官方透露 Claude Code 自身代码已有 90% 是 AI 写的。</li>
+</ul>
+<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="gpt-4-4">GPT-4 还有 4 天就下线，你的代码迁了吗</h3>
+<p>OpenAI 官方 deprecations 页列出的这批老模型 10 月 23 日正式关停：<code>gpt-3.5-turbo</code>、<code>gpt-4</code>、<code>gpt-4-turbo</code>、<code>gpt-4o-2024-05-13</code>、<code>gpt-4.1-nano</code>、<code>o1</code>、<code>o1-pro</code>、<code>o3-mini</code>、<code>o4-mini</code>、<code>gpt-image-1</code>，以及基于它们微调的 <code>ft-gpt-3.5-turbo</code>、<code>ft-gpt-4</code> 等。关停当天这些模型 ID 直接调不通——你的定时任务和队列 worker 最容易中招，因为报错不一定会叫醒你。官方替换映射：GPT-4 系/o1/o3-mini → <code>gpt-5.6-sol</code>，GPT-3.5 系/o4-mini → <code>gpt-5.6-terra</code>，4.1-nano → <code>gpt-5.6-luna</code>。微调模型无法迁移，必须在新 base 上重训，赶时间的这条最痛。<a href="https://madrobot.blog/2026/10/04/openai-api-model-deprecations-shutdown-dates-october-23/">OpenAI 模型关停清单</a></p>
+<h3 id="deepseek-v41-flash-1017-claude-opus-55">DeepSeek 扔出 V4.1-Flash-1017，编码测试干掉 Claude Opus 5.5</h3>
+<p>DeepSeek 10 月 17 日在 X 上发布 DeepSeek-V4.1-Flash-1017：相比 9 月版本，DeepSWE v1.1 从 74.2 涨到 77.0，超过 Claude Opus 5.5（74.0）；Terminal-Bench 4.0 从 31.2 涨到 42.3。API 名字和价格都不变（还是 <code>deepseek-flash</code>，输入 $0.30 / 输出 $1.20 每百万 token，非高峰再半价），权重在 Hugging Face / ModelScope 以 MIT 协议开源。同时上线 Search 和 Fetch API：用自家搜索引擎做联网搜索和网页抓取，每个 endpoint $0.75 / 千次，10 月 31 日 16:00 UTC 开始计费——在 DeepSeek Harness、Claude Code、Codex 里经 server-side tools 调用的暂免，31 日后统一收费。<a href="https://fourweekmba.com/ai-deepseek-opens-its-search-api-at-0-75-per-1000-calls/">DeepSeek 官方发布帖整理</a></p>
+<h3 id="gemini-4-argon-11-30">Gemini 4 Argon 全量发布，优惠价 11 月 30 日后翻倍</h3>
+<p>Google 10 月 13 日把 Gemini 4 Argon 推给所有人：开发者走 API 和 AI Studio，企业走 Gemini for Business，个人用户要 Google AI Pro / Ultra 订阅才有（免费档没份）。模型本身冲着复杂多步任务：编码、金融、法律、网络安全、科学，上下文 100 万 token。API 现在是优惠价：输入 $2 / 输出 $10 每百万 token，缓存输入再打 95 折；11 月 30 日后涨到 $4 / $20。如果你正在考虑把它接进项目，11 月底前多屯点调用测试比什么都实在。<a href="https://blockchain.news/news/google-launches-gemini-4-argon-ai-model-enterprise-developer">Google 发布报道</a></p>
+<h3 id="claude-30">Claude 用半小时，复原了 30 年的密码学悬案</h3>
+<p>Anthropic 10 月 16 日公布的研究：内部模型发现 NIST 椭圆曲线（P-192 到 P-521）的种子来自 C 库的 lrand48 伪随机数发生器，初始化用 1997 年某天的 Unix 时间戳——P-256 的种子就是该序列的第 1,842 个候选。也就是说当年那个"会不会是 NSA 后门"的猜测基本可以放下了，是 90 年代工程师随手写的东西。声明：这不是发现新漏洞，ECDSA 曲线本身没问题，用户不用做任何事。我试读了一下论文思路，整个过程是"Claude 写 Python 程序 → 经典模拟器在几万个输入上验证 → 按 Toffoli 门数×峰值量子比特打分 → 回传给新一轮 Claude"，中间无人干预——这才是这条新闻对搞 agent 的人的真正启发：有明确评分器的任务，AI 已经能自己闭环刷分了。<a href="https://www.webpronews.com/anthropics-claude-traces-nist-ecdsa-curve-seeds-to-1990s-random-number-generator/">Anthropic 研究报道</a></p>
+<h3 id="qwen-go-agent">阿里 Qwen Go 内测：agent 开始替你办事，而不是教你办事</h3>
+<p>阿里 10 月 13 日曝光了 Qwen App 里的 Qwen Go：个人 AI 助手，能翻你的授权账户、比价、然后直接联系客服替你办事。演示里它查到用户的航班延误，电话打不通就切文字客服，硬是谈下 ¥70 现金赔款；淘宝退款也谈成 ¥52。全程屏幕可见，用户可随时打断。跟之前"教你怎么维权"的助手是两回事，这是真下场干活的。不过内测范围有限，正式上线时间没公布；这类 agent 一旦铺开，商家客服被 AI 轮番轰炸是迟早的事。<a href="https://technode.com/2026/10/13/alibaba-prepares-qwen-go-personal-ai-assistant-for-claims-bookings-and-shopping/">TechNode 报道</a></p>
+<h2 id="_2">🐑 今日羊毛</h2>
+<h3 id="meta-150-model-api-credits">Meta 黑客松：入选给 $150 Model API credits</h3>
+<p>一句话：Meta 全球 AI 开发者黑客松（10 月 26 日–11 月 4 日）入选者每人 $150 Meta Model API credits，10 天开发随便用；另有 $100 万奖金池。</p>
+<ul>
+<li><strong>怎么薅</strong>：打开 <a href="https://dev.meta.ai/events/global-hackathon">dev.meta.ai/events/global-hackathon</a> 点 Apply now → 按 waivers 要求填表（18 岁以上、注意排除的司法管辖区）→ 10 月 25 日美东时间 23:59 前提交。入选是滚动制的，名额 2 万，先到先得。</li>
+<li><strong>有效期</strong>：报名截至 10 月 25 日（美东），过期不候</li>
+<li><strong>适合谁</strong>：想薅 Meta 新模型 API credits 练手的开发者；顺手还能体验刚开源的 Muse Spark Open</li>
+</ul>
+<h3 id="riverai-25-10-token">River.ai 注册送 $25，约 10 亿 token 白嫖</h3>
+<p>一句话：新 AI 开发平台 River.ai 注册送 $25 credits，用在 DeepSeek V4.1 Flash / GLM 5.3 Flash 这类便宜模型上约等于 10 亿 token。</p>
+<ul>
+<li><strong>怎么薅</strong>：<a href="https://console.river.ai">console.river.ai</a> 注册 → 自动到账 $25 → 建 API key，OpenAI 兼容接口，改 base_url 就能用</li>
+<li><strong>有效期</strong>：注册即得（截至撰写时），过期不候</li>
+<li><strong>适合谁</strong>：想低成本跑开源前沿模型的个人开发者；约省 ¥175</li>
+</ul>
+<h3 id="grok-api">Grok 免费档还在：注册即用，API 有月度免费额度</h3>
+<p>一句话：xAI 的 Grok 消费端有真免费档（不用绑卡），开发者注册 API 有 sign-up credits，每月还有免费额度；想要更大额度可以走 data-sharing 计划。</p>
+<ul>
+<li><strong>怎么薅</strong>：xAI 官网注册免费档先用着；开发者走 API 注册流程领 sign-up credits</li>
+<li><strong>有效期</strong>：免费档长期有效，data-sharing 的大额度以实际条款为准</li>
+<li><strong>适合谁</strong>：想零成本体验 Grok 系列模型的人；注意 data-sharing 是拿你的使用数据换额度，敏感材料别往里放。<a href="https://urbanwired.com/grok-bot-credits-giveaway-reactions/">来源</a></li>
+</ul>
+<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="morlutorea-agent-app">morluto/rea：让你的 agent 逆向没源码的 app</h3>
+<p>一句话介绍：给 AI coding agent 用的逆向工具包——对着一个没有源码的程序，它能拆开看懂某个功能是怎么实现的。解决什么问题：读不懂闭源软件/老旧二进制时，让 agent 驱动真分析工具（.NET 读程序集元数据和 CIL，native 走 Ghidra / Hopper / IDA）做证据链分析，分析全在本地跑。⭐ 本周 GitHub trending 周榜第 1（单日新增约 1.6 万 star，截至撰写时）。适合：做兼容性开发、安全研究、接手祖传二进制的人；注意只用在自己有权分析的软件上。<a href="https://github.com/morluto/rea">项目地址</a></p>
+<h3 id="stablyaiorca-app-coding-agent">stablyai/orca：一个桌面 app，指挥一整队 coding agent</h3>
+<p>一句话介绍：在桌面上同时跑一支 coding agent 舰队——Claude Code、Codex、OpenCode 等 30 多种 agent 都支持。一个 prompt 发出去，5 个 agent 各自在独立的 git worktree 里干，最后你 merge 赢的那个。解决什么问题：单 agent 试错太慢，并行跑多个方案再选优。还带手机 app，路上也能看进度。适合：重度 vibe coding 用户、想对比不同 agent 效果的人。<a href="https://github.com/stablyai/orca">项目地址</a></p>
+<h3 id="androidskillsandroid-30-agent">android/skills：Android 官方亲手写的 30 个 agent 技能</h3>
+<p>一句话介绍：Android 团队官方放出的 30 个 SKILL.md，覆盖 Compose 迁移、AGP 9 升级、R8 审计等官方评估里 LLM 最拉胯的活。解决什么问题：通用 coding agent 在 Android 专项任务上经常翻车，这些是官方按自家 eval 打磨的技能文件，直接塞进 agent 就能用。适合：Android 开发者、用 Claude Code / Codex 写 Android 的人。<a href="https://github.com/android/skills">项目地址</a></p>
+<h3 id="debpalashvoicestudio">debpalash/VoiceStudio：本地语音工作台，一站式搞定配音转录</h3>
+<p>一句话介绍：本地跑的音频工作台——语音设计、转录、配音、长旁白工程都在一个 app 里。解决什么问题：不想把声音样本传到别人服务器上（ElevenLabs 这类都是云端），本地引擎自己选，支持的语言和质量看你自己硬件。适合：做视频配音、播客、需要本地化语音处理的人。<a href="https://github.com/debpalash/VoiceStudio">项目地址</a></p>
+<h2 id="codebuff">🛠️ 值得一试的工具：Codebuff 免费五件套</h2>
+<p>是什么：Codebuff 把自家 5 个 AI 编码产品（terminal / desktop / browser / GitHub 全覆盖）做成免费版：不用订阅、不用 API key、不用绑信用卡，直接装就能用，代价是界面里有文字广告。解决什么痛点：想体验 AI 编程但不想先掏钱、也不想折腾 key 的人。免费额度：5 个产品全免费，靠广告回本（项目 Apache-2.0，2024 年的老 repo，2026 年夏天重新定位成"免费 coding agent"后开始走红，约 13.5K star，截至撰写时）。</p>
+<p><strong>verdict：值得试</strong>——零门槛，5 分钟装完就能知道 AI 编程适不适合你；但免费的东西别指望顶配模型，真上生产环境再评估付费方案。<a href="https://svanews.com/2026/10/17/freebuff/">来源</a></p>
+<h2 id="3-openai">🎓 3 分钟小教程：OpenAI 关停潮前，两分钟自查你的代码</h2>
+<p>10 月 23 日这批老模型一关，调到它们 ID 的请求直接失败。别只 grep <code>gpt-4</code>，模型名可能藏在环境变量、配置文件、数据库里。</p>
+<p><strong>前置条件</strong>：有调用 OpenAI API 的代码仓库；手里有 API key（可选，用于第二步）</p>
+<ol>
+<li>全仓库扫一遍（把下面这行贴进项目根目录跑）：
+   <code>bash
+   grep -rEn "gpt-3\.5-turbo|gpt-4[ .-]|gpt-4o-2024-05-13|gpt-4\.1-nano|o1(-pro)?[^a-z]|o3-mini|o4-mini|gpt-image-1" \
+     --include="*.py" --include="*.ts" --include="*.js" \
+     --include="*.go" --include="*.env*" --include="*.yaml" --include="*.json" .</code></li>
+<li>用 API key 查官方给的关停日期，确认漏网之鱼（每个模型都有 <code>shutdown_date</code> 字段）：
+   <code>bash
+   curl -s https://api.openai.com/v1/models \
+     -H "Authorization: Bearer $OPENAI_API_KEY" | \
+     python3 -c "import json,sys; [print(m['id'], m.get('shutdown_date')) for m in json.load(sys.stdin)['data'] if m.get('shutdown_date')]"</code></li>
+<li>按映射替换：GPT-4 系 / o1 / o3-mini → <code>gpt-5.6-sol</code>；GPT-3.5 系 / o4-mini → <code>gpt-5.6-terra</code>；4.1-nano → <code>gpt-5.6-luna</code>；然后跑一遍你的 eval / 冒烟测试再上线——换代模型语气和长度习惯可能变，别直接全量切。</li>
+</ol>
+<p><strong>预期效果</strong>：23 日前找出所有会炸的调用点并完成替换；重点检查 cron 和队列 worker，那些地方炸了不会立刻有人发现。<a href="https://dev.to/leighefford/retiring-ai-models-a-pre-flight-checklist-first-openai-batch-goes-23-oct-5dc9">关停清单</a></p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-10-18-daily.html">AI 码力日报 · 2026年10月18日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-10-18-daily.html">AI 码力日报 · 2026年10月18日</a></li>
+<li><a href="../posts/2026-10-17-daily.html">AI 码力日报 · 2026年10月17日</a></li>
+<li><a href="../posts/2026-10-16-daily.html">AI 码力日报 · 2026年10月16日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean</p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
