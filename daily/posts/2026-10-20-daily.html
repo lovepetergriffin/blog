@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年10月20日 - AI 码力日报</title>
+<meta name="description" content="美国 DHS 下令联邦机构全面清除 DeepSeek；MiniMax M3.1 Flash 正式发布、首 72 小时免费；Mercury 3 首发 5 折、老版本 11 月关停；OpenAI 语音上新。">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-10-20.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年10月20日","description":"美国 DHS 下令联邦机构全面清除 DeepSeek；MiniMax M3.1 Flash 正式发布、首 72 小时免费；Mercury 3 首发 5 折、老版本 11 月关停；OpenAI 语音上新。","datePublished":"2026-10-20","dateModified":"2026-10-20","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-10-20-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-10-20.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">AI 码力日报</div>
+    <h1>AI 码力日报 · 2026年10月20日</h1>
+    <div class="meta"><time>2026-10-20</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-10-20.svg" alt="AI 码力日报 · 2026年10月20日">
+  <div class="post-body">
+<h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li><strong>美国 DHS 10 月 19 日下令联邦文职机构全面清除 DeepSeek</strong>：停购+移除现有部署，连基于 DeepSeek 实现的第三方产品/服务一起下架——供应链里套壳 DeepSeek 的人现在就得看。</li>
+<li><strong>MiniMax M3.1 Flash 10 月 19 日正式发布</strong>：428B MoE、1M 上下文，10 月 23 日开源权重；发布首 72 小时在 OpenRouter 上免费（约到 10 月 22 日）。</li>
+<li><strong>Inception Mercury 3 首发价砍半</strong>：扩散式 LLM 跑到 1000+ tok/s，输入 $0.10 / 输出 $0.35 每百万 token；但 Mercury 2 / 2.5 对非企业用户 11 月 15 日关停，还在用的抓紧迁。</li>
+<li><strong>OpenAI GPT-Live-1.1 开始推送 13 个新音色</strong>（法/德/日/韩等各两种+英语 "Bubbie"）：跟你直接相关的是——API 版还没出，"coming soon"，做语音应用的继续等。</li>
+</ul>
+<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="deepseek">美国政府下令：DeepSeek 从联邦系统里彻底清除，连你套壳的产品一起</h3>
+<p>美国国土安全部 10 月 19 日在 Federal Register 公开 Exclusion and Removal Order #2026-01（签发于 7 月 24 日，19 日公开）：要求所有联邦文职执行机构停止采购 DeepSeek 及附属机构产品，并从 IT 系统中移除现有部署——<strong>连基于 DeepSeek 实现的第三方产品/服务也一并覆盖</strong>，理由是可能向中国转移敏感数据、模型本身可能含恶意软件。60 天豁免申请窗口在公开前已经过期。</p>
+<p>跟你有啥关系：如果你做的产品或公司供应链里嵌入了 DeepSeek（API 转售、自建网关代理、SDK 集成），美国政府采购线现在是高风险依赖；即使不在政府市场，这轮动作也预告了合规审查会继续往下游应用层延伸，第三方集成是主要打击对象。<a href="https://www.engadget.com/2290535/homeland-security-bans-deepseek-use-in-federal-civilian-agencies/">Engadget 报道</a></p>
+<h3 id="meta-ai">Meta 商业条款里悄悄加了"抓你的网站内容训 AI"，被发现后连夜删掉</h3>
+<p>Meta 近期更新的商业条款中写明：可用爬虫、抓取工具"访问、索引、抓取与你产品服务相关联的域名、网页、URL"，并将内容用于"提供、开发、改进、研究、训练"Meta 产品。法律专家指出，这等同于授权 Meta 抓取任何有 Meta 商业账号的出版商网站来训练模型。舆论发酵后 Meta 删除了相关措辞，澄清条款仅适用于广告和商业产品、不改变爬虫行为；修订后条款计划 10 月 30 日生效。</p>
+<p>跟你有啥关系：如果你运营网站/博客且有 Meta 商业账号（投放广告、接 Pixel），你的网站内容在合同层面曾经被开了训练口子。现在措辞已删，但 10 月 30 日新版生效前建议审一次条款；更直接的做法是检查并收紧 robots.txt / 反爬策略，别把训练数据免费送出去。<a href="https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/">TechCrunch 报道</a></p>
+<h3 id="anthropic-5">Anthropic 把 5% 的股权装进"公共福利基金"</h3>
+<p>Anthropic 10 月 18 日宣布设立 Anthropic Public Benefit Fund——一个由公司全资持有的 LLC，初期注入公司 5% 的股权（需股东批准），之后公司估值每超过一个未公开基准线增长 50%，董事会可酌情再追加 2%。该基金承诺不把股权用于游说或政治捐款，用途可能是给传统非营利机构的大额捐赠，或直接向特定人群发放资金（如应对 AI 造成的就业冲击）。</p>
+<p>跟你有啥关系：对写代码的是间接信息——加上创始人 80% 股权捐赠承诺和员工股权捐赠匹配计划后，约 20% 的 Anthropic 股权被划归"公共福利"。这是在 IPO 前（传闻最早 11 月）向监管和公众做的治理姿态；Claude 的定价、API 政策短期不受影响，不必因此做技术决策。<a href="https://www.anthropic.com/news/public-benefit-fund">Anthropic 官方博客</a></p>
+<h3 id="google-notebook-slide">Google Notebook 出"先审稿再生成"：Slide 和视频可以先看大纲</h3>
+<p>Google 10 月 19 日官方博客宣布：Gemini Notebook 的 Slide Deck 和 Video Overview 新增 co-creation 工作流——先基于你的资料建议内容主题，你确认并调整视觉风格后，还可以用新的 Review 开关在渲染前逐条检查/修改大纲笔记（slides）或制作人笔记（video）。</p>
+<p>跟你有啥关系：直接能用——这项功能正在未来一周内向全球所有 Gemini Notebook 用户推送。常用 Notebook 做技术方案汇报、视频解读的读者，等于多了一个"先审大纲再渲染"的中间步骤，返工成本直接降；赶时间也可以跳过 Review 一步按老方式直接生成。<a href="https://blog.google/innovation-and-ai/products/gemini-notebook/co-create-slides-videos/">Google 官方博客</a></p>
+<h2 id="_2">🐑 今日羊毛</h2>
+<h3 id="minimax-m31-flash-72-openrouter">MiniMax M3.1 Flash 发布首 72 小时 OpenRouter 免费</h3>
+<p>一句话：428B MoE、1M 上下文的 M3.1 Flash（前身是 OpenRouter 上匿名跑了 10 天的 "Space Bunny"），发布首 72 小时在 OpenRouter 上输入/输出全免费。</p>
+<ul>
+<li><strong>怎么薅</strong>：注册 <a href="https://openrouter.ai">OpenRouter</a> 拿 API key → OpenAI 兼容客户端把 base_url 指到 <code>https://openrouter.ai/api/v1</code>，model 设为 <code>minimax/minimax-m3.1-flash:free</code> → 注意免费端点有速率限制，报错/空回复也计入限额</li>
+<li><strong>有效期</strong>：自 10 月 19 日起约 72 小时（到约 10 月 22 日），之后恢复 $0.15 / $0.60 每百万 token</li>
+<li><strong>适合谁</strong>：想白嫖一个近前沿 agent/代码模型跑实验、做评测的人；权重 10 月 23 日开源，等不及的先嫖 API。<a href="https://www.unite.ai/minimax-launches-m3-1-flash-revealing-space-bunny-stealth-model/">发布报道</a></li>
+</ul>
+<h3 id="inception-mercury-3-5-1000-toks">Inception Mercury 3 首发 5 折，扩散模型跑到 1000 tok/s</h3>
+<p>一句话：10 月 19 日发布的扩散式 LLM Mercury 3，首发价输入 $0.10 / 输出 $0.35 每百万 token（原价 0.20 / 0.70），缓存输入再 9 折。</p>
+<ul>
+<li><strong>怎么薅</strong>：Inception API / Baseten / OpenRouter / Vercel 上按首发价直接调，OpenAI API 格式兼容，不用改代码</li>
+<li><strong>有效期</strong>：launch pricing 未公布截止日；<strong>注意 Mercury 2 / 2.5 对非企业用户 11 月 15 日关停</strong>，还在用的这周就迁</li>
+<li><strong>适合谁</strong>：对延迟敏感的 agent / 实时搜索 / 客服场景，想试扩散架构的人。<a href="https://www.businesswire.com/news/home/20261019090400/en/Inception-Launches-Mercury-3-Setting-a-New-Pareto-Frontier-in-Speed-and-Intelligence">BusinessWire 发布</a></li>
+</ul>
+<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="madslorentzenai-job-search-agent">MadsLorentzen/ai-job-search：把找工作做成 agent 流水线</h3>
+<p>一句话介绍：在你自己机器上跑的 AI 求职框架，基于 Claude Code：<code>/scrape</code> 搜岗、<code>/apply</code> 评估匹配度并定制 CV+求职信、<code>/interview</code> 模拟面试。解决什么问题：把"找工作"这套体力活做成 agent 流水线，作者本人用它投了 69 份、拿到 20 个一面，2026 年 6 月成功入职 AI 工程师。⭐ 约 56,994（截至撰写时）。适合：正在找工作的开发者；也是个学"agent 怎么做事"的现成例子。<a href="https://github.com/MadsLorentzen/ai-job-search">项目地址</a></p>
+<h3 id="headroomlabs-aiheadroomllm-token">headroomlabs-ai/headroom：LLM 之前的压缩层，token 账单砍两成</h3>
+<p>一句话介绍：工具输出、日志、文件、RAG 切片进 LLM 之前先过一层压缩。解决什么问题：agent 的 token 账单——官方 benchmark 显示 coding agent 场景省约 20% token，JSON 类载荷省 60–95%，答案不变；纯本地压缩，数据不出机器。提供库（<code>compress(messages)</code>）、drop-in proxy、MCP server、<code>headroom wrap claude</code> 一键接入。⭐ 约 76,198（截至撰写时）。适合：天天跑 coding agent、被 token 账单刺痛的人。<a href="https://github.com/headroomlabs-ai/headroom">项目地址</a></p>
+<h2 id="laminar">🛠️ 值得一试的工具：Laminar</h2>
+<p>是什么：YC S24 的 agent 可观测性平台，今天 Launch HN 带来自研 RL 模型 <strong>flow-1</strong>：把 trace 当 repo、用 agent 方式 grep 式排查，输出结构化 JSON 事件，每条 trace 自动过一遍 Failure Detector，专门找 agent 的"静默失败"（错了但没报错：错误动作、违反指令、重复失败、幻觉式保证），自称检测质量打平 GPT-6-sol、成本约 1/20；另有"从任意步骤重跑 agent"的调试器（mock 掉之前的 LLM 调用、恢复状态，不用从头再来）。解决什么痛点：agent 跑 40 分钟挂在某一步，传统 trace 是几千个 span 的"祝你好运"。免费额度：Laminar Cloud 新项目自带 Failure Detector。</p>
+<p><strong>verdict：值得试</strong>——agent 静默失败排查是真实高频痛点，"自然语言写规则、全量 trace 自动审计"的形态是我觉得 observability 该走的方向；但目前只适合真正在跑 production agent 的人，纯写代码的可以先收藏。<a href="https://laminar.sh/blog/flow-1">Laminar 博客</a> / <a href="https://www.ycombinator.com/companies/laminar">YC 页面</a></p>
+<h2 id="3-claude-code-headroomtoken">🎓 3 分钟小教程：给 Claude Code 接上 headroom，token 账单砍两成</h2>
+<p><strong>前置条件</strong>：装了 Python（3.13 更顺）或 uv；正在用 Claude Code / Codex / Cursor 其中之一</p>
+<ol>
+<li>装 CLI（PyPI 包才带 <code>headroom</code> 命令，npm 包只有 SDK）：
+   <code>bash
+   pip install "headroom-ai[all]"</code>
+   或 <code>uv tool install --python 3.13 "headroom-ai[all]"</code></li>
+<li>一键接入你的 agent（codex / cursor / copilot 等换名字就行）：
+   <code>bash
+   headroom wrap claude</code>
+   反悔了用 <code>headroom unwrap claude</code> 撤销，干净。</li>
+<li>先体检再看账单：
+   <code>bash
+   headroom doctor      # 健康检查，确认路由生效
+   headroom savings     # 实时看省了多少 token</code></li>
+</ol>
+<p><strong>预期效果</strong>：之后每次 agent 会话的工具输出/日志先在本地压缩再发给模型，答案不变；官方 benchmark 里 coding agent 场景省约 20%，你自己的数以 <code>headroom savings</code> 为准。我觉得这是目前性价比最高的"省 token"姿势：不改代码、不换模型，纯赚。<a href="https://github.com/headroomlabs-ai/headroom">headroom 项目</a></p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-10-19-daily.html">AI 码力日报 · 2026年10月19日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-10-19-daily.html">AI 码力日报 · 2026年10月19日</a></li>
+<li><a href="../posts/2026-10-18-daily.html">AI 码力日报 · 2026年10月18日</a></li>
+<li><a href="../posts/2026-10-17-daily.html">AI 码力日报 · 2026年10月17日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean</p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
