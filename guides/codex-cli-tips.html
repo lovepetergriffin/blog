@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex CLI 实战：终端里用 AI 写代码的 10 个技巧 - 互联网指南</title>
+<meta name="description" content="Codex CLI 的 10 个实战技巧：交互与非交互模式、slash 命令、文件引用、沙箱权限、会话管理，终端党直接抄作业。">
+<meta property="og:title" content="Codex CLI 实战：终端里用 AI 写代码的 10 个技巧 - 互联网指南"><meta property="og:description" content="Codex CLI 的 10 个实战技巧：交互与非交互模式、slash 命令、文件引用、沙箱权限、会话管理，终端党直接抄作业。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Codex CLI 实战：终端里用 AI 写代码的 10 个技巧 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 进阶技巧</div>
+    <h1>Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</h1>
+    <div class="meta"><time>发布于 2026-10-24</time><span class="difficulty">进阶</span><a class="tag" href="/guides/">Codex</a><a class="tag" href="/guides/">OpenAI</a><a class="tag" href="/guides/">CLI</a><a class="tag" href="/guides/">终端</a><a class="tag" href="/guides/">技巧</a></div>
+  </header>
+  <div class="post-body">
+<p>Codex CLI 是 OpenAI 的终端 Agent：进项目目录、敲 <code>codex</code>，它就能读仓库、改文件、跑测试。我用了一段时间，总结出 10 个真正提效的技巧，个个都能直接抄。</p>
+<p>跟你有啥关系：如果你已经装了 Codex 但只会打字聊天，那等于只用了它 30% 的能力。下面这些才是拉开差距的地方。</p>
+<h2 id="codex-cli">Codex CLI 怎么安装</h2>
+<pre><code class="language-bash"># macOS / Linux
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+# npm
+npm install -g @openai/codex
+# Homebrew（macOS）
+brew install --cask codex
+</code></pre>
+<p>装完验证：</p>
+<pre><code class="language-bash">codex --version
+codex update
+</code></pre>
+<p>进项目目录启动：</p>
+<pre><code class="language-bash">cd /path/to/your-project
+codex
+</code></pre>
+<p>第一次启动会走登录流程。装完如果 <code>codex</code> 指向了旧版本，先查一下 PATH 里到底是哪个在生效：</p>
+<pre><code class="language-bash">command -v codex
+type -a codex
+</code></pre>
+<h2 id="codex-cli-exec">Codex CLI 交互模式和 exec 模式的区别</h2>
+<p>跟你有啥关系：用错模式，简单任务变复杂，复杂任务变失控。</p>
+<p>Codex 其实是两种工具：</p>
+<pre><code class="language-bash"># 交互模式：持续会话，上下文一直都在
+codex
+
+# 非交互模式：跑完一个任务就退出，适合脚本和 CI
+codex exec &quot;给 auth 模块加错误处理&quot;
+</code></pre>
+<p>我的分法：</p>
+<ul>
+<li><strong>交互模式</strong>：要连续干好几件事——先看结构、再加缓存、再写测试、再跑测试修 bug，全程一个会话，Codex 越用越懂你的项目。</li>
+<li><strong>exec 模式</strong>：一次性任务、自动化脚本、CI 里跑。比如 nightly 跑一遍「检查所有 TODO 是不是都过期了」，exec 完就退出，干净利落。</li>
+</ul>
+<p>新手最常见的错误就是拿交互模式当一次性问答用，每次新开会话，上下文全丢，Codex 永远是「第一天上班」的状态。</p>
+<h2 id="codex-cli_1">Codex CLI 开局配置：先跑这五个命令</h2>
+<p>跟你有啥关系：第一次进一个仓库，先把这五个命令跑一遍，后面所有任务都顺。</p>
+<p>进交互界面后，依次敲：</p>
+<pre><code>/init
+/permissions
+/mcp
+/skills
+/hooks
+</code></pre>
+<ul>
+<li><code>/init</code>：生成 <code>AGENTS.md</code>，这是 Codex 的项目记忆文件，地位等于 Claude Code 的 CLAUDE.md。生成后自己再改改，补上项目结构、常用命令、代码规范。</li>
+<li><code>/permissions</code>：设审批策略。Auto 是自动放行，Read Only 是只读，生产仓库建议先用保守的，等熟了再放开。</li>
+<li><code>/mcp</code>：看接了哪些 MCP 工具服务器。</li>
+<li><code>/skills</code>：看有哪些技能可用。</li>
+<li><code>/hooks</code>：看生命周期钩子。</li>
+</ul>
+<p>我试了一下，开局五连花不了 2 分钟，但能避免后面一堆「它怎么改了不该改的文件」之类的问题。</p>
+<h2 id="codex-cli_2">Codex CLI @ 引用文件技巧</h2>
+<p>跟你有啥关系：你说「那个支付模块」，Codex 要猜半天；你直接 @ 出来，它立刻定位。</p>
+<p>在交互界面里：</p>
+<pre><code>@ + 文件名模糊搜索，Tab 或回车插入路径
+</code></pre>
+<p>比如：</p>
+<blockquote>
+<p>照着 @src/lib/stripe/webhooks.ts 的写法，给 @src/lib/paypal/webhooks.ts 加签名校验</p>
+</blockquote>
+<p>文件指名 + 参照写法，输出质量直接上一个档次。跟 Claude Code 那套「具体文件 + 参照模式」是一个道理，所有 Agent 都吃这一套。</p>
+<h2 id="codex-cli-shell">Codex CLI ! 直接跑 shell 命令</h2>
+<p>跟你有啥关系：终端党最烦的就是在 AI 对话和 shell 之间来回切，Codex 让你不用切。</p>
+<p>在 Codex 界面里，<code>!</code> 开头就是本地 shell 命令：</p>
+<pre><code>!npm test
+!git status
+!ls src/
+</code></pre>
+<p>不用退出 Codex、不用另开终端。查个测试结果、看个文件列表，随手就办了。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<h2 id="codex-cli-tab-enter">Codex CLI Tab 排队和 Enter 插话技巧</h2>
+<p>跟你有啥关系：Codex 跑长任务时，你想起个补充要求，不用等它跑完，也不用打断它。</p>
+<ul>
+<li><strong>Codex 运行时按 Enter</strong>：把新指令插进当前这一轮。</li>
+<li><strong>Codex 运行时按 Tab</strong>：把指令排队到下一轮。</li>
+<li><strong>Ctrl+G</strong>：在外部编辑器里写长提示，适合那种几百字的需求描述。</li>
+<li><strong>Ctrl+L</strong>：只清屏，不丢上下文。</li>
+<li><strong>Esc 按两下（输入框为空时）</strong>：回到上一条消息改写，继续按会一路往前翻，改完回车就从那个点分叉重跑。</li>
+</ul>
+<p>我试了一下，Tab 排队这个最实用：长任务跑到一半想起「哦对还要补个测试」，Tab 一下敲进去，不用等、不用打断，任务跑完自动接上。</p>
+<h2 id="codex-cli_3">Codex CLI 会话管理命令</h2>
+<p>跟你有啥关系：上下文一满就开始「失忆」，会话管理不好，前面白干。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>干嘛</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/status</code></td>
+<td>看 token 用量、会话状态</td>
+</tr>
+<tr>
+<td><code>/compact</code></td>
+<td>压缩对话，释放上下文</td>
+</tr>
+<tr>
+<td><code>/clear</code></td>
+<td>清空对话，换新任务</td>
+</tr>
+<tr>
+<td><code>/resume</code></td>
+<td>恢复之前的会话</td>
+</tr>
+<tr>
+<td><code>codex resume --last</code></td>
+<td>命令行直接恢复最近一次会话</td>
+</tr>
+</tbody>
+</table>
+<p>我的节奏：一个任务一个会话，任务结束 <code>/clear</code>；长任务中途 <code>/status</code> 看一眼 token，快满了就 <code>/compact</code>；昨天没干完的活今天用 <code>codex resume --last</code> 接着干。</p>
+<h2 id="codex-cli-fork-side">Codex CLI 并行探索：/fork 和 /side</h2>
+<p>跟你有啥关系：想同时试两个方案，又不想污染主线会话，这两个命令就是干这个的。</p>
+<ul>
+<li><code>/fork</code>：从当前点开一个新分支会话，主线不受影响。</li>
+<li><code>/side</code>：开一个临时探索会话，用完即弃，适合「先看一眼这个思路行不行」。</li>
+<li><code>/agent</code>：切换子 Agent，让不同 Agent 分工。</li>
+</ul>
+<p>举个例子：重构方案 A 和 B 拿不准，主线继续走 A，<code>/fork</code> 一个分支试 B，最后哪个效果好留哪个，另一个直接丢掉，不用来回撤销。</p>
+<h2 id="codex-cli-pr">Codex CLI 提 PR 前的检查流程</h2>
+<p>跟你有啥关系：Agent 改完的代码直接提 PR，等于把 review 的活推给同事。自己先过一遍，口碑好很多。</p>
+<pre><code> /diff     # 看改了哪些文件
+ /review   # 让 Codex 自己审一遍
+</code></pre>
+<p><code>/review</code> 会从审稿人视角看你的改动：有没有漏掉的边界情况、有没有不一致的命名、有没有被顺手删掉的测试。我试了一下，它自己审出来的低级问题，比同事在 PR 里指出来体面得多。</p>
+<p>流程固定下来：</p>
+<pre><code>改完 → /diff → /review → 修掉 review 提的问题 → /diff 再确认 → 提 PR
+</code></pre>
+<h2 id="codex-cli_4">Codex CLI 沙箱和权限设置</h2>
+<p>跟你有啥关系：个人小项目和生产仓库，权限策略不能一样，图省事全开 Auto 迟早出事。</p>
+<p>Codex 的权限策略在 <code>/permissions</code> 里设，思路是：</p>
+<ul>
+<li><strong>个人练手项目</strong>：Auto 全开，跑得最顺。</li>
+<li><strong>团队协作仓库</strong>：默认审批，写文件和跑命令前确认一下，读文件放行。</li>
+<li><strong>生产相关仓库</strong>：Read Only 起步，确认没问题再逐步放开写权限。</li>
+</ul>
+<p>还有个 <code>--sandbox</code> 参数，命令行启动时可以指定沙箱级别，配合 <code>--full-auto</code>（只在失败时才问你）用在可信的自动化场景里。</p>
+<p>一句话：权限不是越松越好，是跟仓库的重要性匹配才好。</p>
+<h2 id="codex-cli-exec_1">Codex CLI exec 自动化技巧</h2>
+<p>跟你有啥关系：有些活不需要人盯着，让它夜里自己跑，早上起来收结果。</p>
+<p><code>codex exec</code> 的真正价值在自动化：</p>
+<pre><code class="language-bash"># 每夜跑一遍：检查过期 TODO
+codex exec &quot;扫描全仓库的 TODO 注释，列出超过 30 天没动的，输出成报告&quot;
+
+# CI 里跑：生成改动摘要
+codex exec &quot;总结这次提交的改动，写一段 changelog&quot;
+
+# 批量任务：给每个模块补测试骨架
+codex exec &quot;给 src/services/ 下每个没有测试文件的模块生成测试骨架，不改业务代码&quot;
+</code></pre>
+<p>配合 cron 或 CI 定时跑，等于雇了个不用睡觉的初级工程师。注意 exec 模式跑完就退出，上下文不保留，所以任务描述要写完整，别指望它记得上次的会话。</p>
+<h2 id="verdict">我的 verdict</h2>
+<p>Codex CLI 最值得练的就三样：<strong>模式分清（交互 vs exec）、引用精准（@ 文件）、会话管好（/compact、/clear、/resume）</strong>。这三样到位了，剩下的技巧都是锦上添花。</p>
+<p>终端党记住一句话：别把 Codex 当聊天框，把它当成一个能跑命令、能改文件、能自己验证的同事，任务描述越具体、验收标准越清楚，它回馈你的质量越高。</p>
+<hr />
+<p><em>命令与功能截至 2026 年 10 月撰写时，以 OpenAI Codex 官方文档为准，版本更新后个别命令可能有变。</em></p>
+<h2 id="_1">相关指南</h2>
+<ul>
+<li><a href="/guides/cursor-vs-windsurf.html">Cursor vs Windsurf 深度对比：2026 年到底选哪个 AI 编程工具？</a></li>
+<li><a href="/guides/claude-code-workflow.html">Claude Code 高效工作流：从安装到第一个 PR</a></li>
+<li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li>
+<li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li>
+<li><a href="/guides/codex-agent-mode.html">Codex Agent 模式：让 AI 自主完成多文件重构</a></li>
+</ul>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li><li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li><li><a href="/guides/codex-agent-mode.html">Codex Agent 模式：让 AI 自主完成多文件重构</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 高效工作流：从安装到第一个 PR - 互联网指南</title>
+<meta name="description" content="Claude Code 从安装、登录到第一个 PR 的完整流程，含 CLAUDE.md 配置与避坑点，照着做 30 分钟就能跑起来。">
+<meta property="og:title" content="Claude Code 高效工作流：从安装到第一个 PR - 互联网指南"><meta property="og:description" content="Claude Code 从安装、登录到第一个 PR 的完整流程，含 CLAUDE.md 配置与避坑点，照着做 30 分钟就能跑起来。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Code 高效工作流：从安装到第一个 PR - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 上手教程</div>
+    <h1>Claude Code 高效工作流：从安装到第一个 PR</h1>
+    <div class="meta"><time>发布于 2026-10-24</time><span class="difficulty">新手</span><a class="tag" href="/guides/">Claude Code</a><a class="tag" href="/guides/">AI 编程</a><a class="tag" href="/guides/">终端</a><a class="tag" href="/guides/">工作流</a></div>
+  </header>
+  <div class="post-body">
+<p>Claude Code 是 Anthropic 官方出的终端 Agent，跟聊天助手不一样：它直接读你的仓库、改文件、跑命令，任务做完才停手。</p>
+<p>跟你有啥关系：如果你每天在终端里写代码，Claude Code 能把「改代码 → 跑测试 → 提 PR」这条链路串起来，省掉大量机械活。这篇从零开始，装完就能交出第一个 PR。</p>
+<h2 id="claude-code">Claude Code 怎么安装</h2>
+<p>跟你有啥关系：装错方式后面全是版本问题，直接用官方推荐的原生安装器，别绕路。</p>
+<p>macOS / Linux / WSL：</p>
+<pre><code class="language-bash">curl -fsSL https://claude.ai/install.sh | bash
+</code></pre>
+<p>Windows PowerShell：</p>
+<pre><code class="language-powershell">irm https://claude.ai/install.ps1 | iex
+</code></pre>
+<p>备选方式（也都可用）：</p>
+<pre><code class="language-bash"># Homebrew（macOS）
+brew install --cask claude-code
+# npm（需要 Node.js 18 以上）
+npm install -g @anthropic-ai/claude-code
+</code></pre>
+<p>我试了一下，原生安装器最省心，自带自动更新。npm 方式能用，但你的 Node 版本一变就可能出幺蛾子，团队协作时尤其容易出现「我这能跑你那不行」。</p>
+<p>装完验证一下：</p>
+<pre><code class="language-bash">claude --version
+</code></pre>
+<p>如果报 <code>command not found</code>，原生安装器是把二进制放到了 <code>~/.local/bin/claude</code>，把这个目录加进 PATH 再重开终端：</p>
+<pre><code class="language-bash">export PATH=&quot;$PATH:$HOME/.local/bin&quot;
+</code></pre>
+<h2 id="claude-code_1">Claude Code 怎么登录</h2>
+<p>跟你有啥关系：登录方式决定你按什么付费，选错了后面改起来麻烦。</p>
+<p>进你的项目目录再启动，千万别在 home 目录启动——Claude Code 会把启动目录当成项目根，记忆和配置都按这个目录来：</p>
+<pre><code class="language-bash">cd your-project
+claude
+</code></pre>
+<p>第一次运行会让你登录，二选一：</p>
+<ol>
+<li><strong>订阅登录</strong>：用 Claude 订阅账号（Pro、Max、Team）在浏览器里 OAuth 一下，适合已经订阅的人。</li>
+<li><strong>API Key</strong>：用 Anthropic Console 的 Key，设置环境变量 <code>ANTHROPIC_API_KEY</code>，按量付费，适合走 API 额度的场景。</li>
+</ol>
+<p>一个坑：如果登录后报 400 "organization disabled"，八成是环境里有个旧的 <code>ANTHROPIC_API_KEY</code> 在捣乱，把它 unset 掉、重开终端再试。会话里用 <code>/status</code> 能确认当前用的是哪种认证。</p>
+<p>SSH 远程机器上登录时，浏览器打不开怎么办？在登录提示处按 <code>c</code>，它会把认证链接复制出来，你在本地浏览器打开、把码贴回终端就行。</p>
+<h2 id="claude-code-claudemd">Claude Code CLAUDE.md 怎么配置</h2>
+<p>跟你有啥关系：不做这步，Claude Code 每次都要重新猜你的项目结构，改出来的代码风格也飘忽不定。</p>
+<h3 id="init-claudemd">/init 生成 CLAUDE.md</h3>
+<p>进项目后先跑：</p>
+<pre><code>/init
+</code></pre>
+<p>它会扫描仓库，生成一个 <code>CLAUDE.md</code> 文件。这就是项目的「说明书」，Claude Code 每次会话开始都会先读它。生成后你自己再改一改，补上这些：</p>
+<pre><code class="language-markdown"># 项目名：一句话说清这项目是干嘛的
+
+## 结构
+- backend/routes/ — 接口层
+- backend/models/ — 数据模型
+- frontend/components/ — React 组件
+
+## 命令
+- 启动后端：cd backend &amp;&amp; uvicorn main:app --reload
+- 启动前端：cd frontend &amp;&amp; npm run dev
+- 跑测试：cd backend &amp;&amp; pytest
+
+## 规范
+- 后端照着 routes/todos.py 的写法来
+- 新接口必须补测试
+- 前端用 Tailwind，导航改动同步改 Sidebar
+</code></pre>
+<p>我试了一下，CLAUDE.md 写得越具体，Claude Code 第一次输出就能用的概率越高。只写一句「这是一个 Web 项目」等于没写。</p>
+<h3 id="_1">会话里的记忆技巧</h3>
+<ul>
+<li><code>#</code> 开头的内容会持久化进 CLAUDE.md，适合记录高价值约定。</li>
+<li>会话长了（20-30 轮之后）跑一次 <code>/compact</code>，把上下文压缩一下再继续，省 token 也省钱。</li>
+<li>换任务时跑 <code>/clear</code>，别让上一个任务的上下文污染下一个任务。</li>
+</ul>
+<h2 id="claude-code_2">Claude Code 第一个任务流程</h2>
+<p>跟你有啥关系：直接丢一句「帮我加个功能」效果最差，照下面这个顺序，成功率会高很多。</p>
+<h3 id="1">1. 先规划，再动手</h3>
+<p>多文件任务、涉及架构的任务，先进规划模式：</p>
+<pre><code>/plan
+给 /api/todos 接口加分页
+</code></pre>
+<p>规划模式下 Claude Code 只读不写，先把你的现有分页写法翻出来，给你一个方案，你点头了它再动手。我试了一下，这一步能省掉至少一半返工——它不会再凭空发明一套你项目里没有的写法。</p>
+<h3 id="2">2. 提需求要具体</h3>
+<p>差的说法：</p>
+<blockquote>
+<p>帮我把后端改一下</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+</blockquote>
+<p>好的说法：</p>
+<blockquote>
+<p>在 backend/routes/todos.py 里，给 /api/todos 加分页参数 page 和 page_size，照着 routes/users.py 已有的分页写法来，返回里带 total 字段，补一个测试。</p>
+</blockquote>
+<p>三要素：<strong>文件指名、参照现有写法、验收标准</strong>。缺一个，输出质量就掉一档。</p>
+<h3 id="3">3. 让它自己验证</h3>
+<p>任务描述里直接加上验证要求：</p>
+<blockquote>
+<p>改完跑 pytest，全部通过才算完。</p>
+</blockquote>
+<p>Claude Code 会自己跑测试、看报错、修代码、再跑，形成闭环。你不用在旁边当监工，只需要最后看一眼 diff。</p>
+<h3 id="4-diff-pr">4. 检查 diff，提 PR</h3>
+<p>改完先看 diff：</p>
+<pre><code>/diff
+</code></pre>
+<p>确认没问题，再让它提 PR：</p>
+<pre><code>/commit
+</code></pre>
+<p><code>/commit</code> 会按暂存区的改动生成提交信息。PR 同理，用 <code>/pr</code> 可以直接生成带描述的 Pull Request。我的习惯是：提交前一定先跑一遍 <code>/review</code>，让它自己检查一遍 diff——leftover 的 debug 输出、半截重命名、被偷偷删掉的测试，这些低级问题基本能在这步拦住。</p>
+<h2 id="claude-code_3">Claude Code 实战例子：完整走一遍加接口</h2>
+<p>跟你有啥关系：上面讲的是流程，这个例子是流程跑起来到底长什么样，照着敲一遍就全懂了。</p>
+<p>假设你要给一个 FastAPI 项目的 todos 接口加分页，实际对话大概是这样的：</p>
+<pre><code>/plan
+给 /api/todos 加分页，参数 page 和 page_size，返回里带 total
+</code></pre>
+<p>Claude Code 先读 routes/todos.py 和 routes/users.py（后者已经有分页写法），给出方案：照 users 的写法来，todos 复用同一套参数解析和返回格式。你确认方案没问题，接着说：</p>
+<pre><code>按这个方案改，改完跑 pytest，全部通过才算完
+</code></pre>
+<p>它开始改文件：routes/todos.py 加参数、models 层不动、tests/test_todos.py 补两个用例（正常分页和越界页码）。改完自己跑 pytest，第一次报了个导入错误，它自己定位到是测试文件里 mock 路径写错了，修掉再跑，全部通过。</p>
+<p>最后你检查：</p>
+<pre><code>/diff
+/review
+</code></pre>
+<p>diff 里只有三个文件，改动干净，review 没报问题。提交：</p>
+<pre><code>/commit
+</code></pre>
+<p>提交信息它已经按暂存区改动生成好了，你看一眼没问题就确认。整个过程你敲的命令不到十条，大部分时间花在看 diff 和确认方案上，而不是写代码。</p>
+<p>这个例子里有三个关键点值得复盘：第一，<code>/plan</code> 让方案先对齐，避免改完返工；第二，「改完跑 pytest」这句验证要求让它形成了自验证闭环；第三，<code>/diff</code> + <code>/review</code> 是你最后的质量关，别跳过。流程跑熟之后，日常加接口、修 bug、补测试基本都是这个套路换个任务描述。</p>
+<h2 id="claude-code_4">Claude Code 常用命令速查</h2>
+<p>跟你有啥关系：记住这十几个，日常 90% 的场景够用了。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>干嘛</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/help</code></td>
+<td>看所有命令</td>
+</tr>
+<tr>
+<td><code>/init</code></td>
+<td>生成 CLAUDE.md</td>
+</tr>
+<tr>
+<td><code>/plan</code></td>
+<td>规划模式，只读不写</td>
+</tr>
+<tr>
+<td><code>/clear</code></td>
+<td>清空对话，换任务</td>
+</tr>
+<tr>
+<td><code>/compact</code></td>
+<td>压缩上下文，省 token</td>
+</tr>
+<tr>
+<td><code>/diff</code></td>
+<td>看当前改动</td>
+</tr>
+<tr>
+<td><code>/review</code></td>
+<td>检查改动里的 bug</td>
+</tr>
+<tr>
+<td><code>/commit</code></td>
+<td>生成提交信息并提交</td>
+</tr>
+<tr>
+<td><code>/pr</code></td>
+<td>创建 Pull Request</td>
+</tr>
+<tr>
+<td><code>/model</code></td>
+<td>切换模型</td>
+</tr>
+<tr>
+<td><code>/permissions</code></td>
+<td>看当前工具权限</td>
+</tr>
+<tr>
+<td><code>/status</code></td>
+<td>看会话与认证状态</td>
+</tr>
+<tr>
+<td><code>/memory</code></td>
+<td>查看/编辑 CLAUDE.md</td>
+</tr>
+<tr>
+<td><code>/config</code></td>
+<td>看当前配置</td>
+</tr>
+</tbody>
+</table>
+<p>快捷键也记两个：<code>Ctrl+L</code> 清屏（不丢上下文），<code>Esc Esc</code> 回到上一条消息重写。</p>
+<h2 id="claude-code_5">Claude Code 避坑清单</h2>
+<p>跟你有啥关系：这些坑我基本都踩过一遍，提前避开能省一下午。</p>
+<ol>
+<li><strong>别在 home 目录启动</strong>。项目记忆会错乱，换到项目目录重开。</li>
+<li><strong>别用 <code>--dangerously-skip-permissions</code></strong>。这个参数会跳过所有权限确认，只适合放在没联网的容器里用，生产机器上用等于裸奔。</li>
+<li><strong>别一次丢巨型任务</strong>。一个任务只做一件事，拆小了成功率才高。 mega-prompt 换来的往往是 mega-返工。</li>
+<li><strong>别让它猜你的规范</strong>。CLAUDE.md 里写清楚命令、目录、写法，猜错的成本比写文档高得多。</li>
+<li><strong>长会话不 compact</strong>。上下文一满，它就开始「失忆」，前面的约定全忘光。</li>
+</ol>
+<h2 id="verdict">我的 verdict</h2>
+<p>Claude Code 值不值得装？如果你每天在终端写代码，值得。安装 5 分钟，<code>/init</code> 生成 CLAUDE.md 再花 10 分钟改一改，第一个任务照「先规划、再具体提、让它自验证、最后 review 提 PR」这个流程走，基本一次就能跑通。</p>
+<p>关键就一句话：<strong>把它当成一个需要说明书的新同事，而不是一个会读心的聊天框</strong>。说明书（CLAUDE.md）写得越好，它干活越靠谱。</p>
+<hr />
+<p><em>命令与功能截至 2026 年 10 月撰写时，以官方文档 code.claude.com 为准，版本更新后个别命令可能有变。</em></p>
+<h2 id="_2">相关指南</h2>
+<ul>
+<li><a href="/guides/cursor-vs-windsurf.html">Cursor vs Windsurf 深度对比：2026 年到底选哪个 AI 编程工具？</a></li>
+<li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li>
+<li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li>
+<li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li>
+<li><a href="/guides/codex-agent-mode.html">Codex Agent 模式：让 AI 自主完成多文件重构</a></li>
+</ul>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

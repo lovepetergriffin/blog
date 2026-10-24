@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex Agent 模式：让 AI 自主完成多文件重构 - 互联网指南</title>
+<meta name="description" content="Codex Agent 模式详解：交互与非交互模式区别、多文件重构实战流程、Review 策略与安全边界，附可直接用的任务模板。">
+<meta property="og:title" content="Codex Agent 模式：让 AI 自主完成多文件重构 - 互联网指南"><meta property="og:description" content="Codex Agent 模式详解：交互与非交互模式区别、多文件重构实战流程、Review 策略与安全边界，附可直接用的任务模板。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Codex Agent 模式：让 AI 自主完成多文件重构 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 进阶技巧</div>
+    <h1>Codex Agent 模式：让 AI 自主完成多文件重构</h1>
+    <div class="meta"><time>发布于 2026-10-24</time><span class="difficulty">进阶</span><a class="tag" href="/guides/">Codex</a><a class="tag" href="/guides/">Agent</a><a class="tag" href="/guides/">重构</a><a class="tag" href="/guides/">多文件</a><a class="tag" href="/guides/">OpenAI</a></div>
+  </header>
+  <div class="post-body">
+<p>Codex Agent 模式不是聊天框，是一个能自主干活的工程师：你丢一个目标，它自己读仓库、定方案、跨文件改、跑测试，改完交 diff 给你。这篇讲 Agent 模式怎么用、多文件重构的实战流程，以及怎么 review、怎么设安全边界。</p>
+<p>跟你有啥关系：单文件小改动用补全就够了，但「把 A 模块的调用方式全换成 B」「抽一个公共组件出来，20 个文件都要改」这种跨文件活，手动改一下午还容易漏，Agent 模式就是为这种活生的。</p>
+<h2 id="codex-agent">Codex Agent 模式是什么</h2>
+<p>Codex 有两种工作形态，很多人混着用，效果大打折扣：</p>
+<table>
+<thead>
+<tr>
+<th>形态</th>
+<th>命令</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交互模式（Agent）</td>
+<td><code>codex</code></td>
+<td>持续会话，上下文一直都在，能连续干多件事</td>
+</tr>
+<tr>
+<td>非交互模式</td>
+<td><code>codex exec "任务"</code></td>
+<td>跑完一个任务就退出，适合脚本和 CI</td>
+</tr>
+</tbody>
+</table>
+<p>Agent 模式的核心是交互模式：你进一个会话，Codex 在这个会话里记住项目结构、记住你前面说过的约定，一件事接着一件事干。上一轮刚重构完支付模块，下一轮你说「按刚才那个方式把退款模块也改了」，它不用重新问你「刚才那个方式是什么」。</p>
+<p>还有一种云端 Agent：你在网页或 ChatGPT 里提交任务，Codex 把仓库克隆到隔离的云沙箱里，改完、跑完测试、直接给你一个 PR，你不用开本地终端。这种适合「丢过去、过会儿回来收 PR」的场景，跟本地 CLI 互补，不冲突。</p>
+<p>一句话区分：<strong>交互模式是雇了个同事坐你旁边，非交互模式是派了个跑腿的出去办事</strong>。多文件重构这种需要上下文、需要来回商量的活，一定用交互模式。</p>
+<h2 id="codex-agent_1">Codex Agent 模式怎么用：开局五连</h2>
+<p>跟你有啥关系：Agent 自主干活的前提是它先认识你的项目，不做开局配置，它就是个没看过说明书的新人。</p>
+<p>进项目目录，启动 Codex，依次跑：</p>
+<pre><code>/init
+/permissions
+/mcp
+/skills
+/hooks
+</code></pre>
+<ul>
+<li><code>/init</code>：生成 <code>AGENTS.md</code>，Codex 的项目记忆文件。生成后自己改改，补上：项目结构、常用命令、代码规范、哪些目录不能碰。</li>
+<li><code>/permissions</code>：设审批策略。重构这种要大面积写文件的活，建议先用「写文件前确认」，跑顺了再放开。</li>
+<li><code>/mcp</code>、<code>/skills</code>、<code>/hooks</code>：看一眼接了哪些工具、技能、钩子，心里有数。</li>
+</ul>
+<p>AGENTS.md 写什么，直接决定 Agent 的下限。我用的模板：</p>
+<pre><code class="language-markdown"># 项目名：一句话说清干嘛的
+
+## 结构
+- src/services/ — 业务逻辑
+- src/routes/ — 接口层
+- src/lib/ — 公共工具
+
+## 命令
+- 跑测试：npm test
+- 启动：npm run dev
+- 检查类型：npm run typecheck
+
+## 规范
+- 重构时保持公开接口不变，除非明确说了要改接口
+- 每个改动的文件都要有测试覆盖
+- 不要动 src/legacy/ 下的代码，那是历史遗留
+</code></pre>
+<p>「不要动 legacy」这种话一定要写进 AGENTS.md，光在对话里说一次，Agent 跑长了就忘了。</p>
+<h2 id="codex">Codex 多文件重构实战流程</h2>
+<p>跟你有啥关系：流程对了，重构一次成；流程错了，Agent 改到一半跑偏，你还得花时间擦屁股。</p>
+<p>我固定用五步法：</p>
+<h3 id="agent">第一步：让 Agent 先看，再定方案</h3>
+<p>不要一上来就说「开始重构」。先让它看：</p>
+<blockquote>
+<p>先看一下 src/services/payment/ 和 src/services/refund/ 的结构，告诉我这两个模块现在是怎么互相调用的，不要改代码。</p>
+</blockquote>
+<p>Agent 只读不写，把现状摸清楚。这一步的输出就是你后面 review 方案的依据。</p>
+<h3 id="_1">第二步：定方案，明确边界</h3>
+<blockquote>
+<p>方案：把 payment 和 refund 里重复的校验逻辑抽成 src/lib/validate.ts，两个模块都改成调它。公开接口不变，legacy 目录不动。先给我方案，确认了我再让你动手。</p>
+</blockquote>
+<p>关键点：</p>
+<ul>
+<li><strong>抽什么、放哪、谁来调</strong>，三个说清楚。</li>
+<li><strong>边界</strong>：公开接口变不变、哪些目录不动、测试要不要补。</li>
+<li><strong>先给方案再动手</strong>：方案你点头了它再改，比改完再返工便宜得多。</li>
+</ul>
+<h3 id="_2">第三步：分批改，别一次全改</h3>
+<p>20 个文件的重构，别让 Agent 一口气全改完。分批：</p>
+<blockquote>
+<p>先改 payment 模块的 3 个文件，改完跑测试，通过了再继续 refund 模块。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+</blockquote>
+<p>一批 3-5 个文件，改完验证通过再下一批。Agent 跑偏了也只偏一批，纠错成本小。我试了一下，一次改 20 个文件，中间出个错，定位都费劲；分批改，出错立刻知道是哪一批。</p>
+<h3 id="agent_1">第四步：让 Agent 自己跑测试</h3>
+<p>任务描述里直接写验证要求：</p>
+<blockquote>
+<p>每批改完跑 npm test，全部通过才算这批完成。失败了自己看报错修，不要跳过测试。</p>
+</blockquote>
+<p>Agent 自己跑测试、看报错、修代码、再跑，形成闭环。你不用当监工，只需要最后看 diff。</p>
+<h3 id="review">第五步：逐批 review，不要攒到最后</h3>
+<p>每批改完就看 diff，不要等 20 个文件全改完再一次性 review：</p>
+<pre><code>/diff
+/review
+</code></pre>
+<p><code>/diff</code> 看改了什么，<code>/review</code> 让 Agent 从审稿人视角再审一遍：接口是不是真没变、有没有漏掉的调用点、有没有被顺手删掉的测试。批批都干净，最后合起来才干净。</p>
+<h2 id="codex-agent-review">Codex Agent 模式 Review 策略</h2>
+<p>跟你有啥关系：Agent 交出来的 diff，你不 review 就合并，等于把代码质量押在它一次输出上。Review 不是不信任，是流程的一部分。</p>
+<h3 id="review_1">三层 review，层层过滤</h3>
+<p><strong>第一层：Agent 自审</strong>。改完跑 <code>/review</code>，让它自己先过一遍。能拦住 leftover debug、半截重命名、被删的测试这些低级问题。</p>
+<p><strong>第二层：你审 diff</strong>。重点看四样：</p>
+<ol>
+<li>公开接口是不是真没变（说了不变就不能变）。</li>
+<li>所有调用点是不是都改到了（重构最怕漏一个）。</li>
+<li>有没有动不该动的目录（AGENTS.md 里写了不动的，有没有真不动）。</li>
+<li>测试是不是真覆盖了改动（不是只改了代码没补测试）。</li>
+</ol>
+<p><strong>第三层：CI 兜底</strong>。测试、类型检查、lint 全跑一遍，挂了就打回。Agent 的改动也要过 CI，没有例外。</p>
+<h3 id="_3">任务模板：直接抄</h3>
+<p>下次重构，直接套这个模板，省掉每次重新描述的功夫：</p>
+<pre><code>重构任务：
+
+现状：
+
+方案：
+- 抽什么：
+- 放哪：
+- 谁来调：
+
+边界：
+- 公开接口不变
+- 不动 src/legacy/
+- 每个改动文件补测试
+
+执行方式：
+- 分批改，每批 3-5 个文件
+- 每批改完跑 npm test，通过再继续
+- 每批改完我先 review，再下一批
+</code></pre>
+<p>模板的价值是把「方案、边界、执行方式」一次说清，Agent 不用猜，猜错的成本也就没了。</p>
+<h2 id="codex-agent_2">Codex Agent 模式安全注意事项</h2>
+<p>跟你有啥关系：Agent 能写文件、能跑命令，权限给错了，破坏力跟能力成正比。</p>
+<ol>
+<li><strong>权限分级</strong>。个人项目可以放开，团队仓库默认审批，生产相关仓库先从只读起步。<code>/permissions</code> 里设，别图省事全开 Auto。</li>
+<li><strong>沙箱不能省</strong>。Codex 的沙箱是把 Agent 的操作关在项目目录里，命令行启动可以用 <code>--sandbox</code> 指定级别。别为了图快关掉沙箱。</li>
+<li><strong>secrets 别进对话</strong>。API Key、数据库密码、内网地址，不要贴进 Codex 会话。会话记录可能被保存，贴进去等于留了个副本。</li>
+<li><strong>大面积删除要人工确认</strong>。重构里凡是涉及删文件、删大段代码的，提前说「删除前先列出来我确认」，别让 Agent 自行决定删什么。</li>
+<li><strong>云端 Agent 的 PR 也要 review</strong>。云端交回来的 PR 跟本地改的同等对待，三层 review 一步不能少。PR 描述写得再漂亮，diff 还是要自己看。</li>
+</ol>
+<p>一句话：Agent 的能力越大，边界就要划得越清楚。边界写在 AGENTS.md 里、写在任务模板里，比事后擦屁股便宜得多。</p>
+<h2 id="verdict">我的 verdict</h2>
+<p>Codex Agent 模式值不值得用来做多文件重构？值得，但前提是流程对：<strong>先看再定方案、分批改、每批自验证加 review、权限按仓库分级</strong>。</p>
+<p>最忌讳的用法是丢一句「把这堆代码重构一下」然后去喝咖啡，回来收一个 20 文件的 diff，review 到眼睛花。Agent 不是替你 review 的，它是替你干活的，review 永远是你的活。</p>
+<p>记住一个公式：<strong>好方案 + 清边界 + 分批验证 = 一次成的重构</strong>。三个缺一个，返工概率就翻倍。</p>
+<hr />
+<p><em>命令与功能截至 2026 年 10 月撰写时，以 OpenAI Codex 官方文档为准，版本更新后个别行为可能有变。</em></p>
+<h2 id="_4">相关指南</h2>
+<ul>
+<li><a href="/guides/cursor-vs-windsurf.html">Cursor vs Windsurf 深度对比：2026 年到底选哪个 AI 编程工具？</a></li>
+<li><a href="/guides/claude-code-workflow.html">Claude Code 高效工作流：从安装到第一个 PR</a></li>
+<li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li>
+<li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li>
+<li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li>
+</ul>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li><li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li><li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

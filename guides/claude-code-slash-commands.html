@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 自定义命令：Slash Commands 全解析 - 互联网指南</title>
+<meta name="description" content="Claude Code Slash Commands 全解析：内置命令表、自定义命令怎么做、$ARGUMENTS 传参、Skills 区别，附可直接抄的实战例子。">
+<meta property="og:title" content="Claude Code 自定义命令：Slash Commands 全解析 - 互联网指南"><meta property="og:description" content="Claude Code Slash Commands 全解析：内置命令表、自定义命令怎么做、$ARGUMENTS 传参、Skills 区别，附可直接抄的实战例子。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Code 自定义命令：Slash Commands 全解析 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 进阶技巧</div>
+    <h1>Claude Code 自定义命令：Slash Commands 全解析</h1>
+    <div class="meta"><time>发布于 2026-10-24</time><span class="difficulty">进阶</span><a class="tag" href="/guides/">Claude Code</a><a class="tag" href="/guides/">Slash Commands</a><a class="tag" href="/guides/">自定义命令</a><a class="tag" href="/guides/">效率</a></div>
+  </header>
+  <div class="post-body">
+<p>Claude Code 的 Slash Commands 是最被低估的效率工具：你把重复的工作流写成一个命令，以后一个斜杠就搞定，不用每次重新描述需求。这篇讲内置命令、自定义命令怎么做、参数怎么传，以及自定义命令和 Skills 的区别。</p>
+<p>跟你有啥关系：如果你发现自己总在给 Claude Code 重复同一段话——「检查一下这段改动」「给这个文件补测试」「部署前检查一遍」——那就是该写自定义命令的时候了。写一次，团队所有人都能用。</p>
+<h2 id="claude-code-slash-commands">Claude Code Slash Commands 是什么</h2>
+<p>Slash Commands 就是在 Claude Code 会话里以 <code>/</code> 开头的快捷指令。输入 <code>/</code> 会弹出命令菜单，敲几个字母过滤，回车执行。</p>
+<p>它分两类：</p>
+<ul>
+<li><strong>内置命令</strong>：Claude Code 自带的，比如 <code>/help</code>、<code>/clear</code>、<code>/review</code>。</li>
+<li><strong>自定义命令</strong>：你自己写的，放在 <code>.claude/commands/</code> 目录下，一个文件就是一个命令。</li>
+</ul>
+<p>原理很简单：自定义命令文件的内容就是一段提示词模板。你敲 <code>/review</code>，Claude Code 就把 review.md 里的提示词发给模型执行。没有特殊语法，写提示词的能力就是写命令的能力。</p>
+<h2 id="claude-code-slash-commands_1">Claude Code 内置 Slash Commands 全表</h2>
+<p>跟你有啥关系：先把内置的用熟，再决定哪些值得写成自定义的。很多需求其实内置命令已经覆盖了，不用重复造轮子。</p>
+<h3 id="_1">会话管理类</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>干嘛</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/help</code></td>
+<td>看所有可用命令</td>
+</tr>
+<tr>
+<td><code>/clear</code></td>
+<td>清空对话，换新任务（CLAUDE.md 还在）</td>
+</tr>
+<tr>
+<td><code>/compact</code></td>
+<td>压缩上下文，省 token，长会话必备</td>
+</tr>
+<tr>
+<td><code>/exit</code> 或 <code>/quit</code></td>
+<td>退出 Claude Code</td>
+</tr>
+<tr>
+<td><code>/status</code></td>
+<td>看会话与认证状态</td>
+</tr>
+<tr>
+<td><code>/model</code></td>
+<td>切换模型</td>
+</tr>
+<tr>
+<td><code>/config</code></td>
+<td>看当前配置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">代码操作类</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>干嘛</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/init</code></td>
+<td>扫描项目，生成 CLAUDE.md</td>
+</tr>
+<tr>
+<td><code>/diff</code></td>
+<td>看当前 git 改动</td>
+</tr>
+<tr>
+<td><code>/review</code></td>
+<td>检查改动里的 bug</td>
+</tr>
+<tr>
+<td><code>/commit</code></td>
+<td>生成提交信息并提交</td>
+</tr>
+<tr>
+<td><code>/pr</code></td>
+<td>创建 Pull Request</td>
+</tr>
+<tr>
+<td><code>/memory</code></td>
+<td>查看/编辑 CLAUDE.md</td>
+</tr>
+<tr>
+<td><code>/permissions</code></td>
+<td>看当前工具权限</td>
+</tr>
+<tr>
+<td><code>/agents</code></td>
+<td>列出可用子 Agent</td>
+</tr>
+</tbody>
+</table>
+<p>我试了一下，日常最常用的就五个：<code>/clear</code>、<code>/compact</code>、<code>/diff</code>、<code>/review</code>、<code>/commit</code>。会话一长就 <code>/compact</code>，任务一切换就 <code>/clear</code>，提交前一定 <code>/diff</code> + <code>/review</code>。</p>
+<h2 id="claude-code">Claude Code 自定义命令怎么做</h2>
+<p>跟你有啥关系：这是本篇的核心，学会了，重复工作流就再也不用打字了。</p>
+<h3 id="_3">第一步：建目录和文件</h3>
+<p>在项目根目录建 <code>.claude/commands/</code>，每个 <code>.md</code> 文件就是一个命令：</p>
+<pre><code>.claude/commands/review.md       →  /review
+.claude/commands/add-tests.md    →  /add-tests
+.claude/commands/deploy-check.md →  /deploy-check
+</code></pre>
+<p>文件名就是命令名，文件内容就是提示词。没有别的配置，不用注册，不用重启，保存完立刻能用。</p>
+<h3 id="_4">第二步：写提示词模板</h3>
+<p>拿 <code>/review</code> 举例子，这是我一直在用的版本：</p>
+<pre><code class="language-markdown">&lt;!-- .claude/commands/review.md --&gt;
+检查当前改动。
+检查项：
+- 改动里有没有 leftover 的 debug 输出、注释掉的代码
+- 有没有半截重命名（改了定义没改调用）
+- 有没有被偷偷删掉或弱化的测试
+- 有没有碰 secrets、鉴权、配置文件
+
+输出编号列表，文件:行号。只说问题，别夸代码。
+</code></pre>
+<p>敲 <code>/review</code>，Claude Code 就会按这个模板执行。固定检查清单比每次随口问「这段改动有没有问题」靠谱得多——同样的问题每次都查，不会漏。</p>
+<h3 id="arguments">第三步：用 $ARGUMENTS 传参数</h3>
+<p>跟你有啥关系：没有参数的命令只能干固定活，有了参数，一个命令能覆盖一类任务。</p>
+<p><code>$ARGUMENTS</code> 是占位符，调用时跟在命令后面的内容会填进去：</p>
+<pre><code class="language-markdown">&lt;!-- .claude/commands/add-tests.md --&gt;
+给 $ARGUMENTS 补测试。
+用 Vitest。覆盖正常路径 + 一个边界情况 + 一个异常情况。
+测行为不测实现，跟现有测试风格保持一致。
+</code></pre>
+<p>调用时：</p>
+<pre><code>/add-tests src/lib/stripe/webhooks.ts
+</code></pre>
+<p><code>$ARGUMENTS</code> 就被替换成 <code>src/lib/stripe/webhooks.ts</code>。一个命令，全项目通用。</p>
+<h3 id="_5">第四步：限制工具范围，更安全</h3>
+<p>跟你有啥关系：有些命令只应该读、不应该改，比如 review。限制住工具，它就没法在你眼皮底下悄悄「顺手修掉」。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<p>在文件开头加 front matter：</p>
+<pre><code class="language-markdown">---
+description: 提交前检查暂存区改动
+allowed-tools: Bash(git diff:*), Bash(git status:*)
+---
+
+跑 `git diff --staged`，只看暂存区的改动。
+按这个顺序报告：
+1. leftover 的 debug 输出、注释代码、新增的 TODO
+2. 没改全的重命名或签名变化
+3. 被跳过、删除、弱化的测试
+4. 碰 secrets、鉴权、配置文件的改动
+不要改文件。最后说&quot;可以提交&quot;或者列出要修的项。
+</code></pre>
+<p><code>allowed-tools</code> 只列了两个只读 git 命令，这个 review 命令就只能看不能改。你决定改什么，改完再跑一次 <code>/review</code> 确认。</p>
+<h3 id="git">第五步：提交进 git，全团队共享</h3>
+<p><code>.claude/commands/</code> 提交进仓库，团队所有人 checkout 之后自动获得同一套命令。跟 CLAUDE.md 一样，这是团队资产，不是个人配置。</p>
+<p>我的建议：先把团队最常重复的三件事写成命令——review、补测试、部署检查——跑顺了再慢慢加。命令不在多，在每次都用得上。</p>
+<h2 id="claude-code_1">Claude Code 自定义命令实战例子</h2>
+<p>跟你有啥关系：光讲原理不够，直接抄这几个，改改就能用。</p>
+<h3 id="deploy-check">部署前检查：/deploy-check</h3>
+<pre><code class="language-markdown">我们马上要部署到生产。
+把所有你觉得现在不应该发的东西标出来。
+每个问题一句话，最严重的放最前面。
+如果没问题，只说&quot;可以部署&quot;，别多说。
+</code></pre>
+<p>部署前敲一下，等于多了一道人工检查关。</p>
+<h3 id="security">安全审计：/security</h3>
+<pre><code class="language-markdown">对 $ARGUMENTS 做安全审计。
+检查：缺鉴权、没验 ownership、没校验的输入、暴露的 secrets。
+只列问题，别夸。
+</code></pre>
+<p>调用：<code>/security src/routes/payment.ts</code></p>
+<h3 id="commit-msg">提交信息：/commit-msg</h3>
+<pre><code class="language-markdown">给暂存区的改动写提交信息。
+祈使句，不超过 72 个字符。说清楚改了什么和为什么。
+只输出信息本身，不要真的提交。
+</code></pre>
+<p>注意跟内置 <code>/commit</code> 的区别：内置的是直接提交，这个是只生成信息、让你过目再决定，适合提交信息有团队规范的场景。</p>
+<h3 id="compact">上下文瘦身：配合 /compact 使用</h3>
+<p>自定义命令不是万能的，长会话里上下文一满，命令再好也救不了「失忆」。我的节奏：</p>
+<ul>
+<li>20-30 轮对话后跑一次 <code>/compact</code></li>
+<li>换任务跑 <code>/clear</code></li>
+<li>高价值约定用 <code>#</code> 开头写进 CLAUDE.md，别只留在对话里</li>
+</ul>
+<h2 id="claude-code-skills">Claude Code 自定义命令和 Skills 的区别</h2>
+<p>跟你有啥关系：这两个容易搞混，选错地方写，命令要么调不出来，要么触发时机不对。</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>自定义命令（.claude/commands/）</th>
+<th>Skills（.claude/skills/）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>触发方式</td>
+<td>你手动敲 <code>/命令名</code></td>
+<td>你敲 <code>/技能名</code>，或模型按需自动调用</td>
+</tr>
+<tr>
+<td>文件形式</td>
+<td>单个 <code>.md</code> 文件，内容就是提示词</td>
+<td>目录 + <code>SKILL.md</code>，带 front matter（name、description、argument-hint、user-invocable）</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>固定流程，你明确知道要干嘛</td>
+<td>专项能力，让模型在合适的时候自己决定用不用</td>
+</tr>
+<tr>
+<td>参数</td>
+<td><code>$ARGUMENTS</code></td>
+<td><code>$0</code>、<code>$1</code> 等位置参数</td>
+</tr>
+</tbody>
+</table>
+<p>举个例子：</p>
+<ul>
+<li><code>/review</code>、<code>/deploy-check</code> 这种「你每次都想主动执行」的，写自定义命令。</li>
+<li>「部署应用」这种「步骤多、模型可能需要自己判断什么时候用」的，写 Skill：</li>
+</ul>
+<pre><code class="language-markdown">---
+name: deploy
+description: 部署应用到生产环境
+argument-hint: &quot;[环境]&quot;
+user-invocable: true
+---
+
+部署应用到 $0 环境（默认 staging）。
+步骤：
+1. 跑测试套件
+2. 构建生产包
+3. 用部署脚本部署
+4. 检查部署健康状态
+</code></pre>
+<p>调用：<code>/deploy production</code>。</p>
+<p>简单记：<strong>主动执行的写命令，模型按需调用的写 Skill</strong>。两个都放在项目里，都能进 git 共享。</p>
+<h2 id="claude-code_2">Claude Code 自定义命令避坑清单</h2>
+<p>跟你有啥关系：这几个坑踩过一次就长记性，提前避开省时间。</p>
+<ol>
+<li><strong>命令名别跟内置的撞</strong>。你写了个 review.md，它会覆盖内置 <code>/review</code>，团队有人按内置行为预期用就会懵。要么换个名字（比如 <code>/my-review</code>），要么确认全团队都知道你改了它。</li>
+<li><strong>提示词别写太长</strong>。命令文件是每次调用都全量塞进上下文的，写 200 行模板等于每次多花 200 行 token。精简到能说清检查项和输出格式就行。</li>
+<li><strong>$ARGUMENTS 为空时要有默认行为</strong>。比如 add-tests 没给文件时，是报错还是让模型先问你？模板里写一句「如果没给文件，先问我要补哪个文件」。</li>
+<li><strong>别在命令里放敏感信息</strong>。命令文件是要进 git 的，token、内网地址、客户名都别往里写。</li>
+<li><strong>定期清理没人用的命令</strong>。命令一多，<code>/</code> 菜单翻半天找不到要用的，比没有还烦。季度清理一次，只留每周都用的。</li>
+</ol>
+<h2 id="verdict">我的 verdict</h2>
+<p>Claude Code 自定义命令的价值就一句话：<strong>把重复说的话变成一个词</strong>。review、补测试、部署检查、安全审计，这些你每周都要说好几遍的话，写成命令后就是一次敲击的事。</p>
+<p>先写三个：<code>/review</code>、<code>/add-tests</code>、<code>/deploy-check</code>，跑一周，感受一下每天省下来的打字和返工，再决定要不要继续加。命令的 ROI 来得很快，因为成本只是一次写模板的时间，收益是每次调用都省。</p>
+<hr />
+<p><em>命令与功能截至 2026 年 10 月撰写时，以 Claude Code 官方文档为准，版本更新后个别行为可能有变。</em></p>
+<h2 id="_6">相关指南</h2>
+<ul>
+<li><a href="/guides/cursor-vs-windsurf.html">Cursor vs Windsurf 深度对比：2026 年到底选哪个 AI 编程工具？</a></li>
+<li><a href="/guides/claude-code-workflow.html">Claude Code 高效工作流：从安装到第一个 PR</a></li>
+<li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li>
+<li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li>
+<li><a href="/guides/codex-agent-mode.html">Codex Agent 模式：让 AI 自主完成多文件重构</a></li>
+</ul>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li><li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li><li><a href="/guides/codex-agent-mode.html">Codex Agent 模式：让 AI 自主完成多文件重构</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

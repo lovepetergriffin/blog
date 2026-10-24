@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude 提示词工程：怎么写才能让它输出直接能跑的代码 - 互联网指南</title>
+<meta name="description" content="让 Claude 输出直接能跑的代码的提示词技巧：给上下文、定约束、贴示例、小步迭代，附正反例子对照。">
+<meta property="og:title" content="Claude 提示词工程：怎么写才能让它输出直接能跑的代码 - 互联网指南"><meta property="og:description" content="让 Claude 输出直接能跑的代码的提示词技巧：给上下文、定约束、贴示例、小步迭代，附正反例子对照。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude 提示词工程：怎么写才能让它输出直接能跑的代码 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 进阶技巧</div>
+    <h1>Claude 提示词工程：怎么写才能让它输出直接能跑的代码</h1>
+    <div class="meta"><time>发布于 2026-10-24</time><span class="difficulty">进阶</span><a class="tag" href="/guides/">Claude</a><a class="tag" href="/guides/">提示词</a><a class="tag" href="/guides/">AI 编程</a><a class="tag" href="/guides/">技巧</a></div>
+  </header>
+  <div class="post-body">
+<p>同样是 Claude，有人一句话就拿到能跑的代码，有人来回十轮还在改 bug。差的不是模型，是提示词。</p>
+<p>跟你有啥关系：提示词写得好，Claude 第一次输出就能用；写得差，你花在修 bug 上的时间比自己写还多。这篇讲五个能立刻上手的技巧，个个有正反例子。</p>
+<h2 id="claude">Claude 提示词技巧：动词开头，说清楚你要什么</h2>
+<p>跟你有啥关系：Claude 不会猜你的意图，你含糊，它就含糊。</p>
+<p>Anthropic 官方的建议就一句话：<strong>用直接的动作动词开头，说清楚你要的输出，而不是只说话题</strong>。</p>
+<p>❌ 差的说法：</p>
+<blockquote>
+<p>帮我看看这个 JD</p>
+</blockquote>
+<p>Claude 不知道你要它干嘛：重写？翻译？挑毛病？它只能猜一个。</p>
+<p>✅ 好的说法：</p>
+<blockquote>
+<p>审查这份 JD，用三个要点标出过时的表述，每个要点不超过 15 个字。</p>
+</blockquote>
+<p>动词（审查）+ 输出形式（三个要点）+ 约束（每点 15 字内），三要素齐了，Claude 不用猜。</p>
+<p>代码场景同理：</p>
+<p>❌「修一下这段代码」
+✅「重构这段 Python 代码，提高可读性，遵守 PEP 8，不要改函数签名，改完附上改动说明」</p>
+<p>我试了一下，动词开头这个习惯养成后，第一轮输出的可用率明显上升。不是模型变聪明了，是你终于把话说清楚了。</p>
+<h2 id="claude_1">Claude 提示词技巧：给上下文，还要讲清楚为什么</h2>
+<p>跟你有啥关系：上下文决定 Claude 的判断力，不给上下文，它只能按通用情况写，放到你的项目里大概率水土不服。</p>
+<p>给上下文不是贴一堆代码就行，还要讲清楚<strong>这个输出是给谁用的、用来干嘛的</strong>。因为用途决定了 Claude 在格式、深度、取舍上的判断。</p>
+<p>❌ 差的说法：</p>
+<blockquote>
+<p>用通俗的语言写</p>
+</blockquote>
+<p>通俗给谁看？给刚入行的新手，还是给非技术的老板？两种「通俗」完全不一样。</p>
+<p>✅ 好的说法：</p>
+<blockquote>
+<p>用通俗的语言写，这份文档是给一线组长看的，他们不是 HR 专业出身，别用人力资源术语。</p>
+</blockquote>
+<p>代码场景：</p>
+<p>❌「写一个分页接口」
+✅「给 /api/todos 加分页，参数 page 和 page_size，照着 routes/users.py 已有的分页写法来，返回里带 total 字段。这个接口是给前端列表页用的，前端已经按这个格式在解析了，别改字段名。」</p>
+<p>最后一句「别改字段名」就是「为什么」——因为前端已经在按这个格式解析，改了就崩。Claude 知道了原因，就不会自作主张「优化」字段名。</p>
+<h2 id="claude_2">Claude 提示词技巧：格式先定好，别让它自由发挥</h2>
+<p>跟你有啥关系：不指定格式，Claude 会自己选一个，而它选的往往不是你要的。</p>
+<p>❌「总结一下这篇文章」
+✅「用三个要点总结，每点不超过 15 个字」</p>
+<p>代码场景，格式要求要具体到能直接用的程度：</p>
+<blockquote>
+<p>输出一个 Python 函数，函数名 fetch_user_orders，参数 user_id（int）和 limit（int，默认 20），返回 list[dict]，每个 dict 里有 order_id、total、created_at 三个键。用标准库 + requests，不要引别的依赖。函数前面加 docstring，说明参数和返回值。</p>
+</blockquote>
+<p>版本、依赖、函数签名、返回结构，全定死。Claude 照着填空就行，填空题总比作文题得分高。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<p>还有个细节：<strong>说要什么，不要说不要什么</strong>。Claude 对否定指令的执行不太稳。</p>
+<p>❌「不要用 markdown」
+✅「输出用纯段落，不要列表」</p>
+<p>正向描述永远比否定描述可靠，这是 OpenAI 和 Anthropic 两边都提过的共识。</p>
+<h2 id="claude_3">Claude 提示词技巧：示例胜过千言万语</h2>
+<p>跟你有啥关系：有些东西（风格、语气、格式）用语言描述半天说不清，贴一个例子立刻就懂。</p>
+<p>Few-shot 提示就是这个道理：给一个例子，Claude 照着学。</p>
+<blockquote>
+<p>按这个风格写：。现在用同样的风格实现下面这个功能：</p>
+</blockquote>
+<p>一个例子（one-shot）通常就够了，只有输出还是不对时再加第二个。例子不是越多越好，例子之间风格不一致反而会把 Claude 搞糊涂。</p>
+<p>我试了一下，代码风格这个场景，示例的效果尤其明显：</p>
+<ul>
+<li>你说「写得简洁一点」，Claude 理解的简洁和你理解的简洁可能差很远。</li>
+<li>你贴一段你项目里公认写得好的代码说「照这个风格」，它立刻就能对齐命名、注释密度、错误处理方式。</li>
+</ul>
+<p>输入输出示例也一样重要。让 Claude 生成代码时，直接给它输入输出对：</p>
+<blockquote>
+<p>输入：{"user_id": 123, "items": [{"sku": "A1", "qty": 2}]}
+期望输出：{"order_id": "ORD-2026-0001", "total": 99.0}
+按这个契约实现 create_order 函数。</p>
+</blockquote>
+<p>有契约在，Claude 生成的代码第一次跑通的概率高得多。</p>
+<h2 id="claude_4">Claude 提示词技巧：小步迭代，别指望一发入魂</h2>
+<p>跟你有啥关系：第一次输出不完美是常态，迭代 2-3 轮后质量会明显上一个台阶。指望一发入魂，等于放弃了 Claude 最擅长的迭代能力。</p>
+<p>我的固定流程：</p>
+<h3 id="_1">第一轮：给骨架，让它跑起来</h3>
+<blockquote>
+<p>实现一个 FastAPI 的健康检查接口 /health，返回 {"status": "ok"}。只用标准库和 FastAPI，不要别的依赖。</p>
+</blockquote>
+<p>先拿到能跑的最小版本，别在第一轮就塞十个需求。</p>
+<h3 id="_2">第二轮：贴真实报错，让它修</h3>
+<p>代码跑不起来时，别只说「报错了」，把真实报错原样贴回去：</p>
+<blockquote>
+<p>跑起来报这个错：</p>
+<p><code>Traceback (most recent call last):
+File "main.py", line 42, in &lt;module&gt;
+...
+ModuleNotFoundError: No module named 'xxx'</code></p>
+<p>只改最小的地方修掉它，不要重构整个文件。</p>
+</blockquote>
+<p><strong>贴真实报错 + 要求最小改动</strong>，这是调试场景最有效的组合。Claude 看到真实堆栈，定位比你自己描述「好像是导入问题」准得多。</p>
+<h3 id="_3">第三轮：加约束，收紧输出</h3>
+<blockquote>
+<p>现在加两个约束：第一，只用标准库，除非必要不要引新依赖；第二，补一个测试，覆盖正常和异常两种情况。</p>
+</blockquote>
+<p>约束要一轮一轮加，别第一轮就全加上。第一轮约束太多，Claude 会为了满足所有约束把代码写得四不像；先跑起来，再收紧。</p>
+<p>还有两个配套习惯：</p>
+<ul>
+<li><strong>让它自己验证</strong>：任务描述里直接写「改完跑 pytest，全部通过才算完」。Claude 自己跑测试、看报错、修代码，形成闭环。</li>
+<li><strong>允许它说不知道</strong>：提示词里加一句「如果信息不足以得出结论，直接说不知道，不要猜」。Claude 默认倾向于给一个答案而不是承认不确定，这句话能显著减少一本正经的幻觉。</li>
+</ul>
+<h2 id="claude_5">Claude 提示词模板：直接套用</h2>
+<p>跟你有啥关系：上面五个技巧拼起来，就是一份可以直接套用的模板。</p>
+<pre><code>实现一个功能：
+
+背景：
+
+约束：
+- 技术栈：
+- 参照写法：
+- 依赖：只用标准库 + requests，不要引别的
+- 不要改：
+
+输入输出示例：
+输入：
+期望输出：
+
+完成标准：
+- 代码能直接跑
+- 补一个测试，覆盖正常和异常情况
+- 改完跑 pytest，全部通过才算完
+</code></pre>
+<p>这份模板我一直在用，套上去之后，Claude 第一次输出就能跑的概率比随手一句话高得多。不是模板有魔法，是它逼着你把五个技巧全用上了：动词开头、上下文加原因、格式定死、示例给足、验证标准说清。</p>
+<h2 id="verdict">我的 verdict</h2>
+<p>提示词工程没有玄学，就五句话：</p>
+<ol>
+<li><strong>动词开头</strong>，说清楚你要什么输出。</li>
+<li><strong>上下文加原因</strong>，让 Claude 知道为谁而写、为什么。</li>
+<li><strong>格式先定死</strong>，用正向描述，别用否定。</li>
+<li><strong>示例胜过描述</strong>，风格和契约贴出来。</li>
+<li><strong>小步迭代</strong>，先跑起来再收紧，报错原样贴回去。</li>
+</ol>
+<p>记住一个底线：Claude 不是读心术士，它是你手下最能干但也最需要明确指令的工程师。指令越明确，它回馈你的质量越高。反过来，你含糊，它就只能猜，而猜错的成本最后都算在你头上。</p>
+<hr />
+<p><em>技巧整理自 Anthropic 官方提示词指南与实测经验，截至 2026 年 10 月。模型版本更新后个别行为可能有变，以实际效果为准。</em></p>
+<h2 id="_4">相关指南</h2>
+<ul>
+<li><a href="/guides/cursor-vs-windsurf.html">Cursor vs Windsurf 深度对比：2026 年到底选哪个 AI 编程工具？</a></li>
+<li><a href="/guides/claude-code-workflow.html">Claude Code 高效工作流：从安装到第一个 PR</a></li>
+<li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li>
+<li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li>
+<li><a href="/guides/codex-agent-mode.html">Codex Agent 模式：让 AI 自主完成多文件重构</a></li>
+</ul>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li><li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li><li><a href="/guides/codex-agent-mode.html">Codex Agent 模式：让 AI 自主完成多文件重构</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
