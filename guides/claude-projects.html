@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Projects 知识库：把项目文档喂给 Claude，回答不再瞎编 - 互联网指南</title>
+<meta name="description" content="Claude Projects 用法全指南：创建项目、写指令、上传文档，让 Claude 每次回答都基于你的资料，不用反复贴上下文。">
+<meta property="og:title" content="Claude Projects 知识库：把项目文档喂给 Claude，回答不再瞎编 - 互联网指南"><meta property="og:description" content="Claude Projects 用法全指南：创建项目、写指令、上传文档，让 Claude 每次回答都基于你的资料，不用反复贴上下文。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Projects 知识库：把项目文档喂给 Claude，回答不再瞎编 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 上手教程</div>
+    <h1>Claude Projects 知识库：把项目文档喂给 Claude，回答不再瞎编</h1>
+    <div class="meta"><time>发布于 2026-10-24</time><span class="difficulty">新手</span><a class="tag" href="/guides/">Claude</a><a class="tag" href="/guides/">Claude Projects</a><a class="tag" href="/guides/">知识库</a><a class="tag" href="/guides/">提示词</a></div>
+  </header>
+  <div class="post-body">
+<p>你是不是也遇到过这种情况：每次跟 Claude 聊天，都要先贴一遍背景资料——公司介绍、产品文档、品牌规范、过往案例。贴少了它瞎编，贴多了占上下文，聊两轮就忘了前面说的。</p>
+<p>跟你有啥关系：Claude Projects 就是解决这个问题的。建一次项目，把指令和文档都放进去，之后每次在这个项目里开新对话，Claude 自动带着这些上下文，不用你重复贴。我试了一下，写周报、回客户、做内容，以前每次要贴 500 字背景，现在直接开聊，回答还更准。</p>
+<h2 id="claude-projects">Claude Projects 是什么</h2>
+<p>跟你有啥关系：简单说，Projects 是 claude.ai 里的一个工作区。一个项目 = 一套自定义指令 + 一堆参考文档 + 这个项目下的所有对话。每次在这个项目里开新对话，Claude 都会先读指令和文档，再回答你。</p>
+<p>它和普通对话的区别就一句话：普通对话每次从零开始，项目对话每次带着你的资料开始。</p>
+<p>Projects 目前在 Claude 的网页版、桌面版和手机 App 里都能用，免费版和付费版都可以用（免费版的项目数量和文档容量有限制，具体以官网为准）。</p>
+<h2 id="claude-projects_1">Claude Projects 怎么创建</h2>
+<p>跟你有啥关系：整个过程不到 5 分钟，建好一次，之后每次都省事。</p>
+<h3 id="1">第 1 步：新建项目</h3>
+<p>打开 claude.ai，左侧边栏找到 Projects，点 New Project。起个一眼能看懂的名字，比如"周报助手""客服回复""产品文档问答"。注意：项目名字 Claude 是看不到的，它只读指令和文档，所以名字是给你自己看的，起清楚点。</p>
+<h3 id="2">第 2 步：写项目指令</h3>
+<p>点 Set project instructions，写下这个项目的规则。这是整个项目最重要的一步，指令写得越具体，Claude 回答得越准。</p>
+<p>一个好用的指令模板是这样的：</p>
+<pre><code>你帮我写客户咨询回复，我是做 [你的业务] 的，服务 [你的客户群体]，在 [你的城市/地区]。
+
+每次回复必须：
+- 先用对方的名字称呼
+- 直接回答对方实际问的问题，不要绕
+- 附上我的下一步行动或预约链接：[链接]
+- 控制在 150 字以内
+
+语气：友好、直接，像跟邻居说话。
+
+不要用：[你讨厌的词或句式]
+
+参考我上传的过往邮件，学我的写法。
+</code></pre>
+<p>我试了一下，指令里最有用的三类话：一是你是谁、服务谁；二是每次回答必须做什么、不许做什么；三是语气和格式要求。写得越像给新员工的入职说明，效果越好。</p>
+<h3 id="3">第 3 步：上传参考文档</h3>
+<p>点上传，把 Claude 每次都需要参考的资料放进去：品牌规范、产品价格表、常见问题、过往写得好的邮件或文章、项目文档。支持 PDF、Word、纯文本等常见格式。</p>
+<p>有个坑要注意：上传的文件不是越多越好。放 3-5 份最核心的资料就行，放一堆边角料反而会让 Claude 抓不住重点。价格表、政策文档这种"事实类"资料最值得上传，因为 Claude 最容易在这类问题上瞎编。</p>
+<h3 id="4">第 4 步：在项目里开对话</h3>
+<p>回到项目里点 New Chat，开始聊。这个对话会自动带上你的指令和文档，不用再贴背景。聊完之后，这个对话会留在项目里，下次还能翻出来继续。</p>
+<h2 id="claude-projects_2">Claude Projects 用法：三个真实场景</h2>
+<p>跟你有啥关系：光讲概念没用，我直接说三个我试过、确实省事的用法。</p>
+<h3 id="_1">场景一：写重复性邮件</h3>
+<p>我以前每次回客户咨询，都要先贴一遍公司介绍和服务范围。现在建了个"客户回复"项目，指令里写好业务介绍、语气、字数限制，文档里上传了 5 封以前写得好的回复。之后每次有新咨询，直接把客户原话贴进去，说"按我的风格回一封"，出来的草稿改两三个词就能发。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<p>省事的关键：指令里写"参考我上传的邮件，学我的写法"，Claude 会模仿你的语气和结构，而不是写一封放之四海而皆准的模板。</p>
+<h3 id="_2">场景二：产品文档问答</h3>
+<p>把产品说明书、价格表、售后政策上传到一个项目里，之后不管是自己查还是帮同事查，直接问"这个型号保修几年""那个套餐包含什么"，Claude 会去文档里找答案，而不是凭印象编一个。</p>
+<p>但要注意：Claude 引用文档时偶尔也会张冠李戴，重要的数字（价格、日期、保修期）发出去之前，还是去原文里核对一眼。这个习惯不能省。</p>
+<h3 id="_3">场景三：内容创作的风格库</h3>
+<p>写公众号、写日报、写技术文章的人，可以建一个"我的写作"项目，上传 10 篇自己写得最好的文章，指令里写清楚受众、结构、禁忌。之后每次起草新文章，Claude 的语气和结构都会往你的风格上靠，改稿的工作量小很多。</p>
+<h2 id="claude-projects-5">Claude Projects 的 5 个实用技巧</h2>
+<p>跟你有啥关系：这几个是我踩过坑之后总结的，能帮你少走弯路。</p>
+<h3 id="1_1">1. 指令用结构化标签</h3>
+<p>Anthropic 官方推荐用 XML 风格的标签来组织指令，比如 <code>&lt;role&gt;</code>、<code>&lt;style&gt;</code>、<code>&lt;context&gt;</code>。我试了一下，确实比一大段平铺直叙好读，Claude 也不容易漏掉某一部分：</p>
+<pre><code>&lt;role&gt;
+你是我的客服回复助手，服务一家本地摄影工作室。
+&lt;/role&gt;
+
+&lt;style&gt;
+- 语气友好直接，不用敬语堆砌
+- 每封回复不超过 150 字
+&lt;/style&gt;
+
+&lt;context&gt;
+- 服务范围：婚礼跟拍、证件照、产品摄影
+- 预约链接：[链接]
+&lt;/context&gt;
+</code></pre>
+<h3 id="2_1">2. 指令改一次，全项目生效</h3>
+<p>项目指令不是一次性的。每次你发现 Claude 老犯同一个毛病——比如总用你不喜欢的词、总漏掉预约链接——直接去改指令，加一行"不要用 XX""每次必须附上链接"。改完之后，这个项目里的所有新对话都会按新规则来，不用每个对话单独纠正。</p>
+<h3 id="3_1">3. 文档要定期清理</h3>
+<p>项目里的文档不是放进去就完事了。价格变了、政策改了、产品下架了，记得去更新或删除旧文档。不然 Claude 会拿着过期资料给你一本正经地编答案，比不知道更麻烦。</p>
+<h3 id="4_1">4. 一个项目只干一件事</h3>
+<p>不要建一个"万能助手"项目，什么文档都往里塞。客服一个项目、写作用一个项目、产品问答一个项目。项目越聚焦，Claude 的回答越准。我试过把客服和写作塞进一个项目，结果两边都串味。</p>
+<h3 id="5">5. 敏感信息别上传</h3>
+<p>合同、身份证、银行卡、内部未公开数据，不要上传到 Projects。Claude Projects 是方便，但不是保险柜。只放那些"公开了也没事"的业务资料。</p>
+<h2 id="claude-projects_3">Claude Projects 的局限</h2>
+<p>跟你有啥关系：别指望它解决所有问题，这几个边界要清楚。</p>
+<ul>
+<li><strong>不是联网搜索</strong>：Projects 里的 Claude 只认你上传的文档，不会自己去网上查最新信息。问它"今天股价多少"这种实时问题，它答不出来。</li>
+<li><strong>文档有容量限制</strong>：免费版和付费版的上传数量、单个文件大小都有上限，大文件要先拆小或提炼摘要再上传。</li>
+<li><strong>引用不一定准</strong>：它说"根据你的文档第 X 页"，不一定真的来自那一页，关键数字还是要核对原文。</li>
+<li><strong>不等于 Claude Code 的记忆</strong>：Projects 是网页版 Claude 的功能，跟 Claude Code 的 CLAUDE.md 是两套东西。写代码用 CLAUDE.md，写文字、做问答用 Projects，别混了。</li>
+</ul>
+<h2 id="verdict">我的 verdict</h2>
+<p>跟你有啥关系：如果你每周都要重复做同一类文字工作——回邮件、写周报、查产品资料、按固定风格写文章——花 10 分钟建一个 Projects，能省下之后每次贴背景的时间，回答质量也更稳。</p>
+<p>先从一个你最常重复的任务开始建，跑一周看看效果，再决定要不要扩展到别的任务。别一上来建十个项目，先把一个用熟。</p>
+<h2 id="_4">相关指南</h2>
+<ul>
+<li>想系统了解全场选手，可以看《Cursor vs Windsurf 深度对比：2026 年到底选哪个 AI 编程工具？》(/guides/cursor-vs-windsurf.html)</li>
+<li>写代码时的记忆管理看《Claude Code 记忆管理：CLAUDE.md 怎么写，AI 才能记住你的项目规范》(/guides/claude-code-memory.html)</li>
+<li>想学 Claude Code 的完整流程看《Claude Code 高效工作流：从安装到第一个 PR》(/guides/claude-code-workflow.html)</li>
+<li>提示词技巧看《Claude 提示词工程：怎么写才能让它输出直接能跑的代码》(/guides/claude-prompt-engineering.html)</li>
+<li>自定义命令看《Claude Code 自定义命令：Slash Commands 全解析》(/guides/claude-code-slash-commands.html)</li>
+</ul>
+<hr />
+<p><em>功能与界面以 claude.ai 当前版本为准，Anthropic 随时可能调整，操作前以官网为准。本文不含任何厂商赞助。</em></p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/claude-code-workflow.html">Claude Code 高效工作流：从安装到第一个 PR</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

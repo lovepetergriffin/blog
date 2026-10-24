@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>多工具混搭工作流：Claude + Codex + Cursor 一起用，哪个环节用哪个 - 互联网指南</title>
+<meta name="description" content="Claude + Codex + Cursor 混搭实战：哪个环节用哪个工具、怎么交接、怎么避免上下文割裂，一套能直接抄的组合打法。">
+<meta property="og:title" content="多工具混搭工作流：Claude + Codex + Cursor 一起用，哪个环节用哪个 - 互联网指南"><meta property="og:description" content="Claude + Codex + Cursor 混搭实战：哪个环节用哪个工具、怎么交接、怎么避免上下文割裂，一套能直接抄的组合打法。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "多工具混搭工作流：Claude + Codex + Cursor 一起用，哪个环节用哪个 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 进阶技巧</div>
+    <h1>多工具混搭工作流：Claude + Codex + Cursor 一起用，哪个环节用哪个</h1>
+    <div class="meta"><time>发布于 2026-10-24</time><span class="difficulty">进阶</span><a class="tag" href="/guides/">Claude Code</a><a class="tag" href="/guides/">Codex</a><a class="tag" href="/guides/">Cursor</a><a class="tag" href="/guides/">工作流</a><a class="tag" href="/guides/">多工具</a></div>
+  </header>
+  <div class="post-body">
+<p>很多人问我：Claude、Codex、Cursor 到底选哪个？我的答案是：别选，全都要。没有一个工具在所有环节都是最好的，但三个加起来，每个环节都有最顺手的那个。</p>
+<p>跟你有啥关系：我试了几个月混搭之后，结论很清楚——Cursor 管日常写代码，Claude Code 管复杂重构和架构，Codex 管后台批量任务和审查。三个分工明确，效率比只用一个高得多，成本一个月也就 40-60 美元，产出完全对得起这个价。</p>
+<h2 id="_1">三个工具各自最擅长什么</h2>
+<p>跟你有啥关系：先搞清楚分工，后面才知道怎么搭配。</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>最擅长</th>
+<th>不擅长</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cursor</td>
+<td>日常写代码、Tab 补全、单文件改动、可视化 diff 审查</td>
+<td>8 个文件以上的多文件重构、后台批量任务</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>复杂多文件重构、架构分析、严格按计划执行、Agent 团队协作</td>
+<td>实时补全（它没有 Tab 补全）、可视化 diff</td>
+</tr>
+<tr>
+<td>Codex</td>
+<td>后台批量任务、自动化脚本、PR 审查、云端沙箱隔离执行</td>
+<td>需要本地环境交互的任务、精细的可视化编辑</td>
+</tr>
+</tbody>
+</table>
+<p>一句话总结：Cursor 是你的日常编辑器，Claude Code 是你的架构师，Codex 是你的后台工人。三个不是竞争关系，是分工关系。</p>
+<h2 id="_2">混搭工作流怎么分工</h2>
+<p>跟你有啥关系：直接按这个表分工，不用自己摸索。</p>
+<h3 id="cursor">日常开发：Cursor 主力</h3>
+<p>每天 80% 的时间都在 Cursor 里：写新功能、修小 Bug、改单文件、调样式。Tab 补全的速度是其他两个给不了的，写代码的时候 AI 在你打字的时候就给你补全，这种流畅感是终端工具没有的。</p>
+<p>Cursor 的 Composer 也能做多文件改动，但文件一多（超过 8 个），手动确认 diff 的流程就开始拖慢你。这时候就该换工具了。</p>
+<h3 id="claude-code">复杂重构：Claude Code 接手</h3>
+<p>遇到要改 10 个文件以上的重构、架构调整、跨模块的逻辑梳理，关掉 Cursor 的 Composer，打开终端跑 Claude Code。它对多文件任务的处理更稳，Agent 团队能分工协作，严格按计划执行的能力也更强。</p>
+<p>我的做法是：Cursor 里写着日常代码，遇到大重构就切到终端，用 Claude Code 跑，跑完回 Cursor 里看 diff、确认、提交。两个工具操作同一份文件系统，改动是互通的，不用导来导去。</p>
+<h3 id="codex">后台任务：Codex 挂着跑</h3>
+<p>写测试、跑批量重构、生成文档、做 PR 审查、处理 backlog 里的 routine 任务，这些都可以丢给 Codex。它能在云端沙箱里独立跑，不占用你的编辑器，你继续在 Cursor 里写你的代码，等它跑完了回来 review 结果。</p>
+<p>特别适合的场景：下班前丢几个任务给 Codex，第二天早上回来 review 它的 PR。这种"睡觉时间也在干活"的感觉，是另外两个工具给不了的。</p>
+<h3 id="codex_1">审查环节：Codex + 人工</h3>
+<p>PR 开出来之后，先让 Codex 跑一遍自动审查（参考我那篇 Codex 代码审查指南），把逻辑错误、安全问题拦下来。然后人工在 Cursor 里看 diff，重点看业务逻辑和架构设计。这种"AI 初审 + 人工终审"的组合，比纯人工快，比纯 AI 稳。</p>
+<h2 id="_3">一个完整的端到端例子</h2>
+<p>跟你有啥关系：光讲分工太抽象，我直接走一个真实任务给你看。</p>
+<p>假设任务是：给一个电商项目加一个"优惠券"功能，涉及数据库、后端接口、前端页面、测试。</p>
+<h3 id="1-claude-code">第 1 步：规划——Claude Code</h3>
+<p>先不写代码，用 Claude Code 做规划：</p>
+<pre><code>分析一下这个项目，加优惠券功能需要改哪些地方？
+给我一份实现计划，包括数据库、接口、前端、测试四个部分。
+</code></pre>
+<p>Claude Code 会去读代码库，理清楚现有结构，给你一份计划。这一步用 Claude Code 是因为它对代码库的整体理解最深，规划最靠谱。</p>
+<h3 id="2-cursor">第 2 步：写代码——Cursor</h3>
+<p>计划定下来之后，回到 Cursor 里，按计划一个个文件写。Tab 补全帮你快速敲代码，Composer 帮你做小范围的多文件改动。写的时候遇到不确定的地方，直接在 Cursor 里问 AI。</p>
+<h3 id="3-claude-code">第 3 步：复杂部分——Claude Code</h3>
+<p>写到一半发现有个地方要重构：优惠券的计算逻辑要抽出来，涉及 12 个文件。这时候切到 Claude Code：</p>
+<pre><code>把优惠券计算逻辑从各个调用点抽出来，统一放到 src/coupons/calculator.ts，
+所有调用点改成调这个模块，跑测试确认没 break。
+</code></pre>
+<p>Claude Code 处理这种多文件重构比 Cursor 顺手，不用你一个个确认 diff。</p>
+<h3 id="4-codex">第 4 步：测试和审查——Codex</h3>
+<p>代码写完了，丢给 Codex：</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<pre><code>给优惠券模块写单元测试，覆盖正常、边界、异常三种情况
+</code></pre>
+<p>同时 Codex 的自动审查已经在 PR 上跑了，把逻辑错误和安全问题先拦一遍。</p>
+<h3 id="5-cursor">第 5 步：终审——人工 + Cursor</h3>
+<p>你回到 Cursor 里，看最终 diff，重点看业务逻辑对不对（满 100 减 10 有没有写成满 100 减 20）、架构合不合理。确认没问题，合并。</p>
+<p>整个流程下来，每个工具都在它最擅长的环节上，没有哪个工具被硬逼着干不擅长的事。</p>
+<h2 id="_4">怎么避免上下文割裂</h2>
+<p>跟你有啥关系：三个工具一起用最大的坑，就是每个工具都有自己的规则文件，改一个地方要改三个地方。</p>
+<h3 id="agentsmd">统一规则文件：AGENTS.md</h3>
+<p>三个工具各自认的规则文件不一样：Claude Code 认 CLAUDE.md，Cursor 认 .cursorrules，Codex 认 AGENTS.md。解决办法是：以 AGENTS.md 作为唯一标准，Claude Code 的 CLAUDE.md 做成 AGENTS.md 的软链接或者 import，Cursor 的规则也指向同一份。</p>
+<p>这样改一次规则，三个工具都生效，不会各说各话。AGENTS.md 现在已经是开放标准，OpenAI、Cursor、Anthropic 都认，用它做标准是最稳的。</p>
+<h3 id="_5">交接的时候说清楚</h3>
+<p>从一个工具切到另一个工具的时候，花 30 秒写一句交接说明：</p>
+<pre><code># 从 Cursor 切到 Claude Code 时
+刚才在 Cursor 里已经写了优惠券的前端页面，文件在 src/pages/coupons/，
+现在需要你做后端接口，接口规范在 docs/api.md 里。
+
+# 从 Claude Code 切到 Codex 时
+重构已经完成，测试还没写，帮我给 src/coupons/ 写单元测试。
+</code></pre>
+<p>别指望工具之间能自动同步上下文，你主动交接一句，比让它自己猜要靠谱得多。</p>
+<h3 id="git">Git 是最终的同步点</h3>
+<p>三个工具操作的是同一份文件系统，Git 提交就是同步点。每个工具做完一个阶段就提交一次，commit message 写清楚做了什么，下一个工具接手的时候先看 git log 就知道前因后果。</p>
+<h2 id="_6">成本怎么算</h2>
+<p>跟你有啥关系：三个都订阅会不会很贵？算笔账就清楚了。</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>基础档</th>
+<th>月成本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cursor Pro</td>
+<td>$20/月</td>
+<td>$20</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>按量或订阅，约 $20/月起</td>
+<td>$20</td>
+</tr>
+<tr>
+<td>Codex</td>
+<td>Plus 档约 $20/月</td>
+<td>$20</td>
+</tr>
+<tr>
+<td>合计</td>
+<td></td>
+<td>约 $40-60/月</td>
+</tr>
+</tbody>
+</table>
+<p>对大多数开发者来说，这个成本完全对得起效率提升。但如果预算紧张，优先保两个：Cursor + Claude Code 是最常见的组合，覆盖了日常开发和复杂任务；Codex 可以等有批量任务需求的时候再加。</p>
+<h2 id="_7">常见组合推荐</h2>
+<p>跟你有啥关系：直接按你的情况对号入座。</p>
+<h3 id="cursor-claude-code">组合一：Cursor + Claude Code（最常见）</h3>
+<p>适合：每天写代码，偶尔做大重构。Cursor 管日常，Claude Code 管复杂任务。这是最省钱、最主流的组合。</p>
+<h3 id="cursor-codex">组合二：Cursor + Codex</h3>
+<p>适合：日常开发 + 大量后台任务。Cursor 写代码，Codex 在后台跑测试、写文档、做审查。适合 backlog 比较多的团队。</p>
+<h3 id="claude-code-codex">组合三：Claude Code + Codex</h3>
+<p>适合：终端重度用户，不怎么用 IDE。Claude Code 做需要深度理解的任务，Codex 做定义清晰的批量任务。适合资深开发者。</p>
+<h3 id="_8">组合四：三个全上</h3>
+<p>适合：全职开发者、团队主力、独立开发者。每个环节都有最优工具，效率最高，成本也最高。适合靠写代码吃饭的人。</p>
+<h2 id="verdict">我的 verdict</h2>
+<p>跟你有啥关系：别再纠结"选哪个"了，三个工具不是单选题，是组合题。先从 Cursor + Claude Code 开始，跑顺了之后，根据你的任务类型决定要不要加 Codex。</p>
+<p>记住分工口诀：Cursor 写日常，Claude Code 搞架构，Codex 跑后台。每个工具都在它最擅长的地方，效率自然就上去了。</p>
+<p>成本一个月 40-60 美元，换来的是每天省下 1-2 小时的重复劳动，这笔账怎么算都划算。</p>
+<h2 id="_9">相关指南</h2>
+<ul>
+<li>想系统了解全场选手，可以看《Cursor vs Windsurf 深度对比：2026 年到底选哪个 AI 编程工具？》(/guides/cursor-vs-windsurf.html)</li>
+<li>完整流程看《Claude Code 高效工作流：从安装到第一个 PR》(/guides/claude-code-workflow.html)</li>
+<li>终端技巧看《Codex CLI 实战：终端里用 AI 写代码的 10 个技巧》(/guides/codex-cli-tips.html)</li>
+<li>提示词技巧看《Claude 提示词工程：怎么写才能让它输出直接能跑的代码》(/guides/claude-prompt-engineering.html)</li>
+<li>自定义命令看《Claude Code 自定义命令：Slash Commands 全解析》(/guides/claude-code-slash-commands.html)</li>
+<li>Agent 模式看《Codex Agent 模式：让 AI 自主完成多文件重构》(/guides/codex-agent-mode.html)</li>
+<li>代码审查看《Codex 代码审查：用 AI 做 PR Review，抓 Bug 比人工快》(/guides/codex-code-review.html)</li>
+<li>记忆管理看《Claude Code 记忆管理：CLAUDE.md 怎么写，AI 才能记住你的项目规范》(/guides/claude-code-memory.html)</li>
+<li>MCP 配置看《Claude Code + MCP：接数据库、接 API，让 Claude 能动手干活》(/guides/claude-code-mcp.html)</li>
+<li>知识库用法看《Claude Projects 知识库：把项目文档喂给 Claude，回答不再瞎编》(/guides/claude-projects.html)</li>
+</ul>
+<hr />
+<p><em>价格与功能以各厂商当前版本为准，随时可能调整，订阅前以官网为准。本文不含任何厂商赞助。</em></p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li><li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li><li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li><li><a href="/guides/codex-agent-mode.html">Codex Agent 模式：让 AI 自主完成多文件重构</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

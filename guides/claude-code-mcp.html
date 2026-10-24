@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code + MCP：接数据库、接 API，让 Claude 能动手干活 - 互联网指南</title>
+<meta name="description" content="Claude Code MCP 配置全指南：.mcp.json 写法、claude mcp add 命令、数据库与 API 实战，让 Claude 直接查库调接口。">
+<meta property="og:title" content="Claude Code + MCP：接数据库、接 API，让 Claude 能动手干活 - 互联网指南"><meta property="og:description" content="Claude Code MCP 配置全指南：.mcp.json 写法、claude mcp add 命令、数据库与 API 实战，让 Claude 直接查库调接口。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Code + MCP：接数据库、接 API，让 Claude 能动手干活 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 进阶技巧</div>
+    <h1>Claude Code + MCP：接数据库、接 API，让 Claude 能动手干活</h1>
+    <div class="meta"><time>发布于 2026-10-24</time><span class="difficulty">进阶</span><a class="tag" href="/guides/">Claude Code</a><a class="tag" href="/guides/">MCP</a><a class="tag" href="/guides/">数据库</a><a class="tag" href="/guides/">API</a><a class="tag" href="/guides/">配置</a></div>
+  </header>
+  <div class="post-body">
+<p>Claude Code 本身只能读写文件、跑命令。但很多真实任务需要它去查数据库、调 API、翻 GitHub、搜文档——这些它本来做不到。MCP（Model Context Protocol）就是给它接外设的插口。</p>
+<p>跟你有啥关系：配好 MCP 之后，你可以直接跟 Claude 说"查一下 users 表里昨天注册的用户""去 GitHub 上看看那个 issue 的最新评论"，它真的会去查、去调，而不是让你先把数据复制粘贴给它。我试了一下，配好数据库 MCP 之后，查数据、写报表这类活，基本不用我手动导数据了。</p>
+<h2 id="mcp">MCP 是什么</h2>
+<p>跟你有啥关系：一句话，MCP 是 Anthropic 定的开放协议，让 AI 工具能以统一的方式调用外部服务。你可以把它理解成"AI 的 USB 接口"：数据库、API、文件系统、浏览器，每个服务只要提供一个 MCP 服务器，Claude Code 就能插上去用。</p>
+<p>MCP 服务器有两种连接方式：</p>
+<ul>
+<li><strong>stdio</strong>：本地启动一个进程，通过标准输入输出通信。适合本地工具，比如数据库、本地文件。</li>
+<li><strong>HTTP</strong>：通过网址连接远程服务。适合云端 API，比如 GitHub、Notion、第三方服务。</li>
+</ul>
+<p>你不用深究协议细节，会配就行。</p>
+<h2 id="claude-code-mcp">Claude Code MCP 配置：三种位置</h2>
+<p>跟你有啥关系：配错位置是新手最常见的坑，先把这个搞清楚。</p>
+<p>Claude Code 读 MCP 配置有三个位置：</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>文件</th>
+<th>适用范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>项目级</td>
+<td>项目根目录的 <code>.mcp.json</code></td>
+<td>整个团队共享，适合数据库、内部 API 这种团队都要用的服务</td>
+</tr>
+<tr>
+<td>用户级</td>
+<td><code>~/.claude.json</code>（注意不是 <code>~/.claude/claude.json</code>）</td>
+<td>只对你个人生效，所有项目都能用</td>
+</tr>
+<tr>
+<td>设置文件</td>
+<td><code>.claude/settings.json</code> 里的 <code>mcpServers</code> 字段</td>
+<td>也可以放，但一般用前两个就够了</td>
+</tr>
+</tbody>
+</table>
+<p>优先级是项目级 &gt; 用户级。团队共享的服务放项目级（可以提交到 git），你个人用的工具放用户级。</p>
+<p>一个容易踩的坑：<code>~/.claude.json</code> 是家目录下的一个文件，不是 <code>~/.claude/</code> 目录里的文件。我第一次配的时候就找错了地方，浪费了半小时。</p>
+<h2 id="mcp_1">MCP 服务器怎么配置：两种方法</h2>
+<p>跟你有啥关系：有命令行和手写配置文件两种路子，命令行快，配置文件灵活。</p>
+<h3 id="claude-mcp-add">方法一：claude mcp add 命令（推荐新手）</h3>
+<p>最快的方式是直接用命令加：</p>
+<pre><code class="language-bash"># 加一个 stdio 服务器（本地数据库）
+claude mcp add postgres -- npx -y @modelcontextprotocol/server-postgres
+
+# 加一个 HTTP 服务器（远程 API）
+claude mcp add github --transport http https://mcp.github.com
+
+# 指定作用域：user 是全局，project 是项目级
+claude mcp add github --scope user --transport http https://mcp.github.com
+</code></pre>
+<p>作用域的 <code>--scope</code> 有三个值：<code>local</code>（默认，只对你、只在当前项目）、<code>project</code>（写进 <code>.mcp.json</code>，团队共享）、<code>user</code>（全局，所有项目）。注意一个反直觉的点：<code>local</code> 指的是作用域，不是文件位置，local 的服务器其实也存在 <code>~/.claude.json</code> 里。</p>
+<p>加完之后用 <code>claude mcp list</code> 看一眼，确认服务器状态是正常，不是 Pending approval。项目级的 <code>.mcp.json</code> 服务器第一次运行时，Claude Code 会让你确认批准，批准之后才能用。</p>
+<h3 id="mcpjson">方法二：手写 .mcp.json</h3>
+<p>想精细控制，就直接写配置文件。项目根目录建一个 <code>.mcp.json</code>：</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;github&quot;: {
+      &quot;type&quot;: &quot;http&quot;,
+      &quot;url&quot;: &quot;https://mcp.github.com&quot;,
+      &quot;headers&quot;: {
+        &quot;Authorization&quot;: &quot;Bearer ${GITHUB_TOKEN}&quot;
+      }
+    },
+    &quot;filesystem&quot;: {
+      &quot;type&quot;: &quot;stdio&quot;,
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@modelcontextprotocol/server-filesystem&quot;, &quot;/Users/you/projects&quot;],
+      &quot;env&quot;: {}
+    },
+    &quot;postgres&quot;: {
+      &quot;type&quot;: &quot;stdio&quot;,
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@modelcontextprotocol/server-postgres&quot;],
+      &quot;env&quot;: {
+        &quot;POSTGRES_CONNECTION_STRING&quot;: &quot;${DATABASE_URL}&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>关键规矩：<strong>密钥永远用 <code>${变量名}</code> 引用环境变量，不要直接写进配置文件</strong>。<code>.mcp.json</code> 是要提交到 git 的，硬编码 token 等于把钥匙贴在门口。我试过一次差点把 token 提交上去，幸好提交前检查了一眼。</p>
+<h2 id="_1">实战一：接数据库</h2>
+<p>跟你有啥关系：这是最常见的 MCP 用法，查数据不用再手动导 CSV 了。</p>
+<p>以 PostgreSQL 为例，先装服务器：</p>
+<pre><code class="language-bash">npx -y @modelcontextprotocol/server-postgres
+</code></pre>
+<p>然后在 <code>.mcp.json</code> 里配好连接串（用环境变量）：</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;postgres&quot;: {
+      &quot;type&quot;: &quot;stdio&quot;,
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@modelcontextprotocol/server-postgres&quot;],
+      &quot;env&quot;: {
+        &quot;POSTGRES_CONNECTION_STRING&quot;: &quot;${DATABASE_URL}&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>配好之后，在 Claude Code 里直接说：</p>
+<pre><code>查一下 users 表，昨天注册的用户有多少，按渠道分组
+</code></pre>
+<p>Claude 会通过 MCP 调数据库，跑查询，把结果拿回来分析。你还可以接着说"把这个结果写成一份日报"，它能一口气做完。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<p>但要注意权限：给 MCP 的数据库账号只给只读权限，别给写权限。不然 Claude 一个手滑 <code>DELETE</code> 错了表，你哭都来不及。我自己的做法是专门建一个只读账号给 MCP 用，写操作一律我手动来。</p>
+<h2 id="api">实战二：接 API 和第三方服务</h2>
+<p>跟你有啥关系：GitHub、Notion、Slack 这些服务都有现成的 MCP 服务器，接上就能用。</p>
+<p>以 GitHub 为例：</p>
+<pre><code class="language-bash">claude mcp add github --transport http https://mcp.github.com
+</code></pre>
+<p>接上之后，你可以说：</p>
+<pre><code>看看我那个仓库最新 open 的 issue，有没有带 bug 标签的
+帮我把这个 PR 的评论整理成一份摘要
+</code></pre>
+<p>Claude 会去调 GitHub API，把 issue、评论拉回来。比你自己一个个点开看快得多。</p>
+<p>常用的现成 MCP 服务器还有：</p>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filesystem</td>
+<td>让 Claude 访问指定目录之外的文件</td>
+</tr>
+<tr>
+<td>postgres / sqlite</td>
+<td>查数据库</td>
+</tr>
+<tr>
+<td>github</td>
+<td>查 issue、PR、评论</td>
+</tr>
+<tr>
+<td>brave-search</td>
+<td>联网搜索</td>
+</tr>
+<tr>
+<td>playwright</td>
+<td>操作浏览器、做自动化</td>
+</tr>
+</tbody>
+</table>
+<p>找服务器有个好去处：去搜 MCP 服务器目录，或者直接问 Claude"有没有 XX 服务的 MCP 服务器"，它一般能给你指路。</p>
+<h2 id="claude-mcp">实战三：让 Claude 在脚本里用 MCP</h2>
+<p>跟你有啥关系：不只是交互式对话，写脚本、跑 CI 的时候也能用 MCP。</p>
+<p>非交互模式下，用 <code>--mcp-config</code> 指定配置文件，用 <code>--allowedTools</code> 放行 MCP 工具：</p>
+<pre><code class="language-bash">claude -p &quot;查一下数据库里订单量最大的前 10 个用户&quot; \
+  --mcp-config ./.mcp.json \
+  --allowedTools &quot;mcp__postgres__*&quot;
+</code></pre>
+<p>工具名的格式是 <code>mcp__服务器名__工具名</code>，比如 <code>mcp__postgres__query</code>。用通配符 <code>mcp__postgres__*</code> 就是放行这个服务器的全部工具。</p>
+<p>CI 里用的时候注意：密钥要放在 CI 的 secrets 里，通过环境变量传进去，不要写进配置文件。这个前面说过，再强调一次。</p>
+<h2 id="mcp-5">MCP 配置的 5 个避坑清单</h2>
+<p>跟你有啥关系：这几个坑我都踩过，提前告诉你能省不少时间。</p>
+<h3 id="1">1. 密钥不要硬编码</h3>
+<p>前面说过，用 <code>${变量名}</code>。提交前用 <code>git diff</code> 检查一遍，确认没有 token 混进去。</p>
+<h3 id="2">2. 项目级服务器要先批准</h3>
+<p><code>.mcp.json</code> 里的服务器第一次运行时，Claude Code 会问你要不要批准，批准之前 <code>claude mcp list</code> 里显示的是 Pending approval。别以为配完就能直接用，先跑一次批准。</p>
+<h3 id="3">3. 路径要用绝对路径或相对项目根目录</h3>
+<p>stdio 服务器的命令参数里如果涉及文件路径，Claude Code 是相对于 <code>.mcp.json</code> 所在位置解析的。写相对路径没问题，但要确认是相对于项目根目录，不是相对于你当前终端的目录。</p>
+<h3 id="4-mcp">4. 别给 MCP 太大权限</h3>
+<p>数据库只读、文件系统只限定在项目目录、API token 只给最小权限。MCP 是给 Claude 开的口子，口子越大，误操作的风险越大。</p>
+<h3 id="5">5. 服务器挂了先看日志</h3>
+<p>某个 MCP 工具突然不能用了，先跑 <code>claude mcp list</code> 看状态，再检查服务器进程是不是挂了、环境变量是不是没传进去。大多数问题都是环境变量没设置或者命令写错了，不是 MCP 本身的问题。</p>
+<h2 id="verdict">我的 verdict</h2>
+<p>跟你有啥关系：MCP 是 Claude Code 从"能写代码"到"能干活"的关键一步。先从一个最痛的场景开始——对我来说是查数据库——配一个服务器跑通，尝到甜头之后，再慢慢往上加。</p>
+<p>别一上来配十个服务器，先把一个用熟，权限收紧，再扩展。MCP 配得好，Claude 就像多了几双手；配得糙，就是给自己埋雷。</p>
+<h2 id="_2">相关指南</h2>
+<ul>
+<li>想系统了解全场选手，可以看《Cursor vs Windsurf 深度对比：2026 年到底选哪个 AI 编程工具？》(/guides/cursor-vs-windsurf.html)</li>
+<li>记忆管理看《Claude Code 记忆管理：CLAUDE.md 怎么写，AI 才能记住你的项目规范》(/guides/claude-code-memory.html)</li>
+<li>完整流程看《Claude Code 高效工作流：从安装到第一个 PR》(/guides/claude-code-workflow.html)</li>
+<li>自定义命令看《Claude Code 自定义命令：Slash Commands 全解析》(/guides/claude-code-slash-commands.html)</li>
+<li>知识库用法看《Claude Projects 知识库：把项目文档喂给 Claude，回答不再瞎编》(/guides/claude-projects.html)</li>
+</ul>
+<hr />
+<p><em>配置路径与命令以 Claude Code 当前版本为准，Anthropic 随时可能调整，操作前以官方文档为准。本文不含任何厂商赞助。</em></p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li><li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li><li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li><li><a href="/guides/codex-agent-mode.html">Codex Agent 模式：让 AI 自主完成多文件重构</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

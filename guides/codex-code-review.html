@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex 代码审查：用 AI 做 PR Review，抓 Bug 比人工快 - 互联网指南</title>
+<meta name="description" content="Codex 代码审查实战：本地 /review、GitHub 自动审查、CI 集成，讲清它擅长抓什么、会漏什么、怎么搭配人工审查。">
+<meta property="og:title" content="Codex 代码审查：用 AI 做 PR Review，抓 Bug 比人工快 - 互联网指南"><meta property="og:description" content="Codex 代码审查实战：本地 /review、GitHub 自动审查、CI 集成，讲清它擅长抓什么、会漏什么、怎么搭配人工审查。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Codex 代码审查：用 AI 做 PR Review，抓 Bug 比人工快 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 进阶技巧</div>
+    <h1>Codex 代码审查：用 AI 做 PR Review，抓 Bug 比人工快</h1>
+    <div class="meta"><time>发布于 2026-10-24</time><span class="difficulty">进阶</span><a class="tag" href="/guides/">Codex</a><a class="tag" href="/guides/">代码审查</a><a class="tag" href="/guides/">PR Review</a><a class="tag" href="/guides/">GitHub</a><a class="tag" href="/guides/">CI</a></div>
+  </header>
+  <div class="post-body">
+<p>PR Review 是个苦活： diff 一长就看不下去，看到后面忘了前面，安全问题、边界条件、性能坑，最容易在疲劳的时候漏掉。Codex 做 PR Review 的价值就在这儿——它不疲劳，diff 再长也能一行行看过去。</p>
+<p>跟你有啥关系：我试了一下，把 Codex 接进 Review 流程之后，低级 Bug 和安全问题基本在人工 Review 之前就被拦下来了，人工只需要看架构和业务逻辑这种 AI 不好判断的东西。但前提是你得知道它擅长什么、会漏什么，不然要么过度信任、要么觉得它没用。</p>
+<h2 id="codex">Codex 代码审查的三种用法</h2>
+<p>跟你有啥关系：根据你的场景选一种，不用全上。</p>
+<h3 id="review">用法一：本地 /review（最快上手）</h3>
+<p>装好 Codex CLI（<code>npm install -g @openai/codex</code>），配好 API key，进项目目录跑 <code>codex</code> 进交互模式，输入 <code>/review</code>，会给你几个选项：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Review uncommitted changes</td>
+<td>提交之前，看一下还没 commit 的改动</td>
+</tr>
+<tr>
+<td>Review against a base branch</td>
+<td>开 PR 之前，对比主分支看整个分支的改动</td>
+</tr>
+<tr>
+<td>Custom review instructions</td>
+<td>指定关注点，比如"只看安全问题"</td>
+</tr>
+</tbody>
+</table>
+<p>我最常用的流程是：写完代码、提交之前，先跑一遍 <code>/review</code> 看未提交的改动；准备开 PR 之前，再跑一遍对主分支的审查。两次加起来不到 5 分钟，能拦下不少低级问题。</p>
+<h3 id="github">用法二：GitHub 自动审查</h3>
+<p>在 codex.openai.com 上，进 Settings → Repositories，给你的仓库打开 Code review， optionally 再打开 Automatic reviews。这样每个新 PR 自动触发 Codex 审查，审查结果直接贴在 PR 下面。</p>
+<p>这个适合团队：不用每个人都记得跑命令，PR 一开审查就自动跑。但要注意，自动审查会消耗 API 额度，小仓库无所谓，大仓库、PR 频繁的团队要留意账单。</p>
+<h3 id="ci">用法三：CI 里跑审查</h3>
+<p>想把审查钉死在流程里，就放进 GitHub Actions。每次 PR 触发，Codex 以只读模式审 diff，把结果写成评论贴回去：</p>
+<pre><code class="language-yaml">name: codex-pr-review
+on: [pull_request]
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - run: npm install -g @openai/codex
+      - name: Review the diff
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          codex exec --sandbox read-only \
+            &quot;Review the diff between origin/main and HEAD for bugs,
+             security issues, and missing error handling.
+             Output a markdown review.&quot; &gt; review.md \
+          || { echo &quot;review failed&quot; &gt;&amp;2; exit 1; }
+      - name: Post review comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with: { path: review.md }
+</code></pre>
+<p>注意两点：CI 里必须用 API key 认证（<code>OPENAI_API_KEY</code>），ChatGPT 订阅登录在 headless 环境下跑不了；沙箱用 <code>read-only</code>，审查不需要写权限，别给多了。</p>
+<h2 id="codex_1">Codex 审查擅长抓什么</h2>
+<p>跟你有啥关系：知道它擅长什么，你才知道该把它放在流程的哪个位置。</p>
+<h3 id="1">1. 逻辑错误和边界条件</h3>
+<p>空指针、数组越界、除零、没处理 null、循环条件写错——这类问题 Codex 抓得很准。因为它真的会去读代码、推理执行路径，而不是只做模式匹配。</p>
+<h3 id="2">2. 安全问题</h3>
+<p>SQL 注入、XSS、命令注入、硬编码密钥、不安全的反序列化、权限检查缺失。给它一个明确的指令，它会专门扫这类问题：</p>
+<pre><code>Focus on security vulnerabilities and SQL injection
+</code></pre>
+<p>用 <code>/review</code> 选 Custom review instructions，输入这句就行。</p>
+<h3 id="3">3. 意图与实现不符</h3>
+<p>PR 描述说"修复了登录超时的 bug"，但 diff 里其实改的是别的东西；或者 PR 说"加了缓存"，但代码里根本没写缓存逻辑。Codex 会对比 PR 描述和 diff，指出这种不一致。这是人工 Review 最容易漏的，因为人往往先看代码、后看描述，或者根本不看描述。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<h3 id="4">4. 性能坑</h3>
+<p>N+1 查询、循环里调接口、大对象深拷贝、没加索引的查询。Codex 对这类问题比较敏感，尤其是在它能看到完整上下文的时候。</p>
+<h2 id="codex_2">Codex 审查会漏什么</h2>
+<p>跟你有啥关系：这部分比上一部分更重要，过度信任 AI 审查比不用更危险。</p>
+<h3 id="1_1">1. 业务逻辑对不对</h3>
+<p>代码逻辑没 Bug，但业务上就是错的——比如优惠券应该满 100 减 10，代码写成了满 100 减 20，逻辑自洽、测试也过，但业务错了。Codex 不知道你的业务规则，这种问题它抓不到。</p>
+<h3 id="2_1">2. 架构和设计问题</h3>
+<p>这个模块是不是应该拆、这个接口设计得合不合理、这个方案以后好不好维护——这些需要经验和上下文判断，Codex 给不出好答案。它能告诉你代码有没有问题，告诉不了你设计对不对。</p>
+<h3 id="3_1">3. 跨服务的影响</h3>
+<p>改了一个接口，不知道下游三个服务都依赖这个接口的旧行为；改了数据库字段，不知道另一个团队的报表在用这个字段。这种跨团队、跨系统的知识不在代码里，Codex 看不到。</p>
+<h3 id="4_1">4. 误报</h3>
+<p>Codex 有时会把"看起来有问题但其实没问题"的代码 flag 出来，比如它不理解某个框架的特殊用法，或者没看到某个防御性检查在别的地方。误报多了，人就会开始忽略它的所有意见——这叫"狼来了"效应。</p>
+<p>我的做法是：Codex 的意见分三档处理——明确的 Bug 和安全问题直接修；拿不准的去代码里核对一眼再决定；明显误报的忽略，但记下来，下次审查时告诉它"这类问题不用再报"。</p>
+<h2 id="_1">一套可落地的审查流程</h2>
+<p>跟你有啥关系：直接抄这个流程，不用自己从零设计。</p>
+<h3 id="_2">个人开发者</h3>
+<ol>
+<li>写完代码，提交之前：<code>codex</code> → <code>/review</code> → Review uncommitted changes，过一遍</li>
+<li>准备开 PR 之前：<code>/review</code> → Review against a base branch，对比主分支再过一遍</li>
+<li>有安全敏感的改动：用 Custom review instructions，指定"只看安全问题"</li>
+<li>修掉它指出的问题，人工再看一遍架构和业务逻辑，然后提交</li>
+</ol>
+<h3 id="_3">小团队</h3>
+<ol>
+<li>仓库打开 GitHub 自动审查，每个 PR 自动跑</li>
+<li>审查结果作为 PR 的"第一道关"，作者先修 Codex 指出的问题，再找人 Review</li>
+<li>人工 Review 的重点放在业务逻辑和架构上，不用再逐行抠 Bug</li>
+<li>每周复盘一次 Codex 的误报，调整审查指令</li>
+</ol>
+<h3 id="_4">大团队 / 关键系统</h3>
+<ol>
+<li>CI 里跑 Codex 审查，作为必过检查</li>
+<li>再加一层跨模型审查：用 Claude Code 写代码，用 Codex 审，两个不同模型家族互相挑毛病，能发现同家族审查看不到的盲点</li>
+<li>人工 Review 仍然是最后一道关，尤其是有架构变动、安全敏感、涉及资金的 PR</li>
+</ol>
+<h2 id="codex_3">Codex 审查的提示词模板</h2>
+<p>跟你有啥关系：直接复制这几个模板，改改就能用。</p>
+<h3 id="_5">通用审查</h3>
+<pre><code>You are acting as a reviewer for a proposed code change made by another engineer.
+Focus on issues that impact correctness, performance, security, maintainability, or developer experience.
+Flag only actionable issues introduced by the pull request.
+When you flag an issue, provide a short, direct explanation and cite the affected file and line range.
+Prioritize severe issues and avoid nit-level comments unless they block understanding of the diff.
+After listing findings, produce an overall correctness verdict (&quot;patch is correct&quot; or &quot;patch is incorrect&quot;) with a concise justification and a confidence score between 0 and 1.
+</code></pre>
+<p>这是 OpenAI 官方推荐的审查提示词结构，我试过，确实比随手写一句"帮我 review 一下"效果好得多。关键是最后那句"给总体 verdict 和置信度"，能帮你快速判断这个 PR 到底能不能合。</p>
+<h3 id="_6">安全专项审查</h3>
+<pre><code>Focus on security vulnerabilities: SQL injection, XSS, command injection,
+hardcoded secrets, missing authorization checks, insecure deserialization.
+Only report issues with concrete exploit paths, not theoretical risks.
+</code></pre>
+<h3 id="_7">性能专项审查</h3>
+<pre><code>Focus on performance issues: N+1 queries, unnecessary API calls in loops,
+large object copies, missing indexes, blocking operations on hot paths.
+</code></pre>
+<h2 id="verdict">我的 verdict</h2>
+<p>跟你有啥关系：Codex 做 PR Review 不是"替代人工"，是"把人工从逐行找 Bug 里解放出来"。它擅长逻辑错误、安全问题、意图不符，弱点是业务逻辑、架构判断、跨系统影响。</p>
+<p>最划算的用法是：个人开发者本地跑 <code>/review</code>，团队开 GitHub 自动审查，关键系统再加 CI 强制检查。人工 Review 的精力省下来，去看那些 AI 看不懂的东西——业务对不对、设计合不合理、这个改动以后好不好维护。</p>
+<p>别把它当裁判，当它是个不知疲倦的初审员。初审过了，终审还是你。</p>
+<h2 id="_8">相关指南</h2>
+<ul>
+<li>想系统了解全场选手，可以看《Cursor vs Windsurf 深度对比：2026 年到底选哪个 AI 编程工具？》(/guides/cursor-vs-windsurf.html)</li>
+<li>Agent 自主干活看《Codex Agent 模式：让 AI 自主完成多文件重构》(/guides/codex-agent-mode.html)</li>
+<li>终端技巧看《Codex CLI 实战：终端里用 AI 写代码的 10 个技巧》(/guides/codex-cli-tips.html)</li>
+<li>完整流程看《Claude Code 高效工作流：从安装到第一个 PR》(/guides/claude-code-workflow.html)</li>
+<li>多工具搭配看《多工具混搭工作流：Claude + Codex + Cursor 一起用，哪个环节用哪个》(/guides/multi-tool-workflow.html)</li>
+</ul>
+<hr />
+<p><em>命令与功能以 Codex 当前版本为准，OpenAI 随时可能调整，操作前以官方文档为准。本文不含任何厂商赞助。</em></p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li><li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li><li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li><li><a href="/guides/codex-agent-mode.html">Codex Agent 模式：让 AI 自主完成多文件重构</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
