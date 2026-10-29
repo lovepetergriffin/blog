@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-14.svg" alt="AI 码力日报 · 2026年10月14日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li>OpenAI 的 GPT-5.5 今天从 ChatGPT、ChatGPT Work 和 Codex 退役：凡是把模型名写死在配置、脚本和定时任务里的，今天不改就会报错；API key 调用不受影响。</li>
 <li>Google 把 Gemini 4 Argon 全面开放给开发者和企业：API 介绍价 $2/$10 每百万 token，11 月 30 日后翻倍到 $4/$20。</li>
 <li>Anthropic 公布反蒸馏防御战果：三层防护让攻击者从 Claude 提取的推理数据下降 90%–99%，已封禁数万个关联账号。</li>
 <li>昨天 Codex 全线（Web/API/CLI/VS Code）在 GPT-6.1 Sol 上性能降级了 8 小时，官方已修复；昨天要是用 Codex 觉得卡，不是你的问题。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="openaigpt-55">OpenAI：GPT-5.5 今天退役，钉版的人抓紧改</h3>
 <p>就是今天，10 月 14 日。GPT-5.5 从 ChatGPT、ChatGPT Work、Codex 三个入口下线——9 月 15 日就宣布了，今天是最后期限。普通聊天会自动切新默认，真正要动手的是这几类人：workspace 默认模型里写了 gpt-5.5 的、自定义 agent 配置里钉死的、定时任务和脚本里硬编码的。今天不改，跑起来就是报错。</p>
 <p>官方迁移指引是切到 GPT-6.1 Sol（Codex 侧）或 GPT-6 Astra。用 API key 的调用不在退役范围内，照常用。顺带一提，Codex 里 GPT-6.1 Sol 的默认上下文已经提到 500k（负责人 10 月 12 日在 X 上宣布的，changelog 还没跟上），长会话被强制压缩的频率会低很多。｜</p>
@@ -61,7 +61,7 @@
 <h3 id="codex-desktop-45-1000-token">社区：Codex Desktop 45 分钟烧掉 1000 万 token，根因找到了</h3>
 <p>官方社区论坛这两天最热的帖子：有用户实测 Codex Desktop 跑 46 分钟，产生了 76 次模型响应、累计 1007 万 token。楼主做了详细的 token 会计，根因指向 code-mode 的 <code>exec</code> 结果绕过了 truncation 策略，而且 context 预估不统计 tool-result 块——界面显示的上下文用量远低于真实消耗，$500 档用户是重灾区。</p>
 <p>昨天（10 月 13 日）Codex 全线还在 GPT-6.1 Sol 上降级了 8 小时（北京时间 16:18 到次日 00:36），官方上了 mitigation 后恢复。两件事叠在一起，昨天用 Codex 的人估计体验都不太好。提醒一句：跑长任务前先看一眼状态页，别在故障窗口里烧额度。｜</p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="qoder-cn-100-creditsqwen38-flash-00">Qoder CN：每天领 100 通用 Credits，Qwen3.8-Flash 持续 0.0× 免费</h3>
 <p>一句话：阿里 Qoder 的双重福利——每天可领 100 通用 Credits（30 天有效、可累积），叠加 Qwen3.8-Flash 模型计费系数 0.0×，调用不扣任何 credits。</p>
 <ul>
@@ -83,7 +83,7 @@
 <li><strong>有效期</strong>：至 2026-10-31（截至撰写时，以客户端内实际页面为准）</li>
 <li><strong>适合谁</strong>：想免费用国产 coding agent 写代码的人</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="vercel-labsskills-agent">vercel-labs/skills：一条命令给所有 agent 装技能</h3>
 <p>一句话介绍：开放 Agent Skills 生态的命令行工具（<code>npx skills</code>），一键从任意 Git 仓库安装可复用的技能包。解决什么问题：Claude Code、Codex、Cursor 等 75+ 种工具的技能格式各异、手动配置繁琐，它把技能的发现、安装、更新、删除统一成一条 CLI。⭐ 约 3.4 万（截至撰写时）。适合：重度用多个 coding agent、想跨工具复用技能库的人。</p>
 <h3 id="lyogavinairllm-28t">lyogavin/airllm：单卡跑起 2.8T 的大模型</h3>

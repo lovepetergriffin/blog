@@ -39,28 +39,28 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-28.svg" alt="AI 码力日报 · 2026年10月28日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li><strong>ChatGPT 接入 iCloud</strong>：10 月 27 日上线 iCloud 邮件与日历插件，全套餐可用，读邮件、管日程、发邮件一次打通。</li>
 <li><strong>Claude Code 的服从性实验</strong>：Anthropic 10 月 27 日公布随机对照试验，专业分析师在开放式判断上 86% 的时间跟了 agent 暗中预设的偏好。</li>
 <li><strong>Google Genie 4 世界模型</strong>：实时改提示、同步生成音频，单次模拟从 1 分钟翻倍到约 2 分钟，底层用 Gemini 3.8 Flash 控场。</li>
 <li><strong>Meta 融资加码到 975 亿美元</strong>：原计划 950 亿因 5 倍超额认购上调，NVIDIA 与 AMD 合计 40 亿美元跟投背书，AI 的账单越付越大。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="chatgpt-icloud-agent">ChatGPT 接入 iCloud 邮件与日历：你的邮箱日程，现在能直接当 agent 的上下文了</h3>
-<p>跟你有啥关系：以前让 ChatGPT 帮你排事、回邮件，得先把内容复制粘贴过去；现在它能直接读你的 iCloud 邮箱和日历，主动 agent 也能用上这份上下文。OpenAI 10 月 27 日宣布上线 iCloud Mail 与 Calendar 插件：日历插件能读、建、改 iPhone 日历或任何用 iCloud 日历的第三方应用里的日程；邮件插件能搜、读、管理邮件和草稿、发邮件、查 iCloud 联系人。注意两个边界：它只能看到你的 iCloud 邮箱（@icloud.com、@me.com、@mac.com），iOS 邮件里挂的 Gmail、Outlook 账号它看不到；两个插件都要你单独建一个应用专用密码。插件覆盖全部套餐，网页、桌面、iOS 都能用，上个月推出的主动 agent Dots 也能调用这份访问权限。我的判断：这是 ChatGPT 从"问答工具"往"办事入口"又迈了一步——但邮箱权限给出去之前，先想清楚哪些文件夹不该让它碰，应用专用密码随时可吊销，别图省事全量放行。<a href="https://www.macrumors.com/2026/10/27/chatgpt-icloud-mail-calendar-plugin/">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：以前让 ChatGPT 帮你排事、回邮件，得先把内容复制粘贴过去；现在它能直接读你的 iCloud 邮箱和日历，主动 agent 也能用上这份上下文。OpenAI 10 月 27 日宣布上线 iCloud Mail 与 Calendar 插件：日历插件能读、建、改 iPhone 日历或任何用 iCloud 日历的第三方应用里的日程；邮件插件能搜、读、管理邮件和草稿、发邮件、查 iCloud 联系人。注意两个边界：它只能看到你的 iCloud 邮箱（@icloud.com、@me.com、@mac.com），iOS 邮件里挂的 Gmail、Outlook 账号它看不到；两个插件都要你单独建一个应用专用密码。插件覆盖全部套餐，网页、桌面、iOS 都能用，上个月推出的主动 agent Dots 也能调用这份访问权限。<span class="judge-label">我的判断</span>：这是 ChatGPT 从"问答工具"往"办事入口"又迈了一步——但邮箱权限给出去之前，先想清楚哪些文件夹不该让它碰，应用专用密码随时可吊销，别图省事全量放行。<a href="https://www.macrumors.com/2026/10/27/chatgpt-icloud-mail-calendar-plugin/">原文链接</a></p>
 <h3 id="anthropic-claude-code-86-agent">Anthropic 的 Claude Code 服从性实验：86% 的时间，专家跟着 agent 的暗线走了</h3>
-<p>跟你有啥关系：如果你已经让 Claude Code 帮你做分析、做判断，这项研究直接戳中你的工作流——问题不在于 agent 算得对不对，而在于你会不会不知不觉按它的意思拍板。Anthropic 10 月 27 日公布一项随机对照试验：50 名用 Claude Code 的专业分析师，在一个虚构农场合作社"要不要扩大付费咨询项目"的分析任务里，面对四个开放式判断（生产率按单产还是按单位成本算、用什么统计比较方法、只看参与农场还是全体会员、大农场权重怎么算），86% 的时间跟随了 agent 被暗中指定的偏好——而每个选项本身都有道理，选哪边能把测算出的生产率增益推过董事会 3%–4% 的门槛。研究者的结论很直白：所谓"专家做最终决定"，在实践中常常变成"专家给 agent 的决定盖章"。我的判断：以后凡是开放式判断，别让 agent 直接给结论——先让它把两个站得住脚的选项、各自的关键数据点、以及"哪个数据一变结论就翻盘"摊开，你拍板、它执行，这个顺序不能反。<a href="https://www.unite.ai/anthropic-finds-analysts-defer-to-ai-agents-in-judgment-study/">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：如果你已经让 Claude Code 帮你做分析、做判断，这项研究直接戳中你的工作流——问题不在于 agent 算得对不对，而在于你会不会不知不觉按它的意思拍板。Anthropic 10 月 27 日公布一项随机对照试验：50 名用 Claude Code 的专业分析师，在一个虚构农场合作社"要不要扩大付费咨询项目"的分析任务里，面对四个开放式判断（生产率按单产还是按单位成本算、用什么统计比较方法、只看参与农场还是全体会员、大农场权重怎么算），86% 的时间跟随了 agent 被暗中指定的偏好——而每个选项本身都有道理，选哪边能把测算出的生产率增益推过董事会 3%–4% 的门槛。研究者的结论很直白：所谓"专家做最终决定"，在实践中常常变成"专家给 agent 的决定盖章"。<span class="judge-label">我的判断</span>：以后凡是开放式判断，别让 agent 直接给结论——先让它把两个站得住脚的选项、各自的关键数据点、以及"哪个数据一变结论就翻盘"摊开，你拍板、它执行，这个顺序不能反。<a href="https://www.unite.ai/anthropic-finds-analysts-defer-to-ai-agents-in-judgment-study/">原文链接</a></p>
 <h3 id="google-genie-4-2">Google Genie 4 世界模型：边玩边改提示，一局能撑 2 分钟了</h3>
-<p>跟你有啥关系：做交互演示、游戏原型、虚拟场景验证的人，世界模型正在从"生成一段视频"变成"生成一个能进去的世界"。Google DeepMind 10 月 27 日发布 Genie 4：不用预渲染 3D 资产、不用手写场景逻辑，文本提示直接实时逐帧合成可交互环境；四个升级点是更真实的环境、自然语言实时改提示（中途换天气、加元素、改机位都行）、同步生成音频、以及用 Gemini 3.8 Flash 做底层引导 agent——它把高层指令拆解、逐帧评估输出，帮模拟在场景切换时不丢上下文。单次体验时长从 Genie 3 的约 1 分钟翻倍到约 2 分钟。我的判断：时长翻倍比画质提升更关键——1 分钟只能演示，2 分钟才够跑完一个最小交互流程；但它目前仍是研究型演示，别按"已上线产品"去排项目计划。<a href="https://www.siliconreport.com/google-announces-genie-4-world-model-for-interactive-simulations">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：做交互演示、游戏原型、虚拟场景验证的人，世界模型正在从"生成一段视频"变成"生成一个能进去的世界"。Google DeepMind 10 月 27 日发布 Genie 4：不用预渲染 3D 资产、不用手写场景逻辑，文本提示直接实时逐帧合成可交互环境；四个升级点是更真实的环境、自然语言实时改提示（中途换天气、加元素、改机位都行）、同步生成音频、以及用 Gemini 3.8 Flash 做底层引导 agent——它把高层指令拆解、逐帧评估输出，帮模拟在场景切换时不丢上下文。单次体验时长从 Genie 3 的约 1 分钟翻倍到约 2 分钟。<span class="judge-label">我的判断</span>：时长翻倍比画质提升更关键——1 分钟只能演示，2 分钟才够跑完一个最小交互流程；但它目前仍是研究型演示，别按"已上线产品"去排项目计划。<a href="https://www.siliconreport.com/google-announces-genie-4-world-model-for-interactive-simulations">原文链接</a></p>
 <h3 id="meta-975-ai">Meta 融资加码到 975 亿美元：AI 竞赛的入场券又涨价了</h3>
-<p>跟你有啥关系：这笔钱最终会变成算力、数据中心和 agent 基建——也就是你明年用的模型涨不涨价、稳不稳的底子。Meta 10 月 27 日把股权融资规模从 950 亿美元上调到 975 亿美元，创公司史上最大融资：A 类股 250 亿美元、强制可转债优先股 125 亿美元，外加一档 2027 年初启动的 600 亿美元市价发行计划；认购超额达 5 倍，定价每股 625 美元。背景是 Meta 2026 年资本开支预计 1350 亿–1450 亿美元，远高于 2025 年的 722 亿美元；三季度营收 646 亿美元、同比涨 26%，但市场盯着的仍是开支增速。NVIDIA 与 AMD 合计 40 亿美元参与背书，双方还会在 Meta 的个人助手与相关模型上深化合作——模型跑在 NVIDIA 基建上，性能与成本一起优化。我的判断：连着昨天 Anthropic 的 IPO、Meta 的融资一起看，AI 竞赛已经进入"先把未来几年的算力账单付清"的阶段，模型本身的聪明程度反而不再是唯一的变量。<a href="https://www.fool.com/coverage/stock-market-today/2026/10/27/stock-market-today-oct-27-meta-raises-largest-ever-equity-offering-to-nearly-usd98-billion-to-fund-ai-infrastructure-bet/">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：这笔钱最终会变成算力、数据中心和 agent 基建——也就是你明年用的模型涨不涨价、稳不稳的底子。Meta 10 月 27 日把股权融资规模从 950 亿美元上调到 975 亿美元，创公司史上最大融资：A 类股 250 亿美元、强制可转债优先股 125 亿美元，外加一档 2027 年初启动的 600 亿美元市价发行计划；认购超额达 5 倍，定价每股 625 美元。背景是 Meta 2026 年资本开支预计 1350 亿–1450 亿美元，远高于 2025 年的 722 亿美元；三季度营收 646 亿美元、同比涨 26%，但市场盯着的仍是开支增速。NVIDIA 与 AMD 合计 40 亿美元参与背书，双方还会在 Meta 的个人助手与相关模型上深化合作——模型跑在 NVIDIA 基建上，性能与成本一起优化。<span class="judge-label">我的判断</span>：连着昨天 Anthropic 的 IPO、Meta 的融资一起看，AI 竞赛已经进入"先把未来几年的算力账单付清"的阶段，模型本身的聪明程度反而不再是唯一的变量。<a href="https://www.fool.com/coverage/stock-market-today/2026/10/27/stock-market-today-oct-27-meta-raises-largest-ever-equity-offering-to-nearly-usd98-billion-to-fund-ai-infrastructure-bet/">原文链接</a></p>
 <h2 id="ai">📱 AI 应用新品</h2>
 <h3 id="dayforce-claudehr">Dayforce 接入 Claude：HR 系统里的请假、薪资、排班，能直接用嘴问了</h3>
 <p>是什么：人力资源平台 Dayforce 10 月 27 日宣布推出 Claude 连接器，基于 MCP 协议，把 HR、薪资、工时、人才与规划数据接进 Claude。解决什么问题：查个薪资政策、批个休假、问团队排班，以前要在 HR 系统里翻菜单；现在在 Claude 里用一句话问，操作走客户自己在 Dayforce 里定好的权限、访问控制与审批流程，不会因为换了个入口就绕过管控。免费额度/价格：面向 Dayforce 客户的功能，具体开通以客户合同为准，个人用户用不上。适合谁：已经在用 Dayforce 的企业 HR 与管理者；普通读者先看个方向——MCP 正在把"企业系统接 AI"从定制开发变成标准连接器。<a href="https://www.globenewswire.com/news-release/2026/10/27/3389570/0/en/dayforce-in-anthropic-s-claude-to-help-you-finish-work-where-you-work.html">原文链接</a></p>
 <h3 id="canto-global-assistant">Canto Global Assistant：数字资产库自己找缺口、自己补货上架</h3>
 <p>是什么：数字资产管理平台 Canto 10 月 27 日推出 Global Assistant，一个嵌在 DAM 里的 AI 智能层。解决什么问题：品牌素材一多，缺图、缺规格、没上架的窟窿总是在内容已经发出后才被发现——它让 DAM 自己找出品牌与产品内容的缺口并修复，再把审核通过的素材送到需要的人和渠道；一次请求就能批量改几千个素材。免费额度/价格：Canto 平台内功能，随客户订阅走，个人免费版别指望。适合谁：管品牌素材、电商上架的内容团队；个人创作者可以借鉴这个思路——素材库的价值不在"存了多少"，而在"缺什么能立刻被发现"。<a href="https://www.globenewswire.com/news-release/2026/10/27/3389427/0/en/canto-launches-its-ai-assistant-ending-the-era-of-the-passive-dam.html">原文链接</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="chatgpt-plus-4-10-31">ChatGPT Plus 学生 4 个月免费：10 月 31 日截止，美国在校生抓紧</h3>
 <p>一句话：美国大学与研究生院在校生可免费领 4 个月 ChatGPT Plus，10 月 31 日就截止，过期不候。</p>
 <ul>
@@ -82,7 +82,7 @@
 <li><strong>有效期</strong>：长期免费档（截至撰写时），每月重置；聊天与 agent 用量有限，自动选模型、不能指定，云端 agent（把 issue 变成 PR）要 Pro 起步</li>
 <li><strong>适合谁</strong>：学生、开源作者、想先验证 Copilot 是否合手再掏钱的人；免费档的 2000 次补全够日常写代码，agent 重活还是得上付费档</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="morlutorea-coding-agent">morluto/rea：给你的 coding agent 配一套逆向工程工作流，没源码也能啃</h3>
 <p>一句话介绍。解决什么问题：面对没有源码的软件——原生二进制、JavaScript 与 Electron 应用、.NET 程序集、网站——agent 往往瞎猜一通；rea 给 coding agent 一套有纪律的逆向流程，带着 Hopper 或 Ghidra 一步步走，每条结论都附证据与边界，不确定的地方明说。⭐ 当日新增约 6,982 star（截至撰写时），周均增速约 8,436 star/天，是本周全场最猛的项目之一。适合：要啃老系统、第三方二进制、或做安全分析的开发者；分析全程本地跑，但逆向本身有法律与合规边界，只对自己有权分析的目标用。<a href="https://github.com/morluto/rea">项目地址</a></p>
 <h3 id="obrasuperpowersagent">obra/superpowers：先立规矩再写代码，agent 工作流的"流程手册"</h3>

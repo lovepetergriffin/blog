@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-07-daily.svg" alt="AI 码力日报 · 2026年10月7日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li><strong>Google 发布 Gemini 4 Argon</strong>：首款 Gemini 4，DeepSWE v1.1 拿下 77.9% 刷新纪录，输出上限提到 100 万 token——先给网络安全研究员用，公开 API 还没影。</li>
 <li><strong>Google Antigravity 收紧第三方模型</strong>：Claude Sonnet/Opus 5.5 只给 Pro/Ultra 付费档，11 月 2 日起免费版彻底断掉第三方模型（含 4.6 系列、GPT-OSS）。</li>
 <li><strong>GitHub Copilot Code Review 默默切了默认档</strong>：9 月 28 日起默认从 Lite 变成 Balanced，审 PR 更贵了，账单记在 PR 作者头上，顺手还出了 REST/GraphQL API。</li>
 <li><strong>羊毛最后机会</strong>：WorkBuddy 国际版 DeepSeek V4.1 免费到 10 月 9 日；Hy4 preview 新用户 14 天免费，10 月 10 日 23:59 前必须先开一次对话；DeepSeek Harness 登录送 6 元体验金。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="google-gemini-4-argon-gemini-4deepswe-779">Google 发布 Gemini 4 Argon：首款 Gemini 4，DeepSWE 77.9% 刷新纪录</h3>
 <p>9 月 30 日 Google DeepMind 发布的 frontier 新模型，主打三块：长程真实软件工程、企业知识工作、网络安全防御。成绩单挺硬：DeepSWE v1.1 77.9%（超了 GPT-6 Astra 的 74.1% 和 Claude Opus 5.5 的 74.2%），AutomationBench 51.3%，最抓眼球的是输出上限从 64K 一口气提到 <strong>100 万 token</strong>——一个 trajectory 能写几十万字不带断的。API 促销价 $2/$10 per MTok（缓存输入 95% off），促销期后翻倍。</p>
 <p>但别急着换模型：分阶段上线，先给 Fairwind Program 的可信网络安全研究员和美国政府早期接入，<strong>公共 API 还没影</strong>，连模型 ID 都没有。Bloomberg 还曝出内部有人质疑"benchmark 强、实际干活一般"，Google 否认了。<a href="https://ai-tldr.dev/releases/google-gemini-4-argon/">速览卡片</a> / <a href="https://www.datacamp.com/blog/gemini-4-argon">完整 benchmark 表与定价</a> / <a href="https://thejoai.com/ai-news/google-launches-gemini-4-argon-ai-model-for-cybersecurity/">发布细节</a>（链接截至撰写时可访问）</p>
@@ -57,7 +57,7 @@
 <h3 id="github-copilot-code-review-api-lite-balanced">GitHub Copilot Code Review：出了 API，默认档从 Lite 切到 Balanced，账单变贵了</h3>
 <p>10 月 2 日的 changelog 里藏了个账单相关的大变化：Copilot code review 出了 REST/GraphQL API，可以按次指定 effort 级别；同时 <strong>9 月 28 日起默认级别已从 Lite 切到 Balanced</strong>。Balanced 会用更强的推理模型深审复杂逻辑，代价是更多 AI credits，还要吃 GitHub Actions 分钟数。关键是：如果仓库配了"每个新 PR 自动请求 review"，这笔消耗记在 <strong>PR 作者</strong>头上，不是组织统一账单——开 PR 最勤的人涨幅最大。<a href="https://pondero.ai/news/2026-10-04-copilot-code-review-api/">变化解析</a>（链接截至撰写时可访问）</p>
 <p>建议：管理员这周检查一下四层覆盖设置（企业 → 组织 → 仓库 → 个人），走 API 调 review 的 CI 任务记得显式传 Lite，不然默认就是贵的那个。</p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="workbuddyhy4-preview-14-10-10-2359">腾讯 WorkBuddy：Hy4 preview 新用户 14 天免费额度，10 月 10 日 23:59 前必须先开一次对话</h3>
 <p>一句话：腾讯官方公告，Hy3 全量限免和 Hy4 preview 夜间限免都延期到 10 月 31 日；<strong>没用过 Hy4 preview 的新用户</strong>，在 10 月 10 日 23:59 前首次开一次 Hy4 对话，从当天起拿连续 14 天每日免费额度。</p>
 <ul>
@@ -86,7 +86,7 @@
 <li><strong>有效期</strong>：<strong>到 10 月 7 日收官</strong>，过期不候；注意触到 5 小时/周限额要等重置</li>
 <li><strong>适合谁</strong>：夜猫子开发者，今晚把攒的活儿一次性跑完</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="mattpocockskills">mattpocock/skills</h3>
 <p>Total TypeScript 作者 Matt Pocock 的实战 agent skills 合集，直击 agent 四大翻车现场：需求对不齐（<code>/grill-me</code> 先拷问你一轮）、话太多、代码跑不起来（<code>/tdd</code> 红绿重构）、agent 加速造屎山（<code>/improve-codebase-architecture</code> 定期体检）。解决什么问题：vibe coding 一时爽，工程纪律全靠 skills 补回来。⭐ 约 278,095（截至撰写时）。适合：每天被 agent 气到的程序员，Claude Code 官方市场一键装，Codex 也支持。<a href="https://github.com/mattpocock/skills">项目地址</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
 <h3 id="pbakausimpeccable">pbakaus/impeccable</h3>

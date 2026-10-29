@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-06-daily.svg" alt="AI 码力日报 · 2026年10月6日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li><strong>OpenAI DevDay 2026（10月1日）</strong>发布了面向开发者的工具矩阵：Codex 上云、Code Review 自动初审、GPT-6.1 Sol（约 1/5 价格打 agentic coding）、Agents API 支持 computer use，本周各路复盘正在发酵。</li>
 <li><strong>Claude Code 云会话额度后天截止领取</strong>：Pro 送 $100、Max 送 $250，只能花在 cloud sessions 上，北京时间 10 月 8 日 15:59 截止。</li>
 <li><strong>智谱 ZCode 全员 1 亿 GLM-5.3-Flash token 明天结束</strong>：每天 10 万份，10 月 7 日收官。</li>
 <li><strong>GitHub Trending 今日榜被 Agent 工具刷屏</strong>：claude-mem（跨会话记忆）、Agent-Reach（一键给 Agent 装上网能力）等 4 个项目值得一看。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="openai-devday-2026">OpenAI DevDay 2026：开发者工具矩阵发布，本周进入复盘期</h3>
 <p>DevDay 是 10 月 1 日（旧金山时间，北京时间 10 月 2 日）开的，但这几天各家深度复盘刚出来，值得翻一翻。这次几乎是清一色的 coding 弹药：Codex 上云（手机或云端跑 coding 任务，关机也不停）、Code Review 自动做 PR 初审、Codex Security Cloud 定时扫仓库给修复方案、GPT-6.1 Sol（官方说接近 Astra 的智能水平、价格约 1/5，主打 agentic coding）、Agents API 支持 computer use（托管 agent 直接操作软件 GUI）、Ultrafast 推理加速（API 提速约 8 倍、Codex 最高 300 tokens/秒）。订阅侧也有动作：Pro 档出现了 $100/$200/$500 三档，$500/月的 Pro 500 独占 Astra Ultrafast 和 Agents API computer use。<a href="https://thewebtier.com/openai-devday-2026-developer-tools-codex-agents-api">开发者侧汇总</a> / <a href="https://memeburn.com/openai-devday-2026-recap/">20+ 发布复盘，含订阅涨价细节</a> / <a href="https://www.bitsminds.com/news/openai-devday-2026-announcements">10月5日"传闻核验"篇</a>（链接截至撰写时可访问）</p>
 <p>一句话点评：这是 OpenAI 把"agent 写代码"从 demo 推向生产管线的一次总攻，尤其 Code Review 和 Security Cloud 两块，直接冲着团队日常流程去的。不过国内朋友注意：OpenAI 服务国内不可直接用，需要特殊网络，订阅也要国际支付方式；GPT-6.1 Sol 目前在 API 和付费 Work/Codex 计划可用，ChatGPT 内置接入还没到。</p>
@@ -56,7 +56,7 @@
 <h3 id="github-copilotcomputer-useagent">GitHub Copilot「Computer Use」进入公开预览，Agent 开始操作桌面</h3>
 <p>GitHub 宣布 Copilot 可以直接操作桌面应用了：在 Copilot CLI 和 Copilot App（macOS/Windows）里能看屏幕、点控件、输入、滚动、跨窗口协作，覆盖那些没有 API/CLI/MCP 的老旧 GUI 软件。功能默认关闭、审批门控，组织管理员可以统一禁用。有意思的是这是和 OpenAI Agents API computer use 同一周的两大"agent 操作桌面"动作，两家想到一块去了。<a href="https://izood.net/tech/github-copilot-computer-use-guide">10月3日上手指南</a> / <a href="https://www.smfclearinghouse.com/blog/github-copilot-desktop-computer-use/">功能解析</a>（链接截至撰写时可访问）</p>
 <p>适合谁：被困在无 API 遗留系统、报表/发票流程里的开发者，这功能就是给你准备的。提醒一句：computer use 涉及桌面权限，敏感环境建议先在测试机上开。</p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="claude-code-pro-100-max-250">Claude Code 云会话额度：Pro 送 $100 / Max 送 $250 —— 后天截止，快领！</h3>
 <p>一句话：Anthropic 官方一次性发放的 cloud sessions 额度，只能花在跑在 Anthropic 服务器上的云会话任务里（关掉电脑也不停），不能用于本地 Claude Code、聊天或 Cowork。</p>
 <ul>
@@ -89,7 +89,7 @@
 <li><strong>适合谁</strong>：所有用豆包工作电脑版的人，零门槛</li>
 <li><strong>约省</strong>：约省 ¥68（按豆包标准版连续包月 68 元定价，研报披露的官方价格）</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="thedotmackclaude-mem">thedotmack/claude-mem</h3>
 <p>给 AI 编程 Agent 用的跨会话持久化记忆系统：记录每个会话中 Agent 的行为，用 AI 压缩成语义摘要，注入到未来会话里。解决什么问题：Claude Code / Codex / Cursor 等 Agent 每次新会话都"失忆"，项目上下文和过往决策全丢；它通过 lifecycle hooks 自动捕捉工具使用观察，本地 SQLite + Chroma 向量混合检索，让 Agent 记住以前踩过的坑。⭐ 约 96,618（截至撰写时）。适合：重度用 Claude Code、Codex、Cursor 做开发的程序员。<a href="https://github.com/thedotmack/claude-mem">项目地址</a></p>
 <h3 id="panniantongagent-reach">Panniantong/Agent-Reach</h3>

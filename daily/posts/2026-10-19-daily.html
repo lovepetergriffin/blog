@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-19.svg" alt="AI 码力日报 · 2026年10月19日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li><strong>OpenAI 10 月 23 日关掉 GPT-4 / GPT-3.5 / o1 / o3-mini / o4-mini 等一批老模型</strong>，只剩 4 天，还没迁的现在就得动——下面给了两分钟自查方法。</li>
 <li><strong>DeepSeek 10 月 17 日放出 V4.1-Flash-1017</strong>：DeepSWE 77.0 干掉 Claude Opus 5.5，权重 MIT 开源；新上的 Search / Fetch API 按次收费，10 月 31 日 16:00 UTC 起账。</li>
 <li><strong>Google Gemini 4 Argon 10 月 13 日全量发布</strong>，API 优惠价（$2/$10 每百万 token）只到 11 月 30 日，之后翻倍。</li>
 <li><strong>Anthropic 10 月 16 日公布一项硬核研究</strong>：Claude 用半小时复原了 NIST P-256 椭圆曲线种子——30 年悬案，结论是 lrand48 + 1997 年时间戳，不是后门；同时官方透露 Claude Code 自身代码已有 90% 是 AI 写的。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="gpt-4-4">GPT-4 还有 4 天就下线，你的代码迁了吗</h3>
 <p>OpenAI 官方 deprecations 页列出的这批老模型 10 月 23 日正式关停：<code>gpt-3.5-turbo</code>、<code>gpt-4</code>、<code>gpt-4-turbo</code>、<code>gpt-4o-2024-05-13</code>、<code>gpt-4.1-nano</code>、<code>o1</code>、<code>o1-pro</code>、<code>o3-mini</code>、<code>o4-mini</code>、<code>gpt-image-1</code>，以及基于它们微调的 <code>ft-gpt-3.5-turbo</code>、<code>ft-gpt-4</code> 等。关停当天这些模型 ID 直接调不通——你的定时任务和队列 worker 最容易中招，因为报错不一定会叫醒你。官方替换映射：GPT-4 系/o1/o3-mini → <code>gpt-5.6-sol</code>，GPT-3.5 系/o4-mini → <code>gpt-5.6-terra</code>，4.1-nano → <code>gpt-5.6-luna</code>。微调模型无法迁移，必须在新 base 上重训，赶时间的这条最痛。<a href="https://madrobot.blog/2026/10/04/openai-api-model-deprecations-shutdown-dates-october-23/">OpenAI 模型关停清单</a></p>
 <h3 id="deepseek-v41-flash-1017-claude-opus-55">DeepSeek 扔出 V4.1-Flash-1017，编码测试干掉 Claude Opus 5.5</h3>
@@ -57,7 +57,7 @@
 <p>Anthropic 10 月 16 日公布的研究：内部模型发现 NIST 椭圆曲线（P-192 到 P-521）的种子来自 C 库的 lrand48 伪随机数发生器，初始化用 1997 年某天的 Unix 时间戳——P-256 的种子就是该序列的第 1,842 个候选。也就是说当年那个"会不会是 NSA 后门"的猜测基本可以放下了，是 90 年代工程师随手写的东西。声明：这不是发现新漏洞，ECDSA 曲线本身没问题，用户不用做任何事。我试读了一下论文思路，整个过程是"Claude 写 Python 程序 → 经典模拟器在几万个输入上验证 → 按 Toffoli 门数×峰值量子比特打分 → 回传给新一轮 Claude"，中间无人干预——这才是这条新闻对搞 agent 的人的真正启发：有明确评分器的任务，AI 已经能自己闭环刷分了。<a href="https://www.webpronews.com/anthropics-claude-traces-nist-ecdsa-curve-seeds-to-1990s-random-number-generator/">Anthropic 研究报道</a></p>
 <h3 id="qwen-go-agent">阿里 Qwen Go 内测：agent 开始替你办事，而不是教你办事</h3>
 <p>阿里 10 月 13 日曝光了 Qwen App 里的 Qwen Go：个人 AI 助手，能翻你的授权账户、比价、然后直接联系客服替你办事。演示里它查到用户的航班延误，电话打不通就切文字客服，硬是谈下 ¥70 现金赔款；淘宝退款也谈成 ¥52。全程屏幕可见，用户可随时打断。跟之前"教你怎么维权"的助手是两回事，这是真下场干活的。不过内测范围有限，正式上线时间没公布；这类 agent 一旦铺开，商家客服被 AI 轮番轰炸是迟早的事。<a href="https://technode.com/2026/10/13/alibaba-prepares-qwen-go-personal-ai-assistant-for-claims-bookings-and-shopping/">TechNode 报道</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="meta-150-model-api-credits">Meta 黑客松：入选给 $150 Model API credits</h3>
 <p>一句话：Meta 全球 AI 开发者黑客松（10 月 26 日–11 月 4 日）入选者每人 $150 Meta Model API credits，10 天开发随便用；另有 $100 万奖金池。</p>
 <ul>
@@ -79,7 +79,7 @@
 <li><strong>有效期</strong>：免费档长期有效，data-sharing 的大额度以实际条款为准</li>
 <li><strong>适合谁</strong>：想零成本体验 Grok 系列模型的人；注意 data-sharing 是拿你的使用数据换额度，敏感材料别往里放。<a href="https://urbanwired.com/grok-bot-credits-giveaway-reactions/">来源</a></li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="morlutorea-agent-app">morluto/rea：让你的 agent 逆向没源码的 app</h3>
 <p>一句话介绍：给 AI coding agent 用的逆向工具包——对着一个没有源码的程序，它能拆开看懂某个功能是怎么实现的。解决什么问题：读不懂闭源软件/老旧二进制时，让 agent 驱动真分析工具（.NET 读程序集元数据和 CIL，native 走 Ghidra / Hopper / IDA）做证据链分析，分析全在本地跑。⭐ 本周 GitHub trending 周榜第 1（单日新增约 1.6 万 star，截至撰写时）。适合：做兼容性开发、安全研究、接手祖传二进制的人；注意只用在自己有权分析的软件上。<a href="https://github.com/morluto/rea">项目地址</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
 <h3 id="stablyaiorca-app-coding-agent">stablyai/orca：一个桌面 app，指挥一整队 coding agent</h3>

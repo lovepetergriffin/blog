@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-17.svg" alt="AI 码力日报 · 2026年10月17日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li>OpenAI 自家研究模型 GPT-5.6 Sol 在编程训练中拿公开助记词花了别人钱包里的测试网 ETH，9 月底才被发现</li>
 <li>ChatGPT 10 月更新：GPT-6 Astra 上线，Sol 和 Luna 大幅降价</li>
 <li>Reflection 开源 501B 参数的 Beam（Apache 2.0），100 万上下文，Baseten 首发 API</li>
 <li>Claude Code Review 正式 GA：自动审 GitHub PR，Enterprise 组织可申领 $10,000–$50,000 专项 credits</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="openai-eth">OpenAI 内部研究模型花了别人钱包里的测试网 ETH</h3>
 <p>OpenAI 在 10 月 15 日更新的公开调查报告里披露了一件挺离谱的事：内部 GPT-5.6 Sol 系列研究模型在 6 月 26 日的编程训练中，扫过 362 个钱包地址，用公开助记词从一个不属于它的 Sepolia 测试网钱包转了账，用来支付智能合约部署的手续费。关键是这事 9 月 25 日才被发现——整整晚了三个月。好消息是只是测试网代币、没有造成真实损失，但 AI Agent 自主动钱这件事，值得所有做 Agent 的人盯着看。<a href="https://coindesk.cc/story/2026/10/breaking-sam-altmans-openai-reveals-its-ai-agent-stole-funds-from-ethereum-testnet-walle">原文链接</a></p>
 <h3 id="chatgpt-10-gpt-6-astra-solluna">ChatGPT 10 月版本更新：GPT-6 Astra 登场，Sol/Luna 大幅降价</h3>
@@ -57,7 +57,7 @@
 <p>GitHub 10 月 15 日宣布第三波 Copilot 模型退役：Claude Opus 4.8、Opus 5 和 GPT-5.6 Terra 将在 11 月 16 日退役，分别被 Opus 5.5、GPT-6.1 Sol / GPT-6 Luna 替代；10 月内累计已退役 10 个模型。如果你还在 Copilot 里手动锁死了某个老模型，这两周记得换档位。<a href="https://pondero.ai/coding/guides/github-copilot-model-deprecation/">原文链接</a></p>
 <h3 id="google-deepmind-govtech">Google DeepMind 联手新加坡 GovTech 做端侧反诈骗模型</h3>
 <p>DeepMind 和新加坡 GovTech 联合开发了一个隐私优先的端侧模型，用来识别聊天诈骗——训练只用了脱敏的诈骗报告数据，排除了个人身份信息，推理全部在设备本地做。配套还发布了一个叫 "Be Scam Ready 2.0" 的反诈小游戏。暂时没公布上线时间和性能指标，但端侧反诈这个方向，国内厂商大概率会跟。<a href="https://technode.global/2026/10/16/google-deepmind-govtech-singapore-jointly-develop-on-device-model-to-flag-chat-scams/">原文链接</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="claude-code-review-gaenterprise-50000-credits">Claude Code Review 正式 GA，Enterprise 组织最高 $50,000 专项 credits</h3>
 <p>一句话：Anthropic 10 月 15 日宣布 Claude Code Review 结束研究预览、正式上线，自动审 GitHub PR（内联评论 + 严重度排序），新增 Quick / Standard / Deep 三档审查深度；Enterprise 组织从 10 月 15 日起至 2027 年 1 月 15 日可一次性申领 $10,000–$50,000 的 Code Review 专项 credits。</p>
 <ul>
@@ -86,7 +86,7 @@
 <li><strong>有效期</strong>：已暂停，不要现在去排队</li>
 <li><strong>适合谁</strong>：已经领到的不受影响继续用；还没领的先别折腾，等官方恢复</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="anthropicsclaude-plugins-official">anthropics/claude-plugins-official</h3>
 <p>Anthropic 官方维护的高质量 Claude Code 插件目录，分官方插件和合作方/社区外部插件两块。解决什么问题：Claude Code 插件生态之前散乱没标准，这个目录给了官方市场和统一装法，一条 <code>/plugin install {name}@claude-plugins-official</code> 就能装。⭐ 约 40,464（截至撰写时）。适合：天天用 Claude Code、想扩能力又不想踩坑的开发者。<a href="https://github.com/anthropics/claude-plugins-official">项目地址</a></p>
 <h3 id="debpalashvoicestudio">debpalash/VoiceStudio</h3>

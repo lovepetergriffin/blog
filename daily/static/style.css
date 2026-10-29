@@ -163,6 +163,52 @@ a.tag:hover { text-decoration: none; filter: brightness(.96); }
 /* ===== 页脚 ===== */
 .site-footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: .86rem; text-align: center; }
 
+/* ===== 日报重点突出（2026-10-29） ===== */
+/* 重点标签徽章：跟你有啥关系（橙）、我的判断（深色） */
+.post-body .why-label {
+  display: inline-block; background: var(--accent); color: #fff;
+  font-weight: 700; font-size: .88em; padding: 1px 10px; border-radius: 999px;
+  margin-right: 6px; letter-spacing: .02em;
+}
+.post-body .judge-label {
+  display: inline-block; background: var(--ink); color: #fff;
+  font-weight: 700; font-size: .88em; padding: 1px 10px; border-radius: 999px;
+  margin-right: 6px; letter-spacing: .02em;
+}
+/* 栏目标题：更强的层级感——底色块 + 更大字号 */
+.post-body h2 {
+  background: var(--accent-soft); border-radius: 0 10px 10px 0;
+  padding: .45em .8em .45em 14px; font-size: 1.42rem;
+}
+/* 条目标题：条目之间拉开分隔，一眼区分 */
+.post-body h3 {
+  font-size: 1.22rem; margin-top: 2em; padding-top: 1.2em;
+  border-top: 1px dashed var(--line);
+}
+.post-body h3:first-of-type { border-top: none; padding-top: 0; }
+/* 一句话速览：整块摘要盒子 */
+.post-body .glance {
+  background: var(--gold-soft); border: 1px solid #f0dca8;
+  border-radius: var(--radius); padding: 4px 22px 10px; margin: 1.5em 0;
+  box-shadow: var(--shadow);
+}
+.post-body .glance h2 { background: none; padding-left: 0; border-left: none; font-size: 1.3rem; }
+.post-body .glance ul { margin: .5em 0; }
+.post-body .glance li { margin: .6em 0; }
+/* 今日羊毛：金色重点区块（本站重点栏目） */
+.post-body .yaomo-sec {
+  background: linear-gradient(180deg, #fff8e1, #fffdf5);
+  border: 1px solid var(--gold); border-radius: var(--radius);
+  padding: 4px 22px 10px; margin: 1.5em 0; box-shadow: var(--shadow);
+}
+.post-body .yaomo-sec h2 { background: none; padding-left: 0; border-left: none; }
+.post-body .yaomo-sec h2::before { content: "🔥 "; }
+/* 正文加粗：关键数字/价格/结论用深橙突出（作者已用 ** 标注的重点） */
+.post-body strong { color: var(--accent-deep); }
+/* 链接：加粗 + 悬停下划线，原文链接更显眼 */
+.post-body a { font-weight: 600; }
+.post-body a:hover { text-decoration: underline; }
+
 /* ===== 移动端 ===== */
 @media (max-width: 560px) {
   body { font-size: 16px; }

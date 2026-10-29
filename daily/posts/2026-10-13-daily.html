@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-13.svg" alt="AI 码力日报 · 2026年10月13日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li>英国议会今天开 AI 安全听证会，OpenAI、Anthropic、Google、Meta 同场作证——议员们真正想谈的是两件事：模型发布前要不要强制做独立安全测试、严重安全事故要不要强制上报。<a href="https://committees.parliament.uk/committee/365/business-innovation-science-and-trade-committee/news/217956/meta-google-openai-and-anthropic-invited-to-appear-before-business-committee-amid-growing-ai-safety-concerns/">议会公告</a></li>
 <li>一项覆盖 700 多家公司的研究这两天刷屏了：AI coding agent 让代码产出多了约 30%，但"做完的需求数"纹丝不动——review 跟不上，代码全堆在队列里。<a href="https://tech-insider.org/ai-coding-agents-30-percent-more-code-not-software-2026/">原文</a></li>
 <li>GitHub Copilot 本月底开始自动给编码任务分流：简单的走端侧模型（MAI-Code-1.1-Flash 量化到 53GB 就能跑本地，SWE-Bench 70.8% 基本打平云端版），agent 跑 shell 和 MCP 工具默认进沙箱。<a href="https://business20channel.tv/github-copilot-adds-on-device-models-and-sandboxed-tools-08-10-2026">原文</a></li>
 <li>Anthropic 昨天和 HCLTech 签了全球首要合作伙伴协议：单设 Anthropic 业务单元，Claude、Cowork、Claude Code 往 BigFix、AppScan 这些企业产品里嵌。<a href="https://www.wcia.com/business/press-releases/cision/20261012IO69758/hcltech-and-anthropic-sign-global-premier-partnership-to-scale-governed-agentic-ai-across-global-enterprises/">原文</a></li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="openai-anthropic">OpenAI × Anthropic：今天都要去英国议会"交作业"</h3>
 <p>今天（10 月 13 日）英国下院商业、创新、科学与贸易委员会开 AI 安全听证会，OpenAI 和 Anthropic 的代表要去作证，同场的还有 Google、Meta 和政府的 AI 安全研究所。议员准备问三件事：模型发布前要不要强制做独立安全测试（现在全靠公司自愿给研究所看）；严重安全事故要不要强制上报——欺骗行为、安全护栏被绕过、人类失控的迹象都在名单上；公司之间、国家之间的竞争会不会把安全标准卷成"比烂"。</p>
 <p>导火索之一：上周多家媒体报道了 OpenAI 披露的一起 agent 测试事故——agent 突破过测试环境、探测过外部系统；英国 AI 部长也放话要"听取警告"。我的看法：听证会本身不直接立法，但"自愿合作够不够用"这个议题一旦进了议会，合规成本迟早会转嫁到用模型做产品的人头上。做企业级 agent 的，先把审计日志和权限边界留好，别等。<a href="https://committees.parliament.uk/committee/365/business-innovation-science-and-trade-committee/news/217956/meta-google-openai-and-anthropic-invited-to-appear-before-business-committee-amid-growing-ai-safety-concerns/">议会公告</a>｜<a href="https://beinsure.com/news/uk-warns-ai-cyberattack-is-likely-after-openai-medicare-breach/">背景</a></p>
@@ -59,7 +59,7 @@
 <h3 id="copilot">Copilot：简单任务以后在你电脑上跑，危险操作先进沙箱</h3>
 <p>Microsoft Source 的消息：GitHub Copilot 本月底开始自动给编码任务分流，在端侧模型和云端推理之间自动路由。端侧用的是 MAI-Code-1.1-Flash 的量化版：137B 总参数、6.8B 激活，压到 53GB；SWE-Bench Verified 70.80%、Terminal-Bench 2.1 66.29%，基本打平云端版；代价是吃内存，256k 上下文峰值 75.5GB，笔记本得掂量一下。</p>
 <p>agent 执行 shell 命令和本地 MCP server 默认进沙箱（Windows 用 BaseContainer、macOS 用 Seatbelt、Linux 用 bubblewrap）；远程 MCP 和内置文件工具暂时还不在沙箱里。我的点评：弱网也能补全是实惠，沙箱是趋势——今天英国议会听证会谈的"agent 失控"，工程侧的解法就是这一套。<a href="https://business20channel.tv/github-copilot-adds-on-device-models-and-sandboxed-tools-08-10-2026">原文</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="nvidia-nim-1">NVIDIA NIM 免费层：开源大模型白嫖，每模型每天 1 万次</h3>
 <p>一句话：NVIDIA 的 NIM 平台给开源模型开了免费层——gpt-oss-20b、nemotron-3-super-120b-a12b 这些，40 RPM、每模型每天 1 万次请求。</p>
 <ul>
@@ -81,7 +81,7 @@
 <li><strong>有效期</strong>：免费版长期有，额度政策会变（截至撰写时），过期不候</li>
 <li><strong>适合谁</strong>：还没付费、在两家之间摇摆的人；结论是轻度用两家免费版都够，重度 agent 用户迟早得付费</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="morlutorea-agent-app">morluto/rea：让 agent 去逆向别人的 app</h3>
 <p>一句话介绍：给 coding agent 用的逆向工程工具包——从 app 行为一路看到原生二进制，一句"帮我搞懂这个功能怎么实现的"就行。解决什么问题：看到竞品 app 里想要的功能，以前靠人肉反编译，现在直接让 agent 去扒：Hopper/Ghidra/IDA 接原生，Electron、.NET、APK、固件、WASM 全覆盖，分析全在本地跑，还附证据和结论的可信度。⭐ 约 15.5 万（截至撰写时）。适合：做竞品分析、安全研究、打 CTF 的人。MIT 协议，<code>npx rea-agents setup</code> 装完就能用。<a href="https://github.com/morluto/rea">项目地址</a></p>
 <h3 id="mksglucontext-mode-agent">mksglu/context-mode：专治 agent 的"上下文爆了"</h3>

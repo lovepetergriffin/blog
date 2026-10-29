@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-16.svg" alt="AI 码力日报 · 2026年10月16日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li>Google 通知 Gemini AI Plus 用户：11 月 13 日起不能再手动选择 Pro 模型，只能留 Flash 系列；想继续用 Pro 得升级到 AI Pro，价格约是现在的 4 倍。</li>
 <li>Anthropic 的 Code Review for Claude Code 正式 GA：多 agent 给 PR 做审查，耗时从约 20 分钟压到 6–10 分钟，企业用户 GA 促销送至少 $10,000 review credits。</li>
 <li>Anthropic 在 IPO 前路演会上公布 Q3 营收 168 亿美元、经调整口径盈利，目标估值超 2 万亿美元——但经营亏损仍超 80 亿美元。</li>
 <li>OpenAI 联手 Block：用 AI 安全防御系统 Daybreak 把"多阶段攻击模拟→修复验证"的链路压缩到约 2 小时，人类对每个上线修复做最终确认。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="openai-blockdaybreak-ai-2">OpenAI × Block：Daybreak AI 安全防御，2 小时走完攻击模拟到修复</h3>
 <p>一句话亮点：金融公司开始把找漏洞这事交给 agent 了——Block（Square、Cash App 的母公司）确认在 OpenAI 基础设施上搭了一套 AI 驱动的防御系统，能把从 SQL 注入、提权到横向移动的完整多阶段攻击链模拟跑一遍，全程约 2 小时。</p>
 <p>这套系统由 OpenAI 和 Block 在 10 月 14 日联合披露，基于 OpenAI 的 Defense Factory 计划和一套叫 Daybreak 的模型路由框架。两边都把它包装成"企业安全团队未来怎么干活的模板"：AI 负责发现、检测和响应，人类负责给每个上线的修复签字。对国内开发者更实际的启发：攻防两端都在 agent 化，防御侧先行的公司已经把修复时延压到了小时级，你的安全 review 流程如果还全是人肉，得开始想想怎么接 agent 了。<a href="https://tech-insider.org/block-openai-daybreak-ai-security-2026/">原文</a></p>
@@ -56,7 +56,7 @@
 <h3 id="googleuniversal-cart-search-gemini-app">Google：Universal Cart 在 Search 和 Gemini App 正式上线</h3>
 <p>一句话亮点：Google 在 I/O 上预告的 Universal Cart 昨天（10 月 15 日）正式上线，跑在 Search 和 Gemini app 里——AI 购物从"帮你找"进化到"帮你买"。</p>
 <p>技术上是 Google 自研的 UCP（Universal Commerce Protocol）开放标准在背后撑着，年初就和零售巨头联合开发的。购物车跑在 Gemini 模型上，会给价格历史洞察、找折扣、补货提醒，还能主动发现跨店组装的不兼容（比如攒机时零件不匹配并给替代方案）。商家保持卖家身份，订单确认和售后还是商家出。推进节奏：先美国，之后几个月扩到加拿大和澳大利亚，再往后是英国；YouTube 的 UCP 结账也在路上。对开发者的机会点：这是一套开放协议，做电商工具的可以提前研究 UCP 怎么接，AI 购物 agent 的入口正在标准化。<a href="https://www.unite.ai/google-launches-universal-cart-across-search-and-the-gemini-app/">原文</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="anthropic-code-review-ga-enterprise-10000-review-credits">Anthropic Code Review GA 促销：合格 Enterprise 组织送至少 $10,000 review credits</h3>
 <p>一句话：Code Review 正式 GA 附带的推广福利——符合条件的 Enterprise 组织能拿至少 1 万美元的 review credits，白嫖多 agent 审 PR。</p>
 <ul>
@@ -71,7 +71,7 @@
 <li><strong>有效期</strong>：2026 年 12 月 31 日前用完（截至撰写时）</li>
 <li><strong>适合谁</strong>：受 Pro 200 降配影响的老订阅用户——新订阅的没有，别白跑一趟</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="xerj-orgxerj">xerj-org/xerj</h3>
 <p>Rust 写的单二进制本地代码搜索引擎，解决"agent 读代码靠一个个文件翻、上下文全浪费在无关代码上"的问题：自动索引任意文件夹，agent 直接拉它需要的精确代码段；碰到新任务先去找最接近的开源仓库，把别人的解法复用过来再动手。受控实验号称同等解决率下输出 token 少 2.7 倍，BM25 搜索+MCP 接口内置。10 月 15 日单日涨星约 944（截至撰写时）。适合：每天让 agent 啃大仓库的人——装一个，agent 找代码的效率立竿见影。<a href="https://github.com/xerj-org/xerj">项目地址</a></p>
 <h3 id="wheresryan22anatomy">wheresryan22/anatomy</h3>

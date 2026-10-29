@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-15.svg" alt="AI 码力日报 · 2026年10月15日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li>OpenAI 联手洛克菲勒基金会推出 5000 万美元 "Cities Deliver" AI 赠款计划，资助用 AI 改善城市公共服务的项目，申请 11 月 29 日截止。</li>
 <li>Anthropic 把 OpenTelemetry trace 导出做进 Claude 平台（public beta）：每个 agent turn、模型调用、工具使用都能直接打进 Grafana、Sentry、Langfuse。</li>
 <li>Google 据报道正把 DeepMind 伦敦的 AI 工程团队迁往加州，人事地震还在继续。</li>
 <li>一项覆盖 700 多家公司的研究：AI 编程智能体让代码量涨约 30%，但 Jira 里真正交付的 issue 没涨——瓶颈卡在代码评审。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="anthropicclaude-opentelemetry-trace-public-beta">Anthropic：Claude 平台支持 OpenTelemetry trace 导出（public beta）</h3>
 <p>一句话亮点：以后调 Claude API 跑 agent，不用再自己埋点——每个 agent turn、模型调用、工具使用自动变成标准 OpenTelemetry trace，延迟、token 数、ID 全带上，直接进你现有的可观测平台。</p>
 <p>覆盖 Claude Managed Agents、Messages API 和 Claude SDK（Python、TypeScript、Go、Java、C#、PHP、Ruby）。API 侧在 Claude Console 里加一个 destination（要组织 Admin 权限），SDK 侧在代码里注册 tracer provider 即可，trace 遵循 OpenTelemetry GenAI 语义约定。内容模式默认只记元数据（metadata only），排查问题时可开 full content（单 span 默认上限 0.75MB）。官方点名的兼容平台：Grafana Cloud、Honeycomb、Sentry、Splunk（排障），Arize、Braintrust、Datadog、Langfuse、LangSmith、New Relic、PostHog（拿生产 trace 做 eval）。Ramp 的早期数据挺实在：靠这套 trace 找浪费，有的 agent token 用量降了 10–20%，会话快了 30%。<a href="https://www.unite.ai/anthropic-adds-opentelemetry-trace-export-to-the-claude-platform/">原文</a></p>
@@ -56,7 +56,7 @@
 <h3 id="ai-30">研究：AI 编程智能体让代码量 +30%，交付量原地踏步</h3>
 <p>一句话亮点：代码写得更快了，但活儿干完的速度没变——瓶颈从"写代码"转移到了"审代码"。</p>
 <p>这项 10 月 12 日流传开的 review-bottleneck 研究看了 700 多家接入 Copilot、Claude Code、Codex、Cursor 的公司：代码产出涨约 30%，commit 涨约 20%，PR 量涨约 23%，但 Jira 里标记完成的 issue 和 epic 数量没有显著增长。研究者的解释很直白：agent 几秒钟就能吐出一堆函数和测试，但每一行还是要人（或另一个 AI reviewer）检查正确性、安全性和贴合度；review 请求的增速超过了 review  capacity，队列把生成速度带来的红利全吃掉了。给团队的启示：上 agent 之前，先想想 review 流程能不能跟上，不然就是给自己造了个 PR 堰塞湖。<a href="https://tech-insider.org/ai-coding-agents-30-percent-more-code-not-software-2026/">原文</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="google1-antigravity-6">Google：1 万名科研人员免费拿 Antigravity 最高档 6 个月</h3>
 <p>一句话：随 Gemini 4 Argon 全面开放一起宣布的科研福利——1 万名科学家可免费使用 Antigravity 最高用量档 6 个月，申请已开放。</p>
 <ul>
@@ -71,7 +71,7 @@
 <li><strong>有效期</strong>：10 月内（Hacktoberfest 当月有效，截至撰写时）</li>
 <li><strong>适合谁</strong>：想练手又缺算力的独立开发者；合作伙伴赛道参赛池小，中奖率反而更高</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="obrasuperpowers">obra/superpowers</h3>
 <p>一套给 coding agent 用的"开发方法论 + 可组合 skills"，解决 agent 上来就写代码、不做设计不写测试的问题：先 brainstorm 出需求、经你确认设计、拆成 2–5 分钟小任务，再用 subagent 驱动开发，全程强制 TDD、YAGNI、code review。⭐ 约 29.9 万（截至撰写时），MIT 协议。适合：每天用 Claude Code / Codex / Cursor / Antigravity 干活的人——装一次，19+ 种 agent 工具通用，连 Hermes 和 Muse 都支持。<a href="https://github.com/obra/superpowers">项目地址</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
 <h3 id="tracer-cloudopensre">Tracer-Cloud/opensre</h3>

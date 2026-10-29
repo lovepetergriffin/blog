@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-09.svg" alt="AI 码力日报 · 2026年10月9日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li><strong>OpenAI 上线 GPT-6.1 Sol Ultrafast</strong>：最快 API 档，API 最高 6 倍生成速度、Codex 中 8 倍，定价 $12/$60 是标准档的 6 倍，已在 API、Codex 和 ChatGPT Work 灰度铺开。</li>
 <li><strong>Anthropic 发 Claude Dashboards + Claude Motion</strong>：自然语言连数据平台生成实时仪表盘（beta，付费档），可编辑动画导出视频（beta，Team/Enterprise），Docs/Slides/Design 全量开放。</li>
 <li><strong>Google 推"通用工作 agent"</strong>：横跨 Gmail/Drive/Docs/Sheets/Chat/Calendar，一个目标丢进去能跑数小时甚至数天的任务，自动选模型、内置成本控制。</li>
 <li><strong>Docker 官方开源 docker-agent</strong>：YAML 声明式定义 agent 团队，<code>docker agent run</code> 即跑，HN 上 290 points / 133 评论，Docker 生态的 agent 框架有了官方答案。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="anthropic-claude-dashboards-claude-motiondashboards-motion">Anthropic 发 Claude Dashboards + Claude Motion：Dashboards 连数据做实时仪表盘，Motion 做动画</h3>
 <p>10 月 8 日，Anthropic 连续两弹。<strong>Claude Dashboards</strong>（beta，付费档）：连商业数据平台，用自然语言生成实时仪表盘；<strong>Claude Motion</strong>（beta，Team/Enterprise）：可做可编辑的动画并导出视频；同时 <strong>Docs、Slides、Design</strong> 三个创作工具结束 beta 全量开放。Reuters 独家报道，影响所有付费 Claude 用户的工作流——从"问答助手"往"产出成品件"又走了一步。<a href="https://www.reuters.com/technology/anthropic-launches-dashboard-animation-tools-claude-2026-10-08/">Reuters</a>（链接截至撰写时可访问）</p>
 <p>我的看法：Dashboards 的野心不小——直接插数据仓库、输出可交互仪表盘，这是要吃 BI 工具的饭。Motion 做动画导出视频对做产品演示、课程内容的人是福音。不过都还在 beta，实际效果等 GA 再看。</p>
@@ -61,7 +61,7 @@
 <p>10 月 6 日 changelog。Cursor iOS app 现在能<strong>显示本机跑的 local agents 并发消息</strong>——agent 仍在本机跑（电脑要保持在线、开"Keep this computer awake"），手机只是远程看板 + 对讲机。默认对所有非 Enterprise 组织开启。<a href="https://www.gradually.ai/en/changelogs/cursor/">changelog</a>（链接截至撰写时可访问）</p>
 <p>我的看法：长任务最怕的就是"不知道它跑哪了"——手机上瞥一眼进度、有问题回一条消息，这个场景是真实痛点。不过出门前别忘了保持电脑在线，不然回来看到 agent 早停了。</p>
 <p>另外提一句：Claude Code 10 月 7–8 日三连发（2.1.293/294/295）——2.1.293 起默认模型切到 Claude Haiku 5.5（1M 上下文、更快更便宜），2.1.294 修复指令型 hook 解析、2.1.295 让 hook 失败可阻断动作。更新工具链顺手升一下。<a href="https://www.havoptic.com/tools/claude-code">changelog</a>（链接截至撰写时可访问）</p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="openai-pro-62500-credits-2500">OpenAI 给 Pro 降级用户自动到账 62,500 credits（约 $2,500）</h3>
 <p>一句话：10 月初 OpenAI 改版 Pro 方案（Pro $200/月月费不变、额度减半）后，给<strong>受降级影响的现有 Pro 用户</strong>账户里自动打了 <strong>62,500 usage credits</strong>，官方口径价值约 $2,500。</p>
 <ul>
@@ -90,7 +90,7 @@
 <li><strong>有效期</strong>：常驻（目录偶尔变动）</li>
 <li><strong>适合谁</strong>：想零成本白嫖模型做测试的开发者。<a href="https://github.com/lumexapower/awesome-freellm-apis">免费 API 清单</a>（截至撰写时有效）</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="anthropicsknowledge-work-plugins">anthropics/knowledge-work-plugins</h3>
 <p>Anthropic 官方开源的 Claude Cowork（兼容 Claude Code）插件库：11 个按岗位打包的插件（销售/财务/法务/营销/数据等），每个都带 skill + slash 命令 + MCP 连接器。解决什么问题：agent 的通用能力强，但各岗位的固定工作流（法务审合同、销售跟进）缺现成插件——官方直接给了一套"岗位装机包"。⭐ 约 27,514（截至撰写时）。适合：用 Claude Code 做知识型工作的团队。<a href="https://github.com/anthropics/knowledge-work-plugins">项目地址</a></p>
 <h3 id="nvidiaopenshell">NVIDIA/OpenShell</h3>

@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-08.svg" alt="AI 码力日报 · 2026年10月8日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li><strong>Anthropic 发 Claude Haiku 5.5</strong>：$0.10/$0.50 对标 GPT-6 Luna，比前代便宜约 75%，1M 上下文加可调 effort；Max/Team 同步送月度 API 额度。</li>
 <li><strong>OpenAI GPT-6 全量进 ChatGPT</strong>：回答自带交互图表/表单/小工具的 Intelligent UI，免费档今日（10-08）开始推送；Codex + ChatGPT Work 合计 4000 万活跃用户。</li>
 <li><strong>Google DeepMind 开源 EmbeddingGemma 2</strong>：740M 多模态 embedding，MTEB Code 78.68，Pixel 11 上能量化跑全模态。</li>
 <li><strong>Stack Overflow 2026</strong>：AI 编程助手 Claude Code（65.5%）首次超过 GitHub Copilot（58.7%），VS Code 以 70.9% 续任编辑器霸主。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="anthropic-claude-haiku-55maxteam-api">Anthropic 发 Claude Haiku 5.5：小模型价格战开打，Max/Team 送月度 API 额度</h3>
 <p>10 月 7 日，Claude 5.5 家族第三款落地。定位高频低成本任务与大模型的"subagent"：10 万 token 内 $0.10/M 输入、$0.50/M 输出，官方称平均比 Haiku 4.5 便宜约 75%，直接对标 GPT-6 Luna。基准：Terminal-Bench 4.0 39.2%（前代为 0）、FrontierCode 1.1 46.4%；1M 上下文，Haiku 首个可调 effort 档。model ID <code>claude-haiku-5-5</code>，已在 Claude Platform / AWS / GCP / Azure 上线。同日还加了料：Sonnet 5.5 缓存读价格腰斩到 $0.10/M；Max 5x 送 $100/月、Max 20x 送 $200/月 API 额度，Team 最高 $500 共享池；SDK 新增 computer-use 与 browser-use beta 工具。<a href="https://www.reuters.com/business/anthropic-launches-third-claude-55-model-expanding-ai-lineup-before-planned-ipo-2026-10-07/">Reuters</a> / <a href="https://www.testingcatalog.com/anthropic-launches-claude-haiku-5-5-at-lower-api-prices/">定价与额度细节</a>（链接截至撰写时可访问）</p>
 <p>我的看法：Haiku 一直是"便宜干脏活"的定位，这次配上可调 effort 和还不错的 agent 基准，明显冲着 subagent 场景去的。小模型价格战对开发者是实打实的好事——日常任务、CI 里跑的小活成本直接砍一刀。国内直连用不了，等中转渠道跟进降价。</p>
@@ -60,7 +60,7 @@
 <p>30,903 有效回复、169 国。AI coding agents 过去一年使用率：Claude Code 第一，GitHub Copilot 第二，OpenAI Codex 29.5%，Cursor 25.5%。IDE 侧：VS Code 70.9% 遥遥领先，Cursor 第六 14.9%、Zed 11.4%、Windsurf 3.2%。73% 受访者每天用 AI 编程助手，但只有 9.6% 会直接采用 AI 答案不加验证。<a href="https://visualstudiomagazine.com/articles/2026/10/06/stack-overflow-2026-survey-vs-code-leads-visual-studio-takes-third.aspx">visualstudiomagazine</a>（链接截至撰写时可访问）</p>
 <p>我的看法：agent-first 的工作流彻底赢了，Copilot 这种补全形态被 agent 形态超车，是今年最大的格局变化。Cursor IDE 市占 14.9% 也很有意思——agent 火，但人还是待在 VS Code 里。</p>
 <p>顺带一个官方认账的插曲：GitHub 承认多款 IDE 把 agent 会话迁到 Copilot SDK 后未标识来源 IDE，导致使用指标里 agent 活跃度被系统性低估（历史缺失数据无法回填，计费不受影响），VS Code 1.139.0+ 已修复——看团队 AI 采用率报表的注意口径。<a href="https://github.blog/changelog/2026-10-06-update-your-ide-to-restore-agent-activity-in-copilot-usage-metrics/">changelog</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="anthropic-claude-for-startups1000-api-credits-1-claude-team">Anthropic 扩展 Claude for Startups：$1,000 API credits + 1 年免费 Claude Team</h3>
 <p>一句话：10 月 6 日官方宣布（SF Tech Week），合格创业公司一次性拿 <strong>$1,000 Claude API credits</strong>（发放后 6 个月过期）+ <strong>1 年免费 Claude Team</strong>（最多 5 个 Premium 席位，每席含 Claude Code，按年付价约值 $6,000），官方口径最高省 $7,000。</p>
 <ul>
@@ -82,7 +82,7 @@
 <li><strong>有效期</strong>：10 月内各周挑战；额度码按各合作伙伴条款</li>
 <li><strong>适合谁</strong>：愿意动手参赛的开发者——要交作品，不是纯白嫖；具体每家额度数额以领取页为准</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="addyosmaniagent-skills">addyosmani/agent-skills</h3>
 <p>生产级 agent skills 全家桶：25 个 skill 覆盖开发全生命周期（spec → plan → build → test → review → ship），<code>npx skills add</code> 一条命令装进 70+ agent。解决什么问题：agent 会写代码但不懂工程纪律——需求先对齐、测试先写、合并前过质量门，全靠 skill 强制执行。⭐ 约 102,785（截至撰写时）。适合：用 Claude Code/Cursor/Codex 做正经项目、被 agent 屎山坑过的人。注：和昨天推的 mattpocock/skills 同赛道、不同作者（Addy Osmani）。<a href="https://github.com/addyosmani/agent-skills">项目地址</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
 <h3 id="manaflow-aicmux">manaflow-ai/cmux</h3>

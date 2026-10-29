@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-18.svg" alt="AI 码力日报 · 2026年10月18日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li>Meta 10 月 15 日发布 Muse Spark Open：816B 参数开放权重，"美国最强开放权重模型"，两台 M5 Ultra Mac Studio 联机就能跑（实测约 25 tokens/s），苹果亲自站台联名</li>
 <li>Anthropic：Claude Mythos 5 在开源进化搜索里自己设计出更好的量子电路，8 个任务 7 个超过已发表的最优设计，最高省 39 倍资源</li>
 <li>OpenAI：10 月 15 日被 8 个州检察长联手起诉，指控对未成年人保护缺失——联邦层面不管，州里自己动手了</li>
 <li>Google：今日该厂无重要更新；跟进提醒：Gemini 4 Argon 的介绍价只到 11 月 30 日，之后 input/output 全部翻倍</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="meta-muse-spark-open816b-coding-agent">Meta 发布 Muse Spark Open：816B 参数开放权重，为 coding agent 而生</h3>
 <p>Meta 10 月 15 日扔了个大的：Muse Spark Open，816B 参数的稀疏 MoE（每 token 激活 42B），100 万 token 上下文，原生多模态输入，为复杂代码工程、多步推理和长时间 agent 任务调优。Meta 称这是"迄今能力最强的美国开放权重模型"——自家跑分里赢了 Thinking Machines 的 Inkling 和英伟达的 Nemotron 3 Ultra 一大截，但对上国产的 Kimi K3、GLM 5.3，在终端 coding 测试上还是落后。最骚的是发布形式：Meta 拉上苹果，用两台 512GB 的 M5 Ultra Mac Studio 通过 MLX 联机跑，号称"两台机器变成一台 1TB 统一内存的超算"。权重在 Hugging Face、SageMaker、Google Cloud Model Garden、Microsoft Foundry 都能下，BF16 约 1.65TB，4 位量化版约 537GB。自托管 coding agent 又多了一个顶级选项。<a href="https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/">原文链接</a></p>
 <h3 id="anthropicclaude">Anthropic：Claude 自己设计出比人类更好的量子电路</h3>
@@ -55,7 +55,7 @@
 <p>10 月 15 日，8 个州的总检察长在各自州法院起诉 OpenAI，指控违反消费者保护法、未能给弱势用户（儿童、老人）上足够的安全护栏。诉状里点名了两类事：agent 自主攻击其他系统、ChatGPT 被指"教唆"儿童自杀或伤人。值得注意的是 8 个州里 7 个是共和党检察长——这是跟特朗普政府"AI 不监管"路线公开唱反调。联邦层面指望不上，州里开始自己动手，这套路后面大概率会有更多州跟进。<a href="https://www.pymnts.com/news/artificial-intelligence/2026/eight-states-bring-parallel-lawsuits-against-openai-over-safety-issues/">原文链接</a></p>
 <h3 id="google">Google：今日该厂无重要更新</h3>
 <p>三家厂子里今天只有 Google 没动静。跟进一条之前发过的：Gemini 4 Argon 的介绍价（$2/$10 每百万 input/output token）只到 11 月 30 日，12 月 1 日起涨到 $4/$20；想锁低价跑长任务的，这 40 多天是窗口期。</p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="presentationsaipdf-ppt-200-ai-credits">Presentations.AI：PDF 转可编辑 PPT 免注册直接用，新用户再送 200 AI credits</h3>
 <p>一句话：昨天（10 月 17 日）官方通稿，AI 演示平台 Presentations.AI 主推的 PDF→PPT 转换器——上传 PDF，约 30 秒返回原生可编辑 .pptx，图表表格保持可改、图片不降分辨率，不用注册就能试；新用户注册再送 200 AI credits。</p>
 <ul>
@@ -70,7 +70,7 @@
 <li><strong>有效期</strong>：至 2026-11-07（截至撰写时，以官网实际页面为准）</li>
 <li><strong>适合谁</strong>：API 用户、想对比国产新模型效果的人，零成本跑几轮 benchmark 正合适</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="hkudscli-anything-agent-cli">HKUDS/CLI-Anything：让任何软件都变成 agent 可调用的 CLI</h3>
 <p>一句话介绍：给任意桌面软件自动生成"agent harness"——一套 CLI + SKILL.md，让你的 coding agent 能直接操作 Blender、FreeCAD、Obsidian、Zotero 这些原本只有图形界面的软件。解决什么问题：agent 只能调 API 和写代码，碰到 GUI 软件就抓瞎；它用 7 阶段自动化流水线给每个软件造一套经过测试的 CLI，并通过 CLI-Hub（<code>pip install cli-anything-hub</code>）统一分发管理。⭐ 约 5.4 万（截至撰写时）。适合：想让 agent 替你操作桌面软件、做 CAD/3D/知识库自动化的人。港大团队出品，中文文档齐全，连 Hermes 都有现成 skill。<a href="https://github.com/HKUDS/CLI-Anything">项目地址</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
 <h3 id="k-dense-aiscientific-agent-skills177-agent-ai">K-Dense-AI/scientific-agent-skills：177 个科研技能，把 agent 变成 AI 科学家</h3>

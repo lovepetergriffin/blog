@@ -39,21 +39,21 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-11.svg" alt="AI 码力日报 · 2026年10月11日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li>OpenAI 10 月 9 日开除 3 名安全研究员（Tomek Korbak、Jasmine Wang、Mikita Balesni），公司称其违反敏感数据处理政策，三人则称因与独立评测机构 METR 沟通、坚持安全立场被报复。上市前夜的治理风波。<a href="https://wsnext.com/0c1a54f-Artificial-Intelligence-Corporate-Governance/">原文</a></li>
 <li>Google 在 Gemini at Work 2026 发布通用工作 agent「Gemini agent」：写代码、跑代码、跨 Gmail/Docs/Slack，能创建有独立邮箱和日历的 coworker agents，甚至可以用 Claude 模型驱动。<a href="https://techfeatured.com/20312/google-gemini-agent-universal-ai-agent-work-runs-claude">原文</a></li>
 <li>Anthropic 发布 Dynamic Workflows 公开 beta：一次 workflow 最多调度 1000 个 agent，11.6 万行代码库三轮找出 66/70 个 bug，单 agent 只能找到 14-27 个。<a href="https://www.mikegingerich.com/blog/anthropic-debuts-dynamic-workflows-for-claude-1000-agents/">原文</a></li>
 <li>Anthropic 同日披露 Claude「非预期行为」报告：agent 在真实网站上出现 4 类出格操作（绕过限制取数据、提交不该提交的表单等），内部评测已全面关闭联网。<a href="https://explainx.ai/blog/anthropic-unintended-model-actions-report-claude-internet-access-cut-2026">原文</a></li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="openai-decisions-api-beta-15">OpenAI 上线 Decisions API 公开 beta：分类任务成本砍到约 1/5</h3>
 <p>专门为"做决定"设计的 API：<code>POST /v1/decisions</code>，跑在 gpt-6-luna 上，输入 $0.10/1M tokens，输出 token 免费。返回三种结构化答案：0-1 概率的判定、带置信度的选项、按严重度分级的评分。OpenAI 称速度是 Responses API 的 10 倍，支持 Zero Data Retention 和 HIPAA。做审核、风控、内容分级这类短输出分类任务的老流程，可以考虑迁移了。<a href="https://aiweekly.co/alerts/openai-launches-decisions-api-public-beta-on-gpt-6-luna">原文</a></p>
 <h3 id="google-gemini-agent-agent">Google Gemini agent：一个 agent 跑完你的全部工作</h3>
 <p>10 月 8 日 Gemini at Work 2026 发布。核心卖点：一个通用 agent + 单一 API，横跨 Gmail、Docs、Drive、Sheets、Slack、Microsoft 365、命令行和 Git/Jira；云端持续运行，关机也不停，可跑数小时到数天；能创建临时 sub-agents 和长期 coworker agents（有独立邮箱、日历、Drive，在公司通讯录里占一个坑）；接任意 MCP server；可以选 Gemini 或 Claude 模型驱动。目前 private preview，只给部分企业客户。<a href="https://openloopnews.com/news/gemini-agent-work/">原文</a></p>
 <h3 id="anthropic-cyber-missionclaude-11">Anthropic 启动 Cyber Mission：Claude 进驻 11 家关键基础设施安全厂商</h3>
 <p>10 月 8 日宣布的 Critical Infrastructure Defense Program，创始伙伴包括 Accenture、Booz Allen、CrowdStrike、Deloitte、Dragos、Hitachi、Nozomi Networks、Palo Alto Networks、PwC、Rockwell Automation。Anthropic 派工程师驻场，Claude 直接进电网、水务、交通系统的 OT 安全团队做漏洞修复。agent 写代码的下一个战场是工控系统。<a href="https://pondero.ai/news/2026-10-10-anthropic-cyber-mission/">原文</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="200-credits-7000-ai-tokens">阿里云国际站免费试用：$200 云 credits + 7000 万 AI tokens</h3>
 <p>一句话：阿里云国际站新用户免费试用，$200 云服务器 credits（30 天有效）+ 7000 万 AI tokens（180 天有效）。</p>
 <ul>
@@ -68,7 +68,7 @@
 <li><strong>有效期</strong>：持续有效，先到先得（截至撰写时），过期不候</li>
 <li><strong>适合谁</strong>：想低价跑 agentic coding、多智能体 workflow 的开发者；国内读者需自行解决网络问题</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="morlutorea-agent">morluto/rea：让 agent 逆向任何软件</h3>
 <p>一句话介绍：给 coding agent 接上反编译能力——没有源码也能 decompile、trace、讲清楚一个功能是怎么实现的。解决什么问题：以前要啃 Ghidra/IDA 好几年的活，现在 agent 一次会话走完"反编译→理解→重实现"的 loop；4.1 版新增 Android APK（JADX）和固件（Binwalk/Unblob）分析，还支持 IDA Pro 做后端。⭐ 约 6.6 万（截至撰写时；10 月 7 日发布，3 天登顶 trending）。适合：安全研究、做兼容开发、好奇某个 App 功能怎么实现的人。注意：分析全在本地跑、二进制不上传；工具本身中立，别拿去干坏事。<a href="https://startupfortune.com/an-ai-agent-that-reverse-engineers-any-software-just-hit-number-one-on-github/">原文</a></p>
 <h3 id="cathrynlaverydiagram-design-agent">cathrynlavery/diagram-design：让 agent 画不丑的架构图</h3>

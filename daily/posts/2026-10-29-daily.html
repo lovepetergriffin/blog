@@ -39,16 +39,16 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-29.svg" alt="AI 码力日报 · 2026年10月29日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li><strong>Google Gemini 4 Carbon 发布</strong>：10 月 28 日上线的安全与长程编码模型，独立评测综合指数 59 分登顶，漏洞挖掘、利用与补丁三项官方跑分全线亮眼，但先只给 Fairwind 计划的安全防守方用。</li>
 <li><strong>OpenAI 密集进企业软件</strong>：10 月 27 日联手 Oracle、10 月 28 日再联手 ServiceNow，ChatGPT 与 Codex 直接接进企业应用、数据库与工单系统，权限仍走客户自己的审批链。</li>
 <li><strong>Anthropic 给律师上了现成工具箱</strong>：Claude for Legal 10 月 28 日新增 19 个开箱即用的法律 artifacts，引用核查、合同比对、法规追踪都能先跑一遍再让人签字。</li>
 <li><strong>VS Code 1.144 的 Copilot Fusion 正式上线</strong>：不用再手动挑模型，Fusion 按任务自动选模型与 effort 档，付费档 11 月 30 日前打 7 折。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="google-gemini-4-carbon">Google Gemini 4 Carbon：安全赛道的新王，但第一批只给防守方</h3>
-<p>跟你有啥关系：写代码最怕的不是写不出来，是写出带洞的代码还浑然不觉——Carbon 就是冲着这个痛点来的，而且它在第三方评测里直接登顶了。Google 10 月 28 日发布 Gemini 4 Carbon，定位是安全与长程工程任务最强的一档，距 Gemini 4 Argon 全面铺开仅两周。定价与 Argon 相同：输入每百万 token 2 美元、输出 10 美元。先泼一盆冷水：它目前只先开放给 Fairwind 计划里的一部分网络安全防守方，普通开发者还得等，看到跑分先别急着排接入计划。</p>
+<p><span class="why-label">跟你有啥关系</span>：写代码最怕的不是写不出来，是写出带洞的代码还浑然不觉——Carbon 就是冲着这个痛点来的，而且它在第三方评测里直接登顶了。Google 10 月 28 日发布 Gemini 4 Carbon，定位是安全与长程工程任务最强的一档，距 Gemini 4 Argon 全面铺开仅两周。定价与 Argon 相同：输入每百万 token 2 美元、输出 10 美元。先泼一盆冷水：它目前只先开放给 Fairwind 计划里的一部分网络安全防守方，普通开发者还得等，看到跑分先别急着排接入计划。</p>
 <p>跑分我按官方与第三方分开列，免得混在一起没法比（截至撰写时）：</p>
 <table>
 <thead>
@@ -96,19 +96,19 @@
 </tr>
 </tbody>
 </table>
-<p>我的判断：Carbon 的叙事很清晰——不在全能榜上硬拼，而是在"代码安不安全"这个开发者每天都在付账的维度上做第一。安全代码生成成功率号称是 Argon 的两倍以上，这对要过合规审计的团队是真金白银；但 FrontierSWE 2 与 OSWorld 两项仍落后，说明它还不是"一个模型包打天下"的答案，等开放后先拿它跑漏洞扫描与补丁评审这两类任务，通用编码仍建议留一个对照组。<a href="https://dealroom.co/news/167775-google-deepminds-gemini-4-carbon-takes-the-1-spot-on-artificial-analysis/">原文链接</a></p>
+<p><span class="judge-label">我的判断</span>：Carbon 的叙事很清晰——不在全能榜上硬拼，而是在"代码安不安全"这个开发者每天都在付账的维度上做第一。安全代码生成成功率号称是 Argon 的两倍以上，这对要过合规审计的团队是真金白银；但 FrontierSWE 2 与 OSWorld 两项仍落后，说明它还不是"一个模型包打天下"的答案，等开放后先拿它跑漏洞扫描与补丁评审这两类任务，通用编码仍建议留一个对照组。<a href="https://dealroom.co/news/167775-google-deepminds-gemini-4-carbon-takes-the-1-spot-on-artificial-analysis/">原文链接</a></p>
 <h3 id="openai-oracle-servicenowchatgpt-codex">OpenAI 两天连签 Oracle 与 ServiceNow：ChatGPT 与 Codex 直接住进企业软件里</h3>
-<p>跟你有啥关系：如果你公司的业务跑在 Oracle 或 ServiceNow 上，AI 助手不再是"旁边开个聊天窗口"，而是能直接在业务系统里查数、办事、写代码了。Oracle 在 10 月 27 日的 AI World 大会上宣布与 OpenAI 深化合作，推出四款产品：Oracle AI Workspace（把 Fusion 应用、NetSuite、AI 数据库与 OCI 整进一个 ChatGPT 可达的入口）、Oracle App Composer（用 Codex 等编码工具基于已授权的企业数据建应用）、Oracle AI Security Mesh（探查系统漏洞）与面向中小企业的 AI SMB Bundle。注意：OpenAI 自己也说明 Workspace 仍在开发中，不是今天就能全量用的成品。10 月 28 日，OpenAI 又与 ServiceNow 扩大合作：ServiceNow 的 MCP 插件即日起可在市场下载，员工能在对话里查相似工单、评估变更风险、更新记录，ServiceNow 的 Action Fabric 会套用客户已有的业务规则与权限——能动什么，取决于你自己的配置，不是 AI 说了算；更多安全、语音与开发能力计划在 2026 年底前陆续上线，ServiceNow 还计划给全体员工开通 ChatGPT Work 与 Codex。另据 The Information 报道，OpenAI 还计划采购 Google 的 TPU 芯片，此事双方均未置评，算作传闻先记一笔。我的判断：这两单的共同点是"权限不让步"——企业敢把 AI 放进核心系统，前提是审批链、访问控制原样保留；对开发者来说，下一波活儿很可能是给这些入口写插件与审批规则，而不是再写一个聊天机器人。<a href="https://www.okaynews.com/oracle-openai-chatgpt-business-integration-october-28-2026/">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：如果你公司的业务跑在 Oracle 或 ServiceNow 上，AI 助手不再是"旁边开个聊天窗口"，而是能直接在业务系统里查数、办事、写代码了。Oracle 在 10 月 27 日的 AI World 大会上宣布与 OpenAI 深化合作，推出四款产品：Oracle AI Workspace（把 Fusion 应用、NetSuite、AI 数据库与 OCI 整进一个 ChatGPT 可达的入口）、Oracle App Composer（用 Codex 等编码工具基于已授权的企业数据建应用）、Oracle AI Security Mesh（探查系统漏洞）与面向中小企业的 AI SMB Bundle。注意：OpenAI 自己也说明 Workspace 仍在开发中，不是今天就能全量用的成品。10 月 28 日，OpenAI 又与 ServiceNow 扩大合作：ServiceNow 的 MCP 插件即日起可在市场下载，员工能在对话里查相似工单、评估变更风险、更新记录，ServiceNow 的 Action Fabric 会套用客户已有的业务规则与权限——能动什么，取决于你自己的配置，不是 AI 说了算；更多安全、语音与开发能力计划在 2026 年底前陆续上线，ServiceNow 还计划给全体员工开通 ChatGPT Work 与 Codex。另据 The Information 报道，OpenAI 还计划采购 Google 的 TPU 芯片，此事双方均未置评，算作传闻先记一笔。<span class="judge-label">我的判断</span>：这两单的共同点是"权限不让步"——企业敢把 AI 放进核心系统，前提是审批链、访问控制原样保留；对开发者来说，下一波活儿很可能是给这些入口写插件与审批规则，而不是再写一个聊天机器人。<a href="https://www.okaynews.com/oracle-openai-chatgpt-business-integration-october-28-2026/">原文链接</a></p>
 <h3 id="anthropic-claude-19-artifacts">Anthropic 的 Claude 法律工具箱：19 个 artifacts，律师先验货再签字</h3>
-<p>跟你有啥关系：法律团队用 Claude 最烦的两件事——每次从零搭流程、每次人工逐条核对引用——这次 Anthropic 直接给了现成的。Anthropic 10 月 28 日为 Claude for Legal 推出 artifacts 画廊：在 5 月上线的法律产品基础上新增 6 个自研任务 artifacts、4 个法律科技公司与律所 built 的 artifacts、9 个法律援助类 artifacts，每个都先带示例，接入自己的文档再跑。点名几个实用的：Cite check（拿法律文件与原文逐条比对，揪出引错的页码、不成立的主张）、Jurisdiction survey matrix（跨法域法规对比）、Matter board（把委托函、邮件、表格变成待办事项板）、Playbook deviation board（合同与公司标准条款比对、异常自动走审批）、Regulatory horizon scan（upcoming 法规按时间线排影响）、Tabular review（从一堆合同里抽表、每格都链回原文）。同时法律连接器已超过 60 个，包括 Bloomberg Law、Filevine、Legora 等，团队内外的共享也做了合规隔离。我的判断：这套东西的卖点不是"AI 替律师写"，而是"AI 先跑第一遍、每句话都链回原文、律师只做判断"——对任何要出正式文件的团队，这个顺序都值得抄：先让模型把证据链摆出来，你再签字。<a href="https://www.unite.ai/anthropic-adds-ready-to-use-legal-artifacts-gallery-to-claude/">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：法律团队用 Claude 最烦的两件事——每次从零搭流程、每次人工逐条核对引用——这次 Anthropic 直接给了现成的。Anthropic 10 月 28 日为 Claude for Legal 推出 artifacts 画廊：在 5 月上线的法律产品基础上新增 6 个自研任务 artifacts、4 个法律科技公司与律所 built 的 artifacts、9 个法律援助类 artifacts，每个都先带示例，接入自己的文档再跑。点名几个实用的：Cite check（拿法律文件与原文逐条比对，揪出引错的页码、不成立的主张）、Jurisdiction survey matrix（跨法域法规对比）、Matter board（把委托函、邮件、表格变成待办事项板）、Playbook deviation board（合同与公司标准条款比对、异常自动走审批）、Regulatory horizon scan（upcoming 法规按时间线排影响）、Tabular review（从一堆合同里抽表、每格都链回原文）。同时法律连接器已超过 60 个，包括 Bloomberg Law、Filevine、Legora 等，团队内外的共享也做了合规隔离。<span class="judge-label">我的判断</span>：这套东西的卖点不是"AI 替律师写"，而是"AI 先跑第一遍、每句话都链回原文、律师只做判断"——对任何要出正式文件的团队，这个顺序都值得抄：先让模型把证据链摆出来，你再签字。<a href="https://www.unite.ai/anthropic-adds-ready-to-use-legal-artifacts-gallery-to-claude/">原文链接</a></p>
 <h3 id="vs-code-1144copilot-fusion">VS Code 1.144：Copilot Fusion 正式上线，选模型这件事以后不用你操心了</h3>
-<p>跟你有啥关系：每天在几个模型之间来回切换、纠结"这个任务该用谁"，Fusion 就是来收这个税的。微软 10 月 28 日发布 VS Code 1.144，GitHub Copilot Fusion 正式可用：它把多模型编排与任务感知选模型合在一起，你只选 Standard、High、Max 三档 effort，Fusion 按任务难度决定用一个还是多个模型、分别生成、评审、互评，账单按实际调用的每个模型标准价算。付费档（Pro+、Max、Business、Enterprise 可用 High 与 Max）在 2026 年 11 月 30 日前享 7 折。同日微软还把 Copilot harness（Copilot 背后的编排层）通过 Microsoft Foundry 开放给开发者与企业客户，支持 20 多个前沿模型与自带 key，走 MCP、agent skills 与插件等开放标准。第三方数据也值得看一眼：Fusion Max 在 Artificial Analysis 编码 Agent 指数上拿到 60 分，距 Claude Code + Opus 5.5 的档位只差约 2 分，而 GitHub 称平均 API 成本约只有一半。我的判断：模型选型正在从"开发者决策"变成"平台设置"——以后比拼的不是你会不会挑模型，而是你会不会定 effort 档与验收标准；先从 Standard 起步，复杂重构再开 High，别一上来就 Max 烧钱。<a href="https://visualstudiomagazine.com/articles/2026/10/28/vs-code-1-144-unleashes-copilot-fusion-ai-image-generation-and-computer-use.aspx">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：每天在几个模型之间来回切换、纠结"这个任务该用谁"，Fusion 就是来收这个税的。微软 10 月 28 日发布 VS Code 1.144，GitHub Copilot Fusion 正式可用：它把多模型编排与任务感知选模型合在一起，你只选 Standard、High、Max 三档 effort，Fusion 按任务难度决定用一个还是多个模型、分别生成、评审、互评，账单按实际调用的每个模型标准价算。付费档（Pro+、Max、Business、Enterprise 可用 High 与 Max）在 2026 年 11 月 30 日前享 7 折。同日微软还把 Copilot harness（Copilot 背后的编排层）通过 Microsoft Foundry 开放给开发者与企业客户，支持 20 多个前沿模型与自带 key，走 MCP、agent skills 与插件等开放标准。第三方数据也值得看一眼：Fusion Max 在 Artificial Analysis 编码 Agent 指数上拿到 60 分，距 Claude Code + Opus 5.5 的档位只差约 2 分，而 GitHub 称平均 API 成本约只有一半。<span class="judge-label">我的判断</span>：模型选型正在从"开发者决策"变成"平台设置"——以后比拼的不是你会不会挑模型，而是你会不会定 effort 档与验收标准；先从 Standard 起步，复杂重构再开 High，别一上来就 Max 烧钱。<a href="https://visualstudiomagazine.com/articles/2026/10/28/vs-code-1-144-unleashes-copilot-fusion-ai-image-generation-and-computer-use.aspx">原文链接</a></p>
 <h3 id="aokigahara-ai-api-key">安全警报：Aokigahara 木马专偷 AI 编程工具的登录态，你的 API key 可能就在它的购物单上</h3>
-<p>跟你有啥关系：这不是"别人中招"的新闻——它偷的正是你每天在用的 Claude、ChatGPT Desktop、Codex、Cursor、Windsurf、GitHub Copilot、Gemini CLI 的认证文件与会话数据。Check Point 10 月 27 日披露的 Windows 信息窃取木马 Aokigahara，除了常规的浏览器、VPN、加密钱包、FTP/SFTP、密码管理器、邮件客户端，还专门搜刮上述 AI 工具的认证、会话与配置文件，以及 Git 数据、SSH 私钥、API key 与 AWS、Azure、Google Cloud 的配置；得手后先查自己是不是跑在虚拟机或沙箱里，再打包加密发往攻击者服务器。更麻烦的是连锁反应：一个有效的 Copilot 或 Claude 会话，能顺带打开私有仓库与云资源。我的判断：今晚就做三件事——所有 AI 编程工具的会话能吊销的重登一遍、API key 轮换一次并收进密钥管理器、开发机上别再明文躺着云厂商的凭证文件；下面教程里我把自查步骤拆成了可复制的清单。<a href="https://pivotnews.ai/security/new-aokigahara-stealer-hunts-ai-assistant-sessions-check">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：这不是"别人中招"的新闻——它偷的正是你每天在用的 Claude、ChatGPT Desktop、Codex、Cursor、Windsurf、GitHub Copilot、Gemini CLI 的认证文件与会话数据。Check Point 10 月 27 日披露的 Windows 信息窃取木马 Aokigahara，除了常规的浏览器、VPN、加密钱包、FTP/SFTP、密码管理器、邮件客户端，还专门搜刮上述 AI 工具的认证、会话与配置文件，以及 Git 数据、SSH 私钥、API key 与 AWS、Azure、Google Cloud 的配置；得手后先查自己是不是跑在虚拟机或沙箱里，再打包加密发往攻击者服务器。更麻烦的是连锁反应：一个有效的 Copilot 或 Claude 会话，能顺带打开私有仓库与云资源。<span class="judge-label">我的判断</span>：今晚就做三件事——所有 AI 编程工具的会话能吊销的重登一遍、API key 轮换一次并收进密钥管理器、开发机上别再明文躺着云厂商的凭证文件；下面教程里我把自查步骤拆成了可复制的清单。<a href="https://pivotnews.ai/security/new-aokigahara-stealer-hunts-ai-assistant-sessions-check">原文链接</a></p>
 <h2 id="ai">📱 AI 应用新品</h2>
 <h3 id="google-gemini">Google 的 Gemini 政务服务：先帮市政府清积压，拍板权仍留给公务员</h3>
 <p>是什么：Google 10 月 28 日推出的 Gemini for government services，一个面向地方政府的 AI 平台，帮公务员处理最耗时的行政活：审居民申请、评采购标、找缺失材料。目前处于预览阶段，早期采用者包括密苏里州与美国卫生与公众服务部。解决什么问题：市政积压的根子往往不是"不会判"，而是"材料翻不完"——它能独立核对居民提交的文件、发现缺签名或不一致、拿供应商提案逐条对采购要求、起草评分理由，但福利资格、合同授予、法律事项等最终决定仍必须由公务员做。免费额度/价格：面向政府客户的预览产品，未公布个人价格，普通读者用不上。适合谁：做政务数字化、公共服务流程优化的人；普通读者看个方向也行——"AI 干杂活、人做决定"这个分工，正在从口号变成产品形态。<a href="https://cities-today.com/google-targets-city-backlogs-with-new-ai-agents/">原文链接</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="copilot-fusion-7-11-30">Copilot Fusion 7 折：付费档 11 月 30 日前薅，复杂任务再开高档</h3>
 <p>一句话：VS Code 1.144 随 Copilot Fusion 正式上线送上的折扣，付费档 Fusion 用量 7 折，11 月 30 日截止。</p>
 <ul>
@@ -130,7 +130,7 @@
 <li><strong>有效期</strong>：长期计划（截至撰写时），额度分两年发放，具体以申请页条款为准</li>
 <li><strong>适合谁</strong>：做 AI 产品、有融资背景的初创团队；个人开发者别指望，条件卡得严，不如先走各家的免费档</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="nutlopehallmark-coding-agent-ai">Nutlope/hallmark：给 coding agent 立一套"别长得像 AI 生成的"审美规矩</h3>
 <p>一句话介绍。解决什么问题：AI 生成的页面总有股味儿——每个标题上都顶个 eyebrow、结尾必跟一个注册表单、配色与留白千篇一律；hallmark 是给 Claude Code、Codex、Cursor 与 OpenCode 用的设计 skill，从 48 种材质的目录里发三套主题，再用真实浏览器按"机器生成痕迹"逐项 lint，最后由一个全新上下文的评审员拍板。⭐ 约 40k star、近 7 天新增约 9.2k（截至撰写时）。适合：天天让 agent 出落地页、官网、营销页的人；先把它接进 agent，再看一眼它拦下来的页面——你会发现自己以前对"AI 味儿"有多迟钝。<a href="https://github.com/Nutlope/hallmark">项目地址</a></p>
 <h3 id="nightly-labsopenbot-ai-codexclaudegrok">nightly-labs/openbot：本地优先的 AI 队友工作台，Codex、Claude、Grok 各有各的工位</h3>

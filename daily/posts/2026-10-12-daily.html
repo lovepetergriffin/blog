@@ -39,21 +39,21 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-12.svg" alt="AI 码力日报 · 2026年10月12日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li>OpenAI 定在 10 月 14 日把 GPT-5.5 从 ChatGPT、ChatGPT Work 和 Codex 里退役，API key 调用不受影响；凡是把模型名写死在配置、脚本和定时任务里的，今天就该动手改。<a href="https://www.gizmochina.com/2026/09/16/openai-retiring-gpt-5-5-on-october-14-you-may-need-to-update-your-workflow/">原文</a></li>
 <li>Anthropic 这周给 Claude Max 和 Team 计划加了每月 API credits：Max 5x 每月 $100、Max 20x 每月 $200，Team 拼池最高 $500，不领就作废，未用完月底清零。<a href="https://madrobot.blog/2026/10/08/claude-max-team-free-api-credits-how-to-claim/">原文</a></li>
 <li>Google 的 Gemini CLI 更新到 v0.63.0，一口气 15 个修复，最实用的一个是修掉了看 diff 时报 <code>cannot spawn : No such file or directory</code> 的老毛病。<a href="https://geminicli.com/docs/changelogs/latest/">原文</a></li>
 <li>GitHub 上 hugohe3/ppt-master 还在涨：丢一篇文档进去，出来的是能改的原生 PowerPoint，不是截图拼的假 PPT。<a href="https://github.com/hugohe3/ppt-master">原文</a></li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="openaigpt-55-codex">OpenAI：GPT-5.5 后天退役，Codex 默认模型已经换人</h3>
 <p>先说退役。GPT-5.5 10 月 14 日起从 ChatGPT、ChatGPT Work、Codex 三个入口下线，全计划生效；普通聊天会自动切到新默认，真正要操心的是把模型名写进工作区默认、自定义 agent、定时任务和脚本的人，官方指引是切到 GPT-5.6 Sol。用 API key 的调用不在这次退役范围内，不用慌。再说 Codex 本体：CLI 0.161 把 GPT-6.1 Sol 设为内置目录和 Bedrock 目录的默认模型，0.162 加了受管 Git worktree 工具、Command Center 任务置顶，顺手修了 Linux 沙箱和 <code>apply_patch</code> 的换行符保留。我自己的习惯是升级前先把 config 里的钉版清一遍，省得新旧默认打架。<a href="https://www.gizmochina.com/2026/09/16/openai-retiring-gpt-5-5-on-october-14-you-may-need-to-update-your-workflow/">退役原文</a>｜<a href="https://dev.to/aicoding-guide/codex-cli-v0161-and-v0162-changes-and-gpt-61-sol-becoming-the-default-model-502m">Codex 版本解析</a></p>
 <h3 id="anthropicclaude-code-21296">Anthropic：Claude Code 2.1.296 先把权限的洞补上</h3>
 <p>Claude Code 这周连发 2.1.295 / 2.1.296，重点不在新功能，在安全边界：hooks 从 2.1.295 起可以加 <code>onFailure: "block"</code>，守卫脚本自己挂了就直接拦下动作，不再默认放行；2.1.296 又让 Read 工具能一次性读大文件，并修了日志脱敏的细节。同一周 Anthropic 还发了小模型 Claude Haiku 5.5（1M 上下文、128k 最大输出），并把 Sonnet 5.5 的 prompt cache 读取价从 $0.20 砍到 $0.10/百万 tokens。我建议在用 hooks 当门禁的人今天就升级，顺手把教程里那类配置补上。<a href="https://tech-insider.org/codex-cli-0-162-vs-claude-code-2-1-296-2026/">版本对比原文</a>｜<a href="https://releasebot.io/updates/anthropic/claude-developer-platform">平台更新原文</a></p>
 <h3 id="googlegemini-cli-v063015">Google：Gemini CLI v0.63.0，15 个修复没新功能，但个个踩在痛点上</h3>
 <p>v0.63.0 是 10 月 6 日发的稳定版，这几天讨论才跟上。除了上面说的 diff 报错，它还修了：负数截断阈值本该关截断却把输出翻倍的问题、无头环境下认证无限循环、长跑 agent loop 的内存膨胀；同时非交互模式下也能跑自主 plan 执行了。对我这种把 CLI 挂在脚本里跑的人，这版的价值全在“别半夜挂掉”。升级就一行：<code>npm install -g @google/gemini-cli</code>。<a href="https://geminicli.com/docs/changelogs/latest/">原文</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="anthropic-api-creditsmax-100">Anthropic 月度 API credits：Max 每月 $100 起，不领作废</h3>
 <p>一句话：10 月 7 日起随 Haiku 5.5 一起上线的福利——Max 5x 每月 $100、Max 20x 每月 $200 的 Claude API credits，Team 按席位拼池（Standard $20/席、Premium $100/席）最高 $500，约省 ¥700 起。</p>
 <ul>
@@ -75,7 +75,7 @@
 <li><strong>有效期</strong>：免费层长期存在但限额随时会调（截至撰写时），过期不候</li>
 <li><strong>适合谁</strong>：做 side project、练 agent 原型的开发者；提醒一句，免费层的 prompt 可能被服务方留存，别往里塞敏感数据</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="hugohe3ppt-master-ppt">hugohe3/ppt-master：文档进去，原生 PPT 出来</h3>
 <p>一句话介绍：把文档或一个主题变成真正能改的 PowerPoint——原生形状、转场和动画、按数据生成的图表表格，还能用旁白备注生成配音，支持套自己的 .pptx 模板。解决什么问题：以前 AI 做 PPT 给的是一张张图，这个给的是能在 PowerPoint 里继续改的文件。⭐ 约 5.9 万（截至撰写时，据 gittrend 10 月 10 日数据）。适合：天天做汇报、方案和课件的人。<a href="https://github.com/hugohe3/ppt-master">项目地址</a></p>
 <h3 id="microsoftaescode-html">microsoft/AesCode：一句话生成能改的 HTML 页面</h3>

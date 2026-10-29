@@ -39,23 +39,23 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-21.svg" alt="AI 码力日报 · 2026年10月21日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li><strong>Google × Meta 联手开源 TorchTPU</strong>：PyTorch 原生 TPU 后端，<code>model.to("cuda")</code> 改成 <code>model.to("tpu")</code> 就能迁，已在 Hugging Face 下载榜前 5000 的模型上验证开箱即用——手里有 TPU 配额的人，PyTorch/XLA 那套老办法可以扔了。</li>
 <li><strong>DeepSeek 开源 DeepInfer</strong>：自家 V4.1-Flash 的生产级推理栈，Apache 2.0，同时支持 NVIDIA SM100 和华为 Ascend 950 NPU，一天狂揽约 1.1 万 star（截至撰写时）。</li>
 <li><strong>OpenAI 收购生物科技初创 Orchestra Bio</strong>：做"AI agent 协调新药研发流程"的平台，团队并入 OpenAI 生命科学平台 Rosalind，金额未披露——OpenAI 和 Anthropic 在 AI 制药这条赛道正式撞车。</li>
 <li><strong>Mistral 发布 Voxtral 3 语音 agent 全家桶</strong>：转写 + TTS + 基于 LiveKit 的 voice agent SDK 一条龙，50+ 语言转写 $0.0035/分钟起，可欧盟托管或私有化部署。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="pytorch-tpu-google-meta-torchtpu">PyTorch 终于能原生跑 TPU 了：Google 和 Meta 联手开源 TorchTPU</h3>
-<p>跟你有啥关系：如果你在 Google Cloud 上有 TPU 配额，以前用 PyTorch 得走 PyTorch/XLA 那套，又慢又要改代码。现在 TorchTPU 来了——eager 执行优先、支持 torch.compile，<code>model.to("cuda")</code> 改成 <code>model.to("tpu")</code> 就能跑，已经在 vLLM、SGLang、TorchTitan 上验证过。Google 和 Meta 亲自下场给 PyTorch 写 TPU 后端，这在几年前是不可想象的。<a href="https://pytorch.org/blog/introducing-torchtpu/">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：如果你在 Google Cloud 上有 TPU 配额，以前用 PyTorch 得走 PyTorch/XLA 那套，又慢又要改代码。现在 TorchTPU 来了——eager 执行优先、支持 torch.compile，<code>model.to("cuda")</code> 改成 <code>model.to("tpu")</code> 就能跑，已经在 vLLM、SGLang、TorchTitan 上验证过。Google 和 Meta 亲自下场给 PyTorch 写 TPU 后端，这在几年前是不可想象的。<a href="https://pytorch.org/blog/introducing-torchtpu/">原文链接</a></p>
 <h3 id="dhs-deepseek-deepinfer">DHS 刚下禁令，DeepSeek 转头开源了自家推理引擎 DeepInfer</h3>
-<p>10 月 19 日美国 DHS 下令联邦机构清除 DeepSeek（昨天日报讲过），10 月 20 日 DeepSeek 直接把 V4.1-Flash 背后的生产级推理栈开源了：DeepInfer，Apache 2.0。亮点是 FlashMLA、DeepGEMM、DeepEP 这些自研 kernel 全放出来了，确定性采样、结构化输出、异步调度一应俱全，硬件同时支持 NVIDIA SM100 和华为 Ascend 950 NPU。跟你有啥关系：想自建 DeepSeek 推理服务的人可以直接抄它的生产配置；更值得玩味的是时间点——被禁第二天就开源核心基础设施，这公关我给满分。<a href="https://github.com/deepseek-ai/DeepInfer">原文链接</a></p>
+<p>10 月 19 日美国 DHS 下令联邦机构清除 DeepSeek（昨天日报讲过），10 月 20 日 DeepSeek 直接把 V4.1-Flash 背后的生产级推理栈开源了：DeepInfer，Apache 2.0。亮点是 FlashMLA、DeepGEMM、DeepEP 这些自研 kernel 全放出来了，确定性采样、结构化输出、异步调度一应俱全，硬件同时支持 NVIDIA SM100 和华为 Ascend 950 NPU。<span class="why-label">跟你有啥关系</span>：想自建 DeepSeek 推理服务的人可以直接抄它的生产配置；更值得玩味的是时间点——被禁第二天就开源核心基础设施，这公关我给满分。<a href="https://github.com/deepseek-ai/DeepInfer">原文链接</a></p>
 <h3 id="60-cobolopenai-gpt-61">银行那套 60 年前的 COBOL，OpenAI 说 GPT-6.1 终于能迁了</h3>
-<p>OpenAI 10 月 20 日发了篇博客：专门给 COBOL、Fortran、Visual Basic 这些"低资源语言"做了新评估。MultiLangBench 让模型从零写一个 SQLite 兼容的数据库引擎（20 种语言），GPT-6 Astra 平均通过率 87.4%，COBOL 从 10.9% 干到 72.1%；COBOL 迁移测试（迁到 C++、Java、Python 等，行为必须完全一致）GPT-6.1 Sol 准确率 97.9%，而 GPT-5.6 只有 5.4%。跟你有啥关系：银行、政府、保险的遗留系统迁移是个大市场，OpenAI 这是在明牌抢单；做企业服务的人可以开始拿 GPT-6 试老代码了——但 OpenAI 自己也说了，生产迁移还是要专家 review。<a href="https://www.bleepingcomputer.com/news/artificial-intelligence/openai-says-gpt-61-sol-is-dramatically-better-at-migrating-legacy-code/">原文链接</a></p>
+<p>OpenAI 10 月 20 日发了篇博客：专门给 COBOL、Fortran、Visual Basic 这些"低资源语言"做了新评估。MultiLangBench 让模型从零写一个 SQLite 兼容的数据库引擎（20 种语言），GPT-6 Astra 平均通过率 87.4%，COBOL 从 10.9% 干到 72.1%；COBOL 迁移测试（迁到 C++、Java、Python 等，行为必须完全一致）GPT-6.1 Sol 准确率 97.9%，而 GPT-5.6 只有 5.4%。<span class="why-label">跟你有啥关系</span>：银行、政府、保险的遗留系统迁移是个大市场，OpenAI 这是在明牌抢单；做企业服务的人可以开始拿 GPT-6 试老代码了——但 OpenAI 自己也说了，生产迁移还是要专家 review。<a href="https://www.bleepingcomputer.com/news/artificial-intelligence/openai-says-gpt-61-sol-is-dramatically-better-at-migrating-legacy-code/">原文链接</a></p>
 <h3 id="claude-64-318-17">Claude 花 64 小时设计了 31.8 万个蛋白，17 个真能抓住蝎毒</h3>
-<p>Anthropic 官方研究：让内部 Claude 模型设计针对蝎神经毒素的蛋白 binder，64 小时生成 318,484 个设计，Adaptyv Bio 和 Twist Bioscience 两家实验室实测了 211 个，17 个确认结合，最强的达到单纳摩尔级亲和力。全部 211 个设计和数据已经开源，Anthropic 明确说了：这只是结合验证，不是解药。跟你有啥关系：直接关系不大，但信号很清楚——同一天 OpenAI 收购 Orchestra Bio 杀入新药研发，两家在"AI + 生命科学"这条线正式开战，明年这块的 agent 工具会井喷。<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design">原文链接</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<p>Anthropic 官方研究：让内部 Claude 模型设计针对蝎神经毒素的蛋白 binder，64 小时生成 318,484 个设计，Adaptyv Bio 和 Twist Bioscience 两家实验室实测了 211 个，17 个确认结合，最强的达到单纳摩尔级亲和力。全部 211 个设计和数据已经开源，Anthropic 明确说了：这只是结合验证，不是解药。<span class="why-label">跟你有啥关系</span>：直接关系不大，但信号很清楚——同一天 OpenAI 收购 Orchestra Bio 杀入新药研发，两家在"AI + 生命科学"这条线正式开战，明年这块的 agent 工具会井喷。<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design">原文链接</a></p>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="minimax-m31-flash-72">MiniMax M3.1 Flash 免费 72 小时今天到期，最后上车</h3>
 <p>昨天推过的那只"Space Bunny"：OpenRouter 上 10 月 19 日起 72 小时免费，算下来今天（约 10 月 22 日）就结束；Vercel AI Gateway 的免费也到 10 月 22 日。之后就按 $0.15/$0.60 每百万 token 收费，10 月 23 日官方开源权重。</p>
 <ul>
@@ -63,7 +63,7 @@
 <li><strong>有效期</strong>：截至约 10 月 22 日（截至撰写时），过期不候；注意免费端点有速率限制</li>
 <li><strong>适合谁</strong>：想白嫖一个 agent/代码模型做压测的人</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="dietrichgebertponytail-ai-agent">DietrichGebert/ponytail：让你的 AI agent 像最懒的高级工程师一样思考</h3>
 <p>一句话：一个 agent skill，核心思想是"最好的代码是没写的那行"——先找现成的、复用标准库，不到万不得已不写新代码。解决什么问题：agent 动不动就手搓 300 行实现一个浏览器自带的日历选择器，ponytail 把这种浪费掐死在摇篮里。作者自带 benchmark：代码量 -53%、token -45%、成本 -26%，且 98% 的高风险逻辑带测试。⭐ 约 169,534（截至撰写时）。适合：每天被 agent 的 token 账单刺痛的人。<a href="https://github.com/DietrichGebert/ponytail">项目地址</a></p>
 <h3 id="graphify-labsgraphify">Graphify-Labs/graphify：把整个代码库变成可查询的知识图谱</h3>

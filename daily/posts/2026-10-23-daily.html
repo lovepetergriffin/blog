@@ -39,25 +39,25 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-23.svg" alt="AI 码力日报 · 2026年10月23日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li><strong>OpenAI Decisions API 正式可用</strong>：GPT-6 Luna 驱动，判定类任务比走 Responses API 快 10 倍，输入 $0.10 / 百万 token，单请求最多塞 400 个问题。</li>
 <li><strong>Anthropic 新版 API 动了根基</strong>：2026-10-21 版直接砍掉 temperature、top_p、top_k，带这些参数的请求会 400 报错——调 Claude API 的今天就该看迁移指南。</li>
 <li><strong>Google 把 Gemini 塞进车里和地图里</strong>：个人智能接进地图搜索与收藏地点，美国 CarPlay 用户已经能在 Google Maps 里直接跟 Gemini 对话导航。</li>
 <li><strong>DeepSeek 约 150 亿美元融资收尾</strong>：宁德时代、腾讯领投，目标额从 500 亿元一路翻倍到 1000 亿元——就在美国下令联邦机构移除 DeepSeek 的两天后。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="litellm-11070">先查版本：LiteLLM 1.107.0 遭投毒，装过的机器当已沦陷处理</h3>
-<p>跟你有啥关系：如果你在用 LiteLLM 当多模型网关，这条优先级高于一切。10 月 21 日 11:39 到 13:20 UTC（约 100 分钟），PyPI 上的 LiteLLM 1.107.0 是被投毒的版本，Docker 镜像（含 latest 标签）也在 13:53 UTC 前中招。攻击者用偷来的三名工程师 GitHub CLI token 推了这个版本，植入的文件在 Python 启动时就运行——哪怕你从没 import litellm——会偷 SSH 密钥、云和 CI 凭证、LLM provider key，还装了一个每小时拉新代码的加载器（据 StepSecurity 称第二阶段当时还没启用）。安全版是 1.106.2。我的处理建议很直接：装过 1.107.0 或在那个窗口拉过镜像的，别只升级了事，把机器当已沦陷、把所有密钥轮换一遍。网关手里攥着所有厂商的 key，本来就是攻击者最想偷的东西。<a href="https://ai-news-online.com/briefing/2026-10-22/">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：如果你在用 LiteLLM 当多模型网关，这条优先级高于一切。10 月 21 日 11:39 到 13:20 UTC（约 100 分钟），PyPI 上的 LiteLLM 1.107.0 是被投毒的版本，Docker 镜像（含 latest 标签）也在 13:53 UTC 前中招。攻击者用偷来的三名工程师 GitHub CLI token 推了这个版本，植入的文件在 Python 启动时就运行——哪怕你从没 import litellm——会偷 SSH 密钥、云和 CI 凭证、LLM provider key，还装了一个每小时拉新代码的加载器（据 StepSecurity 称第二阶段当时还没启用）。安全版是 1.106.2。我的处理建议很直接：装过 1.107.0 或在那个窗口拉过镜像的，别只升级了事，把机器当已沦陷、把所有密钥轮换一遍。网关手里攥着所有厂商的 key，本来就是攻击者最想偷的东西。<a href="https://ai-news-online.com/briefing/2026-10-22/">原文链接</a></p>
 <h3 id="openai-decisions-api">OpenAI Decisions API 转正：判定类任务别再拿大模型当分类器使了</h3>
-<p>跟你有啥关系：做内容分类、工单分流、交易归类这类"答案有界"的事，以前要么调小模型将就、要么拿大模型慢慢等，现在有了官方的中间档。10 月 22 日 OpenAI 宣布 Decisions API 正式可用（结束公开测试），底层是 GPT-6 Luna，返回有界、有类型的答案：概率、选项或打分 rubric，单请求最多 400 个问题，文本、图片、结构化输入都能吃。官方说法是比经 Responses API 问 GPT-6 Luna 快 10 倍，Box、Datadog、Ramp、Sierra、Speak 已经在用。定价也贴着"判定"这个定位：输入 $0.10 / 百万 token、缓存输入 $0.01 / 百万 token，不收输出 token 费。我觉得这个 API 的意义不在模型多强，而在它把"判断"从聊天里拆出来变成可计价的基础设施——以后分类分流类需求，先看它够不够用，别一上来就上旗舰模型烧钱。<a href="https://www.unite.ai/openai-makes-decisions-api-generally-available-with-gpt-6-luna/">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：做内容分类、工单分流、交易归类这类"答案有界"的事，以前要么调小模型将就、要么拿大模型慢慢等，现在有了官方的中间档。10 月 22 日 OpenAI 宣布 Decisions API 正式可用（结束公开测试），底层是 GPT-6 Luna，返回有界、有类型的答案：概率、选项或打分 rubric，单请求最多 400 个问题，文本、图片、结构化输入都能吃。官方说法是比经 Responses API 问 GPT-6 Luna 快 10 倍，Box、Datadog、Ramp、Sierra、Speak 已经在用。定价也贴着"判定"这个定位：输入 $0.10 / 百万 token、缓存输入 $0.01 / 百万 token，不收输出 token 费。我觉得这个 API 的意义不在模型多强，而在它把"判断"从聊天里拆出来变成可计价的基础设施——以后分类分流类需求，先看它够不够用，别一上来就上旗舰模型烧钱。<a href="https://www.unite.ai/openai-makes-decisions-api-generally-available-with-gpt-6-luna/">原文链接</a></p>
 <h3 id="anthropic-api-temperaturetop_ptop_k">Anthropic 发了三年来的第一个正式 API 大版本：temperature、top_p、top_k 说没就没</h3>
-<p>跟你有啥关系：只要你的代码调 Claude API，这就是个会炸生产环境的变更。2026-10-21 版是 Anthropic 自 2023 年以来第一个正式 API 版本，Messages API 里直接移除了 temperature、top_p、top_k 三个采样参数；另外 assistant 轮次里带文档、user 轮次里带引用也会返回 400。新版 SDK 大版本和 ant CLI 默认就是 2026-10-21，并附了迁移指南。好消息是老版本 2023-06-01 暂未废弃，Anthropic 也表示以后会更频繁地发 API 版本、让开发者有时间消化不兼容变更。我的建议：先别急着升级生产环境，在 staging 用新版跑一遍——特别是那些靠 temperature 控随机性的提示词工程，参数没了之后输出分布变了都不知道从哪调起。<a href="https://www.tokenpost.com/news/technology/38027">原文链接</a></p>
+<p><span class="why-label">跟你有啥关系</span>：只要你的代码调 Claude API，这就是个会炸生产环境的变更。2026-10-21 版是 Anthropic 自 2023 年以来第一个正式 API 版本，Messages API 里直接移除了 temperature、top_p、top_k 三个采样参数；另外 assistant 轮次里带文档、user 轮次里带引用也会返回 400。新版 SDK 大版本和 ant CLI 默认就是 2026-10-21，并附了迁移指南。好消息是老版本 2023-06-01 暂未废弃，Anthropic 也表示以后会更频繁地发 API 版本、让开发者有时间消化不兼容变更。我的建议：先别急着升级生产环境，在 staging 用新版跑一遍——特别是那些靠 temperature 控随机性的提示词工程，参数没了之后输出分布变了都不知道从哪调起。<a href="https://www.tokenpost.com/news/technology/38027">原文链接</a></p>
 <h3 id="google-gemini-carplay">Google 的 Gemini 又往车里钻了一步：地图搜索、收藏地点、CarPlay 全接上</h3>
-<p>跟你有啥关系：开车场景是 agent 最容易落地的个人场景之一，Google 正在把 Gemini 钉进这个场景的每个入口。10 月 22 日，Gemini 应用的个人智能（Personal Intelligence）扩展了 Google Maps 集成：经你许可后，Gemini 可以引用你的地图搜索和收藏地点，结合日历给行程建议——比如"开完会去哪家收藏的餐厅"，它会先看你上一场会议的地点再推荐附近的店。同日，美国 Apple CarPlay 用户也能在 Google Maps 里直接跟 Gemini 对话了：点车机上的 Gemini 图标，多轮问答、沿途找店、避开收费路段导航都不用再点菜单。Google 还放出风声：AI Ultra 订阅者会收到提示，Gemini 4 Argon 将"很快取代 Deep Think"。开车不用手、建议不用翻，这两件事拼起来，个人智能才算真的从手机走进了生活。<a href="https://9to5google.com/2026/10/22/gemini-personal-intelligence-maps/">原文链接</a>、<a href="https://aidailypost.com/news/us-apple-carplay-users-can-now">CarPlay 报道</a></p>
+<p><span class="why-label">跟你有啥关系</span>：开车场景是 agent 最容易落地的个人场景之一，Google 正在把 Gemini 钉进这个场景的每个入口。10 月 22 日，Gemini 应用的个人智能（Personal Intelligence）扩展了 Google Maps 集成：经你许可后，Gemini 可以引用你的地图搜索和收藏地点，结合日历给行程建议——比如"开完会去哪家收藏的餐厅"，它会先看你上一场会议的地点再推荐附近的店。同日，美国 Apple CarPlay 用户也能在 Google Maps 里直接跟 Gemini 对话了：点车机上的 Gemini 图标，多轮问答、沿途找店、避开收费路段导航都不用再点菜单。Google 还放出风声：AI Ultra 订阅者会收到提示，Gemini 4 Argon 将"很快取代 Deep Think"。开车不用手、建议不用翻，这两件事拼起来，个人智能才算真的从手机走进了生活。<a href="https://9to5google.com/2026/10/22/gemini-personal-intelligence-maps/">原文链接</a>、<a href="https://aidailypost.com/news/us-apple-carplay-users-can-now">CarPlay 报道</a></p>
 <h3 id="deepseek-150">DeepSeek 约 150 亿美元融资收尾：美国刚下禁令，中国资本就加了注</h3>
-<p>跟你有啥关系：不管你用不用 DeepSeek 的模型，这轮融资都会影响接下来开源模型的竞争烈度。据路透 10 月 22 日引述知情人士报道，DeepSeek 本轮融资约 1000 亿元（约 150 亿美元），已接近完成，宁德时代和腾讯是最大投资方，美团、美的、吉利、兆易创新等新入局，投资方超过 15 家；目标额从最初的 500 亿元翻了一倍，投前估值据报道为 5000 亿元。时间点值得注意：就在两天前，美国刚下令联邦民事机构从系统中移除 DeepSeek 技术；6 月那轮 DeepSeek 融了 70 多亿美元、估值 500 亿美元，9 月又有消息称它在为科创板 IPO 做准备。官方尚未证实本轮细节，但方向很清楚：禁令没有吓退资本，反而让 DeepSeek 的弹药更足了，开源模型这条赛道只会更卷。<a href="https://techcrunch.com/2026/10/22/deepseek-reportedly-raises-15b-days-after-us-restrictions/">原文链接</a></p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<p><span class="why-label">跟你有啥关系</span>：不管你用不用 DeepSeek 的模型，这轮融资都会影响接下来开源模型的竞争烈度。据路透 10 月 22 日引述知情人士报道，DeepSeek 本轮融资约 1000 亿元（约 150 亿美元），已接近完成，宁德时代和腾讯是最大投资方，美团、美的、吉利、兆易创新等新入局，投资方超过 15 家；目标额从最初的 500 亿元翻了一倍，投前估值据报道为 5000 亿元。时间点值得注意：就在两天前，美国刚下令联邦民事机构从系统中移除 DeepSeek 技术；6 月那轮 DeepSeek 融了 70 多亿美元、估值 500 亿美元，9 月又有消息称它在为科创板 IPO 做准备。官方尚未证实本轮细节，但方向很清楚：禁令没有吓退资本，反而让 DeepSeek 的弹药更足了，开源模型这条赛道只会更卷。<a href="https://techcrunch.com/2026/10/22/deepseek-reportedly-raises-15b-days-after-us-restrictions/">原文链接</a></p>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="nvidia-nim-1000-credits-deepseek-v4-nemotron-3">NVIDIA NIM：免绑卡每月 1000 credits，白嫖 DeepSeek-V4 和 Nemotron 3</h3>
 <p>一句话：NVIDIA 的托管推理 API（build.nvidia.com）每月给 1000 credits，不用绑卡，OpenAI 兼容，目录里有 DeepSeek-V4-Pro / Flash 和 Nemotron 3（都是 100 万 token 上下文）。</p>
 <ul>
@@ -79,7 +79,7 @@
 <li><strong>有效期</strong>：长期免费档（截至撰写时），超量后按 $0.011 / 1000 Neurons 计费</li>
 <li><strong>适合谁</strong>：已经在用 Cloudflare 全家桶、想把轻量推理直接挂在边缘上的人；注意它不是 OpenAI 风格接口，要按 Workers AI 的调用方式写</li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="debpalashvoicestudio-elevenlabs">debpalash/VoiceStudio：在自己电脑上跑的开源 ElevenLabs 平替</h3>
 <p>一句话介绍。解决什么问题：想做语音克隆、配音、播客，又不想把声音数据和钱包交给订阅制服务——VoiceStudio 是完全本地运行的开源语音工作室，克隆、合成都在本机做。⭐ 约 8.1 万（截至撰写时），是本周增速最猛的一批项目之一。适合：做视频配音、播客、有声内容的独立开发者；提醒一句，默认语音模型 OmniVoice 是非商业许可，商用前先确认授权。<a href="https://github.com/debpalash/VoiceStudio">项目地址</a></p>
 <h3 id="stablyaiorca-agent">stablyai/orca：一个地方管你手里的一整支 agent 舰队</h3>

@@ -39,14 +39,14 @@
   </header>
   <img class="post-cover" src="../covers/2026-10-10.svg" alt="AI 码力日报 · 2026年10月10日">
   <div class="post-body">
-<h2 id="_1">⚡ 一句话速览</h2>
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
 <ul>
 <li><strong>OpenAI 28 天计划 Day 5</strong>：Dots 首次支持在 ChatGPT 手机 App 上直接创建，dot 可委派到 Codex 干活、跟进 thread；Codex 同步上线 composer predictions beta（Pro 用户，下一条消息建议，beta 期间不耗额度）。</li>
 <li><strong>Google</strong>：Gemini App 免费用户从 10 月 9 日起只能用 Flash-Lite，Flash 和 Pro 被移除；AI Pro 用户则新增 Deep Think。</li>
 <li><strong>Anthropic</strong>：官网这两天没有新发布；10 月 8 日官宣的 Usage Policy 更新（禁止无意义虐待 Claude，11 月 12 日生效）继续发酵。</li>
 <li><strong>阿里开源 open-code-review CLI</strong>：AI 代码评审助手，⭐ 约 45,178，官方称同模型下精度和 F1 显著高于 Claude Code、只耗约 1/9 token。</li>
 </ul>
-<h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
 <h3 id="openai-day-5dots-codex-composer-predictions-betapro">OpenAI Day 5：Dots 上手机 + Codex composer predictions beta（Pro）</h3>
 <p>10 月 9 日，OpenAI"28 天品质提升"计划进入第 5 天。<strong>Dots</strong>：首次支持直接在 iOS/Android 版 ChatGPT 手机 App 上创建；dot 现在可以在 Codex 里启动工作、跟进已有 thread，还能查看/编辑 ChatGPT Work 的 Scheduled Tasks。<a href="https://community.openai.com/t/fresh-dots-updates-create-in-the-mobile-app-delegate-to-codex/1404834">官方论坛帖</a></p>
 <p><strong>Codex composer predictions</strong>（beta）：为 ChatGPT Pro 用户推出"下一条消息建议"，按 Tab 接受；beta 期间不耗额度。<a href="https://community.openai.com/t/codex-can-now-suggest-your-next-message-composer-predictions-beta/1404842">官方论坛帖</a>（链接截至撰写时可访问）</p>
@@ -60,7 +60,7 @@
 <h3 id="xcode-263-rcagentic-coding-claude-agent-codex-mcp-agent">Xcode 26.3 RC：agentic coding 内置，可选 Claude Agent / Codex / MCP 自定义 agent</h3>
 <p>Xcode 26.3 RC 内置 agentic coding，可选 Claude Agent、OpenAI Codex 或经 MCP 接入自定义 agent；可直接在 Xcode 内读写工程、构建、跑测试。iOS 开发者不用插件就能调用 Claude Code 级能力。<a href="https://pengen.diewe.workers.dev/arshtechpro/xcode-263-brings-agentic-coding-claude-and-codex-now-integrated-into-your-ide-1l5p">DEV 社区文章</a>（截至撰写时可访问）</p>
 <p>我的看法：苹果终于把 AI coding 搬进官方 IDE 了——之前 Xcode 的 AI 补全一直被诟病，这次直接接入第三方 agent 倒是个务实的选择。对 iOS 开发者来说，最大的变化是"不用再装一堆插件"，工程内直接调 agent 跑测试修 bug。不过是 RC 版，等正式版再上生产项目。</p>
-<h2 id="_2">🐑 今日羊毛</h2>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
 <h3 id="elevenlabs-10-starter-1v4-api-1012">ElevenLabs 10 月限时促销：Starter 首月 $1，v4 API 首发价到约 10/12</h3>
 <p>一句话：ElevenLabs 官网定价页限时促销——Starter 订阅首月 <strong>$1</strong>（原价 $5，83% off），含商业许可 + 30,000 credits + 即时语音克隆；开发者用的 v4 API 促销价约 $0.011–0.022/千字符（原价 $0.04–$0.08）。</p>
 <ul>
@@ -89,7 +89,7 @@
 <li><strong>有效期</strong>：预览期免费（截至撰写时有效，领完早用）</li>
 <li><strong>适合谁</strong>：想白嫖国产模型做代码生成/调试的人。独立测试者 KingBench 3 给它打了 53/80（同期对测 GPT-6 Sol、Opus 5.5 等）。<a href="https://www.youtube.com/watch?v=JEFdVK37E5s">来源</a></li>
 </ul>
-<h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
 <h3 id="alibabaopen-code-review">alibaba/open-code-review</h3>
 <p>阿里内部 AI 代码评审助手的开源 CLI 版（命令 <code>ocr</code>）。解决什么问题：通用 agent 做 code review 时漏文件、定位漂移、质量不稳定——它用"确定性 pipeline + LLM Agent"混合架构（文件分组、规则匹配、行级定位），官方 benchmark 称同模型下精度和 F1 显著高于 Claude Code，且只耗约 1/9 token。⭐ 约 45,178（截至撰写时）。适合：想把 AI code review 接进 CI、又怕 agent 乱评的人。<a href="https://github.com/alibaba/open-code-review">项目地址</a></p>
 <h3 id="berriailitellm">BerriAI/litellm</h3>
