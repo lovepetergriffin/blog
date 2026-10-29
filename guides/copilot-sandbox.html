@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub Copilot 本地沙箱正式版：Agent 能碰什么、不能碰什么，一次讲清 - 互联网指南</title>
+<meta name="description" content="GitHub Copilot 本地沙箱 2026 年 10 月正式版：VS Code、CLI、桌面 App 三端怎么开，文件、网络、凭证三类权限怎么配，企业怎么强制锁死，以及沙箱不等于离线这个最容易踩的坑。">
+<meta property="og:title" content="GitHub Copilot 本地沙箱正式版：Agent 能碰什么、不能碰什么，一次讲清 - 互联网指南"><meta property="og:description" content="GitHub Copilot 本地沙箱 2026 年 10 月正式版：VS Code、CLI、桌面 App 三端怎么开，文件、网络、凭证三类权限怎么配，企业怎么强制锁死，以及沙箱不等于离线这个最容易踩的坑。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "GitHub Copilot 本地沙箱正式版：Agent 能碰什么、不能碰什么，一次讲清 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 进阶技巧</div>
+    <h1>GitHub Copilot 本地沙箱正式版：Agent 能碰什么、不能碰什么，一次讲清</h1>
+    <div class="meta"><time>发布于 2026-10-29</time><span class="difficulty">进阶</span><a class="tag" href="/guides/">GitHub Copilot</a><a class="tag" href="/guides/">沙箱</a><a class="tag" href="/guides/">VS Code</a><a class="tag" href="/guides/">Agent 安全</a></div>
+  </header>
+  <div class="post-body">
+<p>一句话先说结论：<strong>Copilot 的 Agent 模式现在可以关进沙箱了，而且不额外收费，所有订阅档都带。</strong> 沙箱管的是 Agent 能碰什么——文件、网络、凭证——不是模型本身聪明不聪明。2026 年 10 月之前你让 Agent 跑命令，等于给了它你账号的全部权限；现在你可以先画好圈，再让它在圈里干活。</p>
+<p>跟你有啥关系：Agent 模式最大的风险不是它写错代码，而是它跑错命令。一条 <code>rm -rf</code>、一次把密钥发到外网、一个把内网服务暴露出去的调试命令，破坏力比写错一个函数大得多。沙箱就是给这种风险上的一道栏杆，而且 10 月这次转正之后，栏杆的配置方式在 CLI、桌面 App、VS Code 三端统一了，值得花半小时配一遍。</p>
+<h2 id="2026-10">沙箱到底是什么，2026 年 10 月变了什么</h2>
+<p>沙箱这个概念 2026 年 6 月就进了公开预览，当时范围很窄，主要隔离 Copilot 发起的 shell 命令。9 月 23 日桌面 App 也进了预览，但默认关闭、按项目配置，而且只覆盖本地仓库会话。</p>
+<p>2026 年 10 月 7 日（VS Code 1.141 同期）正式转正，覆盖三端：Copilot CLI、Copilot 桌面 App、VS Code 里用 Agent Host 的会话。底层是微软的 eXecution Container（MXC），在 Windows、macOS、Linux 上都用系统原生隔离机制，不是套一层虚拟机，所以开销不大。</p>
+<p>转正后你能管的东西：</p>
+<ul>
+<li>Agent 跑的命令能读、能改哪些文件和目录</li>
+<li>能不能访问互联网、局域网</li>
+<li>能不能碰 Git 凭证、GitHub CLI 凭证</li>
+<li>本地工具和服务，包括本地 MCP 服务器和语言服务器（支持的范围内）</li>
+</ul>
+<p>企业版和商业版管理员可以强制要求沙箱，并且锁死策略，开发者自己不能放宽。这句话很关键：一个开发者图方便就能松掉的策略，不叫控制，叫建议。</p>
+<p>费用：不额外收费，免费版的每月 50 次高级请求也能用，Pro、Pro+、Enterprise 都一样。沙箱本身不按量计费。</p>
+<h2 id="vs-code">VS Code 里怎么开</h2>
+<p>VS Code 1.141 开始，Agent 会话可以跑在沙箱里。核心就一个设置：</p>
+<pre><code>chat.agent.sandbox.enabled
+</code></pre>
+<p>打开之后，Agent 会话跑的命令就进沙箱了。文件和网络权限可以在设置里按工作区配。VS Code 1.141 还顺带上了两个 Agent 相关的小功能：Agents 窗口可以并排看多个会话（方便对照不同会话的结果），聊天里多了个「Open worktree cleanup」，能看闲置 worktree 占了多少磁盘、挑着删。</p>
+<p>一套能直接抄的起步配置思路：</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<ul>
+<li>工作区内读写放开，这是 Agent 干活的基本盘</li>
+<li>工作区外默认拒绝，尤其注意别让它摸到 <code>~/.ssh</code>、<code>~/.aws</code>、<code>.env</code> 这类放密钥的地方</li>
+<li>网络默认拒绝，除非这个任务确实要联网（比如装依赖、查文档）</li>
+<li>Git 凭证按需放开：只读操作可以放，push 之前最好人工确认</li>
+</ul>
+<h2 id="cli">CLI 里怎么配：一个配置例子</h2>
+<p>Copilot CLI 的沙箱配置长这样（键名注意，1.0.79 之后改过一次）：</p>
+<pre><code class="language-json">{
+  &quot;sandbox&quot;: {
+    &quot;filesystem&quot;: {
+      &quot;includeWorkingDirectory&quot;: true
+    },
+    &quot;auth&quot;: {
+      &quot;git&quot;: &quot;allow&quot;,
+      &quot;gh&quot;: &quot;allow&quot;
+    },
+    &quot;network&quot;: {
+      &quot;default&quot;: &quot;deny&quot;
+    }
+  }
+}
+</code></pre>
+<p>这个例子的意思是：文件只放开工作目录，Git 和 gh 凭证允许，网络默认拒绝。键名有个坑：1.0.79 之前叫 <code>sandbox.gitAuth</code> 和 <code>sandbox.ghAuth</code>，之后改成了 <code>sandbox.auth.git</code> 和 <code>sandbox.auth.gh</code>，旧配置文件不会自动迁移。如果你是从预览版一路用过来的，配置不生效先查键名。</p>
+<h2 id="_1">沙箱不等于离线：最容易踩的坑</h2>
+<p>这是官方文档里写明、但大多数报道会跳过的一点：<strong>沙箱管的是工具执行，不是模型推理。</strong> 沙箱策略对工具执行生效，不管 Copilot 背后用的是哪个模型。反过来也一样：</p>
+<ul>
+<li>在本地跑模型，不等于沙箱开了。本地模型照样可以通过工具把数据发出去。</li>
+<li>开了沙箱，不等于 Copilot 不联网了。沙箱不关 GitHub 的遥测和网络访问。</li>
+<li>只有设 <code>COPILOT_OFFLINE=true</code>，CLI 才会停止访问 GitHub 服务器。</li>
+</ul>
+<p>还有一个相关的：Copilot CLI 现在能通过 <code>/model</code> 命令发现本地 Ollama 实例里的模型。选本地模型很方便，但别以为选了本地模型就等于离线、等于数据不出去了。官方原话的意思就是：远程 provider 仍然可能通过网络收到你的提示词和代码上下文。离线和本地模型是两回事，沙箱和离线也是两回事，三件事别混成一件。</p>
+<h2 id="_2">企业怎么锁死：管理员视角</h2>
+<p>如果你是管团队的，关注点和个人用户不一样：</p>
+<ul>
+<li>在管理设置里强制要求沙箱，策略由企业定，开发者不能自己放宽</li>
+<li>沙箱策略和模型选择是独立的：不管团队用 Claude、GPT 还是 Gemini，工具执行的边界同一套</li>
+<li>建议的落地顺序：先在非核心仓库试点一套策略，跑两周看误拦率，再推广到全组织。策略太严会导致 Agent 处处报错、开发者绕过它；策略太松等于没设。先松后紧比先紧后松容易接受</li>
+</ul>
+<h2 id="claude-codecodex">和 Claude Code、Codex 的沙箱思路有什么不同</h2>
+<p>2026 年 10 月这个时间点，三家的沙箱思路正在收敛，但实现位置不一样：</p>
+<ul>
+<li><strong>Copilot</strong>：系统级隔离（MXC），三端统一策略，企业可强制锁死，免费</li>
+<li><strong>Claude Code</strong>：Bash 沙箱管 shell 命令，<code>/code-review</code> 这类审查跑在独立上下文，权限模式（permission mode）管文件改动和命令执行</li>
+<li><strong>Codex</strong>：worktree 机制把任务隔离开，每个任务一份独立工作区，配合沙箱限制</li>
+</ul>
+<p>共同点是：都在回答同一个问题——Agent 能动的东西，怎么设边界。不同点是边界画在哪一层。Copilot 的边界画在操作系统层，好处是统一，坏处是配起来要理解文件、网络、凭证三类权限；Claude Code 和 Codex 的边界更贴近开发流程，好处是上手直觉，坏处是跨工具不统一。</p>
+<p>选哪个工具不重要，重要的是：<strong>不管用哪个工具，Agent 第一次跑进你的仓库之前，先把边界设好。</strong> 2026 年 10 月之前这件事做起来麻烦，现在 Copilot 这边已经是正式功能、免费、三端统一，没有理由再裸奔了。</p>
+<p>价格与版本口径截至 2026-10：沙箱功能包含在各档 Copilot 订阅里，不单独收费；VS Code 1.141、Copilot CLI 1.0.98 为同期版本，具体以 GitHub 官方更新日志为准。</p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/claude-code-review.html">Claude Code 代码审查正式版：/code-review 怎么用，本地和 PR 上有什么区别</a></li><li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li><li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li><li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

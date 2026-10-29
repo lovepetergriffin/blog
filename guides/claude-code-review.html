@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 代码审查正式版：/code-review 怎么用，本地和 PR 上有什么区别 - 互联网指南</title>
+<meta name="description" content="Claude Code 代码审查 2026 年 10 月 15 日正式版：本地 /code-review 命令用法、effort 档位怎么选、GitHub PR 托管版四阶段流程，以及 Claude Code 团队自己的七层审查法哪些能抄。">
+<meta property="og:title" content="Claude Code 代码审查正式版：/code-review 怎么用，本地和 PR 上有什么区别 - 互联网指南"><meta property="og:description" content="Claude Code 代码审查 2026 年 10 月 15 日正式版：本地 /code-review 命令用法、effort 档位怎么选、GitHub PR 托管版四阶段流程，以及 Claude Code 团队自己的七层审查法哪些能抄。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Code 代码审查正式版：/code-review 怎么用，本地和 PR 上有什么区别 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 进阶技巧</div>
+    <h1>Claude Code 代码审查正式版：/code-review 怎么用，本地和 PR 上有什么区别</h1>
+    <div class="meta"><time>发布于 2026-10-29</time><span class="difficulty">进阶</span><a class="tag" href="/guides/">Claude Code</a><a class="tag" href="/guides/">代码审查</a><a class="tag" href="/guides/">Code Review</a><a class="tag" href="/guides/">AI 编程</a></div>
+  </header>
+  <div class="post-body">
+<p>一句话先说结论：<strong>Claude Code 的代码审查现在分两条线——本地一条 <code>/code-review</code> 命令随手就能跑，GitHub PR 上一条托管服务自动审。</strong> 本地适合提 PR 之前自己先扫一遍，托管版适合团队强制卡点。两条线查的东西不一样，档位和用法也别混着用。</p>
+<p>跟你有啥关系：AI 写代码的速度已经不是瓶颈了，审代码才是。现在一个人一天能让 Agent 吐几千行代码，人工逐行看根本看不过来。Claude Code 这次把代码审查从预览版转正（2026 年 10 月 15 日，Team 和 Enterprise 可用），核心就解决一个问题：让机器先把明显的 Bug 拦下来，人只看机器拿不准的和架构层面的东西。</p>
+<h2 id="code-review">本地审查：/code-review 一条命令就够了</h2>
+<p>本地审查不需要任何额外配置，装了 Claude Code 就能用。在你正在工作的会话里输入：</p>
+<pre><code>/code-review
+</code></pre>
+<p>它默认审查的内容是：当前分支相对上游多出来的提交，加上还没提交的改动。审查跑在一个后台子 Agent 里，有自己的上下文窗口，不会吃掉你主会话的上下文。审完之后 findings 直接回到你的聊天里。</p>
+<p>它默认只查、不改。想让它直接把发现的问题修掉，加 <code>--fix</code>：</p>
+<pre><code>/code-review --fix
+</code></pre>
+<p>注意一个坑：后台跑的 <code>--fix</code> 落在会话检查点之外，<code>/rewind</code> 撤不回它。修之前先 <code>git commit</code> 或 <code>git stash</code> 存个档，出问题直接用 git 回滚，别指望会话内的撤销。</p>
+<h2 id="code-review_1">/code-review 能指定范围吗</h2>
+<p>能。默认是分支 vs 上游，你也可以指到任何目标：</p>
+<pre><code>/code-review medium                 # 默认范围，中档 effort
+/code-review high main...my-feature # 指定一个提交区间，用高档 effort
+/code-review --fix                  # 查完直接修
+</code></pre>
+<p>常见的目标写法：单个文件路径、PR 编号、分支名、或者 <code>main...my-feature</code> 这样的区间。范围越小，结果越聚焦；范围越大，越容易翻出陈年旧账。</p>
+<p><code>/review</code> 是 <code>/code-review</code> 的别名，两个命令完全一样。</p>
+<h2 id="effort">effort 档位：这是最容易用错的地方</h2>
+<p>effort 是控制审查深度和误报率的旋钮，文档说得很明确：</p>
+<ul>
+<li><code>low</code> 和 <code>medium</code>：只报审查最有把握的发现，误报少，但可能漏掉一些</li>
+<li><code>high</code> 到 <code>max</code>：覆盖面更广，但会带上一些它不太确定的发现</li>
+</ul>
+<p>如果你感觉结果里废话太多，先把 effort 往低调，别急着怪模型。日常提 PR 之前扫一遍，<code>medium</code> 就够了；准备合入主分支、或者改的是支付、权限这种核心路径，再开到 <code>high</code>。</p>
+<p>审查遵循的是你的 <code>CLAUDE.md</code>，不是 <code>REVIEW.md</code>。后者是给 GitHub 托管服务用的，本地审查不读它。想让本地审查按你的项目规范来，把规则写进 <code>CLAUDE.md</code> 就行。</p>
+<h2 id="github-pr-pr">GitHub PR 托管版：四阶段，自动跑在每次 PR 上</h2>
+<p>托管版是另一条线，需要组织管理员在 Claude Code 后台开启，装 Claude GitHub App，选好覆盖的仓库，再给每个仓库定 Review Behavior：PR 创建后审一次、每次 push 都审、或者手动触发。</p>
+<p>手动触发是繁忙仓库最稳妥的默认值，用评论控制：</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<pre><code>@claude review          # 审一次，不订阅后续
+@claude review always   # 现在审，之后每次 push 都审
+@claude review once     # 和裸命令一样，只审一次
+</code></pre>
+<p>托管版每次审查分四个阶段，全在 Anthropic 的基础设施上跑：</p>
+<ol>
+<li><strong>Find</strong>：几个 Agent 并行看 diff 和周围代码，各自找问题</li>
+<li><strong>Verify</strong>：验证步骤拿候选发现去对照代码，过滤误报</li>
+<li><strong>Rank</strong>：剩下的发现去重、按严重程度排序</li>
+<li><strong>Post</strong>：行内评论 + 审查正文里的总结 + 一个叫 Claude Code Review 的 check run</li>
+</ol>
+<p>发现分三个严重级别：<strong>Important</strong>（合入前应该修的 Bug）、<strong>Nit</strong>（不阻塞的小问题）、<strong>Pre-existing</strong>（这个 PR 没引入、代码库里早就有的 Bug）。Pre-existing 这个标签很实用，它让审查既把旧债翻出来，又不冤枉 PR 作者。</p>
+<p>默认只盯正确性，也就是会搞坏生产的 Bug，不纠格式、不查缺测试。审查读 diff 和周围代码，但不构建、不运行。仓库内的访问是只读的，永远不会 push 提交。</p>
+<p>速度比预览版快不少：官方称大多数审查现在 6 到 10 分钟，预览版要 20 分钟左右。这是厂商自报的数字，不是独立实测，仅供参考。</p>
+<p>托管版按 token 计费，不单独列价目，算在你组织的正常用量里。它默认不计入必填审批，check run 本身是中性的，不会直接 block 合并——想用它卡合并，得配合分支保护规则自己配。</p>
+<h2 id="claude-code">Claude Code 团队自己的七层审查法，哪些能抄</h2>
+<p>Anthropic 在 2026 年 10 月 15 日公开了 Claude Code 团队自己的审查流程。他们自己的代码约 90% 是 Claude 写的，这套流程就是用来兜底 AI 写代码的。七层里，前三层你今天就能抄：</p>
+<p><strong>第一层：PR 之前先自证。</strong> 作者（人和 Agent）得先拿出能跑的东西：测试、构建、截图对照设计稿的输出，然后一个子 Agent 用全新上下文再审一遍 diff。对应到你的工具就是：提 PR 之前先跑 <code>/code-review</code>，再跑一遍测试和 lint，把输出贴进 PR 描述。</p>
+<p><strong>第二层：每个 PR 必过 AI 审查。</strong> 几个 Agent 并行找 Bug，另一组 Agent 对每个发现投票，只有足够多 Agent 认同的才贴出来，贴出来按 Important、Nit、Pre-existing 分级，纯风格问题直接丢掉。对应到你的工具就是上面说的托管版，或者本地 <code>/code-review</code> + 人工过一遍。</p>
+<p><strong>第三层：独立的安全审查。</strong> 单独跑一遍安全审查，而且有硬性合并条件：Bug 审查或安全审查里还有没关闭的发现，PR 就不能合。对应到你的工具是 <code>/security-review</code>，或者开源的安全审查 GitHub Action。</p>
+<p>后面四层（自动化检查、按风险定人工审批人数、合并队列 + 特性开关 + 灰度、快速发现快速回滚）属于工程基建，个人和小团队不用全抄，但有两个原则值得偷：PR 模板里问一句「这次改动怎么测、怎么回滚」，以及新行为先上开关、灰度放量，别一上来就全量。</p>
+<p>他们还有个做法很值得学：把历史上出过事故、导致回滚的 PR 收集成一个评测集，每天拿审查器去跑一遍。审查器的提示词、工具、模型一改，就用这个事故库打分。你不用搞这么重，但可以留一个「审查漏过的 Bug」清单，每次漏网都记下来，下次调 CLAUDE.md 或审查提示词时对照着改。</p>
+<h2 id="_1">本地和托管版怎么选</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>用哪个</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提 PR 之前自己先扫一遍</td>
+<td>本地 <code>/code-review</code></td>
+</tr>
+<tr>
+<td>想直接修掉发现的问题</td>
+<td>本地 <code>/code-review --fix</code>（先 git 存档）</td>
+</tr>
+<tr>
+<td>团队想强制每个 PR 都过审</td>
+<td>托管版，Review Behavior 设成每次 push 或手动</td>
+</tr>
+<tr>
+<td>仓库很忙，不想每个 push 都触发</td>
+<td>托管版 + 手动 <code>@claude review</code></td>
+</tr>
+<tr>
+<td>只关心会不会搞坏生产</td>
+<td>两个都行，默认都只盯正确性</td>
+</tr>
+</tbody>
+</table>
+<p>一句话总结：本地是你的随手工具，托管是团队的卡点工具。个人项目把本地 <code>/code-review</code> 养成提 PR 前的习惯就够了；团队项目再上托管版，配上分支保护，才算把 AI 写代码的审查闭环跑起来。</p>
+<p>价格口径截至 2026-10，本地命令算在正常会话用量里，托管版按 token 计费、Team 和 Enterprise 可用，具体以 Anthropic 官方页面为准。</p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/copilot-sandbox.html">GitHub Copilot 本地沙箱正式版：Agent 能碰什么、不能碰什么，一次讲清</a></li><li><a href="/guides/codex-cli-tips.html">Codex CLI 实战：终端里用 AI 写代码的 10 个技巧</a></li><li><a href="/guides/claude-prompt-engineering.html">Claude 提示词工程：怎么写才能让它输出直接能跑的代码</a></li><li><a href="/guides/claude-code-slash-commands.html">Claude Code 自定义命令：Slash Commands 全解析</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

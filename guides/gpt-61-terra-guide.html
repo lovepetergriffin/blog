@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPT-6.1 Terra 实战指南：中端模型怎么用最划算，什么时候该升级 Sol - 互联网指南</title>
+<meta name="description" content="GPT-6.1 Terra 2026 年 10 月 26 日发布，价格直接腰斩：输入 1 美元、输出 5 美元，什么任务适合它、电脑操作和批量任务怎么配 effort、输出 token 这个隐形账怎么算，以及什么时候必须升级 Sol 或 Astra。">
+<meta property="og:title" content="GPT-6.1 Terra 实战指南：中端模型怎么用最划算，什么时候该升级 Sol - 互联网指南"><meta property="og:description" content="GPT-6.1 Terra 2026 年 10 月 26 日发布，价格直接腰斩：输入 1 美元、输出 5 美元，什么任务适合它、电脑操作和批量任务怎么配 effort、输出 token 这个隐形账怎么算，以及什么时候必须升级 Sol 或 Astra。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "GPT-6.1 Terra 实战指南：中端模型怎么用最划算，什么时候该升级 Sol - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 上手教程</div>
+    <h1>GPT-6.1 Terra 实战指南：中端模型怎么用最划算，什么时候该升级 Sol</h1>
+    <div class="meta"><time>发布于 2026-10-29</time><span class="difficulty">进阶</span><a class="tag" href="/guides/">GPT-6.1 Terra</a><a class="tag" href="/guides/">OpenAI</a><a class="tag" href="/guides/">API</a><a class="tag" href="/guides/">模型选型</a><a class="tag" href="/guides/">成本优化</a></div>
+  </header>
+  <div class="post-body">
+<p>一句话先说结论：<strong>Terra 是 OpenAI 第一次把「够用」和「便宜」同时做到位的模型。</strong> 输入 1 美元、输出 5 美元（每百万 token），正好是 Sol 的一半、Astra 的十分之一。如果你现在的任务是批量电脑操作、填表、读发票、改中等难度的代码，Terra 大概率比你现在用的模型便宜一半以上，效果还不差。</p>
+<p>跟你有啥关系：模型选型最常见的浪费不是选贵了，而是全用一个档。旗舰模型跑分类、跑填表、跑批量任务，等于拿跑车送外卖。Terra 出现的意义就是让你把量大、重复性高的任务从 Sol、Astra 上挪下来，账单直接砍半，省下来的钱够你把真正难的任务升级到更好的模型。</p>
+<h2 id="terra">Terra 在全家的位置：先认清四个档</h2>
+<p>OpenAI 现在的通用模型是四个档，从低到高：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>输入 / 百万 token</th>
+<th>输出 / 百万 token</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Luna</td>
+<td>$0.10</td>
+<td>$0.50</td>
+<td>最轻量：聊天、分类、简单 Agent</td>
+</tr>
+<tr>
+<td>Terra</td>
+<td>$1</td>
+<td>$5</td>
+<td>中端：日常办公、电脑操作、中等代码</td>
+</tr>
+<tr>
+<td>Sol</td>
+<td>$2</td>
+<td>$10</td>
+<td>高端：最难的代码、长周期工程</td>
+</tr>
+<tr>
+<td>Astra</td>
+<td>$10</td>
+<td>$50</td>
+<td>旗舰：不计成本、只要天花板</td>
+</tr>
+</tbody>
+</table>
+<p>Terra 正好卡在中间：比 Luna 聪明得多（尤其视觉、电脑操作、沟通），比 Sol 便宜一半。OpenAI 自己人 Ted Sanders 的评价很直白：Terra 在技术沟通上可能比 Astra、Sol 还好，视觉和电脑操作上差不多但快得多，其他方面稍弱。给 API 开发者的定位就是：想要比 Sol 便宜、又比 Luna 聪明得多，尤其看重视觉、电脑操作、沟通的场景。</p>
+<p>知识截止是 2026 年 6 月 1 日，全家最新，比 Sol 和 Astra 的 4 月 30 日新两个月。上下文窗口 105 万 token（输入最多 92.2 万、输出最多 12.8 万），长文档、长对话不用频繁截断。</p>
+<h2 id="terra_1">Terra 最适合的四类任务</h2>
+<p><strong>第一类：批量电脑操作。</strong> 这是 Terra 的主场。官方说法是：在 Agents' Last Exam（把建筑图纸转 3D 模型这类专业任务）上，中档 effort 的 Terra 比上一代 Terra 高 15 个百分点，成本约三分之一；和 Astra 打平，但只要 Astra 十分之一的 token 价；速度比 Astra、Sol 快 3 倍以上。落地到日常就是：读发票录入账目、填表、浏览器批量操作、跨软件搬运数据。这类任务量大、重复性高、单次价值低，正好是 Terra 的甜点。</p>
+<p><strong>第二类：中等难度的代码改动。</strong> Terminal-Bench 4.0 上 Terra 最高 effort 50.3%。这个数字要横着看：Astra 57.9%，Claude Sonnet 5.5 70.6%，Claude Opus 5.5 66.4%。Terra 不是编码最强的，但改中等难度的代码、做有边界的重构、跑研究型 Agent、當子 Agent 执行器，完全够用。真正难的仓库、大型重构，再升级 Sol 或 Astra。</p>
+<p><strong>第三类：日常办公与自动化。</strong> 写提案、读图纸、填表、剪视频——官方对 Terra 的定位原话就是「工作日任务与软件自动化控制」。详细视觉推理 + 更精准的电脑操作 + 更自然的写作，这三项加起来就是一个能干杂活的办公助手。</p>
+<p><strong>第四类：高频、低单价的 Agent 任务。</strong> 客服分类、内容初筛、批量摘要、数据清洗。单次成本低，但量大，Terra 的价格优势在这里会被放大。反过来，如果你的任务本身就不怎么花 token，Luna（$0.10/$0.50）可能更合适，Terra 的优势在量起来之后才明显。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<h2 id="effort">effort 怎么配：别一上来就拉满</h2>
+<p>Terra 的推理 effort 分六档：none、low、medium（默认）、high、xhigh、max。</p>
+<ul>
+<li><strong>medium（默认）</strong>：大多数任务的起点。批量电脑操作、填表、日常办公从这档开始。</li>
+<li><strong>low / none</strong>：对延迟敏感、任务简单的场景，比如分类、初筛、格式转换。先试 low，不够再往上加。</li>
+<li><strong>high / xhigh</strong>：代码改动、需要多步推理的任务。成本会上去，但比直接上 Sol 还是便宜。</li>
+<li><strong>max</strong>：只给真正难、且你已经验证过 Terra 能解的任务。max 的成本接近 Sol 的中档，性价比拐点就在这里——如果一个任务非得 max 才能解，不如直接评估 Sol。</li>
+</ul>
+<p>一个实用的调参顺序：medium 跑一批 → 看通过率和错误类型 → 错误集中在推理深度上就往 high 加 → 错误集中在知识或工具调用上就别加 effort，改提示词或换工具。effort 解决的是「想得不够深」，不是「不知道」。</p>
+<h2 id="token-terra">输出 token 这个隐形账：Terra 便宜在哪、贵在哪</h2>
+<p>这是用 Terra 最容易算错的一笔账。Terra 的输入便宜（$1），但输出是 $5，而且第三方实测发现 Terra 每个任务写得比较多：Artificial Analysis 测到 Terra 一个任务约 $0.40，上一代 Terra 是 $1.40，确实便宜了，但 Terra 的输出量比同类模型中位数高（130M vs 81M output tokens）。输出占了账单的大头，一个任务里输出 token 的费用约占 80%。</p>
+<p>所以算账的时候别只看输入价，要按「完成一个任务的总成本」算：</p>
+<ul>
+<li>输入 token 数 × 输入价 + 输出 token 数 × 输出价 + 推理 token（也按输出价计）</li>
+<li>缓存命中率高的话，缓存输入只要 $0.05，Agent 多轮对话里这项能省不少</li>
+<li>Batch 和 Flex 处理比标准价再便宜一半，适合能等的批量任务；Fast 模式是标准价 2 倍，只给赶时间的任务</li>
+</ul>
+<p>一个粗算例子：2000 输入 token、40% 缓存命中、1000 输出 token，一次 Terra 标准请求约 $0.0062，其中输出占 $0.005。同样形状 Luna 约 $0.00062，Sol 约 $0.01248。Terra 是 Sol 的一半、Luna 的 10 倍，这个比例在大多数任务形状下都成立。</p>
+<p>超过 272K 输入 token 的请求，输入和缓存按 2 倍、输出按 1.5 倍计整个请求。长上下文任务注意这个门槛，超了就先切片。</p>
+<h2 id="sol-astra">什么时候必须升级 Sol 或 Astra</h2>
+<p>Terra 不是万能的，三个信号出现就该升级：</p>
+<ol>
+<li><strong>effort 拉到 max 还是不稳定。</strong> 同一个任务反复出错、输出质量波动大，说明任务难度超过了 Terra 的舒适区，升级 Sol 比继续调 effort 划算。</li>
+<li><strong>代码任务里 Terra 的通过率明显低于预期。</strong> Terminal-Bench 上 Terra 和 Sonnet 5.5 的差距（50.3% vs 70.6%）是真实存在的，硬编码任务、长链路推理、大型仓库重构，Sol 和 Astra 的优势会拉开。</li>
+<li><strong>任务本身价值高、失败成本大。</strong> 生产环境的核心路径、涉及资金和权限的操作，别为了省一半 token 价冒失败风险。这类任务直接上 Sol 或 Astra，成本差异相对失败损失不值一提。</li>
+</ol>
+<p>反过来，如果你现在全用 Sol 或 Astra，检查一下任务清单：里面有多少是批量电脑操作、填表、分类、摘要？这部分挪到 Terra，账单立减一半，效果大概率不受影响。</p>
+<h2 id="_1">上手路径：从哪里开始试</h2>
+<ul>
+<li><strong>ChatGPT 订阅用户</strong>：Plus、Pro、企业、教育订阅里，ChatGPT Work 和 Codex 都已上线 Terra，直接在模型选择里切过去，先拿日常办公任务试一周</li>
+<li><strong>API 用户</strong>：模型名 <code>gpt-6.1-terra</code>，从 medium effort 开始，先跑你量最大的那类任务，对比之前的账单和通过率</li>
+<li><strong>已有 Sol / Astra 的用户</strong>：别一次性全切。先切 20% 的量到 Terra，跑两周看通过率和成本，达标再扩大比例</li>
+</ul>
+<p>价格与跑分口径截至 2026-10：价格为 OpenAI 官方 API 定价页标准档；跑分中 Terminal-Bench、Agents' Last Exam 为 OpenAI 公布数据，尚未经第三方独立复现，Anthropic 的对照表里 Claude 模型在终端编码和电脑操作上仍领先。真要上生产，先拿自己的任务实测一遍。</p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/trae-tutorial.html">Trae 保姆级教程：字节跳动的免费 AI 编程神器，从安装到做出第一个项目</a></li><li><a href="/guides/claude-code-workflow.html">Claude Code 高效工作流：从安装到第一个 PR</a></li><li><a href="/guides/claude-projects.html">Claude Projects 知识库：把项目文档喂给 Claude，回答不再瞎编</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
