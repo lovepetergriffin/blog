@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年10月31日 - AI 码力日报</title>
+<meta name="description" content="四家大厂同认一个训练退出信号、Anthropic 给 Ultra 取消 5 小时限制、Cursor 市场出现被篡改的 Claude Code 扩展、Copilot 变身多智能体工作台。">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-10-31.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年10月31日","description":"四家大厂同认一个训练退出信号、Anthropic 给 Ultra 取消 5 小时限制、Cursor 市场出现被篡改的 Claude Code 扩展、Copilot 变身多智能体工作台。","datePublished":"2026-10-31","dateModified":"2026-10-31","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-10-31-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-10-31.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">AI 码力日报</div>
+    <h1>AI 码力日报 · 2026年10月31日</h1>
+    <div class="meta"><time>2026-10-31</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-10-31.svg" alt="AI 码力日报 · 2026年10月31日">
+  <div class="post-body">
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li><strong>四家大厂同认一个训练退出信号</strong>：OpenAI、Google、Microsoft、Anthropic 10 月 30 日齐声说要支持 robots.txt 里的 <code>__usage_ai-training</code>，网站主写一行就能同时向四家说"别拿我的内容做训练"。</li>
+<li><strong>Anthropic 给 Ultra 松绑</strong>：Max 5x 改名 Max、Max 20x 改名 Ultra，价格不变，已验证的 Ultra 账号取消 5 小时限制，周限额还在。</li>
+<li><strong>Cursor 市场惊现被篡改的 Claude Code 扩展</strong>：恶意版本 10 月 29 日在 Cursor 扩展市场挂了约 11 小时，影响至多 5000 名用户，装过的先自查。</li>
+<li><strong>GitHub Copilot 变身多智能体工作台</strong>：Copilot Projects 进入公开预览，一个目标可以跨多个仓库、并行派给多个 agent 干活。</li>
+</ul>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="robotstxt">四家大厂同认一个训练退出信号：以后 robots.txt 写一行就够了</h3>
+<p><span class="why-label">跟你有啥关系</span>：你要是运营博客、文档站、开源项目主页，以前想谢绝训练，得给每家爬虫各写一套规则，新爬虫一来又得补——这回四家终于肯读同一个信号了。OpenAI、Google、Microsoft、Anthropic 10 月 30 日宣布支持 IETF AI Preferences 工作组草案里的共享训练偏好信号：网站主在 robots.txt 里写 <code>User-Agent: __usage_ai-training</code> 加 <code>Disallow: /</code>，就能一次性向参与的厂商表达"不用于训练"，还可以用 <code>Allow:</code> 抠出例外。时间表并不整齐：Anthropic 称已开始落地，OpenAI 说"未来几个月内"，Microsoft 定在 2027 年 2 月 1 日，Google 定在 2027 年初；各家原有的爬虫控制（如 GPTBot、Google-Extended）继续有效，不会被新信号取代。<span class="judge-label">我的判断</span>：先别急着删旧规则——这份文件目前还只是个人 Internet-Draft，不是正式标准，而且它只管"以后不再拿去训练"，不负责把已进训练集的内容吐出来；正确姿势是新信号先加上、旧规则先留着，等各家落地时间表兑现再收尾。<a href="https://aiweekly.co/alerts/openai-google-microsoft-anthropic-back-one-ai-opt-out-token">原文链接</a></p>
+<h3 id="anthropic-ultra-5">Anthropic 给 Ultra 松绑：5 小时限制没了，周限额还在</h3>
+<p><span class="why-label">跟你有啥关系</span>：重度用 Claude Code 的人最懂那种痛——一个长会话跑到一半被 5 小时窗口切断，上下文和劲头一起断掉。Anthropic 10 月 30 日调整了 Claude Max 档位：Max 5x 改名 Max（每月 100 美元）、Max 20x 改名 Ultra（每月 200 美元），价格不变；已验证的 Ultra 账号即日起取消 5 小时限制，多数现有订阅者直接生效，新账号验证通过后解除；周限额维持不变。<span class="judge-label">我的判断</span>：这对 Ultra 用户是实打实的体验修复——长会话不用再被窗口切碎，但别把它读成"无限量"：周上限仍在，重活还是得分批排，别在周初就把一周的量一把烧光。<a href="https://letsdatascience.com/news/anthropic-removes-five-hour-claude-limit-for-verified-ultra-56c3c5dc">原文链接</a></p>
+<h3 id="cursor-claude-code">Cursor 市场被篡改的 Claude Code 扩展：装过的人先自查</h3>
+<p><span class="why-label">跟你有啥关系</span>：扩展市场是 coding agent 的信任根基——你装的不是官方扩展，而是别人冒名改过的版本，它就能顺手摸走主机信息、给攻击者留后门。路透社 10 月 30 日报道，Cursor 称一个被恶意修改的 Claude Code 扩展 10 月 29 日出现在其 VS Code 扩展市场上，从约凌晨 2:27（太平洋时间）挂到下午 1:35，波及至多 5000 名用户；该扩展并非 Anthropic 开发，它试图收集主机名、用户名、操作系统与公网 IP，还试图为攻击者建立远程访问——Cursor 称关键一步在多数机器上会因需要管理员权限而失败。事发后 Cursor 下架了该版本、封禁其分发、为防万一短暂关闭整个市场，重建后已恢复上线，并称其他扩展不受影响。<span class="judge-label">我的判断</span>：立刻做两件事——检查自己有没有在 10 月 29 日那段时间装过或更新过这个扩展，有就按 Cursor 的指引清理并换掉相关凭证；以后装 agent 类扩展先认准发布者，别只看名字和下载量。<a href="https://www.reuters.com/business/media-telecom/cursor-says-up-5000-users-affected-by-tampered-claude-code-extension-2026-10-30/">原文链接</a></p>
+<h3 id="android-studio-rabbit-2-40-coding-agent-ide">Android Studio Rabbit 2 转正：40 多个 coding agent 都能接进官方 IDE</h3>
+<p><span class="why-label">跟你有啥关系</span>：Android 开发者以前只能在内置助手和自己惯用的 agent 之间二选一，现在官方 IDE 说"都行，你带自己的 agent 来"。Google 10 月 28 日宣布 Android Studio Rabbit 2 进入稳定版，核心是 Bring Your Own Agent：可接入 40 多个外部 coding agent，包括 Claude Agent、OpenAI Codex、Junie 与 Google Antigravity；接进来的 agent 能用 Android Studio 的工具——跑构建、启动模拟器、读 Logcat，还能用 Android skills 做复杂任务；内置 agent 仍然免费提供。<span class="judge-label">我的判断</span>：这对 Android 团队最实际的意义是"不用为了换 agent 而换 IDE"——先在非主线分支上接一个你已经在用的 agent，跑通构建+模拟器+日志这条链路再推广，别一上来就全员切过去。<a href="https://www.mobilenapps.com/articles/1725541/20261030/android-studio-rabbit-2-ai-coding-agents.htm">原文链接</a></p>
+<h2 id="ai">📱 AI 应用新品</h2>
+<h3 id="google-connected-apps-50-gemini-adobepeloton">Google 的 Connected Apps 破 50 个：Gemini 里直接叫 Adobe、Peloton 干活</h3>
+<p>是什么：Google 10 月 28 日推出的 Connected Apps——第三方应用直接住进 Search 与 Gemini 应用里，不用跳应用就能办事；首批已上线 50 多个，Adobe、Experian、Localiza、Peloton 已在 Gemini 里可用，之后几周内进 Search，Calm 也在路上。解决什么问题：以前"问 Gemini 再手动去别的 App 操作"的两段路，现在能在一处问完办完；Google 同时开了 Connected Apps Platform 预览，让开发者一次开发、同时上架 Search 与 Gemini。免费额度/价格：面向 Gemini 与 Search 用户的功能入口，未提及额外收费（截至撰写时）。适合谁：已经在 Gemini 里查资料、订票、管健康数据的人；注意平台目前还是分阶段开放的预览，不是所有应用、所有地区立刻全量。<a href="https://appvolt.ai/news/google-gemini-search-connected-apps-50-partners">原文链接</a></p>
+<h3 id="strava-gemini">Strava 接进 Gemini：美国订阅用户可以直接问自己的训练数据</h3>
+<p>是什么：Strava 10 月 28 日宣布，美国订阅用户可以把 Strava 账号连进 Google Gemini，直接问自己的训练历史——比如同心率下是不是越跑越快、力量训练对跑步有没有影响、上一场比赛每英里怎么跑的。解决什么问题：训练数据躺在 App 里翻起来费劲，现在用一句话就能问出趋势、最佳成绩对比与 streak，还能结合每次活动记录的气温、湿度与风速估算天气拖慢了多少。免费额度/价格：连接本身不另收费，但需要 Strava 订阅，适用于所有 Gemini 档位（截至撰写时）。适合谁：美国的 Strava 订阅跑者；注意连接是只读的、随时可断，Gemini 改不了你的活动记录，美国以外暂无上线时间。<a href="https://the5krunner.com/2026/10/30/quick-read-strava-training-data-now-works-inside-gemini/">原文链接</a></p>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
+<h3 id="nebius-ai-builder-400">Nebius AI Builder 计划：免费入场，号称 400 美元以上技术额度</h3>
+<p>一句话：AI 云厂商 Nebius 的 AI Builder 计划免费向开发者开放，成员可得 400 美元以上的技术额度、实操蓝图与培训资源，10 月 30 日官方通稿称已通过创作者活动拿到 1800 多个早期注册。</p>
+<ul>
+<li><strong>怎么薅</strong>：在 Nebius AI Builder 计划页面注册成为成员，领额度后在 Nebius 基础设施上搭 AI 应用、跑推理与微调；先拿一个小项目验证额度到账与计费口径，再决定要不要把主力工作流搬过去。<a href="https://www.abnewswire.com/pressreleases/cloud-infrastructure-company-nebius-launches-free-ai-builder-program-for-developers_845002.html">直达链接</a></li>
+<li><strong>有效期</strong>：2026 年 10 月 30 日公布的计划（截至撰写时），以注册页条款为准</li>
+<li><strong>适合谁</strong>：想低成本试 GPU 推理、微调的开发者；注意这是厂商拉新计划，额度细节以自己账号里的账单页为准，别按通稿数字做预算</li>
+</ul>
+<h3 id="photon-20-agent-100">Photon 2.0 公测：做消息 agent 的人能领 100 美元额度</h3>
+<p>一句话：把 agent 接进 iMessage、WhatsApp、Telegram、短信、邮件与语音的开源框架 Photon，2.0 公测期间给 builder 发 100 美元免费额度。</p>
+<ul>
+<li><strong>怎么薅</strong>：去 Photon 2.0 早期体验页注册账号，额度发到公测工作区，用来搭消息 agent、跑渠道测试。<a href="https://aifree.dev/news/photon-2-0-100-free-credits-messaging-agents">直达链接</a></li>
+<li><strong>有效期</strong>：公测期间可领（截至撰写时）；注意额度条款目前没有在站内写清有效期与使用范围，领完先看工作区账单页再开量</li>
+<li><strong>适合谁</strong>：在做客服、通知、个人助理类消息 agent 的开发者；纯聊天场景别硬套，渠道侧的短信、WhatsApp 费用可能另算</li>
+</ul>
+<h3 id="10">10 月免费档复核：有几样以为还活着的羊毛，其实已经停了</h3>
+<p>一句话：10 月 10 日的一次免费额度大复核提醒了三件事：Hugging Face 免费账号的月度额度已停、Fireworks 的 1 美元注册额度已下架、Anthropic 的 Claude Startups 计划在 10 月 6 日扩招后因申请量过大、对新申请者暂停了免费 Team 与 1000 美元额度这两项。</p>
+<ul>
+<li><strong>怎么薅</strong>：反向薅——先把这三条从你的"免费额度清单"里划掉，别再按旧攻略去注册；真要上 Claude Startups，先读计划页 FAQ 的第一条，确认当下容量状态再填表。<a href="https://freellmcredits.com/guides/free-ai-credits-october-2026">直达链接</a></li>
+<li><strong>有效期</strong>：复核于 2026 年 10 月 10 日完成（截至撰写时），各家政策仍可能再变</li>
+<li><strong>适合谁</strong>：手里攒了一堆旧免费额度攻略、准备按图索骥注册的人；免费档的正确用法是"注册前先看官方页"，不是"收藏夹里的旧文章"</li>
+</ul>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="jub0tconcat-capcut-agent">jub0t/Concat：本地跑的免费 CapCut 平替，还能让 agent 帮你剪视频</h3>
+<p>一句话介绍。解决什么问题：剪视频要么忍水印、订阅与上传，要么忍功能阉割；Concat 是 Rust 写的本地视频编辑器，自动字幕、TTS、抠像、关键帧、多轨剪辑与 4K 导出都在本地跑，素材不离开硬盘，还带 JSON-RPC API 与 MCP 服务器，脚本和 agent 可以直接指挥它剪片。⭐ 约 12.7K，10 月 30 日单日新增约 224（截至撰写时）。适合：做短视频、教程的创作者，以及想把剪辑写进 agent 工作流的开发者；注意项目仍在 beta，先在小项目上试，别拿它赶硬 deadline。<a href="https://github.com/jub0t/Concat">项目地址</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<h3 id="lfnovoopen-notebook-notebooklm">lfnovo/open-notebook：自己搭的 NotebookLM，模型随便换</h3>
+<p>一句话介绍。解决什么问题：把论文、会议记录、内部文档交给云端笔记本总让人不放心；Open Notebook 是自托管的 NotebookLM 平替，Docker 一把拉起，丢进 PDF、链接、音频视频就能聊天、做笔记、生成播客，关键是聊天、嵌入、转换等每个环节都能各配各的模型。⭐ 约 40.9K，10 月 30 日单日新增约 220（截至撰写时）。适合：资料敏感、又想用"对着文档问答"这套工作流的研究者与团队；代价是得自己维护 Docker 与模型配置，怕折腾的人先用云端版试流程。<a href="https://github.com/lfnovo/open-notebook">项目地址</a></p>
+<h3 id="agentscope-aiqwenpaw-ai">agentscope-ai/QwenPaw：一个能本地部署、会接多聊天应用的个人 AI 助手</h3>
+<p>一句话介绍。解决什么问题：个人助手要么只能云端用、要么接不进你已经在用的聊天应用；QwenPaw 定位是可本地或云端部署的个人 AI 助手，支持多个聊天应用与 skill 扩展，兼顾安全与可扩展性。⭐ 约 36.9K，10 月 30 日单日新增约 152（截至撰写时）。适合：想给自己搭一个常驻助手、又不想把所有对话都交给某个单一 App 的人；先从一个聊天应用、一个 skill 接起，确认权限边界再放开。<a href="https://github.com/agentscope-ai/QwenPaw">项目地址</a></p>
+<h3 id="hydro-projectinfinity-agent-rust">hydro-project/infinity：给大规模并发 agent 用的 Rust 框架，闲着能"睡觉"省资源</h3>
+<p>一句话介绍。解决什么问题：成百上千个 agent 并发跑，空闲的也在烧资源；Infinity 是 Rust 写的、面向大规模并发 agent 系统的框架，agent 等待时可以进入休眠状态，把资源让出来。⭐ 约 381，10 月 30 日单日新增约 180（截至撰写时）——体量还小，但单日增速值得注意。适合：正在搭多 agent 系统、被并发与资源占用卡住的后端与 infra 开发者；项目尚早，先读文档与示例再决定要不要押注。<a href="https://github.com/hydro-project/infinity">项目地址</a></p>
+<h2 id="hugging-face">🤗 Hugging Face 热门模型</h2>
+<h3 id="scale-ai-hugging-face-fineart-4">Scale AI 与 Hugging Face 的 FineART：机器人任务数据集 + 模型，4 万多段实操录像</h3>
+<p>是什么：Scale AI 与 Hugging Face 10 月 29 日发布的 FineART——一套带子任务标注的开放机器人数据集，外加 FineART-VLA 模型；数据集含 40543 段任务录像、1718 小时 footage、151 个任务、533913 个标注步骤。能干嘛：本地跑还是 API 调——模型走 Hugging Face 的 LeRobot 体系，用摄像头图像、语言指令与机器人状态先预测子任务、再转成机器人动作，官方称支持空间指令、多步执行与跨硬件迁移。下载量/点赞数：10 月 29 日发布、10 月 30 日更新的近期热门数据集与模型（截至撰写时，具体数字以 HF 页面为准）。适合：做机器人、具身智能、VLA 方向的研究者与开发者；先在仿真或单任务上验证迁移效果，别直接上真机大批量跑。<a href="https://dailyaibrief.com/news/scale-ai-hugging-face-fineart-robotics-dataset-model-hayNcAuR">相关报道</a></p>
+<h2 id="github-copilot-projects">🛠️ 值得一试的工具：GitHub Copilot Projects</h2>
+<p>是什么：GitHub 在 Universe 大会上推出的 Copilot 新形态——不再只是一个聊天框，而是一个多智能体工作台；核心功能 Copilot Projects 让开发者给 agent 下跨多个仓库的目标，还能把 Slack 对话、设计稿、会议纪要等仓库外的上下文一起喂给 agent，多个 agent 可以并行干同一件事的不同部分，进度由 Copilot 跟踪汇总。解决什么痛点：跨仓库的大活儿以前得人肉拆任务、逐个仓库盯进度；现在目标、上下文与并行分工可以在一个地方管起来。免费额度：处于公开预览阶段，具体随 Copilot 订阅走（截至撰写时）。</p>
+<p>** verdict：** 观望——理由就一句：多 agent 并行确实是正确方向，但 InfoWorld 引用的分析也点了它的软肋——并行 agent 冲突、token 账单膨胀、代码评审会成为新瓶颈；先在低风险仓库上试一个跨仓库小目标，跑通评审流程再推广，别一上来就把主线重构交给它。<a href="https://dev.to/delimitter/github-turns-copilot-into-a-multi-agent-workspace-with-new-projects-feature-5lh">原文链接</a></p>
+<h2 id="3">🎓 3 分钟小教程：给你的网站加一行训练退出信号</h2>
+<p><strong>前置条件</strong>：你有一个能改 robots.txt 的网站（博客、文档站都行），以及一分钟时间。</p>
+<ol>
+<li>打开网站根目录的 robots.txt，在文件里加两行（先加在文件末尾，别动已有的规则）：
+   <code>User-Agent: __usage_ai-training
+   Disallow: /</code></li>
+<li>想留例外时，在下面补 <code>Allow:</code> 行，例如只放行某个目录——写完保存，确认文件能在 <code>你的域名/robots.txt</code> 直接打开。</li>
+<li>别删旧规则：各家原有的爬虫控制（如 GPTBot、Google-Extended）继续有效，新信号落地时间各家不同（Anthropic 已开始、OpenAI 未来几个月、Microsoft 2027 年 2 月 1 日、Google 2027 年初），旧规则是过渡期的保险。</li>
+<li>设个日历提醒：2027 年初回来看一眼各家是否已兑现，再决定要不要精简旧规则；同时记住，这个信号只管"以后不拿去训练"，不负责清理已经进训练集的内容。</li>
+</ol>
+<p><strong>预期效果</strong>：一行配置，同时向 OpenAI、Google、Microsoft、Anthropic 四家表达训练退出意愿——比给每家各写一套规则省事得多；但别把它当成法律武器，它目前还只是草案信号，真正的约束力来自各家的兑现与后续标准。</p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-10-30-daily.html">AI 码力日报 · 2026年10月30日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-10-30-daily.html">AI 码力日报 · 2026年10月30日</a></li>
+<li><a href="../posts/2026-10-29-daily.html">AI 码力日报 · 2026年10月29日</a></li>
+<li><a href="../posts/2026-10-28-daily.html">AI 码力日报 · 2026年10月28日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
