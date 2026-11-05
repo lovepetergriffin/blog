@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cline + DeepSeek 全教程：一年几十块的 AI 编程方案，从配置到省钱一次讲透 - 互联网指南</title>
+<meta name="description" content="Cline + DeepSeek 是目前最便宜的正经 AI 编程方案：不用包月订阅，按量付费，日常用一个月七八块钱。本文从安装、配 Key、选模型讲到省钱姿势，附 2026 年 11 月最新价格与避坑点。">
+<meta property="og:title" content="Cline + DeepSeek 全教程：一年几十块的 AI 编程方案，从配置到省钱一次讲透 - 互联网指南"><meta property="og:description" content="Cline + DeepSeek 是目前最便宜的正经 AI 编程方案：不用包月订阅，按量付费，日常用一个月七八块钱。本文从安装、配 Key、选模型讲到省钱姿势，附 2026 年 11 月最新价格与避坑点。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cline + DeepSeek 全教程：一年几十块的 AI 编程方案，从配置到省钱一次讲透 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 上手教程</div>
+    <h1>Cline + DeepSeek 全教程：一年几十块的 AI 编程方案，从配置到省钱一次讲透</h1>
+    <div class="meta"><time>发布于 2026-11-05</time><span class="difficulty">新手</span><a class="tag" href="/guides/">Cline</a><a class="tag" href="/guides/">DeepSeek</a><a class="tag" href="/guides/">AI 编程</a><a class="tag" href="/guides/">省钱</a><a class="tag" href="/guides/">VSCode</a></div>
+  </header>
+  <div class="post-body">
+<p>一句话先说结论：<strong>不想每月交 20 美元订阅、又想用上 Agent 式 AI 编程，Cline + DeepSeek 是现在最实在的路子。</strong> 不用包月，按量付费，日常开发一个月大概七八块钱人民币，重度用也就几十块。这篇把安装、配 Key、选模型、省钱全讲透，照着做半小时就能跑起来。</p>
+<p>跟你有啥关系：Cursor Pro、Claude Pro 都是 20 美元/月起，一年 240 美元；Cline 本身免费，DeepSeek 按 token 计费，用多少付多少。对学生、个人开发者、刚想试试 Agent 编程的人来说，这个组合是试错成本最低的——不喜欢随时停，不用像订阅那样"买了不用也扣钱"。</p>
+<p>价格与版本截至 2026 年 11 月，厂商改价快，掏钱前去官网再确认一遍。</p>
+<h2 id="cline-deepseek">先算账：Cline + DeepSeek 一个月到底多少钱</h2>
+<p>别信"一年只花几十块"这种笼统说法，直接看实测口径的数字（第三方 2026 年 9–10 月对 Cline 等 Agent 工具的用量统计）：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>每天 token 量</th>
+<th>Flash 模型花费</th>
+<th>Pro 模型花费</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>普通一天</td>
+<td>约 860 万 tokens（87% 是缓存命中）</td>
+<td>约 $0.43（高峰）/ $0.22（闲时）</td>
+<td>约 $1.97（高峰）</td>
+</tr>
+<tr>
+<td>很忙的一天</td>
+<td>约 8700 万 tokens</td>
+<td>约 $4.36</td>
+<td>约 $20</td>
+</tr>
+</tbody>
+</table>
+<p>按普通强度算，一个月 22 个工作日用 Flash 模型，高峰时段约 9.5 美元、闲时约 5 美元；换成人民币就是每月 35–70 元。比 20 美元/月的订阅便宜一半以上，而且不用的时候一分钱不花。</p>
+<p>关键是两个省钱机制：</p>
+<ol>
+<li><strong>缓存命中极便宜。</strong> Agent 编程大部分输入是重复读同一个代码库，DeepSeek 的缓存命中价只有正常输入价的零头（Flash 模型缓存命中约 $0.006/百万 tokens），所以实际账单远比"按输入量算"低。</li>
+<li><strong>闲时半价。</strong> DeepSeek 官方分高峰/闲时定价，闲时（北京时间凌晨到上午）输入输出都打五折。能把大活儿挪到闲时做的，直接省一半。</li>
+</ol>
+<h2 id="cline">第一步：装 Cline</h2>
+<p>Cline 是 VS Code 的一个扩展，开源、免费，本质是一个 Agent 式编程助手：你给它一个任务，它自己读代码、改文件、跑命令，改完给你汇报。</p>
+<ol>
+<li>打开 VS Code，左侧点扩展图标（或按 <code>Ctrl+Shift+X</code>），搜 <code>Cline</code>，点安装。</li>
+<li>装完点左侧 Cline 图标进面板。第一次打开会让你选模式：<strong>选"自带 API Key"（Bring Your Own API Key）</strong>，不要选 Cline 自己的订阅——我们要的就是按量付费。</li>
+<li>如果你还没装 VS Code，先去 code.visualstudio.com 下载，免费。</li>
+</ol>
+<h2 id="deepseek-api-key">第二步：搞个 DeepSeek API Key</h2>
+<ol>
+<li>去 DeepSeek 开放平台（platform.deepseek.com）注册登录，进"API Keys"页面点"创建新 API Key"，起个名（比如 Cline）。</li>
+<li><strong>Key 只显示一次，立刻复制保存好</strong>，丢了就得重新建。不要把 Key 贴到任何公开地方、不要发给别人。</li>
+<li>给账号充值：按量付费是先充值后扣费，充多少用多少。先充个 10 块钱试水就够了，跑几天看账单再决定充多少。</li>
+</ol>
+<h2 id="cline-deepseek_1">第三步：Cline 里配好 DeepSeek</h2>
+<p>这是最关键的一步，配错模型后面全是坑：</p>
+<ol>
+<li>点 Cline 面板右上角的齿轮进设置，API Provider 选 <strong>DeepSeek</strong>（新版 Cline 自带这个选项，不用走 OpenAI 兼容模式）。</li>
+<li>把 API Key 粘贴进"DeepSeek API Key"一栏。</li>
+<li>模型下拉框里选：日常用 <strong><code>deepseek-flash</code></strong>，难活儿用 <strong><code>deepseek-v4-pro</code></strong>。</li>
+<li>保存，回到聊天面板，输入一句"用 Python 写一个快速排序"，能正常回你就配好了。</li>
+</ol>
+<p><strong>两个必须避的坑：</strong></p>
+<ul>
+<li><strong>别选 <code>deepseek-v4-flash</code> 这个旧别名。</strong> Cline 有个已知 Bug：这个别名在界面里显示 128K 上下文、价格 $0.00，但实际调用走的是 1M 上下文、按 Flash 价计费。显示和实际对不上，账单会让你一头雾水。认准 <code>deepseek-flash</code>。</li>
+<li><strong>别选 <code>deepseek-chat</code> / <code>deepseek-reasoner</code>。</strong> 这两个是老模型代号，正在被废弃，迟早下线。</li>
+</ul>
+<h2 id="_1">第四步：模型怎么选，省钱的核心就在这里</h2>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>定位</th>
+<th>价格（每百万 tokens，2026 年 11 月）</th>
+<th>适合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>deepseek-flash</td>
+<td>便宜、快</td>
+<td>输入约 $0.30、输出约 $1.20（高峰）；闲时半价</td>
+<td>日常改代码、修 Bug、写小功能</td>
+</tr>
+<tr>
+<td>deepseek-v4-pro</td>
+<td>强、贵</td>
+<td>输入约 $1.32、输出约 $3.96（高峰）；闲时半价</td>
+<td>复杂重构、架构设计、疑难 Bug</td>
+</tr>
+</tbody>
+</table>
+<p>上下文都是 1M tokens，最大输出 384K。日常开发 90% 的活 Flash 够了，只有那种"改了三版还不对"的硬骨头才值得切 Pro。Cline 设置里可以随时换模型，不用重新配。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<p><strong>省钱姿势（按省钱力度排序）：</strong></p>
+<ol>
+<li><strong>闲时干大活。</strong> 同一个任务，闲时做就是高峰价的一半。能等的重构、批量改动，留到闲时跑。</li>
+<li><strong>一个任务一个新会话。</strong> 别让一个会话攒几万行上下文——上下文越长，每次调用烧的 token 越多。做完一个功能就开新任务。</li>
+<li><strong>先 Plan 再 Act。</strong> Cline 有 Plan 模式（只规划不动手）和 Act 模式（直接改代码）。复杂任务先用 Plan 模式让它出方案，你确认了再切 Act，避免它闷头改错、来回返工烧钱。</li>
+<li><strong>小修小补别上 Agent。</strong> 改一行文案、换个变量名这种事，直接手动改，别为了省 30 秒烧掉几毛钱 token。</li>
+<li><strong>定期看账单。</strong> Cline 每个任务结束都会显示本次花费，DeepSeek 开放平台也能看到账单明细。一周看一次，心里有数就不会失控。</li>
+</ol>
+<h2 id="clinepass">ClinePass 要不要买？</h2>
+<p>Cline 官方有个订阅叫 ClinePass，$9.99/月，包含 DeepSeek V4.1 Flash 和 V4 Pro 的用量（官方说法是"标准 API 用量的 2 到 5 倍"，但没公布具体的 5 小时、每周、每月窗口大小）。</p>
+<p>我的判断：<strong>先别买。</strong> 先按量用一个月，看账单再说。如果你每月按量花费稳定超过 10 美元，再考虑 ClinePass；如果每月就几美元，按量更划算。订阅的意义是"封顶"，不是"便宜"，用量没到那个线就是白交钱。</p>
+<h2 id="cline-deepseek_2">和订阅制工具比，Cline + DeepSeek 到底差在哪</h2>
+<p>实话实说，省钱是有代价的：</p>
+<ul>
+<li><strong>高峰期 DeepSeek 偶尔会忙。</strong> API 限流或"服务器繁忙"报错时有发生，遇到就等一会儿或切到闲时再跑；Cursor、Claude Code 这类订阅制相对稳一点。</li>
+<li><strong>没有开箱即用的模型兜底。</strong> 订阅制工具会在你额度用完时自动降级或排队，Cline + DeepSeek 是余额见底就停，得自己盯着充值。</li>
+<li><strong>配置要自己动手。</strong> 订阅制是装好就能用，Cline 得按这篇配一遍——不过也就半小时的事。</li>
+</ul>
+<p>反过来，订阅制一年 240 美元是雷打不动的支出，Cline + DeepSeek 一年大概率 100 美元以内，还不用惦记"这个月没用够本"。对个人开发者来说，这笔账很清楚。</p>
+<h2 id="_2">常见问题</h2>
+<p><strong>Q：DeepSeek API 国内能直接用吗？</strong>
+A：能。DeepSeek 开放平台国内网络直连，注册充值都不需要代理，这是它相对 Claude、OpenAI 最大的优势。</p>
+<p><strong>Q：Cline 支持 MCP 吗？</strong>
+A：支持。Cline 面板里有 MCP Servers 配置入口，可以接各种 MCP 服务扩展能力。具体配法见本站的 <a href="/guides/claude-code-mcp.html">Claude Code MCP 配置指南</a>，思路相通。</p>
+<p><strong>Q：和 Roo Code、Kilo Code 比呢？</strong>
+A：这几个都是同类 VS Code Agent 扩展，思路一样，都能接 DeepSeek。Cline 生态最大、更新最勤，新手先上 Cline 不会错。等你用熟了再横向比较也不迟。</p>
+<p><strong>Q：公司电脑能用吗？</strong>
+A：看公司规定。API Key 是你自己的，代码会发到 DeepSeek 服务器处理，涉密项目先问合规，别自己偷偷上。</p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+<section class="related"><h3>相关指南</h3><ul><li><a href="/guides/gpt-61-terra-guide.html">GPT-6.1 Terra 实战指南：中端模型怎么用最划算，什么时候该升级 Sol</a></li><li><a href="/guides/claude-anti-ban-guide.html">Claude 防封号完全指南：2026 年最新封号原因、预防方法与申诉流程</a></li><li><a href="/guides/trae-tutorial.html">Trae 保姆级教程：字节跳动的免费 AI 编程神器，从安装到做出第一个项目</a></li><li><a href="/guides/claude-code-workflow.html">Claude Code 高效工作流：从安装到第一个 PR</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

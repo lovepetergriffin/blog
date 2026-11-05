@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gemini CLI 免费额度变天了：1000 次/天已停，2026 年 11 月还能怎么免费/低价用 - 互联网指南</title>
+<meta name="description" content="Gemini CLI 曾经每天 1000 次请求免费，2026 年 6 月 18 日 Google 正式停了个人账号的免费服务。这篇讲现在到底还剩哪些免费路子、付费怎么算，以及网上那些还在写 1000 次/天的旧文章为什么不能信。">
+<meta property="og:title" content="Gemini CLI 免费额度变天了：1000 次/天已停，2026 年 11 月还能怎么免费/低价用 - 互联网指南"><meta property="og:description" content="Gemini CLI 曾经每天 1000 次请求免费，2026 年 6 月 18 日 Google 正式停了个人账号的免费服务。这篇讲现在到底还剩哪些免费路子、付费怎么算，以及网上那些还在写 1000 次/天的旧文章为什么不能信。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Gemini CLI 免费额度变天了：1000 次/天已停，2026 年 11 月还能怎么免费/低价用 - 互联网指南", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">互联网指南 · 羊毛攻略</div>
+    <h1>Gemini CLI 免费额度变天了：1000 次/天已停，2026 年 11 月还能怎么免费/低价用</h1>
+    <div class="meta"><time>发布于 2026-11-05</time><span class="difficulty">新手</span><a class="tag" href="/guides/">Gemini CLI</a><a class="tag" href="/guides/">免费额度</a><a class="tag" href="/guides/">Google</a><a class="tag" href="/guides/">终端工具</a></div>
+  </header>
+  <div class="post-body">
+<p>一句话先说结论：<strong>如果你是冲着"每天 1000 次免费"来搜 Gemini CLI 的，别再按老教程配了——那个免费额度已经没了。</strong> 2026 年 6 月 18 日，Google 正式停止向个人 Google 账号提供 Gemini CLI 服务。这篇讲清楚现在到底还剩什么、怎么用、以及替代方案是什么。</p>
+<p>跟你有啥关系：中文互联网上现在还挂着大量写"Gemini CLI 每天 1000 次免费"的文章，绝大多数是 2026 年 6 月之前写的、没更新。你照着配，装完登录会直接报错，白白折腾一晚上。先看完这篇的现状，再决定要不要装。</p>
+<p>额度与版本截至 2026 年 11 月，Google 改政策很快，动手前去官方文档再确认一遍。</p>
+<h2 id="2026-6-18">先说 2026 年 6 月 18 日到底发生了什么</h2>
+<p>Gemini CLI 是 Google 在 2026 年 6 月发布的开源终端 AI 编程工具，发布时最大的卖点就是：用个人 Google 账号登录，每天 1000 次模型请求免费，还能用 Gemini 2.5 Pro、100 万 token 上下文。</p>
+<p>但免费只活了不到一个月。<strong>2026 年 6 月 18 日，Google 停止向个人 Google 账号提供 Gemini CLI 服务</strong>——免费的 Gemini Code Assist 个人版、Google AI Pro、Google AI Ultra 账号全部停服。官方仓库发了停服通知，多家英文媒体在 10 月又跟进确认了一次。</p>
+<p>最坑的是：<strong>Google 的官方额度页面至今还挂着"个人账号每天 1000 次"的表格</strong>，同一页面的横幅和停服通知却说已经停了。页面自己打自己脸。所以现在搜到的任何"1000 次/天"说法，不管它挂的是官方文档还是博客，都要先问一句：这篇文章是 6 月 18 日之前写的，还是之后核实过的？</p>
+<h2 id="2026-11-gemini-cli">2026 年 11 月，Gemini CLI 的额度现状</h2>
+<p>按登录方式分，现在的情况是这样的：</p>
+<table>
+<thead>
+<tr>
+<th>登录方式</th>
+<th>每天额度</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>个人 Google 账号登录</td>
+<td>0</td>
+<td><strong>已停服（2026-06-18）</strong></td>
+</tr>
+<tr>
+<td>未付费 Gemini API Key（AI Studio）</td>
+<td>250 次，仅 Flash 模型</td>
+<td>尚存，但能否继续在 CLI 里用说法不一</td>
+</tr>
+<tr>
+<td>Vertex AI Express 模式</td>
+<td>按项目配额</td>
+<td>90 天免费期，之后必须开账单</td>
+</tr>
+<tr>
+<td>Gemini Code Assist 标准版/企业版</td>
+<td>1500 / 2000 次</td>
+<td>组织订阅，按席位买</td>
+</tr>
+<tr>
+<td>Antigravity CLI（Google 的新终端工具）</td>
+<td>免费档每天几十次（社区实测，无官方数字）</td>
+<td>正在推，替代 Gemini CLI</td>
+</tr>
+</tbody>
+</table>
+<p>关于"未付费 API Key 还能不能在 CLI 里用"这点要特别说明：<strong>不同信源说法打架</strong>。有 10 月的实测文章说 API Key 登录仍有每天 250 次、仅限 Flash 模型；也有文章说 API Key 已经无法再给个人用户认证 CLI。我的建议是：别把它当成稳定的免费方案——就算今天能用，Google 随时可能收掉。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<p><strong>怎么查你自己的额度：</strong> 在 CLI 里跑 <code>/stats model</code>，会显示当前账号的用量和上限。这是最准的，别人的文章都不如你自己的账号实测。</p>
+<h2 id="ai">还想免费用终端 AI 编程，现在有三条路</h2>
+<h3 id="cline-deepseek">路子一：换工具，Cline + DeepSeek</h3>
+<p>同样是终端/Agent 编程，Cline + DeepSeek 按量付费，日常用一个月七八块钱，不用惦记免费额度哪天没。配置方法见本站的 <a href="/guides/cline-deepseek-guide.html">Cline + DeepSeek 全教程</a>。这是目前最稳的低价替代。</p>
+<h3 id="cliqwen-code-kimi-code">路子二：国产 CLI，Qwen Code 或 Kimi Code</h3>
+<p>Qwen Code 工具本身开源免费，但官方的免费 OAuth 登录也在 2026 年 4 月 15 日停了，现在要接阿里云百炼 Coding Plan（约 200 元/月）或自带 API Key。Kimi Code 随 Kimi 会员提供，Plus 档及以上能用。国内网络直连、中文支持好，适合不想折腾海外支付的人。</p>
+<h3 id="google-antigravity-cli">路子三：Google 的新宠 Antigravity CLI</h3>
+<p>Google 把个人用户的免费重心挪到了 Antigravity CLI（命令是 <code>agy</code>），这是 Gemini CLI 的继任者。但免费额度缩水严重：社区实测每天只有几十次，Google 没公布官方数字。能尝鲜，别指望它当主力。</p>
+<h2 id="gemini">如果就是想用 Gemini 模型，付费怎么算</h2>
+<ul>
+<li><strong>Gemini API 按量付费：</strong> 去 Google AI Studio 建 API Key，按 token 计费。用多少付多少，适合偶尔用、不想包月的人。</li>
+<li><strong>Gemini Code Assist 标准版/企业版：</strong> 组织订阅，标准版每天 1500 次、企业版 2000 次。个人用户基本用不上，这是给团队准备的。</li>
+<li><strong>Vertex AI：</strong> 企业级路线，Express 模式有 90 天免费期，之后必须开账单。</li>
+</ul>
+<h2 id="_1">避坑清单</h2>
+<ol>
+<li><strong>看到"1000 次/天免费"先看文章日期。</strong> 2026 年 6 月 18 日之前写的，一律当过期信息处理。</li>
+<li><strong>别信"官方额度页还写着 1000 次所以还能用"。</strong> 那个页面没更新，停服通知在同一个仓库里，自己去 GitHub 看 deprecation notice。</li>
+<li><strong>免费额度不是长期计划。</strong> 2026 年的教训很集中：Qwen Code 免费 OAuth 4 月停、Gemini CLI 个人免费 6 月停。把"免费"当成长期主力工具的根基，迟早被断供打个措手不及。正确姿势是：免费尝鲜可以，长期用要么接受按量付费、要么接受订阅。</li>
+<li><strong>别为"免费"装一堆工具。</strong> 先想清楚自己每天到底要多少次调用——大部分人一天根本用不到 1000 次，250 次 Flash 额度或者按量几块钱就够了。额度焦虑很多时候是假焦虑。</li>
+</ol>
+<h2 id="_2">常见问题</h2>
+<p><strong>Q：我之前配好的 Gemini CLI 现在还能用吗？</strong>
+A：个人 Google 账号登录的，6 月 18 日之后就停了。打开会直接提示无服务。改走 API Key 或换工具。</p>
+<p><strong>Q：Gemini CLI 还值得装吗？</strong>
+A：如果你已经有付费的 Google 账号或 API 预算，值得——工具本身开源、做得不错。但如果你的全部理由就是"免费"，那现在已经没有这个理由了，换 Cline + DeepSeek 或者国产 CLI 更实在。</p>
+<p><strong>Q：Antigravity CLI 是什么？</strong>
+A：Google 推的新一代终端 AI 工具，命令是 <code>agy</code>，定位是 Gemini CLI 的继任者。免费档额度很小（社区实测每天几十次），适合尝鲜，不适合当主力。</p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/guides/">← 回指南首页</a>
+</nav>
+
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
