@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年11月9日 - AI 码力日报</title>
+<meta name="description" content="Claude Code 一句&#x27;别再问我&#x27;，把 1,122 个仓库的密钥送上公开 GitHub；ChatGPT Dots 会替你去邮箱取登录码；Google 170 亿美元砸怀俄明；DeepSeek 安全基准追到闭源七成，成本只要十分之一。">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-11-09.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年11月9日","description":"Claude Code 一句'别再问我'，把 1,122 个仓库的密钥送上公开 GitHub；ChatGPT Dots 会替你去邮箱取登录码；Google 170 亿美元砸怀俄明；DeepSeek 安全基准追到闭源七成，成本只要十分之一。","datePublished":"2026-11-09","dateModified":"2026-11-09","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-11-09-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-11-09.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">AI 码力日报</div>
+    <h1>AI 码力日报 · 2026年11月9日</h1>
+    <div class="meta"><time>2026-11-09</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-11-09.svg" alt="AI 码力日报 · 2026年11月9日">
+  <div class="post-body">
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li><strong>Claude Code 一句"别再问我"，1,122 个公开仓库的密钥跟着上了 GitHub</strong>：Apiiro 扫出 2,539 个密钥，379 个是数据库密码；先查你自己的仓库有没有中招，教程在文末。</li>
+<li><strong>ChatGPT Dots 会替你去邮箱取登录码了</strong>：Pro 和 Business Premium 专属，取码前要你先点头；但它自己在输码那一下还有点"不敢下手"。</li>
+<li><strong>Google 170 亿美元砸怀俄明数据中心</strong>：接手 Crusoe 那个停摆的 1.8GW 场地，702MW 燃料电池供电。</li>
+<li><strong>Anthropic 本周启动 IPO 路演</strong>：目标感恩节前挂牌纳斯达克，代码 ANT。</li>
+</ul>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="claude-code1122">Claude Code"别再问我"按一下，密钥就进了公开仓库：1,122 个仓库还在裸奔</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你用 Claude Code 写代码，点过一次"Yes, and don't ask again"，那条带密钥的命令可能正躺在你仓库的 <code>.claude/settings.local.json</code> 里——公开仓库的话全世界都能看。安全公司 Apiiro 11 月 5 日公布的扫描结果：公开 GitHub 上有 104,185 份这个文件，其中 1,122 份（约 1.1%）含真实密钥，共 1,379 个不同密钥；算上 git 历史、共享配置文件和 agent 聊天记录，总数是 2,539 个密钥、1,994 个仓库。超过三分之一能直接连数据库（379 个数据库密码、122 个 Supabase service-role key），还有 43 个 SSH 登录、42 个 GitHub/GitLab/npm token、23 个 AWS key；63 家机构中招。更扎心的是：Claude Code 只把这个文件加进你本机的全局 gitignore，不写进项目 <code>.gitignore</code>；539 个仓库里还是 Claude 自己联名提交了这个文件。Apiiro 没有实测这些密钥是否还有效，但已有一家被通知的公司确认自己的 key 还活着。<span class="judge-label">我的判断</span>：这不是 prompt 注入，是日常操作踩的坑——今天就去查一遍自己的仓库，教程在文末。<a href="https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html">原文链接</a></p>
+<h3 id="chatgpt-dots">ChatGPT Dots 会替你去邮箱取登录码了，但输码那一下它自己先怂了</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你是 ChatGPT Pro 或 Business Premium 用户，你的 Dot 现在能帮你跑完"注册—收验证码—登录"的全套流程，不用你切窗口翻邮箱。11 月 7 日的消息：Dots 能从已连接的邮箱里取注册/登录验证码，替你完成 2FA；前提是你先授权，方式是一次授权或始终允许。Dots 9 月 29 日 DevDay 发布，跑在 GPT-6 Astra 上，各自带独立云电脑和浏览器，能接 4,000 多个应用的插件。早期用户的反馈很有意思：Dot 看得到验证码，轮到输入那一下却会犹豫——内置安全规则卡住了，高风险操作（确认交易、改敏感数据）本来就被禁。<span class="judge-label">我的判断</span>：登录这种"替我点一下"的活交给 agent 是迟早的事，但 2FA 的意义就是"证明是你本人"，让 agent 代劳等于把这道关也交了出去——先拿不重要的账号试，别一上来就接主力邮箱。<a href="https://cryptobriefing.com/openai-dots-agents-2fa-email-codes/">原文链接</a></p>
+<h3 id="google-170-crusoe">Google 170 亿美元砸怀俄明：接手 Crusoe 停摆的数据中心场地</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你关心 AI 算力从哪来——Google 刚把怀俄明州东南那个 1.8GW 的 AI 数据中心场地从 Crusoe 手里接了过来，长期投资 170 亿美元，是它在怀俄明的第一个数据中心。Crusoe 11 月 6 日宣布出售，交易价没公布；这个项目 2025 年 7 月立项时规划 1.8GW、远期可扩到 10GW，今年 6 月因成本和工期争议停摆，Google 之前想当租户没谈成、干脆直接接手。供电方案是 702MW 燃料电池（Bloom Energy）加燃气轮机、电网，配碳捕集，还做了风冷省水设计。<span class="judge-label">我的判断</span>：现在稀缺的不是芯片也不是钱，是"能马上开工的地"——Crusoe 前期把选址、审批、供电都跑通了，Google 买的就是这份"已排雷"。<a href="https://mlq.ai/news/crusoe-sells-its-stalled-wyoming-data-center-site-to-google-which-plans-a-17-billion-campus-there/">原文链接</a></p>
+<h3 id="deepseek-v41-flash">DeepSeek V4.1 Flash 安全基准追到闭源七成，成本只要十分之一</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你在给 agent 选便宜又能打的模型，Vals AI 的新基准给了个很实在的参照：开源模型在"模拟攻击企业网络"这件事上已经摸到闭源模型的下巴了。Vals AI 的测试里，OpenAI 的 GPT-6 Sol Daybreak 完成 80.8% 的攻击目标，DeepSeek V4.1 Flash 做到 72.8%，成本只有前者的约十分之一；Artificial Analysis 的网络安全指数上，Kimi K3.1 Pro 以 64.1 分排第一，DeepSeek V4.1 Flash-1017 以 56.8 分排第二。横向看：这不是"开源便宜所以将就"，是"便宜十分之一、能力打九折"。<span class="judge-label">我的判断</span>：安全攻防场景里，DeepSeek V4.1 Flash 现在是性价比最高的入场券；但别忘了这是攻击方基准——拿它去做防御演练很划算，拿它当生产安全工具之前先想想合规。<a href="https://horizon.alchemylab.sh/briefing/2026-11-08">原文链接</a></p>
+<h3 id="minimax-8">MiniMax 年收入破 8 亿美元：八成来自企业推理订单</h3>
+<p><span class="why-label">跟你有啥关系</span>：MiniMax 不声不响成了国产大模型里最会赚钱的一家——CEO 闫俊杰在采访里透露，公司年经常性收入（ARR）已超过 8 亿美元，其中八成以上来自企业级推理服务和开发者平台 API 消费。11 月 8 日的消息。对照一下：这家公司今年 6 月才发布 M3、10 月又上了 M3.1 Flash（输入 $0.15/百万 token），走的是"便宜量大"的路子。<span class="judge-label">我的判断</span>：当一家模型公司八成收入来自 B2B 推理而不是 C 端订阅，说明它的模型是真的有人在生产里跑，而不是只活在榜单上——下次选国产 API 供应商，MiniMax 值得放进候选。<a href="https://www.communeify.com/en/blog/ai-daily-2026-11-08/">原文链接</a></p>
+<h2 id="ai">📱 AI 应用新品</h2>
+<h3 id="electros-launchpad-mac-nvidia-ai">Electros LaunchPad：把你自己的 Mac 或 NVIDIA 机器变成私有 AI 云</h3>
+<p>是什么：一个本地部署工具：Mac 或 NVIDIA 机器上，60 个自托管服务（OpenClaw、n8n、Open WebUI、Qdrant 等）一键装好，再加一个 OpenAI 兼容的统一网关，配可吊销的 API key。解决什么问题：想自己搭 agent 和工作流，又不想一个个配 Docker、反代和鉴权——它把"私有 AI 云"打包成了一键安装。免费额度/价格：14 天免费试用，不用绑卡；创始版 $179 一次性（含终身更新），优惠到 11 月 30 日，之后恢复 $159/年；Product Hunt 会员码 26ELP20 还能再打折。适合谁：手头有闲置 Mac 或 NVIDIA 机器、想把数据留在本地的人；提醒一句：创始版是买断价，11 月 30 日后就没了。<a href="https://www.producthunt.com/products/electros-launchpad-hybrid-ai">原文链接</a></p>
+<h3 id="prelulu-ai-ai">Prelulu：实时 AI 视频故事，还能跟 AI 视频通话</h3>
+<p>是什么：一个 AI 视频应用：实时生成 AI 视频故事，还能直接跟 AI 进行视频通话；11 月 4 日在 Product Hunt 上线当天拿了第 3 名，11 月 5 日正式发布。解决什么问题：想玩 AI 视频但不想等渲染——实时生成、直接对话，门槛比剪视频低得多。免费额度/价格：未公布具体价格（截至撰写时）。适合谁：想尝鲜实时 AI 视频、做短视频内容的人；Web、iOS、Android 都有。<a href="https://prelulu.ai">原文链接</a></p>
+<section class="yaomo-sec"><h2 id="_2">🐑 今日羊毛</h2>
+<h3 id="openai-probusiness-500-api-credits">OpenAI Pro/Business 用户：每月最高 $500 API credits，别等过期才想起来</h3>
+<p>一句话：10 月 28 日起，ChatGPT Pro（$100/$200/$500 三档）和符合条件的 Business 用户每月能领一笔 API credits，额度跟订阅档位走、最高 $500，当月不用就作废。</p>
+<ul>
+<li><strong>怎么薅</strong>：在 ChatGPT 账单/订阅页领取（Pro 100 档 $100、Pro 200 档 $200、Pro 500 档 $500），领完直接在 API 里用。<a href="https://logicoflogic.com/news/chatgpt-pro-api-credits">直达链接</a></li>
+<li><strong>有效期</strong>：按月发放、当月过期（截至撰写时）</li>
+<li><strong>适合谁</strong>：已经在付 Pro 或 Business 的人；注意：这笔 credits 不算进 Codex 的用量额度，也不能用来顶 API key 直连 Codex 的账单，约省 $100–500/月</li>
+</ul>
+<h3 id="vertex-ai-300-studio-gemini-3-pro">Vertex AI 新账号 $300 免费额度：走 Studio 端点能调 Gemini 3 Pro</h3>
+<p>一句话：新开 Google Cloud 账号送 $300 免费额度，但要走 Vertex AI Studio 端点才能用来调 Gemini 3 Pro、DeepSeek、GLM-5 这些模型——直接调 Gemini API 端点不消耗这笔额度。</p>
+<ul>
+<li><strong>怎么薅</strong>：注册新 GCP 账号领 $300 额度，在 Vertex AI Studio 里建项目调模型；想白嫖的也可以用 9Router 这类开源路由器把额度接进 Claude Code/Codex。<a href="https://github.com/decolua/9router">直达链接</a></li>
+<li><strong>有效期</strong>：新账号一次性 $300（截至撰写时）</li>
+<li><strong>适合谁</strong>：想免费试 Gemini 3 Pro 等旗舰模型 API 的人；提醒一句：额度只对新账号，薅完就没了</li>
+</ul>
+<h3 id="chatgpt-codex-app">ChatGPT 免费版也能用 Codex：桌面 App 里自带有限额度</h3>
+<p>一句话：不用付 Plus 也能摸一下 Codex——ChatGPT 免费版和 Go 套餐在桌面 App 里自带有限的 Codex 额度，够你跑几个小任务先试试手。</p>
+<ul>
+<li><strong>怎么薅</strong>：装 ChatGPT 桌面 App（Mac/Windows），登录免费账号，在 App 内找 Codex 入口直接用，不用绑卡。<a href="https://www.masaischool.com/resources/tools/free-ai-coding-agents">直达链接</a></li>
+<li><strong>有效期</strong>：长期免费档、按月给（截至撰写时）</li>
+<li><strong>适合谁</strong>：还没决定要不要为 Codex 付费、想先试试 agent 写代码的人；额度很小，重度用还是得上付费档</li>
+</ul>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="sherlock-projectsherlock">sherlock-project/sherlock：一个用户名，扒出它在全网的账号</h3>
+<p>一句话介绍：老牌开源情报（OSINT）工具：输入一个用户名，自动去几百个社交网络和网站上查这个名字有没有被注册，输出一份"此人出现在哪里"的清单。解决什么问题：做安全审计、查撞库、做背景调查时，手动一个个网站搜名字太费劲——Sherlock 一次跑完。⭐ 约 103,264，今日新增 2,372（截至撰写时）。适合：做安全、做风控、好奇自己用户名在外面有多少痕迹的人；Python 写成，提醒一句：只能查公开信息，别拿去骚扰人。<a href="https://github.com/sherlock-project/sherlock">项目地址</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<h3 id="dsx-ai-factorynvkenvidia-gpu-kubernetes">dsx-ai-factory/nvke：NVIDIA 官方的 GPU 版 Kubernetes 管理面</h3>
+<p>一句话介绍：NVIDIA 刚开源的 NVKE（NVIDIA Kubernetes Engine）：给裸金属 GPU 集群用的管理面，管 GPU 的调度、驱动、显存分配这些 K8s 原生不太管的事。解决什么问题：自己搭 GPU 集群跑模型，最烦的是驱动版本、显存碎片和节点管理——NVKE 把这层收进一个统一的管理面。⭐ 约 818，今日新增 345（截至撰写时）。适合：自己管 GPU 服务器、跑推理集群的人；Go 写成，提醒一句：项目刚起步，文档还在补，先拿测试集群试。<a href="https://github.com/dsx-ai-factory/nvke">项目地址</a></p>
+<h3 id="vercel-labsagent-browser-ai-agent-cli">vercel-labs/agent-browser：给 AI agent 用的浏览器自动化 CLI</h3>
+<p>一句话介绍：Vercel 实验室出的 Rust 工具：一个命令行浏览器，专门给 agent 用——agent 不用开 Chrome 就能打开网页、点按钮、填表单、截图。解决什么问题：agent 要上网查资料、操作网页时，传统浏览器自动化又重又慢；这个 CLI 轻、快，还能直接嵌进 agent 的工具链。⭐ 约 47,526，今日新增 812（截至撰写时）。适合：给 agent 接"上网"能力的人；Rust 写成。<a href="https://github.com/vercel-labs/agent-browser">项目地址</a></p>
+<h3 id="metaastryxmeta-agent">meta/astryx：Meta 开源的"agent 原生"设计系统</h3>
+<p>一句话介绍：Meta 开源的设计系统：组件、主题、布局全部可定制，而且从一开始就是按"agent 也能读、能改"的思路做的——agent 可以直接调用它的组件拼界面。解决什么问题：agent 生成的界面经常风格跑偏、组件不统一；Astryx 给了一套 agent 友好的设计语言，让 agent 拼出来的界面像人做的。⭐ 约 16,487，今日新增 863（截至撰写时）。适合：让 agent 写前端、又想让它出活像设计师的人；TypeScript。<a href="https://github.com/meta/astryx">项目地址</a></p>
+<h3 id="ranxiangleibillion-context10">ranxianglei/billion-context：上下文压缩插件，10 万窗口扛住月级长会话</h3>
+<p>一句话介绍：一个上下文压缩插件：让 100K 上下文的小窗口扛住"月级"超长单会话，号称省 5 倍 token。解决什么问题：Claude Code 这类长会话越跑越贵、越跑越慢，上下文一爆就得开新会话丢记忆——这个插件在后台压缩旧上下文，让一个会话活得更久。⭐ 约 5,086，今日新增 460（截至撰写时）。适合：长期跑同一个项目的 Claude Code 用户、被 token 账单吓到的人；TypeScript，提醒一句：压缩会不会丢关键信息，自己先在小项目上验证。<a href="https://github.com/ranxianglei/billion-context">项目地址</a></p>
+<h2 id="hugging-face">🤗 Hugging Face 热门模型</h2>
+<h3 id="speridlabsidol-3d-7gb">speridlabs/idol：一张照片变 3D 高斯泼溅，7GB 显存就能跑</h3>
+<p>是什么：小团队 Speridlabs 的图生 3D 模型：一张图进去，最多 104 万个 3D 高斯点出来，自动补全照片里没拍到的背面，输出标准 3DGS <code>.ply</code> 文件。能干嘛：本地跑正是它的卖点——7.2GB 显存就能跑，H100 上约 7 秒出结果；11 月 4 日那周从榜单 24 名冲到第 5，下载量 4 天从 221 涨到 1 万多次。横向比：官方基准里 SSIM、IoU、DINOv2、CLIP 几项都压过 TripoSplat 和 TRELLIS。Apache 2.0 协议。适合谁：做 3D 内容、游戏资产、电商商品 3D 化的团队；提醒一句：要先在 HF 上接受两个门控编码器（DINOv3、FLUX.2 VAE）的使用条款才能跑。<a href="https://huggingface.co/speridlabs/idol">模型地址</a></p>
+<h3 id="nousresearcharete-27b-qwen38">NousResearch/Arete-27B：给 Qwen3.8 换了一套价值观，顺带把事实分提上来了</h3>
+<p>是什么：Nous Research 在阿里 Qwen3.8-27B 基础上做的后训练：只用 SFT（约 5,280 万 token），把模型在政治敏感话题上的"官方口径"倾向洗掉，改成西方价值观框架下的回答。能干嘛：本地跑（27B，64K 上下文）或 API 调；自家 803 道题的评测里，事实分从 2.32 涨到 2.98（满分 5），含宣传口径的回答从 22% 降到 0.9%；通用能力没掉：内部 Hermes Bench 65.77%→65.60%（噪声水平），Terminal-Bench 67%→70%。下载量约 1,700 次、263 个赞（截至撰写时）。适合谁：对开源模型"预装价值观"有要求、想自己选模型立场的人和研究者；提醒一句：评测是 Nous 自家出的，裁判也是模型（Grok 4.7），结论先当参考。<a href="https://huggingface.co/NousResearch/Arete-27B">模型地址</a></p>
+<h2 id="9router">🛠️ 值得一试的工具：9Router</h2>
+<p>是什么：开源免费模型路由器：把 Claude Code、Codex、Cursor、Cline、Copilot、Antigravity 这些 coding 工具接进 40 多家免费/便宜模型渠道，自动 fallback，号称能省 40% token。解决什么痛点：各家免费额度东一家西一家，手动换 key 换 endpoint 太折腾——它把订阅档、便宜档（GLM $0.6/百万 token、MiniMax $0.2/百万）、免费档（Kiro 每月约 50 credits、OpenCode Free、Vertex $300 额度）排成三级，额度用完自动降级。免费额度：开源免费，模型按各渠道的免费额度走。</p>
+<p><strong>verdict：</strong> 观望——思路是对的，白嫖免费模型跑 agent 确实能省不少；但提醒两句：第一，你的代码要经过它的中转，敏感项目别走；第二，免费模型名单天天变，今天能用的明天可能就没了，先拿 side project 试，别当主力。<a href="https://github.com/decolua/9router">工具地址</a></p>
+<h2 id="3-claude-code">🎓 3 分钟小教程：给 Claude Code 上锁，别让它再把密钥写进公开仓库</h2>
+<p><strong>前置条件</strong>：在用 Claude Code，有 git 仓库；装 gitleaks（<code>brew install gitleaks</code>，Windows 用 <code>winget install gitleaks</code>）。</p>
+<ol>
+<li>先查自己有没有中招：仓库根目录跑 <code>git ls-files .claude/</code>，如果 <code>settings.local.json</code> 在列表里，说明它已被追踪——立刻 <code>git rm --cached .claude/settings.local.json</code> 取消追踪。</li>
+<li>项目级上锁：在项目根目录的 <code>.gitignore</code> 里加一行 <code>.claude/settings.local.json</code>。Claude Code 只会把它写进你本机的全局 gitignore，换台电脑、换个协作者就失效，项目级 <code>.gitignore</code> 才是真保险。</li>
+<li>扫一遍历史：跑 <code>gitleaks detect --verbose</code>，把整个仓库历史扫一遍；扫出密钥先轮换再删文件——光删文件没用，密钥还躺在 git 历史里。</li>
+<li>治本：以后别在命令行里直接贴密钥，改走环境变量或 <code>.env</code> 文件；再给 Claude Code 的 Bash 权限加一条 deny 规则，含 <code>token=</code>、<code>password=</code> 的命令一律先问你。</li>
+</ol>
+<p><strong>预期效果</strong>：<code>settings.local.json</code> 再也不会进仓库；历史里埋过的旧密钥也被扫出来轮换掉。提醒一句：Apiiro 扫出的 2,539 个密钥里有一半在仓库里躺了 217 天以上——越早查越好。<a href="https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html">教程参考</a></p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-11-08-daily.html">AI 码力日报 · 2026年11月8日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-11-08-daily.html">AI 码力日报 · 2026年11月8日</a></li>
+<li><a href="../posts/2026-11-07-daily.html">AI 码力日报 · 2026年11月7日</a></li>
+<li><a href="../posts/2026-11-06-daily.html">AI 码力日报 · 2026年11月6日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
