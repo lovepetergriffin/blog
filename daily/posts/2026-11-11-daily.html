@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年11月11日 - AI 码力日报</title>
+<meta name="description" content="Anthropic 把 Claude 开进 Google Meet，白板表格全家桶齐发；OpenAI 在 ChatGPT 里开店做生意；Gemini 4 Carbon 全面开放，半价只到 11 月 30 日；Meta Muse Wonder 发布；Cursor 用户注意，明天是 OpenAI 提案里的断供节点。">
+<link rel="canonical" href="https://radar.zsyvoid.com/daily/posts/2026-11-11-daily.html">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-11-11.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年11月11日","description":"Anthropic 把 Claude 开进 Google Meet，白板表格全家桶齐发；OpenAI 在 ChatGPT 里开店做生意；Gemini 4 Carbon 全面开放，半价只到 11 月 30 日；Meta Muse Wonder 发布；Cursor 用户注意，明天是 OpenAI 提案里的断供节点。","datePublished":"2026-11-11","dateModified":"2026-11-11","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-11-11-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-11-11.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">AI 码力日报</div>
+    <h1>AI 码力日报 · 2026年11月11日</h1>
+    <div class="meta"><time>2026-11-11</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-11-11.svg" alt="AI 码力日报 · 2026年11月11日">
+  <div class="post-body">
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li><strong>Anthropic 把 Claude 开进 Google Meet</strong>：Meetings、白板、表格、Data 全家桶 11 月 10 日齐发，办公套件正面刚 Google 和微软。</li>
+<li><strong>OpenAI 在 ChatGPT 里开店</strong>：Business Hub + Business Agents 上线 beta，企业能认领资料页、把自家客服 agent 塞进 ChatGPT。</li>
+<li><strong>Gemini 4 Carbon 全面开放</strong>：付费 API、Gemini for business、AI Ultra 都能用了，介绍价 $2/$10 只到 11 月 30 日，12 月 1 日起翻倍。</li>
+<li><strong>Meta Muse Wonder 发布</strong>：Alexandr Wang 实验室的首个前沿级模型；同场还发了便宜到离谱的 agent 小模型 Muse Ember。</li>
+<li><strong>Cursor 用户注意</strong>：按 OpenAI 此前的提案，明天 11 月 12 日是结束 Cursor 直接调用 OpenAI 模型的过渡期节点，用 GPT 的人今天就把备用方案准备好。</li>
+</ul>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="anthropic-claude-google-meetmeetingsdata">Anthropic 把 Claude 开进 Google Meet：Meetings、白板、表格、Data 四件套齐发</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你开会多、表格多，Claude 从"会后总结的工具"变成"会上一起干活的同事"了——Anthropic 11 月 10 日在旧金山发布了四个办公产品。Claude Meetings 能以可见参会者的身份进 Google Meet，一边听会一边把讨论写成计划、在白板上排时间线、在会议聊天里回答问题，还能从你接好的工作应用里拉数据（比如去年的数字）；Whiteboards 是和 Claude 共享的实时白板，聊完能直接转成文档或幻灯片；Sheets 是能跟 Claude 一起改的电子表格，带标签页、公式和下拉菜单，能导出 Excel；Claude Data（原名 Dashboards）正式 GA，能接 Redshift、BigQuery、ClickHouse、Databricks、Snowflake 和 Salesforce 这类数据源出仪表盘、书面报告甚至旁白视频。Meetings 先上 Team 和 Enterprise 计划、只支持 Google Meet；Whiteboards 和 Sheets 在付费计划上开 beta；Data 在 Team 计划默认开、Enterprise 计划 11 月 19 日起默认开。<span class="judge-label">我的判断</span>：Anthropic 这是在正面抢微软和 Google 的饭碗——Copilot 和 Gemini 做了两年的"进会议"，Claude 一次全补上了；但 Meetings 现阶段只认 Google Meet，用 Zoom 或 Teams 的团队还得等。<a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/">原文链接</a></p>
+<h3 id="openai-chatgpt-business-hub-business-agents-beta">OpenAI 在 ChatGPT 里开店：Business Hub + Business Agents 上线 beta</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你做电商或在线服务，ChatGPT 正在变成一个新的获客入口——OpenAI 11 月 10 日上线了 Businesses in ChatGPT（beta）。企业先去 Business Hub 认领自己的资料页，验证通过后能更新信息、传产品 feed（含价格和库存）、看用户互动数据；Business Agents 则让用户直接在 ChatGPT 里跟代表这家企业的 agent 聊天问产品、问服务。首批只给美国符合条件的电商和在线服务企业，商家还能给自己的 Business Agent 买标注过的 ChatGPT 广告位，Shopify 商家可以直接在 Business Hub 或 Shopify 后台接店。OpenAI 强调不会把用户的对话内容交给企业。<span class="judge-label">我的判断</span>：这是 OpenAI 把"ChatGPT 当搜索引擎+购物入口"这条路走到底了——9 月试水的 Sponsored Agents 是广告，11 月这波是把店直接开进来；对普通用户来说，以后在 ChatGPT 里问"这双鞋多少钱"可能直接撞上商家的 agent，答案的立场就得自己掂量了。<a href="https://www.reuters.com/technology/openai-lets-businesses-claim-chatgpt-profiles-adds-ai-agents-us-e-commerce-firms-2026-11-10/">原文链接</a></p>
+<h3 id="gemini-4-carbon-11-30">Gemini 4 Carbon 全面开放：最强推理模型来了，但半价只到 11 月 30 日</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你写 agent 或啃长推理任务，Google 最强的模型今天起不用排队了——Gemini 4 Carbon 11 月 10 日全面开放：付费开发者走 Gemini API（AI Studio 和 Android Studio）、企业走 Gemini for business、AI Ultra 订阅者在 Antigravity、Gemini 应用和搜索 AI Mode 里都能用。定价是限时半价：介绍价输入 $2/百万 token、输出 $10/百万 token，只到 11 月 30 日，12 月 1 日起涨到 $4/$20；注意 Carbon 没有免费档，每个 token 都计费（含思考 token）。跑分直接贴官方模型卡（2026 年 10 月数据），含金量自己看：</p>
+<table>
+<thead>
+<tr>
+<th>基准</th>
+<th>Gemini 4 Carbon</th>
+<th>Gemini 4 Argon</th>
+<th>GPT-6 Astra</th>
+<th>Claude Opus 5.5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FrontierSWE 2（agent 编码）</td>
+<td>61.2%</td>
+<td>55.0%</td>
+<td><strong>65.5%</strong></td>
+<td>62.3%</td>
+</tr>
+<tr>
+<td>Artificial Analysis Intelligence Index v5.0</td>
+<td><strong>59</strong></td>
+<td>50</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GraphWalks 长上下文（256K–1M）</td>
+<td><strong>96.2%</strong></td>
+<td>84.2%</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>MKA 多模态知识 agent（新基准）</td>
+<td>质量第 2，成本比第一名低 6 倍</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>另外 Google 同日还发了和 Artificial Analysis 合作的新基准 MKA（Multimodal Knowledge Agent），专门测 agent 处理视觉复杂文件的知识工作。<span class="judge-label">我的判断</span>：Carbon 的定位是"长程推理+agent 工作流"，不是全能冠军——FrontierSWE 上它排在 Astra 和 Opus 5.5 后面，但长上下文和性价比是真强；11 月 30 日前半价是实打实的窗口，需要重推理的人这个月先试，别等涨价。<a href="https://www.unite.ai/google-expands-gemini-4-carbon-access-beyond-cybersecurity-defenders/">原文链接</a></p>
+<h3 id="meta-muse-wonder-wang-ember">Meta Muse Wonder 发布：Wang 实验室的首个前沿模型，同场还有个便宜到离谱的 Ember</h3>
+<p><span class="why-label">跟你有啥关系</span>：Meta 的模型线换了打法——11 月 10 日，Alexandr Wang 实验室发布了首个前沿级模型 Muse Wonder（接 4 月的 Muse Spark），Wang 称它在团队自己的 agent 任务评测上达到 SOTA，在 Artificial Analysis Intelligence Index 上大致和 OpenAI、Anthropic 的领先模型同一档。同场还有 Muse Ember：Muse 家族最小、最便宜的模型，专门干高频 agent 活（工具调用、编码子任务、路由、抽取、长文档解析），Vals AI 说它是其榜单上最便宜的模型（每个测试 $0.15），同时跑赢了 Haiku 5.5 和 GPT-6 Luna，评论称"Haiku 级能力，三分之一的价格"。<span class="judge-label">我的判断</span>：Wonder 是 Meta 补"前沿模型"这块短板的正名之作，Ember 才是对开发者更实在的那个——agent 满天飞的时代，工具调用这种量大管饱的活就该用便宜模型，别拿旗舰模型当苦力。<a href="https://aibriefing.dev/">原文链接</a></p>
+<h3 id="deepseek-harness-154m-agent">DeepSeek Harness 1.54M 日活：开源 agent 平台三个月长成流量大户</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你在给 agent 找插件生态，DeepSeek 的 Harness 值得放进候选——开源 agent 框架 Harness 上线不到三个月（8 月 13 日发布），日活已达 154 万，每天处理约 92 万亿 token，上面已有约 3.5 万个第三方插件；官方还预告要开开发者市场，给插件作者发 token 补助和技术支持。<span class="judge-label">我的判断</span>：Harness 的增速说明"agent 的应用商店"这个位置有人在抢，而且抢得很快；但 92 万亿 token/天这个数字水分有多大、付费转化怎么样，现在还看不出来，先当它是生态信号，别当收入信号。<a href="https://aibriefing.dev/">原文链接</a></p>
+<h3 id="google-tputpu-8tx-8i-maxanthropic-1500">Google 一口气发了四款 TPU：TPU 8tx 和 8i Max，Anthropic 锁了 1500 亿美元的量</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你关心模型背后的算力供给——Google 11 月 10 日发布了 TPU 8tx（面向政府和受监管行业，带机密计算）和 TPU 8i Max（两颗 TPU 8i 拼在一起，上下文更长）；CEO Pichai 说 Google 一年内连发了四款不同的 TPU 系统；Anthropic 手里还握着 2028–2031 年最高 1500 亿美元 TPU 的采购选择权。<span class="judge-label">我的判断</span>：这场仗已经从"谁的模型强"打到"谁的芯片多"了——Google 一边给自家模型供芯片，一边把芯片卖给最大的竞争对手之一，这种"既当裁判又当供应商"的局面，往后只会更常见。<a href="https://aibriefing.dev/">原文链接</a></p>
+<h3 id="apple-intelligence-12-qwen">Apple Intelligence 在中国获批：12 月上线，背后是阿里 Qwen</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你在国内用 iPad 或 Mac，Apple Intelligence 终于要来了——上海监管部门已批准 Apple Intelligence 登陆 iPad 和 Mac，12 月上线，底层由阿里巴巴的 Qwen 驱动。Bloomberg 同时爆料：苹果 CEO John Ternus 正在推动把 Siri 变成自主 agent，最早 iOS 28 落地；iOS 27.3 beta 已能让 Siri 在 15 个苹果自家应用里直接动手干活，Siri AI 也已向开发者开放。<span class="judge-label">我的判断</span>：苹果在中国绕开合规的办法就是"借船出海"——Qwen 负责模型，苹果负责体验；Siri 变 agent 这步要是真在 iOS 28 落地，iPhone 的交互逻辑会整个翻一遍。<a href="https://aibriefing.dev/">原文链接</a></p>
+<h3 id="chatgpt-enterprise-aws-marketplace">ChatGPT Enterprise 上架 AWS Marketplace：走公司采购流程就能买</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你在的公司采购要走 AWS 账单，ChatGPT Enterprise 现在不用单独签合同了——OpenAI 11 月 10 日把它上架 AWS Marketplace，ChatGPT、ChatGPT Work、Codex 和 dots 全套都能走现有 AWS 采购和账单关系买，花的钱还能计入 AWS 企业折扣计划（EDP）或私有定价协议（PPA）额度。这是 OpenAI 和 AWS 合作的延续：去年 11 月双方签了 380 亿美元多年算力协议，今年 4 月 OpenAI 模型进了 Bedrock、Codex 上了 AWS。<span class="judge-label">我的判断</span>：这是一次渠道变化，不是产品变化——对开发者的实际影响是，Codex 和 dots 更容易进到那些"只认 AWS 采购流程"的大公司里。<a href="https://opentools.ai/news/chatgpt-enterprise-aws-marketplace-november-2026">原文链接</a></p>
+<h3 id="cursor-11-12-openai">Cursor 用户注意：明天 11 月 12 日是 OpenAI 提案里的断供过渡期节点</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你在 Cursor 里用 GPT 模型写代码，明天是个关键日子——按 OpenAI 此前向 Cursor 用户披露的方案，11 月 12 日是结束 Cursor 直接调用 OpenAI 模型的过渡期节点；Cursor 10 月 12 日起已改成 X Subscription：8 美元的 Plus 档只含 Cursor 自家和 Grok 模型，Claude、GPT 这类第三方模型要按 API 价另付费，老的 Hobby、Pro、Pro+ 档已在帮助页被标为"legacy"。官方帮助页目前读不到最终口径，过渡期之后到底断不断、怎么断，还没有 100% 确认的说法。<span class="judge-label">我的判断</span>：不管明天断不断，用 GPT 的 Cursor 用户今天就把备用方案准备好——要么在 Cursor 里配好自己的 API key，要么确认手头的任务能无缝切到 Grok 或 Claude，别等明天打开编辑器才发现模型没了。<a href="https://www.reviewramble.com/ai-code-editors-compared-2026/">原文链接</a></p>
+<h2 id="_2">🔧 工具更新日志</h2>
+<h3 id="claude-code-2132121322fable-52-vertex-fast-mode">Claude Code 2.1.321/2.1.322：Fable 5.2 成了默认模型，Vertex 也能开 fast mode 了</h3>
+<p>改了什么：2.1.321（11 月 9 日）把 Fable 5.2 设为默认模型，远程控制（remote-control）开始走配置文件，还补了一批权限和安全缺口；2.1.322（11 月 10 日）把 fast mode 带到了 Vertex（global、us、eu 三个区域），如果 Vertex 拒绝 fast 请求，会自动回落到标准速度。对读者有什么用：升级到 2.1.321 以上，你的默认模型就换成 Fable 5.2 了，不用手动切；Vertex 用户赶时间可以开 fast mode（生成速度最高 2.5 倍，价格翻倍），不用怕请求被拒——拒了会自动降速而不是报错。更新到最新版就能用。<a href="https://www.havoptic.com/compare/claude-code-vs-cursor">更新日志链接</a></p>
+<h3 id="playwright-165-bun">Playwright 1.65：测试运行器终于能在 Bun 下面跑了</h3>
+<p>改了什么：微软发布的 Playwright 1.65 里，测试运行器开始支持 Bun：<code>bunx --bun playwright test</code> 就能跑。对读者有什么用：用 Bun 的项目以前跑 Playwright 测试还得绕回 Node，现在直接在 Bun 里跑完，少一套运行时切换；写端到端测试的 Bun 用户可以把这一步收进日常流程了。<a href="https://next-f9.com/daily-9/2026-11-09">更新日志链接</a></p>
+<h2 id="_3">💬 社区热议</h2>
+<h3 id="hn-662-fable-52-1000-agent">HN 662 条评论吵 Fable 5.2：秀肌肉的 1000 个 agent，到底能不能帮你写代码</h3>
+<p>谁在讨论什么：Fable 5.2 发布后，HN 主帖拿了 302 upvotes、662 条评论，是当天全网讨论度最高的 AI 话题。核心观点/结论：吵的焦点是"1000 个 agent 30 小时证完费马大定理"这种秀肌肉的实验，到底能不能折算成日常写代码的收益——一方认为多 agent 协同 30 小时不崩本身就是能力证明，另一方认为基准分只领先几个点、日常任务未必有体感，模型发布当天的热度不能当生产力用。<span class="judge-label">我的判断</span>：两边都有道理——Fable 真正想卖的是"长时间多 agent 协作"这个能力，不是单次补全的速度；但它值不值，取决于你的任务是不是"能拆成很多并行子任务的长活"，单文件脚本就别指望有质变。<a href="https://www.aimfast.dev/reports/2026-11-10">原帖链接</a></p>
+<h3 id="menlo-ventures-ai-89">Menlo Ventures：国产开源模型拿下企业开源 AI 支出的 89%</h3>
+<p>谁在讨论什么：Menlo Ventures 2026 年报告显示，中国模型占企业在开源 AI 上支出的 89%：Kimi 61%、DeepSeek 15%、GLM 11%，Meta 的 Llama 只剩 7%。核心观点/结论：企业级开源市场已经是中国模型的天下，西方开源权重在企业 adoption 上掉了队；Kimi 一家就占了六成，说明企业选开源模型时看的是"好不好用、跟不跟得上"，不是"谁先开源"。<span class="judge-label">我的判断</span>：这个数字比任何跑分都说明问题——开源模型的竞争已经从"谁先放出权重"变成"谁的生态和服务能进企业采购单"，Llama 的 7% 就是这个转变的代价。<a href="https://aibriefing.dev/">原帖链接</a></p>
+<h3 id="anthropic-ipo-1113">Anthropic IPO 招股书发错又撤回：上市周就在下周，估值 1.1–1.3 万亿美元</h3>
+<p>谁在讨论什么：Anthropic 的外部律师周一晚给银行发了更新版 IPO 招股书，随后又撤回，称部分细节有误（The Information 报道）；上市目标是 11 月 16 日那周，估值 1.1–1.3 万亿美元；同期文件显示其收入 run rate 到 10 月 31 日已达 810 亿美元，一个月涨了 100 亿；路透社则报道 Anthropic 曾流传出一份 693 亿美元 IPO 的细节、随后也被撤回。核心观点/结论：上市前一周出这种乌龙不好看，但不致命——市场更关心的是 810 亿美元 run rate 和 1 万亿+估值能不能撑住；Anthropic 一旦上市，将是第一家纯 AI 大模型上市公司，财报会变成全行业的参照系。<span class="judge-label">我的判断</span>：看热闹就行——对开发者真正的影响在上市之后：财报季一到，Claude 的定价和免费额度都会被放在显微镜下看。<a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-tuesday-november-10-2026/">原帖链接</a></p>
+<h3 id="meta-8000-ai-13501450">Meta 一边裁员 8000 人，一边把 AI 资本开支提到 1350–1450 亿美元</h3>
+<p>谁在讨论什么：Meta 砍掉 10% 的员工（约 8000 个岗位）、冻结 6000 个计划招聘名额，支持和非 AI 团队受冲击最大；同时 2026 年 AI 资本开支提到 1350–1450 亿美元，是 2025 年 720 亿美元的近两倍；监管文件里 Meta 还警告，社区和环保力量对数据中心的反对可能限制算力扩张。核心观点/结论：裁人和加码算力是同一件事的两面——人省下来，钱全砸进 GPU 和数据中心；但数据中心扩张遇到的社区阻力，正在变成算力增长的新瓶颈。<span class="judge-label">我的判断</span>：这就是 2026 年大厂的标准动作了——"少招人、多买卡"；对打工人来说，信号很明确：会用 AI 干活的人比"人多"更值钱。<a href="https://aibriefing.dev/">原帖链接</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<h3 id="deepseekqwen">开源权重"发出去就收不回"：DeepSeek、Qwen、腾讯工程师在乌镇公开承认</h3>
+<p>谁在讨论什么：11 月 3 日乌镇世界互联网大会上，DeepSeek 研究工程师高希、Qwen 项目负责人刘大一亨和腾讯的工程师公开表示：已经发布出去的开源权重，没法打补丁、也没法召回。核心观点/结论：开源模型的不可逆性被三家厂商同时摆上了台面——权重一旦公开，漏洞修复、安全补丁、合规下架都只能靠"发新版+呼吁大家升级"，管不住还在跑旧版的人；这也是欧盟 AI 法案 12 月 2 日过渡期大限前，行业里最诚实的一句大实话。<span class="judge-label">我的判断</span>：这句话应该贴在每个开源模型发布页的顶部——"开源"不是"免责"，治理必须发生在发布之前，发布之后再谈管控都是马后炮。<a href="https://www.linkedin.com/pulse/after-update-issue-31-november-10-2026-john-kump-bp3ac">原帖链接</a></p>
+<h2 id="ai">📱 AI 应用新品</h2>
+<h3 id="ownkube-coding-agent">Ownkube：让你的 coding agent 一句话就把应用部署上线</h3>
+<p>是什么：11 月 10 日 Product Hunt 日榜第一：coding agent 写完应用，你一句话，它就帮你部署上线。解决什么问题：agent 写代码已经很快了，卡脖子的是最后一步——配服务器、配域名、配 CI/CD；Ownkube 把"部署"也变成一句提示词的事。免费额度/价格：未公布具体价格（截至撰写时）。适合谁：用 agent 做 side project、想快速把 demo 挂到网上给人看的开发者；提醒一句：价格没公布前先别当主力部署链路，先拿个小项目试一次再说。<a href="https://orangebot.ai/product-hunt-today">原文链接</a></p>
+<h3 id="arcjet-ai-coding-agent">Arcjet AI 安全模型：给 coding agent 配一套专用的安全模型</h3>
+<p>是什么：Product Hunt 本周榜上的新品：一组专门为 coding agent 训练的安全模型。解决什么问题：agent 写代码、调工具、跑命令的时候，最容易踩的坑是注入、不安全操作和越权访问——通用安全规则拦不住 agent 特有的攻击面，Arcjet 想用专门训过的模型来挡。免费额度/价格：未公布具体价格（截至撰写时）。适合谁：让 agent 跑生产代码、接真实工具和数据的团队；提醒一句：产品刚上榜，实测拦截率和误报率还没影，先观望。<a href="https://www.hunted.space/top-products/weekly/latest">原文链接</a></p>
+<section class="yaomo-sec"><h2 id="_4">🐑 今日羊毛</h2>
+<h3 id="fable-13-pro-fable-50">Fable 上线福利：付费用户白拿 1–3 次用量重置，Pro 的 Fable 用量最高占周上限 50%</h3>
+<p>一句话：Fable 5.2 上线带了个推广福利——付费用户按订阅时长能拿 1–3 次用量重置，Pro 计划和标准 Team 席位的 Fable 用量最高能占到周用量上限的 50%。</p>
+<ul>
+<li><strong>怎么薅</strong>：付费用户不用领，重置按订阅时长自动到账；这周拿长任务试 Fable，额度比平时多，别只拿它写单文件脚本。<a href="https://www.fonearena.com/blog/496661/anthropic-claude-fable-5-2-mythos-5-2.html">直达链接</a></li>
+<li><strong>有效期</strong>：上线推广期，官方未公布截止日，先用先得（截至撰写时）</li>
+<li><strong>适合谁</strong>：Claude Pro、Max、Team 付费用户；免费档没有 Fable，别找了</li>
+</ul>
+<h3 id="gemini-4-carbon-210-11-30-12-1">Gemini 4 Carbon 半价窗口：$2/$10 用到 11 月 30 日，12 月 1 日起翻倍</h3>
+<p>一句话：Carbon 全面开放的同时给了个限时半价——介绍价输入 $2/百万 token、输出 $10/百万 token，11 月 30 日到期，12 月 1 日起涨到 $4/$20，等于现在用便宜一半。</p>
+<ul>
+<li><strong>怎么薅</strong>：走 Gemini API（AI Studio 付费档）直接调 <code>gemini-4-carbon</code>，11 月 30 日前都是半价；注意 Carbon 没有免费档，每个 token 都计费。<a href="https://www.unite.ai/google-expands-gemini-4-carbon-access-beyond-cybersecurity-defenders/">直达链接</a></li>
+<li><strong>有效期</strong>：截至 2026 年 11 月 30 日（截至撰写时），过期按 $4/$20 计费</li>
+<li><strong>适合谁</strong>：要做长推理、agent 工作流的重度用户；轻度用户先拿免费档的 Flash 顶着，别为半价冲动开付费</li>
+</ul>
+<h3 id="codex">美加大学生领 Codex 额度：美国和加拿大在读大学生可领</h3>
+<p>一句话：ChatGPT 给美国和加拿大的在读大学生准备了 Codex 额度，不用掏钱就能拿 Codex 写代码。</p>
+<ul>
+<li><strong>怎么薅</strong>：去 ChatGPT 学生权益页验证学生身份后领取，额度数量以申请页为准。<a href="https://reconscribe.com/free-credits/ai-subscriptions/#p-google-ai-student-plan">直达链接</a></li>
+<li><strong>有效期</strong>：长期开放中，具体额度以申请页为准（截至撰写时）</li>
+<li><strong>适合谁</strong>：在美国、加拿大上学的大学生；国内学生没有这个入口，别浪费时间找</li>
+</ul>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="janestreetagent_skillsjane-street-agent">janestreet/agent_skills：Jane Street 开源的 agent 技能，第一课就是"苏格拉底式家教"</h3>
+<p>一句话介绍：华尔街量化巨头 Jane Street 首次公开的 agent 技能合集，目前只有一个技能 socratic-tutor：把语言模型变成一个严格的私人导师——先诊断、再画一张 0–5 级的技能地图，然后一次只问一个问题、排好间隔复习，最后做结业测评。解决什么问题：让 agent 当老师最难的是"别直接给答案"——这个技能把苏格拉底式教学写成了 agent 能照做的指令，学东西比直接问答案扎实得多。⭐ 约 3,726，今日新增约 1,834（截至撰写时）。适合：想让 agent 教自己新技术的人，或者想学学"技能文件怎么写"的人；用法很简单：把技能目录拷进 agent 的 skills 文件夹就行，普通聊天机器人直接把 SKILL.md 正文粘进对话也能用。<a href="https://github.com/janestreet/agent_skills">项目地址</a></p>
+<h3 id="anthropicsclaude-quickstartsanthropic-claude-api">anthropics/claude-quickstarts：Anthropic 官方的 Claude API 快速上手合集</h3>
+<p>一句话介绍：Anthropic 官方出的一组示例项目，帮你最快做出能部署的 Claude API 应用。解决什么问题：第一次接 Claude API 不知道从哪下手——这里直接给了能跑的完整项目，照着改比从空白文件起手快得多。⭐ 约 20,453，今日新增 530（截至撰写时）。适合：刚开始用 Claude API 做应用的开发者；Python 写成。<a href="https://github.com/anthropics/claude-quickstarts">项目地址</a></p>
+<h3 id="tokio-rstopcoattokio-rust-web">tokio-rs/topcoat：Tokio 团队的 Rust 全家桶 Web 框架</h3>
+<p>一句话介绍：Tokio 团队出的"电池全含"式 Rust Web 开发框架。解决什么问题：Rust 写 Web 应用一直是"自己拼积木"——路由、中间件、模板、数据库各找各的；Topcoat 想把这一套收进一个框架里，开箱即用。⭐ 约 6,762，今日新增 192（截至撰写时）。适合：用 Rust 写 Web 服务、喜欢 Tokio 生态的人；提醒一句：项目还比较新，生态和文档都在长，先拿 side project 试。<a href="https://github.com/tokio-rs/topcoat">项目地址</a></p>
+<h2 id="hugging-face">🤗 Hugging Face 热门模型</h2>
+<h3 id="qwenqwen3-coder-30b-a3b-instruct-hf-7-44">Qwen/Qwen3-Coder-30B-A3B-Instruct：本周 HF 涨最快的文本生成模型，7 天下载量涨 44%</h3>
+<p>是什么：Qwen 的 30B 代码模型（MoE，激活 3B），本周 HF 文本生成榜涨幅第一：总下载约 168 万次，过去 7 天新增约 49.9 万次（+44.3%）。能干嘛：写代码、改代码、读代码库的主力模型，Apache 2.0 协议；本地跑建议找量化版，单张 24GB 显存的卡能装下。下载量约 168 万次（截至撰写时）。适合谁：想在本地跑个能打的代码模型、又不想上 200B+ 大块头的人；提醒一句：30B 的 MoE 推理配置先看官方说明，别直接按 dense 模型估显存。<a href="https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct">模型地址</a></p>
+<h3 id="ccoreqwen35-4b-glb-3d-coder4b-3d">ccore/Qwen3.5-4B-GLB-3D-Coder：4B 小模型，专门写 3D 代码</h3>
+<p>是什么：基于 Qwen3.5-4B 微调的 3D 代码生成模型，专长是生成 GLB 格式的 3D 内容代码。能干嘛：本地跑毫无压力（4B 量级，笔记本级显卡就能跑），适合在本地快速出 3D 模型、做 Three.js/Blender 相关的小工具。下载量约 4.3 万次、304 个赞（截至撰写时）。适合谁：做 3D 可视化、WebGL、游戏小 demo，想让模型直接帮你写 3D 代码的人。<a href="https://huggingface.co/ccore/Qwen3.5-4B-GLB-3D-Coder">模型地址</a></p>
+<h2 id="heydamirunslop">🛠️ 值得一试的工具：heydamir/unslop</h2>
+<p>是什么：一个 Claude skill，专门治"AI 味"界面——把 vibe coding 出来的那种一眼就能认出的 AI 风 UI，改成像正经设计师做的界面。解决什么痛点：AI 生成的界面总有一股味儿：千篇一律的紫色渐变、圆角卡片、一样的排版；unslop 直接给 agent 一套"去 AI 味"的设计指令，改完看着像人做的。免费额度：开源免费，12 天 star 从 715 涨到 13,536，说明痛点是真的。</p>
+<p><strong>verdict：</strong> 值得试——"AI 界面一眼假"这个问题每个 vibe coder 都遇到过，这个 skill 的解法简单直接（就是一套写好的设计指令），装上就能用；但"品味"见仁见智，先拿一个 side project 试效果，别直接上主力产品。<a href="https://github.com/heydamir/unslop">工具地址</a></p>
+<h2 id="3-claude-code-fable-52-orchestrator">🎓 3 分钟小教程：Claude Code 新默认 Fable 5.2，三步把它当 Orchestrator 用</h2>
+<p><strong>前置条件</strong>：Claude Code 2.1.321 以上版本，Claude 付费计划（Pro/Max/Team）。</p>
+<ol>
+<li>先确认版本和默认模型：跑 <code>claude --version</code>，确认是 2.1.321 或更新；进 Claude Code 打 <code>/model</code>，看当前默认是不是 Fable 5.2，不是就选一下。</li>
+<li>大任务别直接扔给它写：先让 Fable 当 Orchestrator——在提示里写"先拆成子任务，列出每个子任务的验收标准，等我确认再动手"，它会把活派给 subagent，自己只做协调和验收（这是 Anthropic 官方推荐的用法：Fable 当 Advisor 或 Orchestrator，简单活分给小模型）。</li>
+<li>赶时间再开 fast mode：同一个任务想快 2.5 倍，可以在模型设置里切 fast mode，价格翻倍（$16/$80），平时别开，赶 deadline 再用。</li>
+</ol>
+<p><strong>预期效果</strong>：长任务不再是"一个 agent 吭哧吭哧写到底"，而是拆活、并行、验收的流水线；上线推广期 Pro 用户的 Fable 用量最高占周上限 50%，还有 1–3 次用量重置，先拿长任务试，别只拿它写单文件脚本。<a href="https://www.fonearena.com/blog/496661/anthropic-claude-fable-5-2-mythos-5-2.html">教程参考</a></p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-11-10-daily.html">AI 码力日报 · 2026年11月10日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-11-10-daily.html">AI 码力日报 · 2026年11月10日</a></li>
+<li><a href="../posts/2026-11-09-daily.html">AI 码力日报 · 2026年11月9日</a></li>
+<li><a href="../posts/2026-11-08-daily.html">AI 码力日报 · 2026年11月8日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
