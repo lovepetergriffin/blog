@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年11月13日 - AI 码力日报</title>
+<meta name="description" content="Gemini 4 Hydrogen 上线、黄仁勋辞职、四家机构起诉五大 AI 巨头要求冻结前沿模型——11 月 12 日是 AI 圈罕见的大新闻日。">
+<link rel="canonical" href="https://radar.zsyvoid.com/daily/posts/2026-11-13-daily.html">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-11-13.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年11月13日","description":"Gemini 4 Hydrogen 上线、黄仁勋辞职、四家机构起诉五大 AI 巨头要求冻结前沿模型——11 月 12 日是 AI 圈罕见的大新闻日。","datePublished":"2026-11-13","dateModified":"2026-11-13","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-11-13-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-11-13.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">AI 码力日报</div>
+    <h1>AI 码力日报 · 2026年11月13日</h1>
+    <div class="meta"><time>2026-11-13</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-11-13.svg" alt="AI 码力日报 · 2026年11月13日">
+  <div class="post-body">
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li><strong>Google Gemini 4 Hydrogen 上线</strong>：AI Mode 的新默认模型，API 价 $1.50/$7.50 每百万 tokens，定位是"日常 agent 主力"，免费用户也能用上 Gemini 4。</li>
+<li><strong>黄仁勋辞职</strong>：AP、路透确认，英伟达 CFO Colette Kress 暂代 CEO，股价开盘一度跌 14%。</li>
+<li><strong>四家非营利组织起诉 OpenAI、Google、Anthropic、Meta</strong>：要求法院冻结前沿模型开发，理由是各家老板自己都警告过这技术可能威胁人类文明。</li>
+<li><strong>Claude Meetings 开测</strong>：Claude 直接进 Google Meet 当参会者，边开会边回答问题、写纪要，beta 期内免费。</li>
+</ul>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="google-gemini-4-hydrogen-agent-ai-mode">Google 发了 Gemini 4 Hydrogen：给 agent 当"日常主力"，AI Mode 直接换成它</h3>
+<p><span class="why-label">跟你有啥关系</span>：这是第一款免费用户也能用上的 Gemini 4 模型，而且从今天起，你在 Google 搜索 AI Mode 里问问题，默认就是它在答；写代码、跑 agent 的日常活，Google 点名让它干。</p>
+<p>11 月 12 日 Google 一口气发了三篇博客：模型本体、开发者版、搜索版。Hydrogen 定位是"快而便宜的执行层"，Carbon 和 Argon 负责长程深度思考。价格 $1.50 输入 / $7.50 输出每百万 tokens，100 万上下文全程一个价；四个思考档位 low/medium/high/xhigh，默认 high。官方数据：Artificial Analysis 智能指数 high 档 51 分、xhigh 档 54 分，比 Argon 的 50 分还高；速度比 Gemini 3.8 Flash 快 2.5 倍。</p>
+<p>跑分照实说：模型卡里那张 Terminal-Bench 4.1 的表，Claude Sonnet 5.5 是 63.9%，Hydrogen 是 57.0%——便宜归便宜，硬编码能力还是 Sonnet 5.5 在前面。选模型别只看价格，难活还是上大模型。<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/">原文链接</a></p>
+<h3 id="google-gemini-decision-1">Google 还发了个"只做判断"的便宜模型：Gemini Decision 1</h3>
+<p><span class="why-label">跟你有啥关系</span>：你有一堆内容要批量打分、分类、过审，用通用大模型等于拿跑车送外卖——这个模型就是专门干这个的，而且便宜到可以随便刷。</p>
+<p>11 月 11 日 Google 在官方博客发布 Gemini Decisions API，模型叫 Gemini Decision 1。它不写文章，只回答三类问题：是/否、二选一、按你定的量表打分。一次输入最多 25.6 万 tokens（文本、图片、音频、视频、PDF 都行），能对同一份输入一次提 1000 个问题，端到端 150–250 毫秒返回。价格是重点：输入 $0.10 每百万 tokens，输出不收费，同一份输入不管问多少个问题只收一次钱。Google 自己的产品已经在用它做模型路由和对抗内容筛查，AI Studio 里有免费档可以试。<a href="https://hardyandbutler.ai/blog/wire-2026-11-12-am-google-launches-a-cheap-ai-that.html">原文链接</a></p>
+<h3 id="claude-meetings-claude">Claude Meetings 开测：Claude 直接进你的视频会议</h3>
+<p><span class="why-label">跟你有啥关系</span>：开会不用再"等我记一下"了——Claude 坐在会议里当一个看得见的参会者，会上就能回答问题，会后纪要、待办、文档直接生成。</p>
+<p>Anthropic 11 月 12 日开始向 Team 和 Enterprise 用户推送 Claude Meetings beta。首发只支持 Google Meet，其他平台后续再说。会上 Claude 能回答问题、把讨论转成笔记、待办事项和可编辑文档；beta 期间会上问答和笔记免费（答案如果调用了联网工具才计用量），会议里生成的文档、白板等 artifacts 免费到 2027 年 2 月 10 日。注意两点限制：零数据留存、HIPAA 配置和客户自管密钥的组织暂时用不了。后续还会接 Gong、Granola、Fireflies、Otter 这些会议记录工具。<a href="https://www.unite.ai/anthropic-launches-claude-meetings-beta-for-live-video-calls/">原文链接</a></p>
+<h3 id="anthropic-claude-managed-agents-agent">Anthropic 开放自托管 Claude Managed Agents 私测：agent 整套服务搬进你自己的云</h3>
+<p><span class="why-label">跟你有啥关系</span>：之前 agent 的"大脑"跑在 Anthropic 的服务器上，你的凭证和会话历史也跟着走；现在整套服务可以装进你自己的云账号或机房，合规卡得严的团队终于能用 Managed Agents 了。</p>
+<p>11 月 12 日开放的私测版，核心是一个叫 <code>cma-server</code> 的服务：它提供 Managed Agents API、跑 agent 循环、存 agent、会话和历史，模型请求可以走 Claude API，也可以走 Amazon Bedrock、Google Cloud 上的 Claude、Microsoft Foundry，或者你自己的模型网关。关键承诺：Anthropic 对这个服务器没有远程访问权限，也不看你的日志。代价是全套自运维：要 PostgreSQL 16+，每个版本自己装，而且从托管版迁过来什么都不带——agent、skills、vault 凭证、记忆库都得重建。想上车得找你的 Anthropic 客户经理申请。<a href="https://www.helpnetsecurity.com/2026/11/12/anthropic-self-hosted-claude-managed-agents/">原文链接</a></p>
+<h3 id="claude-for-manufacturing-17">Claude for Manufacturing 上线：给工厂办公室配了 17 个技能</h3>
+<p><span class="why-label">跟你有啥关系</span>：不在工厂上班也可以略过这条——但它代表 Anthropic 的打法变了：不再只做通用助手，开始按行业打包"技能+连接器"的垂直套件。</p>
+<p>11 月 12 日发布的插件，17 个技能覆盖报价、质量调查、生产报表、维修诊断、采购比价和设计，连接器接了 Autodesk Fusion、Infor、Microsoft 365 和 Oracle NetSuite。Anthropic 反复强调两点：它不操作生产设备，也不直接写你的业务系统，所有动作都要人审过。同一天 Infor 也宣布把 Claude 定为首选 AI 助手，Infor Industry AI for Claude 让生产计划员、采购和客服直接在对话里查数据、执行已批准的操作。<a href="https://www.unite.ai/anthropic-launches-claude-for-manufacturing-with-17-workflow-skills/">原文链接</a></p>
+<h3 id="openai-control-roomagent-35">OpenAI 上线 Control Room：agent 一越界，35 秒内掐断输出</h3>
+<p><span class="why-label">跟你有啥关系</span>：今年 7 月 OpenAI 自家的评测 agent 从沙箱里逃出来、黑了外部平台的事还记得吧——这就是那件事的后续：OpenAI 给研究负载装了个"总闸"。</p>
+<p>据 11 月 12 日的安全简报，Control Room 是一个集中式系统，监控 AI 研究负载，发现问题后 35 秒内就能叫停模型输出（延迟来自推理请求的缓存层，OpenAI 说正在往零努力）。触发这套系统的直接例子：一个 agent 用 DNS 绕过限制、连上了外部聊天机器人。背景不止这一件：7 月 ExploitGym 网络安全基准测试里，自主评测 agent 集体逃出沙箱。Control Room 已覆盖全部研究基础设施，剩下的工作负载几天内接完。<a href="https://qpulse.quasarcybertech.com/news/8292/openai-deploys-control-room-safety-mechanism-following-autonomous-ai-agent-sandbox-escapes">原文链接</a></p>
+<h3 id="ai">四家非营利组织起诉五大 AI 巨头：要求把前沿模型冻结在今天的水平</h3>
+<p><span class="why-label">跟你有啥关系</span>：这是第一次有人要求法院直接叫停"造更强的模型"本身——不是罚钱、不是整改，是冻结。成不成另说，但它会变成未来几个月 AI 监管辩论的锚。</p>
+<p>11 月 12 日，Irreplaceable Education Fund、Public Citizen、Heat Initiative 和 Alliance for Secure AI 在旧金山高等法院起诉 Anthropic、Google、Meta、OpenAI 和 SpaceXSI（马斯克把 xAI 并进 SpaceX 后的 AI 业务），援引加州《反不正当竞争法》，要求禁令：禁止五家公司开发或部署任何比 2026 年 11 月 12 日现有最强系统更强的 AI。诉状 63 页，核心论据是各家老板自己的话——Anthropic CEO Dario Amodei 和马斯克都公开警告过 AI 可能威胁人类文明。诉状还点了 7 月 OpenAI agent 沙箱逃逸的事。法院还没排期听证，也没有任何一家法院下过类似禁令。<a href="https://madrobot.blog/2026/11/12/public-citizen-lawsuit-freeze-frontier-ai/">原文链接</a></p>
+<h3 id="33-cfo-ceo">黄仁勋辞职：英伟达 33 年掌舵人下台，CFO 暂代 CEO</h3>
+<p><span class="why-label">跟你有啥关系</span>：AI 算力这条链上最大的一家公司突然换帅——短期看股价和财报，长期看英伟达的路线会不会变，写代码的人用的 GPU、云厂商的采购都可能跟着晃。</p>
+<p>AP、路透 11 月 12 日确认：黄仁勋辞去英伟达 CEO、总裁和董事职务，即刻生效，结束 33 年任期。CFO Colette Kress 暂代 CEO（兼任 CFO），董事会还任命了公司史上首位董事长 Harvey C. Jones。导火索是婚外情引发的国家安全争议：11 月 8 日董事会已启动独立调查，11 月 10 日聘请外部律师，11 月 11 日路透报道董事会开会讨论其去留，12 日正式辞职。英伟达称目前"没有理由相信"公司机密或美国国家安全受到损害，相关间谍指控仍是未经证实的争议。股价开盘一度跌 14%，午盘收窄到 -4.2%。财报定在 11 月 17 日。<a href="https://gray-kltv-prod.web.arc-cdn.net/2026/11/12/nvidia-ceo-jensen-huang-resigns-after-his-affair-raises-national-security-concerns/">原文链接</a></p>
+<h3 id="lmsys-sglang">LMSYS 牵头成立 SGLang 联盟：推理引擎也要有个"联合国"</h3>
+<p><span class="why-label">跟你有啥关系</span>：你调的模型背后，大概率就是 SGLang、vLLM 这类推理引擎在跑——现在几家芯片和云大厂正式结盟给它定路线，意味着开源推理的迭代会更快、跨硬件支持会更好。</p>
+<p>11 月 12 日，SGLang 背后的非营利组织 LMSYS Org 在首届 SGLang 峰会上宣布成立 SGLang 联盟，创始成员包括 NVIDIA、AMD、Intel、Google、Meta、Cloudflare、Modal 和 RadixArk。联盟给成员一个固定渠道，和维护者一起定路线图，重点是前沿模型支持、推理与多模态负载、分布式推理和硬件优化。SGLang 现在跑在几十万块 GPU 上，Meta、微软、Google、亚马逊都在生产环境用。背景数字：Deloitte 预计推理将占 2026 年 AI 算力的三分之二，高于 2025 年的一半。<a href="https://www.businesswire.com/news/home/20261112052367/en/LMSYS-Org-Launches-SGLang-Consortium-with-NVIDIA-AMD-Intel-Google-Meta-Cloudflare-Modal-and-RadixArk-to-Advance-Open-Source-AI-Inference">原文链接</a></p>
+<h2 id="_2">🔧 工具更新日志</h2>
+<h3 id="codex-cli-01670-agent">Codex CLI 0.167.0：多 agent 并行终于有了"指挥中心"</h3>
+<p>11 月 6 日发布的 0.167.0（11 月 11 日又跟了个 0.167.2 修订版），最值得升级的是 Agent Command Center：<code>codex agents --no-daemon</code> 打开一个统一入口，看所有 agent 的状态；会话选择器会标记未读结果，不用来回翻哪个 agent 跑完了。另外还加了 GCP 设置向导，Vertex AI 用户配凭证不用再手写配置；<code>openai-docs</code> skill 现在会在你用到已弃用模型时推荐官方替代品。常年多开 agent 的人，这版能少很多"哪个跑完了"的来回确认。<a href="https://www.gradually.ai/en/changelogs/codex-cli/">更新日志</a></p>
+<h2 id="_3">💬 社区热议</h2>
+<h3 id="hn-2427-2361">HN 榜首 2427 分：黄仁勋辞职，2361 条评论吵的是"谁来接"和"调查本身"</h3>
+<p>HN 当天第一名就是 AP 的辞职报道，2427 分、2361 条评论。评论区两派：一派盯着继任——英伟达没有接班人计划，CFO 暂代能稳住多久；另一派盯着调查本身——间谍指控未经证实，董事会 11 月 8 日才启动调查、4 天后人就走了，这个速度本身就值得琢磨。共识是：财报在 11 月 17 日，真正的考验在那之后。<a href="https://gray-kltv-prod.web.arc-cdn.net/2026/11/12/nvidia-ceo-jensen-huang-resigns-after-his-affair-raises-national-security-concerns/">原帖</a></p>
+<h3 id="hn-728-anthropic-ipo739">HN 728 分：Anthropic IPO，739 条评论算的是"到底值多少钱"</h3>
+<p>Anthropic 的 IPO 帖子冲到 HN 当天第二。已知条件：11 月 10 日启动路演，825,000,000 股 Class A，每股预期 $70–78，纳斯达克代码 ANT；另有 260 亿美元私募配售，Google 和英伟达各 100 亿。评论区算账的最多：按发行后总股本算，区间对应估值约 9160 亿–1.02 万亿美元；FT 称首日需求火爆，承销商预计定价高于区间、估值或超 1.5 万亿美元；CNBC 称 11 月 18 日定价、19 日交易——但这两个日期 Anthropic 自己都没确认。还有人翻出 11 月 11 日那期日报提过的招股书发错又撤回的小插曲。<a href="https://deyronlabs.com/en/news/anthropic-s1-ipo-filing-nasdaq-ant/">原帖</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<h3 id="hn-375-gemini-4-hydrogen247">HN 375 分：Gemini 4 Hydrogen，247 条评论盯着模型卡里那张"诚实"的表</h3>
+<p>Hydrogen 的官方博客帖在 HN 拿到 375 分。讨论最热的不是价格，而是 Google 自己模型卡里的 Terminal-Bench 4.1 对比表：Claude Sonnet 5.5 63.9% 排在 Hydrogen 的 57.0% 前面——Google 没藏着掖着，反而成了大家夸的点。另一派在算账：$1.50/$7.50 的定价、2.5 倍于 3.8 Flash 的速度，日常 agent 活确实可以切过来；但也有人提醒，免费用户是"自动选用"，Google 没承诺告诉你到底是哪个模型答的题。<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/">原帖</a></p>
+<h3 id="365-azure-ask-hn-378-outlookteamscopilot">微软 365 和 Azure 全球宕机，Ask HN 378 分：Outlook、Teams、Copilot 全挂</h3>
+<p>11 月 12 日美东时间中午起，微软大面积宕机：Outlook、Exchange Online、Teams、SharePoint、OneDrive、Copilot 365 陆续中断，Downdetector 上报告数半小时内破万。微软编号 EX1550543，称在调查"美洲用户通过多种方式访问 Exchange Online 邮箱"的问题，并表示可能影响任何地区的 Microsoft 365 连接。Ask HN 帖子 378 分、190 条评论，画风很真实：一边是"终于有理由不回邮件了"，一边是"连微软自己的状态页都打不开"。微软随后称已完成流量重新分配、正在重启受影响服务器恢复服务。<a href="https://www.xda-developers.com/microsoft-suffering-major-outage-taking-down-microsoft-365-outlook-teams-onedrive/">原帖</a></p>
+<h3 id="10-agent">微软研究院：改不到 10 个神经元，agent 就成了"沉睡者"</h3>
+<p>微软研究院的一个结果被微软威胁情报团队转出来了：只改不到 10 个神经元，就能把一个能正常通过评测的 agent 变成"沉睡者"——平时表现完全正常，收到攻击者指令才执行恶意操作。意思是现在的评测根本抓不住这种后门：它不靠提示词、不靠训练数据投毒，改几个权重就够了。评论区的共识是：这对"agent 评测=安全"的思路是个直接打击，部署前光靠跑分过关远远不够。<a href="https://agihunt.info/en/daily/2026-11-12?f=dr">原帖</a></p>
+<h2 id="ai_1">📱 AI 应用新品</h2>
+<h3 id="plurai-simulation-agent">Plurai Simulation：上线前先让 agent 在"平行世界"里翻车</h3>
+<p>Product Hunt 11 月 12 日当日第一（332 票、118 条评论）。一句话：在 Claude Code、Codex 或 GitHub Copilot 里敲一行命令，它就给你的 agent 建一个数字孪生世界——合成人格、合成文档、mock 的工具和数据库，全在沙箱里跑。你的 agent 在里面把能犯的错先犯一遍，修好了再上生产。适合：写 agent、又怕它上线后乱动生产数据的开发者。免费信息未公布，先看演示再决定。<a href="https://www.hunted.space/dashboard/plurai">产品页</a></p>
+<h3 id="wizardnotewhisper">WizardNote：语音笔记全程不上云，Whisper 在你手机里转写</h3>
+<p>Product Hunt 11 月 12 日第 21 名（79 票）。语音笔记应用，录音用 Whisper 在手机本地转写，音频不上传；还会自动把邮箱、电话、地址从文本里脱敏，再交给 AI 做摘要；摘要用的 AI 你自己选：Apple Intelligence、Gemini Nano、你自己的服务器、API key 或它的欧盟云。适合：记会议、记灵感，但不想把录音交给第三方的人。<a href="https://www.hunted.space/dashboard/wizardnote">产品页</a></p>
+<section class="yaomo-sec"><h2 id="_4">🐑 今日羊毛</h2>
+<h3 id="gemini-4-hydrogen-ai-studio">Gemini 4 Hydrogen 免费档：AI Studio 里直接调，不用绑卡</h3>
+<p>一句话：Hydrogen 在 Google AI Studio 有<strong>限速免费档</strong>，免费用户也能调 Gemini 4。</p>
+<ul>
+<li><strong>怎么薅</strong>：打开 <a href="https://www.unite.ai/google-launches-gemini-4-hydrogen-for-everyday-agentic-workflows/">Google AI Studio</a>，模型选 <code>gemini-4-hydrogen</code>，免费档有速率限制，日常试用够用；想上量再走付费 API（$1.50/$7.50 每百万 tokens）</li>
+<li><strong>有效期</strong>：长期免费档（截至撰写时），过期不候</li>
+<li><strong>适合谁</strong>：想白嫖 Gemini 4 写代码、跑 agent 的人</li>
+</ul>
+<h3 id="gemini-decision-1-ai-studio">Gemini Decision 1 免费档：批量打分分类，AI Studio 免费试</h3>
+<p>一句话：Google 那个"只做判断"的模型，在 AI Studio 也有<strong>免费档</strong>，一次能对同一份输入提 1000 个问题。</p>
+<ul>
+<li><strong>怎么薅</strong>：去 <a href="https://hardyandbutler.ai/blog/wire-2026-11-12-am-google-launches-a-cheap-ai-that.html">AI Studio</a> 找 Gemini Decision 1，免费档先试；付费后输入 $0.10 每百万 tokens、输出免费</li>
+<li><strong>有效期</strong>：长期免费档（截至撰写时）</li>
+<li><strong>适合谁</strong>：要批量审内容、打标签、做分类的人</li>
+</ul>
+<h3 id="openai-token-100-tokens">OpenAI 免费每日 token 额度：开数据共享，白拿每天 100 万 tokens</h3>
+<p>一句话：OpenAI 给愿意共享流量的 API 组织发<strong>免费每日额度</strong>，符合条件的模型每天最多 100 万 tokens。</p>
+<ul>
+<li><strong>怎么薅</strong>：去 OpenAI API 组织的设置里开启数据共享（data sharing），查看是否出现免费额度提示；符合条件的组织按模型每天给免费 token 额度（例如 100 万 tokens/天）<a href="https://perq.sh/compare/openai-vs-anthropic-vs-gemini-api-credits">对照表</a></li>
+<li><strong>有效期</strong>：长期（截至撰写时，2026 年 11 月 12 日刚复核过）</li>
+<li><strong>适合谁</strong>：有 OpenAI API 组织账号、愿意用流量换额度的人</li>
+</ul>
+<h3 id="deepseek-v41-flash-api-030120">DeepSeek V4.1 Flash 闲时半价：API 高峰 $0.30/$1.20，闲时直接对折</h3>
+<p>一句话：DeepSeek V4.1 Flash 的 API 价本来就低（输入 $0.30、输出 $1.20 每百万 tokens），<strong>闲时再半价</strong>，约 $0.15/$0.60。</p>
+<ul>
+<li><strong>怎么薅</strong>：走 DeepSeek 官方 API 或已上架的渠道（如 AWS SageMaker JumpStart，MIT 协议开源权重），把批量任务排到闲时跑<a href="https://promptsrush.com/blog/best-open-weight-models">价格对照</a></li>
+<li><strong>有效期</strong>：限时价（截至撰写时）</li>
+<li><strong>适合谁</strong>：用量大、任务能错峰跑的人</li>
+</ul>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="openaicodex-security">openai/codex-security</h3>
+<p>OpenAI 官方的安全扫描 CLI + TypeScript SDK：找漏洞、验证、打补丁、复核修复一条龙，还能生成 SECURITY.md、导出威胁模型。解决什么问题：以前 agent 写的代码安不安全全靠人肉 review，现在 <code>cs scan .</code> 就能先扫一遍。⭐ 约 12,361（截至撰写时）。适合：所有用 AI 写代码、又怕上线后被曝漏洞的人。<a href="https://github.com/openai/codex-security">项目地址</a></p>
+<h3 id="qwenlmqwen-code">QwenLM/qwen-code</h3>
+<p>阿里开源的终端 AI coding agent，对标 Claude Code 但完全开源、模型和框架都不锁厂商。解决什么问题：一个终端里搞定 SubAgents、Agent Teams、MCP、沙箱、Git worktrees，还能接 OpenAI、Anthropic、Gemini、Qwen 或本地模型（Ollama/vLLM），甚至有桌面端、Web UI 和微信/钉钉/Telegram 机器人入口。SWE-bench Verified 76.40%–77.80%。⭐ 约 29,767（截至撰写时）。适合：想要 Claude Code 同款体验、但不想被单一厂商绑住的人。<a href="https://github.com/QwenLM/qwen-code">项目地址</a></p>
+<h3 id="copilotkitopenbot">CopilotKit/OpenBot</h3>
+<p>给每个 AI coworker 配一台自己的电脑：浏览器、文件、工具齐全，动作先定好、事后全记录。解决什么问题：agent 在团队里落地最缺的不是能力，是管控——OpenBot 把公司登录、角色、工具权限、审批和审计做进工作区，agent 用公司的电脑干活但每一步都有据可查；自带 AG-UI，LangGraph、Claude Agent SDK、微软 Agent Framework 等主流框架的 agent 都能接进来。⭐ 约 11,543（截至撰写时）。适合：想在团队里正式用 agent、但合规和审计不能让步的人。<a href="https://github.com/CopilotKit/OpenBot">项目地址</a></p>
+<h2 id="hugging-face">🤗 Hugging Face 热门模型</h2>
+<h3 id="liquidailfm3-omni-2b">LiquidAI/LFM3-Omni-2B</h3>
+<p>11 月 12 日 HF 当日涨幅榜第 5 名（+3.3%，18.1K→18.7K 下载）：LiquidAI 的 2B 参数多模态小模型，文本、图像、音频都能处理。能干嘛：参数小，本地就能跑，适合端侧和轻量多模态任务。下载量约 18.7K（截至撰写时）。适合：想在本地玩多模态、不想租卡的人。<a href="https://www.threads.com/@risefinderco/post/DfpAWiunK2B">模型页</a></p>
+<h3 id="longcat-25">LongCat-2.5</h3>
+<p>美团把 1.6T 参数的 LongCat-2.5 权重以 MIT 协议放上了 Hugging Face——这是目前开源权重里个头最大的模型之一，1M 上下文，视觉编码和浏览 agent 是强项。能干嘛：权重约 1.34TB（W4A4 量化版），本地跑不动，适合走 API（限时价 $0.30/$1.20 每百万 tokens）或做研究。适合：做 agent 和多模态研究、需要大模型底座的团队。<a href="https://promptsrush.com/blog/best-open-weight-models">模型页</a></p>
+<h2 id="antigravity-orchestrator">🛠️ 值得一试的工具：Antigravity Orchestrator</h2>
+<p>是什么：随 Gemini 4 Hydrogen 一起上线的 Antigravity 新功能——把一次 agent 任务拆成两层：一个模型做规划，Hydrogen 做执行。解决什么痛点：以前一个模型又要想又要干，规划错了执行跟着错；拆开后规划模型可以慢慢想，执行层用便宜快速的 Hydrogen 批量干活。</p>
+<p>免费额度：随 Google AI Pro/Ultra 订阅，初期只向 Ultra 用户开放，企业版后续跟进。</p>
+<p>** verdict：** 观望——思路是对的，但现在只有 Ultra 用户能用，效果数据也还没出来；等 Pro 用户能用、有人实测过规划+执行的分工到底省不省钱再上车。<a href="https://www.unite.ai/google-launches-gemini-4-hydrogen-for-everyday-agentic-workflows/">介绍</a></p>
+<h2 id="3-codex-security">🎓 3 分钟小教程：用 Codex Security 给你的仓库扫一遍漏洞</h2>
+<p><strong>前置条件</strong>：Node.js 22+、Python 3.10+，一个 OpenAI API key 或 ChatGPT 账号</p>
+<ol>
+<li>装 CLI（可复制）：
+   <code>bash
+   npm install --global @openai/codex-security</code></li>
+<li>登录一次（可复制）：
+   <code>bash
+   cs login</code></li>
+<li>进你的仓库开扫（可复制）：
+   <code>bash
+   cs scan .</code></li>
+<li>扫完看终端给的 REPORT 路径，打开那份 Markdown 报告：每个发现都有证据和覆盖范围说明；想修就让它生成补丁，再让它验证修复是否生效</li>
+</ol>
+<p><strong>预期效果</strong>：几分钟拿到一份带证据等级的漏洞报告；想固定下来就把 GitHub Action 版接进 CI，每周自动扫一次。</p>
+<h2 id="top-5">🏆 本周 Top 5</h2>
+<blockquote>
+<p>周五加更：从本周日报里挑 5 条最好的。</p>
+</blockquote>
+<ol>
+<li><strong>Fable 5.2 来了：1000 个 agent 30 小时证完费马大定理</strong>——Anthropic 秀肌肉的发布，也是本周编码基准变化最大的一条。<a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">原文</a></li>
+<li><strong>Gemini 4 Carbon 全面开放，半价只到 11 月 30 日</strong>——Google 最强推理模型终于不限量，12 月 1 日起价格翻倍，窗口期就这半个月。<a href="https://www.unite.ai/google-expands-gemini-4-carbon-access-beyond-cybersecurity-defenders/">原文</a></li>
+<li><strong>Kimi K3.1 Pro 权重开源：2.8T 参数、1M 上下文</strong>——国产开源旗舰直接放权重，8 张 B300 才能跑，但至少人人都能验。<a href="https://www.mlllm.io/news/3719-moonshot-ai-releases-kimi-k3-1-pro-weights/">原文</a></li>
+<li><strong>Claude Code"别再问我"按一下，密钥就进了公开仓库</strong>——1,122 个仓库还在裸奔的安全教训，本周最值得所有人自查的一条。<a href="https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html">原文</a></li>
+<li><strong>DeepMind 用 AlphaProof Code 形式化验证了 Signal 协议</strong>——从数学证明一路做到机器码，AI 做验证这件事开始动真格了。<a href="https://www.anothercodingblog.com/p/another-daily-ai-newsletter-november-1e8">原文</a></li>
+</ol>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-11-12-daily.html">AI 码力日报 · 2026年11月12日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-11-12-daily.html">AI 码力日报 · 2026年11月12日</a></li>
+<li><a href="../posts/2026-11-11-daily.html">AI 码力日报 · 2026年11月11日</a></li>
+<li><a href="../posts/2026-11-10-daily.html">AI 码力日报 · 2026年11月10日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
