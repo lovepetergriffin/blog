@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年11月16日 - AI 码力日报</title>
+<meta name="description" content="黄仁勋辞职、五大实验室被诉冻结前沿模型、DeepSeek 开放 App 工具——过去 24 小时 AI 圈最大的三件事。">
+<link rel="canonical" href="https://radar.zsyvoid.com/daily/posts/2026-11-16-daily.html">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-11-16.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年11月16日","description":"黄仁勋辞职、五大实验室被诉冻结前沿模型、DeepSeek 开放 App 工具——过去 24 小时 AI 圈最大的三件事。","datePublished":"2026-11-16","dateModified":"2026-11-16","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-11-16-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-11-16.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">AI 码力日报</div>
+    <h1>AI 码力日报 · 2026年11月16日</h1>
+    <div class="meta"><time>2026-11-16</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-11-16.svg" alt="AI 码力日报 · 2026年11月16日">
+  <div class="post-body">
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li><strong>黄仁勋辞职</strong>：英伟达 33 年掌舵人出局，CFO Colette Kress 临时代理，消息后股价一度跌超 13%。</li>
+<li><strong>五大实验室被诉冻结前沿模型</strong>：四家非营利组织起诉 OpenAI、Anthropic、Google、Meta 与 SpaceXSI，要求法院叫停一切比今天更强的模型。</li>
+<li><strong>DeepSeek 把 App 整套工具开放成 API</strong>：联网搜索、读文件、OCR、语音全来了，搜索 $0.75/1000 次。</li>
+<li><strong>美团 LongCat-2.5 开源权重</strong>：1.6T 参数 agent 模型，Terminal-Bench 88.4 分，训练没用一块英伟达 GPU。</li>
+</ul>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="33-11-17">黄仁勋辞职：英伟达 33 年掌舵人出局，11 月 17 日财报成第一场大考</h3>
+<p><span class="why-label">跟你有啥关系</span>：GPU 供给、定价与出口管制走向，全系于这家公司的掌舵人——下周财报与继任者人选，值得盯。</p>
+<p>11 月 12 日英伟达公告：黄仁勋辞去总裁、CEO 与董事职务，即刻生效；CFO Colette Kress 临时代理，Harvey C. Jones 出任首任董事长。导火索是 11 月 8 日董事会启动的独立调查：黄仁勋承认与新加坡女商人 Alice Huang（美方怀疑其为中国情报人员）有婚外情；11 月 11 日《纽约时报》又曝出他与直接下属、医疗副总裁 Kimberly Powell 的关系。董事会称目前"没有理由相信"国家安全或英伟达机密已泄露，调查本身尚未公布结论。消息后英伟达股价一度跌超 13%，11 月 17 日的季度财报将是 Kress 带队的首场。<a href="https://www.theregister.com/systems/2026/11/12/jensen-huang-resigns-as-nvidia-chief-executive/5309411">原文链接</a></p>
+<h3 id="_2">四家非营利组织起诉五大实验室：要求法院冻结一切比今天更强的模型</h3>
+<p><span class="why-label">跟你有啥关系</span>：这是第一次有人试图用法院直接叫停模型训练——成不了也罢，往后每次大模型发布都会被拿来当靶子，政策风险正式进了开发者的排期表。</p>
+<p>11 月 12 日，Irreplaceable Education Fund、Public Citizen、Heat Initiative 与 Alliance for Secure AI 在旧金山高等法院起诉 Anthropic、Google、Meta、OpenAI 与 SpaceXSI，援引加州《反不正当竞争法》，要求紧急禁令：冻结一切比 11 月 12 日现有最强系统更强的模型开发与部署，直到企业能证明技术处于人类控制之下。63 页诉状只提一项指控，论据大量引用各家自己的风险警告，包括 Dario Amodei 曾提的"AI 发展有 25% 概率导致灾难性后果"。法院尚未裁决，也未公布听证日期，五家被告均未回应美联社的置评请求。<a href="https://www.unite.ai/public-citizen-advocacy-groups-sue-to-freeze-frontier-ai-development/">原文链接</a></p>
+<h3 id="anthropicopus-55-think-hard-medium">Anthropic：Opus 5.5 的提示词该换写法了——删掉"think hard"，从 Medium 档起步</h3>
+<p><span class="why-label">跟你有啥关系</span>：你的 claude.md 与系统提示里还留着老习惯的话，正在白白烧 token。</p>
+<p>Anthropic 11 月 14 日经 The Decoder 披露的 Opus 5.5 使用指南称：Opus 5.5 默认开启思考、按任务自动调推理深度，提示词里的"think hard""think carefully"这类话可以删了——内测显示去掉后回答启动更快、质量没有可测的下降。档位建议也反过来了：从默认的 Medium 起步，Opus 5.5 在 Medium 下的内测表现与 Opus 5 的 High 相当；Sonnet 5.5 拉到超高档位的成本已接近 Opus，不如直接换模型。写法上：一句话给目标、一次说完、把文件直接贴给模型，别分段喂指令，也别写自相矛盾的规则——新模型会认真执行每一条，撞上了反而糊涂。Claude Code 2.1.319 起内置了提示词审计（<code>/doctor prompt-audit</code>），今天的教程就是拿它跑一遍。<a href="https://the-decoder.com/anthropic-says-outdated-prompting-habits-are-slowing-down-claude-opus-5-5/">原文链接</a></p>
+<h3 id="googlegemini-live-apple-carplay">Google：Gemini Live 上车 Apple CarPlay，助手争夺车机入口贴身肉搏</h3>
+<p><span class="why-label">跟你有啥关系</span>：车里终于有了能连续对话的 Gemini；开车时查日程、回消息、找路线，不用再掏手机。</p>
+<p>Google 11 月 11 日宣布 Gemini Live 全球登陆 Apple CarPlay，iOS 上所有支持 Gemini Live 的语言都能用，车机屏幕上直接连续对话。Gemini 应用 8 月已突破 10 亿月活，车机是下一个入口；目前 ChatGPT、Claude、Copilot、Perplexity、Grok 都已上 CarPlay，五家助手在车里正面撞上。<a href="https://www.pymnts.com/news/artificial-intelligence/2026/google-brings-gemini-live-to-apple-carplay/">原文链接</a></p>
+<h3 id="google-antigravity-teamwork-agent-2013-weil">Google Antigravity /teamwork：多 agent 编队攻下 2013 年数学猜想，Weil 猜想形式化尚待验证</h3>
+<p><span class="why-label">跟你有啥关系</span>：多 agent 编排的标杆从"写代码"升级到"做科研"——/teamwork 现在就能在 Antigravity 里试，1 万名学者还能申请 6 个月免费顶级访问。</p>
+<p>Google Research 11 月 13 日公布 Antigravity 的 /teamwork 战绩：多 specialist Gemini 4 agent 编队 + Lean 4 机器验证，2013 年的 Courtade–Kumar 猜想完成证明并形式化（5000 万行 Lean 代码，其中可读证明约 23.9 万行，其余为机器核验的证书数据，仓库公开可查）；/teamwork-LEAP 称全自主完成 Weil 猜想的形式化（约 180 万行 Lean、28,800 次子 agent 调用）；化学上 30 个 agent 配物理光谱模拟器，分子结构识别 top-1 准确率 95%，接近单 agent 的两倍；视频解码器 C++ 重写为 Rust 后快 20–30%。提醒一句：Weil 猜想的形式化目前无公开仓库、无论文，尚无法独立验证，另一家机构 Axiom 一周前已公开了自己的版本。<a href="https://aifrontierpost.com/articles/google-antigravity-teamwork-weil-conjectures/">原文链接</a></p>
+<h3 id="deepseek-app-apiocr">DeepSeek 把 App 里整套工具开放成 API：联网、读文件、OCR、语音全来了</h3>
+<p><span class="why-label">跟你有啥关系</span>：想搭带联网+读文件的研究助手，不用再自己拼搜索与解析——DeepSeek 一把梭还便宜。</p>
+<p>DeepSeek 11 月 13 日更新 API：deepseek-flash（V4.1-Flash-1017）在 Messages、Responses、Chat Completions 三种接口里都能调用 App 同款工具——联网搜索（带引用）、多步深度搜索、读 URL、解析 PDF/Word/PPT/图片、内容安全检查；另有独立 API：Search、Fetch、OCR、语音识别（ASR）与语音合成（TTS）。定价：搜索与抓取 $0.75/1000 次成功请求，OCR $0.225/1000 页，语音服务上线 5 折到年底；工具费与 token 费分开算。还开源了一个 demo 聊天客户端，可导入 App 导出的聊天记录。面向公众的应用须开启安全检查，合规责任仍在开发者自己。<a href="https://ainewsway.com/news/deepseek-opens-its-app-tools-to-api-users">原文链接</a></p>
+<h3 id="longcat-25-16t-agent-gpu">美团 LongCat-2.5 开源权重：1.6T 参数 agent 模型，训练没用一块英伟达 GPU</h3>
+<p><span class="why-label">跟你有啥关系</span>：前沿级 agent 模型第一次完整脱离英伟达训练栈——出口管制的天花板被捅了个洞；普通人别想着本地跑，194 块卡是起步价。</p>
+<p>美团 LongCat-2.5 的权重已上架 Hugging Face（11 月 10 日前后），MIT 协议可商用。1.6T 参数 MoE，每 token 激活约 48B；美团自测 Terminal-Bench v2.1 得 88.4 分，略低于 Claude Opus 5 的 89.1 分——注意这是美团自测，尚未独立复现。关键在硬件：全程用国产芯片训练（上一代 LongCat-2.0 用了 5 万多块国产 AI 芯片），示例部署跑在 194 块华为昇腾 Atlas A2 上，专家权重与激活量化到 4-bit；模型卡里没有英伟达 GPU 的部署指引。API 限时价约 €0.27/百万输入 tokens、€1.07/百万输出。<a href="https://dev.to/paullovelace/longcat-25s-weights-are-now-open-a-16t-parameter-agent-model-trained-without-a-single-nvidia-50ko">原文链接</a></p>
+<h2 id="_3">🔧 工具更新日志</h2>
+<h3 id="codex-01690codex-exec-mcp">Codex 0.169.0：<code>codex exec</code> 的信任判定收紧，MCP 不再顺带启用</h3>
+<p>本周 Codex 连发 4 版（0.167.1–0.169.0）。0.169.0 改了 <code>codex exec</code> 的信任判定：<code>--sandbox workspace-write</code> 单独使用时，不再自动启用项目配置与 MCP 服务器；想用配置与 MCP 得显式声明。跑无人值守脚本时默认更安全了，但以前靠 workspace-write 顺带启用 MCP 的工作流会突然"失灵"，升级前先检查自己的调用方式。<a href="https://dev.to/aicoding-guide/this-week-in-claude-code-codex-and-gemini-cli-week-of-november-15-2026-4pmm">更新日志</a></p>
+<h2 id="_4">💬 社区热议</h2>
+<h3 id="hn-813-lovable-24-20">HN 813 分：Lovable 2.4 万个应用裸奔——护照、20 万私信无需登录可读</h3>
+<p>11 月 14–15 日 HN 首页帖，813 分、316 条评论。德国安全公司 Crissy Field 扫描 159,041 个 Lovable 项目：34,545 个用 Supabase，其中 24,664 个在页面加载时无需登录就向浏览器回传数据库记录；一家服务商 1000+ 条身份记录含护照号、有效期与国籍；一个德国生活论坛 8 万+用户资料与 20 万+私信可读。根因是 Supabase 行级安全（RLS）默认关闭，AI 生成代码从不问"这数据该不该公开"。评论区吵的是责任归属：Lovable、Supabase，还是不懂安全的搭建者。我的看法：用 vibe coding 做的应用一旦接了真实用户数据，先查 RLS 再上线。<a href="https://frontiernow.dev/en/news/lovable-app-data-exposure/">原帖</a></p>
+<h3 id="hn-1005-wsj-ai-gpu">HN 1005 分：WSJ 称英伟达靠资助 AI 初创买自家卡，制造 GPU 稀缺</h3>
+<p>11 月 14 日 HN 首页头条，1005 分、607 条评论。TechPowerUp 转述《华尔街日报》报道：英伟达向买不起卡的小型 AI 云厂商提供信贷支持，条件是买英伟达 GPU，以此消化台积电的产能、制造需求。评论区两派：一方认为这是操纵市场、该查反垄断；另一方认为这就是正常的供应商融资。注意：目前只是"据报道"的指控，未有监管结论，别当实锤传。<a href="https://tpu.me/kdn4">原帖</a></p>
+<h3 id="hn-233-deepseek-v3-200-jax-macbook-air">HN 233 分：DeepSeek V3 约 200 行纯 JAX 复现，MacBook Air 上训完</h3>
+<p>11 月 14 日 HN 帖，233 分、21 条评论。开发者 Vaibhaav Tiwari 用约 190 行纯 JAX（不用 Flax/Equinox/PyTorch）复现 DeepSeek V3 架构：MLA、DeepSeekMoE、无辅助损失均衡、多 token 预测全在里面；36.2M 参数的小模型在 M5 MacBook Air（24GB）上从头训了 2.6 小时，数据是 207 本公版侦探小说。作者自己划清界限："这是架构演示，不是强语言模型"。评论区把它当学习材料：读懂 MLA 与 MoE 最省事的入口。<a href="https://headlinesbriefing.com/dev/hacker-news/deepseek-v3-jax-implementation-on-macbook-air-4b95eda3">原帖</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<h3 id="hn-236-unsloth-qwen38-27b-510">HN 236 分：Unsloth 更新 Qwen3.8-27B 动态量化，同尺寸精度提升 5–10%</h3>
+<p>11 月 14–15 日 HN 热议。Unsloth 给 Qwen3.8-27B 出了新的动态量化版本，同尺寸下精度提升 5–10%。Qwen3.8-27B 本身是当下 HF 趋势榜前列的开源模型（下载量约 6.55M，点赞约 20.1K，截至撰写时）。评论区关注点：27B 这个档位终于有了能打的动态量化，消费级显卡跑大模型又近了一步。<a href="https://huggingface.co/unsloth/Qwen3.8-27B-GGUF">原帖</a></p>
+<h3 id="hn-209-ai-180">HN 209 分：密歇根大学研究——非英文文本的 AI 能耗最高 180 倍</h3>
+<p>11 月 15 日 HN 首页帖，209 分、111 条评论。密歇根大学团队在 EMNLP 2026 发表的研究：Qwen 3、Gemma 3、Llama 3.1 在 122 种语言的阅读理解题上，非英文平均多耗 1.4–180 倍能量；印地语 7.9 倍、孟加拉语 15.3 倍；且耗能高的语言准确率往往也更低。主因是分词：非英文文本会被切成更多 token。评论区有人实测：同一段话孟加拉语 278 tokens、英语 44 tokens。对中文读者有个好消息：中文的分词效率接近英文，不在这波重灾区。<a href="https://news.umich.edu/generative-ai-uses-more-energy-on-non-english-text/">原帖</a></p>
+<h2 id="ai">📱 AI 应用新品</h2>
+<h3 id="tulvoai">Tulvo：一句话描述业务，AI 自动搭好工作区</h3>
+<p>Product Hunt 11 月 15 日当日热门，约 177 票。一句话描述你的业务，Tulvo AI 自动搭好数据库、看板、文档与报表；数据来自表单与 webhook，还能接自己的 AI（MCP）与托管网站。解决什么问题：小团队搭业务系统最烦的是从零配字段与流程，Tulvo 把"描述→可用系统"做成一句话的事。免费额度：定价未公布。适合谁：想快速搭业务工作区、不想从零配 Notion/Airtable 的小团队。<a href="https://www.hunted.space/product/tulvo">产品页</a></p>
+<h3 id="canvas-by-agentgridio-agent-ai-html">Canvas by AgentGrid.io：免费的 agent 设计画布，人与 AI 在真实 HTML 上协作</h3>
+<p>Product Hunt 11 月 15 日当日热门，约 100 票。免费的 agent-first 设计工具：人与 AI agent 在真实 HTML 上协作，可接 Claude、ChatGPT、Grok、Cursor、Codex 或任何 MCP 兼容 agent。解决什么问题：AI 生成的设计稿往往是图片、改不动；Canvas 直接改真实 HTML，agent 的每一步都落在可交付的代码上。免费额度：免费。适合谁：用 agent 做网页设计、想在画布上直接改真实 HTML 的人。<a href="https://www.hunted.space/product/agentgrid-io">产品页</a></p>
+<section class="yaomo-sec"><h2 id="_5">🐑 今日羊毛</h2>
+<h3 id="google-antigravity1-6">Google Antigravity：1 万名学者可申请 6 个月免费顶级访问</h3>
+<p>一句话：随 /teamwork 发布开放申请，1 万名学术研究者可获 6 个月免费顶级 Antigravity 访问，试多 agent 编排不用先付费。</p>
+<ul>
+<li><strong>怎么薅</strong>：去 Google Research 的 /teamwork 公告页找申请入口提交申请。<a href="https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/">直达链接</a></li>
+<li><strong>有效期</strong>：名额 1 万，先到先得（截至撰写时）</li>
+<li><strong>适合谁</strong>：高校与研究机构里想试多 agent 编排、做科研自动化的人</li>
+</ul>
+<h3 id="inkling-2-small-apache-20-openrouter">Inkling 2 Small 免费体验：权重 Apache 2.0 免费下，OpenRouter 有免费档</h3>
+<p>一句话：Mira Murati 的 Thinking Machines Lab 第二代模型权重已上 HF（Apache 2.0）；OpenCode 注册表里有免费档 inkling-2-small-free，OpenRouter 也可免费调用。</p>
+<ul>
+<li><strong>怎么薅</strong>：HF 上免费下载权重，或直接在 OpenRouter 上调免费档。<a href="https://huggingface.co/thinkingmachines/Inkling-2-Small">直达链接</a></li>
+<li><strong>有效期</strong>：长期免费档（截至撰写时）</li>
+<li><strong>适合谁</strong>：想免费试开源大模型新标杆的人。提醒：本地跑官方 NVFP4 权重需 500GB+ 显存，别硬上；免费 API 是正道</li>
+</ul>
+<h3 id="deepseek-5">DeepSeek 语音服务上线 5 折，持续到年底</h3>
+<p>一句话：随 11 月 13 日 API 开放，DeepSeek 的语音识别（ASR）与语音合成（TTS）上线 5 折；搜索与抓取 $0.75/1000 次、OCR $0.225/1000 页的价格本身已是地板价。</p>
+<ul>
+<li><strong>怎么薅</strong>：DeepSeek 开放平台直接调用 ASR/TTS，折扣自动生效，无需领券。<a href="https://dev.to/paullovelace/deepseek-just-opened-its-whole-app-as-an-api-search-files-and-voice-for-pennies-2n1g">直达链接</a></li>
+<li><strong>有效期</strong>：语音 5 折截至 2026 年底（截至撰写时）</li>
+<li><strong>适合谁</strong>：做语音转写、播客转文字、文档 OCR 流水线的人</li>
+</ul>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="dream-numuniver">dream-num/univer</h3>
+<p>用 Univer Office SDK 自己搭 AI 办公：文档、表格、幻灯片编辑、计算、协作与文件处理，开放核心可扩展，给人与 AI agent 共用。解决什么问题：想在自己产品里嵌在线文档/表格，或给 agent 一个能读写的办公环境，不用从零写编辑器。⭐ 约 25,553（截至撰写时）。适合：做 AI 办公产品、给 agent 接文档能力的人。<a href="https://github.com/dream-num/univer">项目地址</a></p>
+<h3 id="ag-ui-protocolag-ui">ag-ui-protocol/ag-ui</h3>
+<p>Agent-User Interaction Protocol：把 agent 接进前端应用的标准协议，agent 的状态、工具调用与生成内容能实时推到界面上。解决什么问题：agent 在后台跑、用户只能干等；接上 AG-UI，过程可见、可交互、可打断。⭐ 约 17,801（截至撰写时）。适合：做 agent 产品前端、想让 agent 过程可见可交互的人。<a href="https://github.com/ag-ui-protocol/ag-ui">项目地址</a></p>
+<h3 id="google-labs-codestitch-skills">google-labs-code/stitch-skills</h3>
+<p>Google 官方的 Agent Skills 库，配合 Stitch MCP 服务器使用，遵循 Agent Skills 开放标准，兼容 Antigravity、Gemini CLI、Claude Code、Cursor。解决什么问题：给 coding agent 加 UI 生成技能不用自己写 skill 文件，官方库直接拿来用。⭐ 约 9,251（截至撰写时）。适合：用 Stitch 做 UI 生成、想给 coding agent 加现成技能的人。<a href="https://github.com/google-labs-code/stitch-skills">项目地址</a></p>
+<h3 id="elementalsoulsclaude-bughunter">elementalsouls/Claude-BugHunter</h3>
+<p>Claude Code 挖洞技能包：82 个技能、15 条斜杠命令、681 个已披露漏洞报告模式，覆盖 24 类核心漏洞，外加企业身份与基建攻击矩阵。解决什么问题：让 Claude Code 从"通用写代码"变成系统性挖洞的红队助手。⭐ 约 6,342（截至撰写时）。适合：做安全测试、红队、想让 Claude Code 系统性挖洞的人。<a href="https://github.com/elementalsouls/Claude-BugHunter">项目地址</a></p>
+<h2 id="hugging-face">🤗 Hugging Face 热门模型</h2>
+<h3 id="thinkingmachinesinkling-2-small594b">thinkingmachines/Inkling-2-Small：594B 开源模型，权重已上架</h3>
+<p>是什么：Mira Murati 的 Thinking Machines Lab 第二代模型：594B 总参数、每 token 激活 17B，图文输入、1M 上下文，Artificial Analysis 智能指数 31 分；权重 11 月 12 日上架 HF，Apache 2.0 协议。能干嘛：本地部署（官方 NVFP4 权重约 394GB，需 500GB+ 显存）或走 Tinker/OpenRouter API。下载量约 7.33K，点赞约 340（截至撰写时）。适合谁：想试开源大模型新标杆、有集群或只想调 API 的人。<a href="https://huggingface.co/thinkingmachines/Inkling-2-Small">模型地址</a></p>
+<h3 id="minimaxaiminimax-h3-imageminimax-h3">MiniMaxAI/MiniMax-H3-Image：MiniMax H3 系列文生图模型</h3>
+<p>是什么：MiniMax H3 系列的文生图模型，趋势榜前列。能干嘛：文字生成图片，可本地跑或调 API。下载量约 571K，点赞约 1.18K（截至撰写时）。适合谁：做配图、封面、产品视觉，需要开源可商用生图模型的人。<a href="https://huggingface.co/MiniMaxAI/MiniMax-H3-Image">模型地址</a></p>
+<h2 id="tencent-loopforge">🛠️ 值得一试的工具：Tencent LoopForge</h2>
+<p>是什么：腾讯开源的自托管编码 agent 交付工作流：用脚本 + 人工审批 gate 编排 CodeBuddy、Codex、Claude Code，覆盖从需求到交付的 SDLC。解决什么痛点：多 agent 并行写代码时没人把关、流程散在聊天记录里；它把"agent 干活、人点头"变成可复用的工作流。免费额度：开源自托管，自己搭。</p>
+<p><strong>verdict：观望</strong>——思路正对团队多 agent 协作的痛处，但 1,428 star 的新项目、自托管有门槛，先读文档、跑通一条本地工作流再决定要不要上生产。<a href="https://github.com/Tencent/LoopForge">项目地址</a></p>
+<h2 id="3-claude-code">🎓 3 分钟小教程：给 Claude Code 跑一次提示词审计</h2>
+<p><strong>前置条件</strong>：Claude Code 2.1.319 或更新版（<code>claude --version</code> 确认）。</p>
+<ol>
+<li>在 Claude Code 里输入 <code>/doctor prompt-audit</code>（别名 <code>/checkup</code>）：它会逐行审你的 claude.md 与配置，按 keep/remove/rewrite/move 四类给修改建议</li>
+<li>重点删这几类：<code>think step by step</code>、<code>double-check your work</code>、<code>be maximally thorough</code> 这类脚手架，以及自相矛盾的规则——新模型自己会思考、会自查，这些词只烧 token，有时还降准确率</li>
+<li>调 API 的代码库用 <code>/claude-api prompt-audit</code> 同样审一遍；审完把 effort 从 High 降回 Medium（Opus 5.5 默认），只在 Medium 搞不定时再往上加</li>
+</ol>
+<p><strong>预期效果</strong>：一次审计 10 分钟左右；旧提示词清掉后，Opus 5.5 在 Medium 下的表现与旧版 High 相当，token 账单先降一截。出自 Anthropic 工程师 Lance Martin 的分享与 Claude Code 内置审计（<a href="https://sparsenotes.com/posts/2026/11/unhobbling-the-frontier-lance-martin/">原文</a>）。</p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-11-15-daily.html">AI 码力日报 · 2026年11月15日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-11-15-daily.html">AI 码力日报 · 2026年11月15日</a></li>
+<li><a href="../posts/2026-11-14-daily.html">AI 码力日报 · 2026年11月14日</a></li>
+<li><a href="../posts/2026-11-13-daily.html">AI 码力日报 · 2026年11月13日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
