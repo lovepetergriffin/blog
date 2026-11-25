@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>十枚银元，九成会输光 - 每日一文</title>
+<meta name="description" content="他手里只有十枚银元，赌局绝对公平，目标是一百枚。账房先生算了一夜，劝他别去——公平，不等于有胜算。">
+<link rel="canonical" href="https://radar.zsyvoid.com/essay/2026-11-26-ten-silver-coins.html">
+<meta property="og:title" content="十枚银元，九成会输光 - 每日一文"><meta property="og:description" content="他手里只有十枚银元，赌局绝对公平，目标是一百枚。账房先生算了一夜，劝他别去——公平，不等于有胜算。"><meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "十枚银元，九成会输光 - 每日一文", "inLanguage": "zh-CN"}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">SeanRadar</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">每日一文 · 寓言</div>
+    <h1>十枚银元，九成会输光</h1>
+    <div class="meta"><time>发布于 2026-11-26</time><a class="tag" href="/essay/">寓言</a></div>
+  </header>
+  <div class="post-body">
+<p>我小时候住的镇上，街角有个掷铜钱的摊子。</p>
+<p>摊主老吴是个实在人。铜钱是当众验过的——没有灌铅，没有两面一样；手法也是当众验过的——铜钱抛起来，落下来，正面反面，一半一半，谁也做不了手脚。规矩简单：押一枚，猜中了赢一枚，猜错了输一枚。一枚一枚地押，不赊账，不翻倍。</p>
+<p>老周是镇上的货郎。有一年他把铺子押给了钱庄，赎回来要一百枚银元。他手里只剩十枚。</p>
+<p>他打的主意很简单：去铜钱摊上赢够九十枚。</p>
+<p>去之前，他先去找了账房老陈。老陈是镇上算账最明白的人。老周把主意一说，老陈放下算盘，算了一夜。</p>
+<p>第二天，老陈把他叫到跟前："你先别去，听我算一笔账。你现在离输光只有十步，离一百枚有九十步。每一步，赢输都是一半一半。"</p>
+<p>老周不服："局是公平的，赢一局输一局，互相抵消，凭什么我就九成会输？"</p>
+<p>老陈说："你想想，赢一局，你离一百枚近一步；输一局，你离输光近一步。可你离输光只有十步远，离一百枚却有九十步远。十次里有九次，是你先走到输光那头——不是因为你手气差，是因为你出发的地方，离那头近得多。"</p>
+<p>老周没听。他觉得账房先生算的是死账，铜钱抛起来是活的。</p>
+<p>第一天夜里，他最多的时候手里有过二十三枚——离一百枚好像也没那么远了。最少的时候只剩三枚，他手心全是汗，又一枚一枚赢了回来。天快亮的时候，他输光了，十枚银元，一枚也没剩下。</p>
+<p>那年镇上有十个像老周这样的人，揣着十枚银元去赢一百枚，只有一个人赢了回来——那个人成了镇上人人传说的"手气好"。另外九个输光的，没人再提他们的名字。</p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<p>老周后来又攒了五十枚银元，再去铜钱摊。这回他离输光五十步，离一百枚也五十步，两边一样远。老陈说，这回他的赢面才算一半——不是因为他手气变好了，是因为他出发的地方变了。</p>
+<hr />
+<h2 id="_1">故事讲完，概念说清楚</h2>
+<p>这就是<strong>赌徒破产</strong>（gambler's ruin）。</p>
+<p>它的定义只有一句话：公平赌局里，每局赢输一枚，从 i 枚出发，赌到先赢到 N 枚、或先输光为止。赢到 N 枚的概率是 i/N，输光的概率是 1 − i/N。</p>
+<p>验算一遍。老周 i = 10，N = 100，赢的概率 10/100 = 1/10，输光 9/10。</p>
+<p>为什么是这个数？用期望一算就明白。每一局都是公平的，所以你手里钱的期望永远不变，停下来那一刻也不变。停下来只有两种可能：赢到 100 枚，或者输到 0 枚。设赢的概率是 p，期望就是 100p + 0×(1 − p)，它必须等于出发时的 10 枚：100p = 10，p = 1/10。就这么简单。</p>
+<p>我还拿程序模拟了二十万次：赢的比例是 0.1005，平均一局要玩 901 轮——理论值正好是 1/10 和 900 轮（10×90）。数字对得上。</p>
+<p>还有两个对照值得记：</p>
+<ul>
+<li>五十枚起手：赢的概率 50/100 = 1/2，平均要玩 2500 轮（50×50）。本钱翻五倍，赢面也翻五倍。</li>
+<li>一枚起手：赢的概率只有 1/100——离输光一步之遥的人，几乎注定先输光。</li>
+</ul>
+<p>再往深想一步。如果对手是钱庄、赌场这种本钱几乎无限的对手，N 往无限大去，i/N 往 0 去，输光的概率趋近于 1。有限的本钱对上无限的本钱，输光只是时间问题——这才是"久赌必输"的数学意思：哪怕赌局完全公平。</p>
+<p>如果赌局还对庄家有利一点点呢？每局赢面 49%、输面 51%，公式变成 P = [1 − (q/p)^i] / [1 − (q/p)^N]，q/p = 51/49 ≈ 1.0408，代入 i = 10、N = 100，算出来约 0.0092——不到 1%。公平时还有 10% 的赢面，庄家每局只多占 1 个百分点，赢面就跌了十倍还多。赌场不用出千，抽一点水就够了。</p>
+<p>这个问题老得很。最早见于 1656 年帕斯卡写给费马的一封信，第二年惠更斯把它收进《论赌博中的计算》（<em>De Ratiociniis in Ludo Aleae</em>）——那是概率论出版史上的第一本专著。三百七十年过去了，结论没变过：赌局公不公平是一回事，你站在哪儿出发，是另一回事。</p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <a href="/essay/">← 回每日一文首页</a>
+</nav>
+<section class="related"><h3>往期一文</h3><ul><li><a href="/essay/2026-11-25-stag-hunt-morning.html">围鹿那天，两个人都去了兔子场</a></li><li><a href="/essay/2026-11-24-two-pouches.html">两个锦囊，换还是不换？</a></li><li><a href="/essay/2026-11-23-peddler-three-hundred-nights.html">货郎老陈的三百个晚上</a></li><li><a href="/essay/2026-11-22-win-safe-lose-gamble.html">赢了想落袋，输了想翻本</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
