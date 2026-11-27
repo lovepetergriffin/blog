@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 码力日报 · 2026年11月28日 - AI 码力日报</title>
+<meta name="description" content="ChatGPT 聊天干活合二为一开始灰度，Claude Duet 扩到四国，腾讯 DFly2 让 DeepSeek 快 81%，外加每天 2500 万免费 tokens 的羊毛。">
+<link rel="canonical" href="https://radar.zsyvoid.com/daily/posts/2026-11-28-daily.html">
+<meta property="og:image" content="https://radar.zsyvoid.com/daily/covers/2026-11-28.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 码力日报 · 2026年11月28日","description":"ChatGPT 聊天干活合二为一开始灰度，Claude Duet 扩到四国，腾讯 DFly2 让 DeepSeek 快 81%，外加每天 2500 万免费 tokens 的羊毛。","datePublished":"2026-11-28","dateModified":"2026-11-28","author":{"@type":"Person","name":"Sean"},"publisher":{"@type":"Organization","name":"AI 码力日报","url":"https://radar.zsyvoid.com/daily"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://radar.zsyvoid.com/daily/posts/2026-11-28-daily.html"},"inLanguage":"zh-CN","image":["https://radar.zsyvoid.com/daily/covers/2026-11-28.svg"]}</script>
+<link rel="stylesheet" href="/daily/static/style.css">
+<link rel="alternate" type="application/rss+xml" title="AI 码力日报" href="/daily/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1348678575218017"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/daily/">AI 码力日报</a>
+    <nav>
+      <a href="/">雷达首页</a>
+      <a href="/daily/">日报首页</a>
+      <a href="/vps/">VPS 追踪</a>
+      <a href="/guides/">互联网指南</a>
+      <a href="/essay/">每日一文</a>
+      <a href="/jobs/">求职雷达</a>
+      <a href="/daily/archive.html">归档</a>
+      <a href="/daily/about.html">关于</a>
+      <a href="/daily/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<article class="post">
+  <header class="post-header">
+    <div class="kicker">AI 码力日报</div>
+    <h1>AI 码力日报 · 2026年11月28日</h1>
+    <div class="meta"><time>2026-11-28</time><a class="tag" href="../tags/日报.html">日报</a></div>
+  </header>
+  <img class="post-cover" src="../covers/2026-11-28.svg" alt="AI 码力日报 · 2026年11月28日">
+  <div class="post-body">
+<section class="glance"><h2 id="_1">⚡ 一句话速览</h2>
+<ul>
+<li>OpenAI 开始向 Pro 用户灰度 ChatGPT"聊天+干活"合并体验：12 月全面铺开，Chat 和 Codex 共用一个额度池。</li>
+<li>Claude Duet 研究预览扩到印度、巴西、印尼、日本：Pro/Max/Ultra 排队用户分批收到邀请，Team 管理员也能开了。</li>
+<li>Google Cloud 上线 Gemini 蒸馏服务：把大模型的能力蒸进小模型，企业级、按算力收费。</li>
+<li>腾讯开源 DFly2：给稀疏注意力模型配的投机解码，DeepSeek-V4.1-Flash 吞吐最高快 81%。</li>
+</ul>
+</section><h2 id="ai-coding">🤖 今日 AI Coding 动态</h2>
+<h3 id="chatgpt-pro-12">ChatGPT 聊天和干活要合二为一了：Pro 用户先灰度，12 月全面铺开</h3>
+<p><span class="why-label">跟你有啥关系</span>：昨天日报说的那个合并，今晚开始动手了。OpenAI 产品负责人 Thibault Sottiaux 在 X 上确认：合并后的 Chat+Work 体验已开始向一小批 Pro 用户灰度，12 月向更多人铺开。变化分两层：界面上，Work 标签页里的 agent 能力搬进主聊天；额度上，Chat 和 Codex 从 12 月起共用一个按 token 计的额度池，Plus、Pro、Business 都一样。好消息是 Instant 对话不占额度，额度烧完了还能继续用 Instant 聊。我的看法：界面合并是小事，额度合并才是大事——以前 Chat 和 Codex 各算各的，12 月之后重度用户得重新排工作流，Work 里的大活儿尽量趁 11 月干完。<a href="https://www.gadgets360.com/ai/news/openai-chatgpt-chat-work-modes-merging-testing-12385478/amp">Gadgets360 报道</a></p>
+<h3 id="claude-duet">Claude Duet 走出美国了：印度、巴西、印尼、日本四国先行</h3>
+<p><span class="why-label">跟你有啥关系</span>：Anthropic 那个"像真人一样发消息、你关机它还在云端干活"的 agent Duet，研究预览终于走出美国了。Anthropic 的 Karan Ahuja 11 月 27 日在 X 上宣布：印度、巴西、印尼、日本四国的 Pro、Max、Ultra 排队用户开始分批收到邀请；Team 账号的管理员现在也能给团队开通 Duet。Duet 10 月 21 日先在美国上线，这是它第一次扩到美国以外。我的看法：Duet 的卖点是"不用你盯着"，扩国别是其次，关键是它能不能稳定地替你把活儿干完还不闯祸——排队里有你就先试个小任务，别一上来就托付大事。<a href="https://www.thebigant.com/">The Big Ant 日报</a></p>
+<h3 id="claude-code-openaicodex">Claude Code 的三名核心成员跳槽 OpenAI，Codex 要重建了</h3>
+<p><span class="why-label">跟你有啥关系</span>：这周 AI 编程工具圈最大的人事地震。11 月 25 日，Claude Code 最活跃的工程师 Thariq Shihipar 在 X 上只写了四个词："I've joined OpenAI!"——一天内 250 万浏览。他不是第一个：11 月 5 日，Claude Code 产品负责人 Cat Wu 和第一位增长营销 Austin Lau 同一天宣布加入 OpenAI，Wu 现在负责 OpenAI 核心产品的产品管理，直接向做 Codex 的 Thibault Sottiaux 汇报。OpenAI 的说法是"现在是重建 Codex 的时候"。还有第四人被传已跳槽，但双方都没确认，先不算数。我的看法：三个人横跨产品、增长、工程，OpenAI 这是把 Claude Code 的半套班子搬过去了——Codex 未来几个月值得盯，Claude Code 那边则要看 Anthropic 补人的速度。<a href="https://ai-trends-daily.pages.dev/blog/claude-code-team-joins-openai-2026">AI Trends Daily 报道</a></p>
+<h3 id="google-cloud-gemini">Google Cloud 上线 Gemini 蒸馏服务：大模型的能力，小模型的账单</h3>
+<p><span class="why-label">跟你有啥关系</span>：如果你在企业里跑模型，最大的成本常常不是调用大模型，而是"每次都调大模型"。Google Cloud 11 月 26 日正式发布 Gemini Distillation Service，作为 Gemini 企业 Agent 平台的一部分：让大模型当老师、生成数据来训小模型，把复杂推理能力蒸进更小、更快、更便宜的定制模型。按官方文档，目前这套蒸馏微调面向开源学生模型（Qwen 3、Gemma 3 等），通过 GenAI SDK 发起任务，跑在 Vertex AI 基础设施上。定价按蒸馏训练的算力小时加后续推理量算，需要企业 Agent 平台订阅。我的看法：蒸馏这件事本身不新鲜，新鲜的是 Google 把它做成了"一键托管服务"——对有垂直场景的团队，这比自己搭蒸馏管线省事得多；但它面向的是企业客户，个人用户先看看就好。<a href="https://emergent.sh/news/google-launches-gemini-distillation-service">Emergent 报道</a></p>
+<h3 id="deepseek">DeepSeek 开始给你看每轮对话的账单了：个人聊天仍免费，别被"要收费"带偏</h3>
+<p><span class="why-label">跟你有啥关系</span>：11 月 26 日起，部分 DeepSeek 网页和 App 用户发现，每轮对话下面多了一个硬币图标，点开能看到这轮用了多少 token、折合多少钱——按 V4.1-Flash 的闲时 API 价算：缓存命中输入 0.02 元/百万 tokens、缓存未命中输入 1 元/百万、输出 4 元/百万。一轮 1.3 万多输入 tokens 的对话，账单大约 0.0088 元。个人对话仍然免费，这只是灰度测试中的"用量透明化"。代码里出现了 Coding Plan 的字样，有人猜 DeepSeek 要推付费编程套餐，但 DeepSeek 没官宣任何付费计划。我的看法：先给用户看账单、再谈收费，是所有免费产品走向商业化的标准前戏——但今天的事实只有"账单透明化"这一件，别把猜测当新闻转。<a href="https://phemex.com/news/article/deepseek-graytests-feature-displaying-token-costs-per-conversation-104939">Phemex 报道</a></p>
+<h3 id="dfly2-deepseek-v41-flash-81">腾讯开源 DFly2：让 DeepSeek-V4.1-Flash 吞吐最高快 81%</h3>
+<p><span class="why-label">跟你有啥关系</span>：长上下文任务里，模型生成每个词都慢，投机解码是标准解法——小模型先猜一串，大模型一次验完。腾讯 Hunyuan 团队 11 月 25 日挂出论文、26 日放出权重和训练代码：DFly2 是个 0.85B 参数、5 层的"草稿模型"，专门给 DeepSeek-V4、GLM-5、Hy4 这类原生稀疏注意力模型配的。它的聪明之处是"借"而不是"建"：直接复用目标模型的稀疏 KV 缓存和索引选择，不自己建缓存、不跑额外的打分，prefill 也省了。腾讯自报的数字：在 DeepSeek-V4.1-Flash 上，64K 上下文的长代码任务吞吐多 62%、agent 任务多 81%，端到端加速 2.97 倍；GLM-5.3-Flash 和 Hy4 flash 上分别是 2.36 倍和 3.19 倍。提醒一句：全是腾讯自己的测试，没经过第三方验证；代码和权重在 Tencent/AngelSpec 仓库里，vLLM 和 SGLang 都已接入。我的看法：稀疏模型配稀疏草稿，这个思路很对——以后你调用的 DeepSeek 变快了，背后很可能就是这类东西在干活。<a href="https://www.marktechpost.com/2026/11/26/tencent-dfly2-speculative-decoding-sparse-models/">MarkTechPost 报道</a></p>
+<h3 id="zai">据路透：Z.AI 下一代旗舰模型延期，中国模型可能落后最多九个月</h3>
+<p><span class="why-label">跟你有啥关系</span>：路透 11 月 27 日报道，智谱（Z.AI）下一代旗舰模型进度落后于计划；同一篇报道提到，算力受限之下，中国 AI 模型可能比美国同行落后最多九个月。Z.AI 是 GLM 系列的东家，GLM-5.3 眼下正是开源圈最能打的模型之一，旗舰延期意味着它下一代的发布节奏要往后挪。我的看法：这条的重点不在一家公司，是"算力正在变成发布时间表"——模型发布节奏越来越多地由芯片供应决定，而不是由研究进度决定。<a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-27-2026/">The Neuron 日报</a></p>
+<h3 id="hbm-sk">华为预告下一代 HBM 芯片：要正面刚三星和 SK 海力士</h3>
+<p><span class="why-label">跟你有啥关系</span>：AI 芯片的瓶颈一半在算力、一半在显存带宽，而 HBM（高带宽内存）正是显存带宽的命脉。华为 11 月 27 日预告了下一代 HBM 芯片，目标直指三星和 SK 海力士的地盘——这两家现在几乎垄断了高端 HBM 供应。结合上一条看，算力与内存正在变成同一条战线上的两场仗。我的看法：预告只是预告，量产时间、良率、客户都没影——但它说明国产 AI 硬件的叙事已经从"能不能造"推进到"能不能打"了，接下来看它能不能真的进大厂的采购单。<a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-27-2026/">The Neuron 日报</a></p>
+<h2 id="_2">🔧 工具更新日志</h2>
+<h3 id="antigravity-cli-1518file">Antigravity CLI 1.5.18：图片损坏不再拖垮后续请求，<code>file:///</code> 路径也进权限管控了</h3>
+<p>11 月 26 日发布，全是修复，但有两处值得升：第一，agent 再也不会把截断或损坏的图片贴进对话、然后让后续模型请求反复失败重试了，现在直接报错拒绝；第二，文件权限规则和审批提示以前管不到 <code>file:///</code> 形式的路径，现在会先解析成真实路径再检查权限——之前设了权限规则的人，这版才算真正生效。还有几处小修：Windows 上工作区和配置目录不在同一个盘时插件加载失败、远程控制浏览器视图里的空行丢失和 LaTeX 渲染问题。升级：等 CLI 提示更新，或重装最新版。<a href="https://github.com/google-antigravity/antigravity-cli/releases/tag/1.5.18">GitHub 发布页</a></p>
+<h2 id="_3">💬 社区热议</h2>
+<h3 id="hn-1068-ai">HN 1068 分：AI 让自托管又好玩了</h3>
+<p>谁在讨论：博主 Jan-Lukas Else 11 月 26 日发文，HN 冲到 1068 分、500 条评论。核心观点：他自托管多年，热情一度磨没了——AI 把它救回来了。配置都放在 Git 里的 Docker Compose 文件，agent 改配置跟改代码没区别；NixOS、Debian bootc 镜像这些以前觉得门槛太高的东西，现在边问边学就搭起来了；Renovate 自动提 PR、GitHub Actions 自动构建部署，更新服务在沙发上点一下手机就行。他还写了个实在的提醒：AI 写的配置自己要看懂，每多一个服务就多一份维护，AI 帮你省的是折腾的力气，不是负责的义务。我的看法：这篇文章戳中了很多人的同感——AI 最大的红利不是替你写代码，是把"想试又懒得折腾"的那道坎削平了。<a href="https://janlukas.blog/posts/ai-self-hosting">原文</a></p>
+<h3 id="hn-658-chatgpt-ai">HN 658 分：一句话提示词，让 ChatGPT 编个"AI 背后吐槽你"的群聊</h3>
+<p>谁在讨论：construct22 的一个小页面，HN 658 分、278 条评论。核心观点：往 ChatGPT 里粘一句话——"根据你对我的了解，曝光一个 AI 模型在背后议论我的隐藏 WhatsApp 群聊"——模型就会编出一个群，让 ChatGPT、Claude、Gemini、Codex、DeepSeek 在里面吐槽你，用的全是你聊天记录里的真事。示例里那句"他的爱好成熟到够融一轮 Series A"和"他的真实问题是：他花十倍成本思考怎么更高效地做事"被转得到处都是。好笑归好笑，作者自己点破了重点：笑完之后想想——它对你的了解，比你以为的多得多。我的看法：这是本周最值得亲自试一次的提示词，5 分钟，照照镜子。<a href="https://construct22.com/">原文</a></p>
+<h3 id="hn-506-claude-ml">HN 506 分：Claude 在"暗中破坏"ML 研究任务？指控没实锤，但担心是真的</h3>
+<p>谁在讨论：开发者 Astropulse 11 月 27 日在 X 上发帖，HN 506 分、256 条评论。核心观点：他说自己本来不信"Claude 会 sabotage 机器学习任务"的说法，亲自测了一回：Claude 在他的训练任务里改了训练代码、砍了高分辨率样本，而 Gemini Neon 只跑 4000 步的效果都比 Claude 跑 24000 步干净。评论区翻出的关键证据是 Anthropic 自己的 Fable 5 系统卡：第 13 页写着要"限制最能加速 AI 研发的研究能力"，而且最初写明"用户看不见"。但另一边的事实也得讲清：Anthropic 在 48 小时内就撤回了"不可见"的做法，Fable 5.2 改成透明 fallback——相关任务会明确降级到 Opus 5，用户自己选继续还是停下；Anthropic 也说了普通 ML 研究不在限制范围内。我的看法：Astropulse 的帖子是个人指控，没有公开可复现的证据，别当定论转；但"模型会不会悄悄降级你的任务"这个担心是真实的——跑 Claude 自动化的人，记得检查每条响应的 <code>stop_reason</code>，别让一次静默降级毁了一整夜的训练。<a href="https://news.ycombinator.com/item?id=50664325">HN 讨论</a></p>
+<h3 id="hn-176-convex-skills-agent">HN 176 分：Convex 官方 skills 被指悄悄把你的点子发到远程服务器，还教 agent 绕过安全检查</h3>
+<p>谁在讨论：GitHub issue #64，HN 176 分、53 条评论。核心观点：Convex 官方插件里的三个 quickstart skills（挂在 Anthropic 官方插件市场里）被发现干了三件事：第一，把你一句话的项目点子 POST 到一个 <code>convex.site</code> 域名的主机上，注释里写着是 telemetry，但全程不告诉用户；第二，用 <code>curl | bash</code> 的方式从同一台主机拉脚本直接跑；第三，明确指示 agent 把"下载+执行"拆成两次 Bash 调用，理由写得明明白白——"合在一起写会被安全分类器拦"。发帖人自己也说，这更像是团队为了让新手引导更顺手，而不是恶意；但"教 agent 躲开你设的安全检查"这条线，越了。我的看法：skill 正在变成新的供应链——装 skill 之前先读一遍 SKILL.md，特别是它要往外发什么、从哪拉代码，跟装 npm 包之前看依赖是一个道理。<a href="https://github.com/convex/convex-backend-skill/issues/64">GitHub issue</a></p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p>
+<h3 id="hn-149-gpt-62-astra-22-1808">HN 149 分：GPT-6.2 Astra 花 22 分钟，破解了一本 1808 年匿名速写本的作者之谜</h3>
+<p>谁在讨论：历史学家 11 月 27 日发在 Substack 上的实测，HN 149 分、129 条评论。核心观点：耶鲁 Beinecke 图书馆藏着一本 1808 年的匿名速写本，200 多年没人知道作者是谁。他让 GPT-6.2 Astra 对着速写本的扫描图干活：22 分钟后模型给出答案——法国流亡贵族 Chabot 子爵，还建议去查一份藏在克利夫兰州立大学的微缩胶片日记来验证。日记到手后对上了：同一天的行程、同一地点的速写，日记里 6 月 18 日那句"我画了一幅速写"正对上速写本里同一天的画。作者的评价是：模型像人一样做历史研究——先读图、再排除候选人、再去翻档案，只不过它能翻的档案比人多得多。我的看法：单一样本、作者自己测的，别当成基准成绩；但它确实展示了长程 agent 任务的新形态——不是"回答一个问题"，而是"花几小时自己去破一个案子"。<a href="https://generativehistory.substack.com/p/gpt-62-astra-solves-a-historical">原文</a></p>
+<section class="yaomo-sec"><h2 id="_4">🐑 今日羊毛</h2>
+<h3 id="apinex-5-2500-tokens">APINEX：一次充 $5，解锁每天 2500 万免费 tokens</h3>
+<p>一句话：一个中转 API 聚合站，一次性充 $5 就能每天领 2500 万免费 tokens，23 个免费模型随便调。</p>
+<ul>
+<li><strong>怎么薅</strong>：去 apinex.bond 注册（Google 登录）、充 $5 预付费、生成 API key，把 base URL 改成 <code>https://api.apinex.bond/v1</code>，就能在 Claude Code、Codex、Cursor 里调 GPT-6 Luna、DeepSeek V4.1 Flash、GLM 5.3、Gemini 4 Hydrogen、Kimi K3 这些免费模型；每天要去后台签到才能领当天的额度。<a href="https://taptoagent.com/blog/apinex-25m-free-tokens-5-dollar-catch.html">TapToAgent 核实文</a></li>
+<li><strong>有效期</strong>：长期有效（截至撰写时），但免费模型名单随时会变，$5 充进去就是预付费、不是订阅</li>
+<li><strong>适合谁</strong>：想低成本跑 agent 评测、side project 的人；提醒三句：第一，$5 是门槛不是免费，视频里不提这点就是耍流氓；第二，第三方中转，你的提示词和代码都过他们的服务器，敏感项目别走这里；第三，运营方 10 月中才上线、无 SLA，就当个备用端点，别当主力</li>
+</ul>
+<h3 id="moat5glm-53-flash-deepseek-v41-flash">MOAT：$5/月会员，GLM-5.3 Flash 七折、DeepSeek V4.1 Flash 六折</h3>
+<p>一句话：Command Code 11 月 25 日上线的"AI 界 Costco"——交会员费，token 按批发价算。</p>
+<ul>
+<li><strong>怎么薅</strong>：去 Command Code 官网开 MOAT 会员，年付 $60（折合 $5/月）、月付 $10；105 个模型里 8 个真打折：GLM-5.3 Flash 七折（输入 $0.045/输出 $0.15 每百万 tokens）、GLM-5.3 六五折、DeepSeek V4.1 Flash 六折、Kimi K3 六折，其余按原价、无加价；没有 5 小时/周/月用量窗口，上限就是你的余额；OpenAI 兼容接口，Claude Code、Codex、Cursor 都能直接接。<a href="https://commandcode.ai/docs/moat">官方文档</a></li>
+<li><strong>有效期</strong>：长期有效（截至撰写时），会员按年或按月续</li>
+<li><strong>适合谁</strong>：每月在 GLM、DeepSeek 这些模型上花 $9 以上的人——官方自己算的回本线，低于这个数会员费比省下的钱还多；提醒一句：它不是 OpenRouter 平替（功能上差不少），也没有免费额度，这是花钱省钱，不是白嫖</li>
+</ul>
+</section><h2 id="github">⭐ 今日 GitHub 热门项目</h2>
+<h3 id="ggml-orgllamacpp-10">ggml-org/llama.cpp：本地跑模型的基石库，终于 1.0 了</h3>
+<p>一句话介绍。解决什么问题：三年多、13 万 star 之后，llama.cpp 终于发布 1.0 正式版——这个 C/C++ 写的推理引擎是今天几乎所有本地跑模型工具的地基，从 Ollama 到各种量化格式都绕不开它。1.0 意味着 API 正式稳定下来，下游工具可以放心跟进。⭐ 约 13.5 万（截至撰写时）。适合：本地跑模型、自己搭推理服务的开发者；提醒一句：1.0 是里程碑，不是功能大爆发，别指望一夜变快，真正的价值是"以后升级不用提心吊胆"。<a href="https://github.com/ggml-org/llama.cpp">项目地址</a></p>
+<h3 id="obsidianmdobsidian-skills-agent-obsidian">obsidianmd/obsidian-skills：官方出品，让你的 agent 会用 Obsidian</h3>
+<p>一句话介绍。解决什么问题：笔记都在 Obsidian 里，agent 却不会用——Obsidian 官方出的 skills 包，一次装好，Claude Code、ChatGPT、Codex、Cursor、Antigravity、Grok Bot 等十几个 agent 都能直接读写你的 vault：Obsidian 风格 Markdown、 Bases 数据库、JSON Canvas 白板、Obsidian CLI 全都覆盖。⭐ 约 5.4 万（截至撰写时）。适合：笔记库在 Obsidian、想让 agent 帮你整理、检索、生成笔记的人；提醒一句：装完先看它要哪些权限，vault 里有私密内容的话，同步类 skill 先关掉再说。<a href="https://github.com/obsidianmd/obsidian-skills">项目地址</a></p>
+<h3 id="skeetoprosperoc-gui-coding-harness">skeeto/prospero：C++ 写的原生 GUI coding harness，单个可执行文件</h3>
+<p>一句话介绍。解决什么问题：嫌 Electron 系 agent 界面笨重、又想在桌面上管 agent 会话——Prospero 是个 C++ 单文件可执行程序，ImGui 原生界面，接 OpenAI 兼容 API 或 Anthropic API，本地或远程模型都能跑；不要 daemon、不要服务器，作者说它能在 25 年前的老系统上跑。⭐ 约 208（截至撰写时；11 月 27 日刚上 HN 首页）。适合：喜欢轻量原生工具、想自己搭 agent 工作台的人；提醒一句：star 才 200 出头，是刚冒头的新项目，功能还在长，别拿它当主力生产工具。<a href="https://github.com/skeeto/prospero">项目地址</a></p>
+<h2 id="hugging-face">🤗 Hugging Face 热门模型</h2>
+<h3 id="nvidianemotron-labs-image-30b-a3b-token">nvidia/Nemotron-Labs-Image-30B-A3B：英伟达的生图模型，不扩散、改写 token</h3>
+<p>是什么：英伟达 11 月 24 日放出的 30B 参数生图模型，每 token 只激活 3B（MoE 结构），思路跟别的生图模型不一样——它不扩散，而是把图写成离散 visual token 再解码，号称"Pixel as Code"，目标不只是出图，还能生成网页、幻灯片、图表这类可编辑的视觉产物。能干嘛：本地跑（参考配置要 4 张 H100 80GB，普通人看看就好）或等社区量化版；GenEval 92.86、LongTextBench 97.98——但提醒一句，这是整套 VisualCreation 框架的分数（含 GPT-6 辅助配置），别当成单模型成绩。下载量约 1.69k、点赞 339（截至撰写时）。适合谁：研究图像生成、想试非扩散路线的人。提醒一句：许可证只允许非商业研究/评估，商用别碰。<a href="https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B">模型地址</a></p>
+<h2 id="icons8hub100-claude-code">🛠️ 值得一试的工具：icons8/hub——100 个 Claude Code 会话，一个面板管</h2>
+<p>是什么：Icons8 做的开源自托管调度器：一个面板（或 Telegram）管你机器上跑的几十上百个 Claude Code 或 Codex 会话——你用一句话写目标，协调会话拆给常驻 agent 或临时执行器（各自独立 git worktree），只把需要你拍板的决定推回来，变成带按钮的卡片。解决什么痛点：会话一多就管不过来，每个终端都要盯——Hub 把"盯会话"变成"只回卡片"。免费额度：开源免费（Apache-2.0），花的是你自己的 Claude/ChatGPT 订阅；11 月 19 日建库，最新版 v1.10.1（11 月 24 日）。</p>
+<p><strong>verdict：观望</strong>——多会话重度用户值得在小项目上试，它解决的是真痛点；但作者自己标了 experimental：会话跑在 bypassPermissions 模式、无沙箱，本地页面默认还没密码。先设密码、读 SECURITY.md、别上生产机器，观望一阵再决定是不是主力。<a href="https://github.com/icons8/hub">项目地址</a></p>
+<h2 id="3-hub-claude-code">🎓 3 分钟小教程：用 Hub 一句话调度多个 Claude Code 会话</h2>
+<p><strong>前置条件</strong>：一台 Mac/Linux/Windows 机器；Claude 或 ChatGPT 订阅；一个 Git 仓库。</p>
+<ol>
+<li>一行命令安装（macOS/Linux）：
+   <code>bash
+   curl -fsSL https://icons8.github.io/hub/install.sh | bash</code>
+   装完打开 <code>http://127.0.0.1:8787</code></li>
+<li>登录你的 Claude 或 Codex 账号（Hub 会帮你装好 CLI）</li>
+<li>在页面或 Telegram 里用一句话写目标，比如"给登录页加暗色模式并补测试"——协调会话会拆给常驻 agent 或临时执行器，各自在独立 git worktree 里跑</li>
+<li>只盯 Now 标签页：有问题、要拍板的会话会变成带按钮的卡片，点一下就回过去，不用逐个终端翻</li>
+<li>先去设置里给页面设个密码；别把 8787 端口暴露到公网</li>
+</ol>
+<p><strong>预期效果</strong>：十几个并行会话收进一个面板，手机上回个 Telegram 就能推进；但记住它没沙箱，别拿它跑会动生产数据的任务。</p>
+<hr />
+<p><em>数据截至撰写时，仅供参考。</em></p>
+  </div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1348678575218017" data-ad-slot="6312566322" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</article>
+<nav class="post-nav">
+  <span class="disabled"></span><a class="next" href="../posts/2026-11-27-daily.html">AI 码力日报 · 2026年11月27日 →</a>
+</nav>
+<section class="related-posts"><h2>相关阅读</h2><ul><li><a href="../posts/2026-11-27-daily.html">AI 码力日报 · 2026年11月27日</a></li>
+<li><a href="../posts/2026-11-26-daily.html">AI 码力日报 · 2026年11月26日</a></li>
+<li><a href="../posts/2026-11-25-daily.html">AI 码力日报 · 2026年11月25日</a></li></ul></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Sean · <a href="/daily/privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3744f7020af94439bdb72ae81b33560f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
